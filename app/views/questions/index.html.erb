@@ -1,18 +1,24 @@
-<h1>Banco de Questoes</h1>
+<div class="page-header" id="banner">
+  <div class="row">
+    <h1>Questions</h1>
+    <p class="lead">Help your students to know more! Add questions, track down, analyse!</p>
+  </div>
+</div>
 
 <p>
-    <%= form_tag("/questions", method: "get") do %>
-      <%= label_tag(:subject_id, "Filtrar por disciplinas:") %>
-      <select name="subject_id">
-        <%=@subjects%>
-        <%subjects_select = FillSubjectDropdown @subjects%>
-        <%= options_for_select(subjects_select,0) %>
-        <%= submit_tag("Filtrar") %>
-      </select>
-    <% end %>
+
+  <form class="form-horizontal" accept-charset="UTF-8" action="/questions" method="get"><div style="display:none"><input name="utf8" value="✓" type="hidden"></div>
+        <select name="subject_id" class="form-control" onchange="javascipt:ajaxFilter()" id="filtrar">
+          <%  subjects_select = FillSubjectDropdown @subjects%>
+          <% subjects_select.each do |subject|%>
+            <option value="<%= subject[1]%>"><%=subject[0]%></option>
+          <%end%>
+          <input style="display: none"  type="submit" class= "btn btn-default" value="Filtrar"/>
+        </select>
+  </form>
 </p>
 
-<table>
+<table class="table table-striped table-hover ">
   <thead>
     <tr>
       <th>Question</th>
@@ -23,7 +29,7 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody id = 'subjectsBody'>
     <% @questions.each do |question| %>
       <tr>
         <td><%= question.question %></td>

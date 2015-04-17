@@ -1,33 +1,35 @@
-<%= form_for(@subject) do |f| %>
-  <% if @subject.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@subject.errors.count, "error") %> prohibited this subject from being saved:</h2>
 
-      <ul>
-      <% @subject.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <%= simple_form_for @subject, defaults: { input_html: { class: 'form-horizontal' } } do |f| %>
+    <% if @subject.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@subject.errors.count, "error") %> prohibited this subject from being saved:</h2>
+
+        <ul>
+        <% @subject.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :name %><br>
+      <%= f.text_area :name,  class: 'form-control'  %>
+    </div>
+    <div class="form-group">
+      <%= f.label :professor_id %><br>
+      <%= f.number_field :professor_id ,  class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :department_id %><br>
+      <%= f.number_field :department_id ,  class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :descricao %><br>
+      <%= f.text_area :descricao ,  class: 'form-control' %>
+    </div>
+    <div class="form-group">
+    
+      <%= f.submit class: "btn btn-default" %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_area :name %>
-  </div>
-  <div class="field">
-    <%= f.label :professor_id %><br>
-    <%= f.number_field :professor_id %>
-  </div>
-  <div class="field">
-    <%= f.label :department_id %><br>
-    <%= f.number_field :department_id %>
-  </div>
-  <div class="field">
-    <%= f.label :descricao %><br>
-    <%= f.text_area :descricao %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>

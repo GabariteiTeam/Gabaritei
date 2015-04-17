@@ -23,6 +23,7 @@ class QuestionsController < ApplicationController
     
   end
 
+
   # GET /questions/1
   # GET /questions/1.json
   def show
@@ -77,6 +78,25 @@ class QuestionsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def getQuestionsSubject
+    if not params.has_key?("subject_id")
+      logger.info("Parameters: #{params}")
+      @questions = Question.all
+    else
+      logger.info "[DEBUG] #{params[:subject_id]}"
+      logger.info "[DEBUG] #{params[:subject_id] == 0}"
+      if params[:subject_id] == "0"
+        @questions = Question.all
+      else
+        @questions = Question.where(subject_id: params[:subject_id])
+      end
+
+      
+    end
+    render json: @questions
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

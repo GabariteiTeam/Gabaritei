@@ -14,8 +14,6 @@ gem 'coffee-rails', '~> 4.0.0'
 
 gem 'rake'
 
-
-
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
@@ -35,6 +33,7 @@ gem 'spring',        group: :development
 #translate model to text
 gem 'annotate', '~> 2.6.5'
 
+gem 'simple_form'
 
 #debbug gem
 gem 'byebug'
@@ -44,7 +43,6 @@ gem 'capybara'
 gem 'selenium-webdriver'
 gem 'database_cleaner', '~> 1.4.0'
 
-gem 'byebug'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

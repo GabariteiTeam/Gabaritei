@@ -1,5 +1,27 @@
-<ul class="nav nav-tabs">
-  <li role="presentation" class="active"><a href="#">Home</a></li>
-  <li role="presentation"><%= link_to "Questions",   questions_path %></li>
-  <li role="presentation"><a href="#">Login</a></li>
-</ul>
+<div class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<%= link_to "Gabaritei", root_path, :class => "navbar-brand" %>
+			<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+		</div>
+		<div class="navbar-collapse collapse" id="navbar-main">
+			<ul class="nav navbar-nav">
+				<li>
+					<%= link_to "Questions", questions_path %>
+				</li>
+				<li>
+					<%= link_to "Subjects", subjects_path %>
+				</li>
+			</ul>
+
+			<ul class="nav navbar-nav navbar-right">
+				
+			</ul>
+
+		</div>
+	</div>
+</div>

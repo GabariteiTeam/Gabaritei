@@ -6,9 +6,11 @@
   
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="container">
 	<%= render 'layouts/navbar'%>
-	<%= yield %>
+		<div class="bs-docs-section clearfix">
+			<%= yield %>
+		</div>
 </body>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </html>
