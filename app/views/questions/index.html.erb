@@ -1,0 +1,43 @@
+<h1>Banco de Questoes</h1>
+
+<p>
+    <%= form_tag("/questions", method: "get") do %>
+      <%= label_tag(:subject_id, "Filtrar por disciplinas:") %>
+      <select name="subject_id">
+        <%=@subjects%>
+        <%subjects_select = FillSubjectDropdown @subjects%>
+        <%= options_for_select(subjects_select,0) %>
+        <%= submit_tag("Filtrar") %>
+      </select>
+    <% end %>
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Question</th>
+      <th>Type</th>
+      <th>Year</th>
+      <th>Area</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @questions.each do |question| %>
+      <tr>
+        <td><%= question.question %></td>
+        <td><%= question.style %></td>
+        <td><%= question.year %></td>
+        <td><%= question.area %></td>
+        <td><%= link_to 'Show', question %></td>
+        <td><%= link_to 'Edit', edit_question_path(question) %></td>
+        <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Question', new_question_path %>
