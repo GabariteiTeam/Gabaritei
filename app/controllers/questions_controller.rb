@@ -80,21 +80,28 @@ class QuestionsController < ApplicationController
   end
 
   def getQuestionsSubject
-    if not params.has_key?("subject_id")
+    response = Array.new
+    if not params.has_key?("id")
       logger.info("Parameters: #{params}")
       @questions = Question.all
+      response.push @questions
     else
-      logger.info "[DEBUG] #{params[:subject_id]}"
-      logger.info "[DEBUG] #{params[:subject_id] == 0}"
-      if params[:subject_id] == "0"
+      logger.info "[DEBUG] #{params[:id]}"
+      logger.info "[DEBUG] #{params[:id] == 0}"
+      if params[:id] == "0"
         @questions = Question.all
+        response.push @questions
       else
-        @questions = Question.where(subject_id: params[:subject_id])
+        @questions = Question.where(subject_id: params[:id])
+        response.push @questions
       end
-
-      
     end
-    render json: @questions
+
+    subjects = Subject.all 
+
+    response.push subjects
+
+    render json: response
   end
 
 

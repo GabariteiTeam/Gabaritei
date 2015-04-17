@@ -24,7 +24,7 @@
       <th>Question</th>
       <th>Type</th>
       <th>Year</th>
-      <th>Area</th>
+      <th>Subject</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -35,7 +35,7 @@
         <td><%= question.question %></td>
         <td><%= question.style %></td>
         <td><%= question.year %></td>
-        <td><%= question.area %></td>
+        <td><%= question.subject.name %></td>
         <td><%= link_to 'Show', question %></td>
         <td><%= link_to 'Edit', edit_question_path(question) %></td>
         <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
