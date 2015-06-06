@@ -1,34 +1,35 @@
-# SQLite version 3.x
-#   gem install sqlite3
-#
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem 'sqlite3'
-#
+# MySQL version 5.6.25
+
+# Default database settings (applicable to all environments)
 default: &default
-  adapter: sqlite3
+  adapter: mysql2
+  encoding: utf8
   pool: 5
+  username: root
+  password:
+  socket: /tmp/mysql.sock
   timeout: 5000
 
+# Development database settings
 development:
   <<: *default
-  database: db/development.sqlite3
+  database: gabaritei_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
+
+# Test database settings
 test:
   <<: *default
-  database: db/test.sqlite3
-  adapter: sqlite3
-  pool: 5
-  timeout: 500000
-  
+  database: gabaritei_test
+
+# Production database settings
 production:
   <<: *default
-  database: db/production.sqlite3
-  
+  database: gabaritei_production
+
+# Selenium database settings
 selenium:
-  database: db/selenium.sqlite3
-  adapter: sqlite3
-  pool: 5
-  timeout: 500000
+  <<: *default
+  database: gabaritei_selenium
