@@ -1,4 +1,11 @@
 ENV['RAILS_ENV'] ||= 'test'
+require 'simplecov'
+# ugly to put thigs up here
+# but life is ugly
+SimpleCov.start do
+	SimpleCov.minimum_coverage 90
+end
+
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'database_cleaner'

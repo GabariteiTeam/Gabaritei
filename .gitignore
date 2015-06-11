@@ -34,4 +34,7 @@ bower.json
 # Ignore pow environment settings
 .powenv
 
+# coverage report
+coverage
+
 Gemfile.lock
