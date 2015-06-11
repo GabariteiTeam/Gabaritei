@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: subjects
+#
+#  id            :integer          not null, primary key
+#  name          :text
+#  professor_id  :integer
+#  department_id :integer
+#  descricao     :text
+#  created_at    :datetime
+#  updated_at    :datetime
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
