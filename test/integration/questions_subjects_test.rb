@@ -48,5 +48,5 @@ class QuestionsSubjectsTest < ActionDispatch::IntegrationTest
    # select('Geografia', :from => 'subject_id')
    # click_button 'Filtrar'
    # assert page.has_content?('Lorem Ipsum of Geography')
-  end
+   # end
 end
