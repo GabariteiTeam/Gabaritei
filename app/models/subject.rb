@@ -13,8 +13,8 @@
 
 class Subject < ActiveRecord::Base
  
-  has_many :questions_subjects
-  has_many :questions, through: :questions_subjects
+  has_many :question_subjects
+  has_many :questions, through: :question_subjects
   has_many :courses
   has_many :tests, through: :courses
   

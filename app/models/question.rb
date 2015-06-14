@@ -17,6 +17,9 @@
 class Question < ActiveRecord::Base
 
 	#Relacoes (Answers ainda deve ser implementado)
+	
+	belongs_to :user
+	
 	has_many :responses
 	
 						#Acho que seria bom implementar tambem o mesmo tipo de "truque" para o campo Area (Area de conhecimento)
@@ -25,11 +28,11 @@ class Question < ActiveRecord::Base
 						#Uma questao pode ser interdisciplinar, portanto, pode ter mais de uma disciplina (subjects)
 						#Por enquanto, temos penas a relacao 1:1 entre subject e question
 						#Necessidade de ampliar essa realacao para *:*
-	has_many :questions_subjects
-	has_many :subjects, through: :questions_subjects
+	has_many :question_subjects
+	has_many :subjects, through: :question_subjects
 						
-	has_many :questions_tests
-	has_many :tests, through: :questions_tests
+	has_many :question_tests
+	has_many :tests, through: :question_tests
 	has_many :ratings
 
 	#Opcoes de tipo de Questao, funciona mais ou menos como um enum

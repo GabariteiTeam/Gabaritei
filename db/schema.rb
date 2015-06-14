@@ -24,6 +24,16 @@ ActiveRecord::Schema.define(version: 20150613145618) do
   add_index "contents", ["subject_id"], name: "index_contents_on_subject_id", using: :btree
   add_index "contents", ["user_id"], name: "index_contents_on_user_id", using: :btree
 
+  create_table "course_questions", id: false, force: true do |t|
+    t.integer  "question_id"
+    t.integer  "course_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "course_questions", ["course_id"], name: "index_course_questions_on_course_id", using: :btree
+  add_index "course_questions", ["question_id"], name: "index_course_questions_on_question_id", using: :btree
+
   create_table "courses", force: true do |t|
     t.integer  "subject_id"
     t.datetime "created_at", null: false
@@ -33,18 +43,26 @@ ActiveRecord::Schema.define(version: 20150613145618) do
 
   add_index "courses", ["subject_id"], name: "index_courses_on_subject_id", using: :btree
 
-  create_table "courses_questions", id: false, force: true do |t|
+  create_table "question_subjects", id: false, force: true do |t|
+    t.integer "question_id"
+    t.integer "subject_id"
+  end
+
+  add_index "question_subjects", ["question_id"], name: "index_question_subjects_on_question_id", using: :btree
+  add_index "question_subjects", ["subject_id"], name: "index_question_subjects_on_subject_id", using: :btree
+
+  create_table "question_tests", id: false, force: true do |t|
+    t.integer  "test_id"
     t.integer  "question_id"
-    t.integer  "course_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
-  add_index "courses_questions", ["course_id"], name: "index_courses_questions_on_course_id", using: :btree
-  add_index "courses_questions", ["question_id"], name: "index_courses_questions_on_question_id", using: :btree
+  add_index "question_tests", ["question_id"], name: "index_question_tests_on_question_id", using: :btree
+  add_index "question_tests", ["test_id"], name: "index_question_tests_on_test_id", using: :btree
 
   create_table "questions", force: true do |t|
-    t.integer  "subject_id"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text     "text"
@@ -54,25 +72,7 @@ ActiveRecord::Schema.define(version: 20150613145618) do
     t.integer  "type"
   end
 
-  add_index "questions", ["subject_id"], name: "index_questions_on_subject_id", using: :btree
-
-  create_table "questions_subjects", id: false, force: true do |t|
-    t.integer "question_id"
-    t.integer "subject_id"
-  end
-
-  add_index "questions_subjects", ["question_id"], name: "index_questions_subjects_on_question_id", using: :btree
-  add_index "questions_subjects", ["subject_id"], name: "index_questions_subjects_on_subject_id", using: :btree
-
-  create_table "questions_tests", id: false, force: true do |t|
-    t.integer  "test_id"
-    t.integer  "question_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "questions_tests", ["question_id"], name: "index_questions_tests_on_question_id", using: :btree
-  add_index "questions_tests", ["test_id"], name: "index_questions_tests_on_test_id", using: :btree
+  add_index "questions", ["user_id"], name: "index_questions_on_user_id", using: :btree
 
   create_table "ratings", force: true do |t|
     t.integer  "user_id"

@@ -1,8 +1,9 @@
 class Test < ActiveRecord::Base
   
   belongs_to :course
-  has_many :questions_tests
-  has_many :questions, through: :questions_tests
+  belongs_to :user
+  has_many :question_tests
+  has_many :questions, through: :question_tests
   
   has_one :subject, through: :course
   

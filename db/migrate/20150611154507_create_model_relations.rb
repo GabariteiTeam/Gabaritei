@@ -34,11 +34,11 @@ class CreateModelRelations < ActiveRecord::Migration
     end
     
     create_table :questions do |t|
-      t.belongs_to :subject, index: true
+      t.belongs_to :user, index: true
       t.timestamps null: false
     end
     
-    create_table :questions_subjects, id: false do |t|
+    create_table :question_subjects, id: false do |t|
       t.belongs_to :question, index: true
       t.belongs_to :subject, index: true
     end
@@ -49,7 +49,7 @@ class CreateModelRelations < ActiveRecord::Migration
       t.timestamps null: false
     end
     
-    create_table :courses_questions, id: false do |t|
+    create_table :course_questions, id: false do |t|
       t.belongs_to :question, index: true
       t.belongs_to :course, index: true
       t.timestamps null: false
@@ -67,7 +67,7 @@ class CreateModelRelations < ActiveRecord::Migration
       t.timestamps null: false
     end
     
-    create_table :questions_tests, id: false do |t|
+    create_table :question_tests, id: false do |t|
       t.belongs_to :test, index: true
       t.belongs_to :question, index: true
       t.timestamps null: false
