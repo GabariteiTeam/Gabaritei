@@ -35,3 +35,5 @@ bower.json
 .powenv
 
 Gemfile.lock
+
+.project
