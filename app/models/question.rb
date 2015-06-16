@@ -3,16 +3,6 @@
 # Table name: questions
 #
 #  id         :integer          not null, primary key
-<<<<<<< HEAD
-#  question   :text
-#  year       :datetime
-#  area       :string(255)
-#  subject_id :integer
-#  created_at :datetime
-#  updated_at :datetime
-#  hot        :boolean
-#  style      :string(255)
-=======
 #  user_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -21,7 +11,6 @@
 #  hot        :boolean
 #  date       :datetime
 #  type       :integer
->>>>>>> origin/database-schema
 #
 
 class Question < ActiveRecord::Base
