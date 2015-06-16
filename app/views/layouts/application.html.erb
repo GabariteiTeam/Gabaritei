@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="gabariteiApp">
 <head>
   <title>Gabaritei</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -8,7 +8,7 @@
 </head>
 <body class="container">
 	<%= render 'layouts/navbar'%>
-		<div class="bs-docs-section clearfix">
+		<div class="bs-docs-section clearfix" ng-view >
 			<%= yield %>
 		</div>
 </body>

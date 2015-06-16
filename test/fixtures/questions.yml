@@ -1,11 +1,38 @@
+# == Schema Information
+#
+# Table name: questions
+#
+#  id         :integer          not null, primary key
+#  question   :text
+#  year       :datetime
+#  area       :string(255)
+#  subject_id :integer
+#  created_at :datetime
+#  updated_at :datetime
+#  hot        :boolean
+#  style      :string(255)
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   question: MyText
   year: 2014-11-19 09:23:41
   area: MyString
+  subject_id: 1
+  created_at: 2014-11-19 09:23:41
+  updated_at: 2014-11-20 09:23:41
+  hot: false
+  style: discursive
 
 two:
-  question: MyText
-  year: 2014-11-19 09:23:41
+  id: 2
+  question: MyText2
+  year: 2015-11-19 09:23:41
   area: MyString
+  subject_id: 2
+  created_at: 2014-11-19 09:23:41
+  updated_at: 2014-11-20 09:23:41
+  hot: true
+  style: multiple

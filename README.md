@@ -16,17 +16,36 @@ de ser utilizado em diversos ambientes, com diversas combinações de hardware e
     
 3. Sobre os testes
 
-    Os testes foram criados sobre a base do rake, Capybara e Selenium. Devido a algumas limitações do SQLLite, tivemos que criar
-    um novo environment chamdo "Selenium". Basicamente o que acontece é que rodar os testes usando o rake test:integration levanta
-    um servidor no environment de testes padrão (acessando o banco de dados de teste). No entando, o Selenium necessita acessar uma
-    url no servidor, fazendo com que nós tenhamos que subir um novo servidor usando o comando rails -s. Com dois servidores acessando
-    o mesmo banco de dados, não é possível fazer com que as alterações feitas sejam gravadas efetivamente no arquivo sqlite.
+    O rails já fornece um sistema integrado de testes, bastando executar:
+    ```
+    $ rake test
+    ```
     
-    A solução adotada foi rodar o servidor em outro banco de dados usando outro environment. Dessa forma, toda a codificação foi
-    jogada para dentro do método de inicialização do rake e é transparente ao desenvolvedor. Para rodar os testes, as gems do
-    capybara e selenium web driver devem estar instaladas e o sistema deve ser Linux, Max OS X ou similar.
+    Os testes de integração, no entanto, foram feitos com tecnologias diferentes da padrão, devendo serem executados através do comando:
     
-    Comandos:
+    ```
+    $ rake selenium testintegration
+    ```
     
-    $ bundle install
-    $ bundle exec rake test:integration
+    Com as configurações padrões, iremos reodar o Selenium no modo Headless. Além disso, iremos ter como navegador padrão o Chrome. Para alterar as configurações padrões do testes, basta editar o arquivo test/test_helper.rb
+    
+    ```ruby
+    #
+	#Seta as configuracoes para o Capybara funcionar corretamente
+	#
+	def setupCapybara
+
+		# Basic capybara setup
+		Capybara.default_driver = :selenium
+		# Firefox is Default
+		# Changes to Chrome if uncommented
+		Capybara.register_driver :selenium do |app|
+  			Capybara::Selenium::Driver.new(app, :browser => :chrome)
+		end
+		Capybara.app_host = "http://localhost:3000"
+		
+		#Can be comment if we want to run headless
+		headless = Headless.new
+		headless.start
+	end
+    ```
