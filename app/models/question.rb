@@ -3,15 +3,14 @@
 # Table name: questions
 #
 #  id         :integer          not null, primary key
-#  question   :text
-#  year       :datetime
-#  area       :string(255)
-#  subject    :integer
-#  created_at :datetime
-#  updated_at :datetime
+#  user_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  text       :text
+#  answer     :text
 #  hot        :boolean
-#  style      :string(255)
-#  subject_id :integer
+#  date       :datetime
+#  type       :integer
 #
 
 class Question < ActiveRecord::Base
