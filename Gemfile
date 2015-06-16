@@ -45,6 +45,12 @@ gem 'database_cleaner', '~> 1.4.0'
 gem "headless"
 gem 'simplecov'
 
+# Creazy Bower stuff...
+# Bower will take care to install
+# Angularjs and other stuff for us
+gem 'bower-rails'
+gem "non-stupid-digest-assets"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
