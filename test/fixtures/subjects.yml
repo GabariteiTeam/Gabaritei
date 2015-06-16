@@ -2,13 +2,10 @@
 #
 # Table name: subjects
 #
-#  id            :integer          not null, primary key
-#  name          :text
-#  professor_id  :integer
-#  department_id :integer
-#  descricao     :text
-#  created_at    :datetime
-#  updated_at    :datetime
+#  id         :integer          not null, primary key
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  name       :string(255)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
