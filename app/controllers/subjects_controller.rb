@@ -4,7 +4,9 @@ class SubjectsController < ApplicationController
   # GET /subjects
   # GET /subjects.json
   def index
+
     @subjects = Subject.all
+    render json: @subjects
   end
 
   # GET /subjects/1

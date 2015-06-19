@@ -2,21 +2,15 @@
 // Simply and central
 
 
-var app = angular.module("gabariteiApp",['ngResource', 'ngRoute']);
-
-app.config(['$routeProvider',
-  function($routeProvider) {
-    $routeProvider.
-      when('/home', {
-        templateUrl: 'assets/partials/home/home.html',
-        controller: 'HomeController'
-      }).
-      otherwise({
-        redirectTo: '/home'
-      });
-  }]);
+var app = angular.module("gabariteiApp",['ngResource', 'ngRoute', 
+  'homeRoutes',
+  'homeControllers',
+  'subjectsRoutes',
+  'subjectResource',
+  'subjectControllers'
+  
+  ]);
 
 
-app.controller('HomeController', ['$scope', function($scope){
-	
-}])
+
+
