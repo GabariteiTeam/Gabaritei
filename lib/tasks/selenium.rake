@@ -8,7 +8,7 @@ namespace :selenium do
   	puts "Finishing server..."
 
   	#send shutdown signal
-  	system " ps axf  | grep rails | grep -v grep | awk '{print $1}' | xargs -I pid kill -INT pid"
+  	system " ps aux  | grep rails | grep -v grep | awk '{print $2}' | xargs -I pid kill -INT pid"
   end
 
 end
