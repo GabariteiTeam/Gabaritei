@@ -14,6 +14,7 @@ class Subject < ActiveRecord::Base
   has_many :questions, through: :question_subjects
   has_many :courses
   has_many :tests, through: :courses
+  has_many :teachers, through: :courses
   has_many :contents
   
 end

@@ -1,36 +1,37 @@
 <div class="page-header" id="banner">
   <div class="row">
-    <h1>Subjects</h1>
-    <p class="lead">Create a new subject to your Virtual Class!</p>
+	<h1>Subjects</h1>
+	<p class="lead">Create a new subject to your Virtual Class!</p>
   </div>
 </div>
 
 
 <div class="row">
   <table class="table table-striped table-hover ">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Professor</th>
-        <th>Department</th>
-        <th>Descricao</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
+	<thead>
+	  <tr>
+		<th>Nome</th>
+		<th>Professores</th>
+		<th colspan="3"></th>
+	  </tr>
+	</thead>
 
-    <tbody >
-      <% @subjects.each do |subject| %>
-        <tr>
-          <td><%= subject.name %></td>
-          <td><%= subject.professor_id %></td>
-          <td><%= subject.department_id %></td>
-          <td><%= subject.descricao %></td>
-          <td><%= link_to 'Show', subject %></td>
-          <td><%= link_to 'Edit', edit_subject_path(subject) %></td>
-          <td><%= link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
+	<tbody >
+	  <% @subjects.each do |subject| %>
+		<tr>
+		  <td><%= subject.name %></td>
+		  <td>
+		  <% subject.teachers.each do |teacher| %>
+			<a><%= teacher.name %></a>
+            <br>
+		  <% end %>
+		  </td>
+		  <td><%= link_to 'Show', subject %></td>
+		  <td><%= link_to 'Edit', edit_subject_path(subject) %></td>
+		  <td><%= link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		</tr>
+	  <% end %>
+	</tbody>
   </table>
 
 </div>

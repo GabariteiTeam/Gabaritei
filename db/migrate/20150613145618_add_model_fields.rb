@@ -35,7 +35,6 @@ class AddModelFields < ActiveRecord::Migration
     # Tests
     add_column :tests, :name, :string
     
-    
   end
   
 end

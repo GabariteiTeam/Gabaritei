@@ -18,10 +18,10 @@ populateQuestions = (data)->
 		if not question.area
 			question.area = ""
 		$("#subjectsBody").append("<tr id= '#{i}'>")
-		$("#" + i).append ("<td> #{question.question}</td>")
-		$("#" + i).append ("<td> #{question.style}</td>")
+		$("#" + i).append ("<td> #{question.text}</td>")
+		$("#" + i).append ("<td> #{question.type}</td>")
 		$("#" + i).append ("<td> #{question.year}</td>")
-		$("#" + i).append ("<td> #{getSubject question.subject_id, data[1]}</td>")
+		$("#" + i).append ("<td> #{getSubject question.subjects.first.id, data[1]}</td>")
 		$("#" + i).append ("<td> <a href='/questions/#{question.id}'>Show</a></td>")
 		$("#" + i).append ("<td><a href='/questions/#{question.id}/edit'>Edit</a> </td>")
 		$("#" + i).append ("<td><a data-confirm='Are you sure?'' data-method='delete' href='/questions/#{question.id}' rel='nofollow'>Destroy</a> </td>")
