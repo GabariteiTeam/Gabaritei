@@ -1,3 +1,10 @@
+# This file manages the client-side code libraries
+
+# Main angular module
 asset 'angular'
+# Needed to ajax routing **using instead of default rails routing file** 
 asset 'angular-route'
+# Proviedes app.factory methods
 asset 'angular-resource'
+# Used to mock http responses - mainly testing
+asset 'angular-mocks'
