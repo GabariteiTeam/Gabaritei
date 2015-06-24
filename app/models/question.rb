@@ -29,16 +29,19 @@ class Question < ActiveRecord::Base
 						#Necessidade de ampliar essa realacao para *:*
 	has_many :question_subjects
 	has_many :subjects, through: :question_subjects
+
+	has_many :question_choices
+	has_many :correct_choices, -> { where(correct: true) }, class_name: "QuestionChoice"
 						
 	has_many :question_tests
 	has_many :tests, through: :question_tests
 	has_many :ratings
 
 	#Opcoes de tipo de Questao, funciona mais ou menos como um enum
-	STYLE = [
-				DISCURSIVE_TYPE = 'Discursiva', 
-				ALTERNATIVE_TYPE = 'Alternativa'
-			]
+	STYLES = [
+		STYLE_WRITTEN = 'written', 
+		STYLE_MULTIPLE_CHOICE = 'multiple choice'
+	]
 	
 	#Definicao de questao
 	HOT = false
@@ -47,12 +50,12 @@ class Question < ActiveRecord::Base
   
 
 	#Gosto desse tipo de metodos com interrogacao, acho que eles sao auto explicativos tambem
-	def alternative?
-		if self.style == STYLE::ALTERNATIVE_TYPE
-			return true
-		else
-			return false
-		end
+	def multiple_choice?
+		return (self.style == Question::STYLE_MULTIPLE_CHOICE)
+	end
+
+	def written?
+		return (self.style == Question::STYLE_TYPE_WRITTEN)
 	end
 	
 	
@@ -62,23 +65,17 @@ class Question < ActiveRecord::Base
 	end
 	
 
-	def discursive?
-		if self.style == Question::DISCURSIVE_TYPE
-			return true
-		else
-			return false
-		end
-	end
+	
 
 	#Funciona como um set para tipo de alternativa, nao seria necessario fazer isso no Model, mas ao fazer desse modo, 
 	#evitamos alguns typos. Depois do set o model ainda precisa ser salvo la no controller!
 	#Best practices: http://rails-bestpractices.com/posts/708-clever-enums-in-rails
-	def discursive_type
-		self.style = Question::DISCURSIVE_TYPE
+	def written
+		self.style = Question::STYLE_WRITTEN
 	end
 
-	def alternative_type
-		self.style = Question::ALTERNATIVE_TYPE
+	def multiple_choice
+		self.style = Question::STYLE_MULTIPLE_CHOICE
 	end
 
 

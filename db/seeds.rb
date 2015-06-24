@@ -29,9 +29,13 @@ course2 = Course.create(name: "Physics course",
                         teachers: [teacher1, teacher2],
                         students: [student2, student3])
                         
-q1 = Question.create(user: teacher1, subjects: [subject_math, subject_physics])
-q2 = Question.create(user: teacher2, subjects: [subject_physics])
-q3 = Question.create(user: teacher1, subjects: [subject_math])
+q1 = Question.create(user: teacher1, subjects: [subject_math, subject_physics], style: Question::STYLE_WRITTEN)
+q2 = Question.create(user: teacher2, subjects: [subject_physics], style: Question::STYLE_WRITTEN)
+q3 = Question.create(user: teacher1, subjects: [subject_math], style: Question::STYLE_MULTIPLE_CHOICE)
+
+q3_c1 = QuestionChoice.create(question: q3, correct: false)
+q3_c2 = QuestionChoice.create(question: q3, correct: false)
+q3_c1 = QuestionChoice.create(question: q3, correct: true)
 
 t1 = Test.create(user: teacher1, course: course1, questions: [q1, q2])
 t2 = Test.create(user: teacher2, course: course2, questions: [q2, q3])

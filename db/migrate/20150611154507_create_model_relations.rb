@@ -37,10 +37,16 @@ class CreateModelRelations < ActiveRecord::Migration
       t.belongs_to :user, index: true
       t.timestamps null: false
     end
+
+    create_table :question_choices do |t|
+      t.belongs_to :question, index: true
+      t.timestamps null: false
+    end
     
     create_table :question_subjects, id: false do |t|
       t.belongs_to :question, index: true
       t.belongs_to :subject, index: true
+      t.timestamps null: false
     end
     
     create_table :ratings do |t|
@@ -64,6 +70,12 @@ class CreateModelRelations < ActiveRecord::Migration
     create_table :tests do |t|
       t.belongs_to :course, index: true
       t.belongs_to :user, index: true
+      t.timestamps null: false
+    end
+
+    create_table :test_response, id: false do |t|
+      t.belongs_to :response, index: true
+      t.belongs_to :test, index: true
       t.timestamps null: false
     end
     

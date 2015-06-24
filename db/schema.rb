@@ -43,9 +43,21 @@ ActiveRecord::Schema.define(version: 20150613145618) do
 
   add_index "courses", ["subject_id"], name: "index_courses_on_subject_id"
 
+  create_table "question_choices", force: true do |t|
+    t.integer  "question_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "text"
+    t.boolean  "correct"
+  end
+
+  add_index "question_choices", ["question_id"], name: "index_question_choices_on_question_id"
+
   create_table "question_subjects", id: false, force: true do |t|
-    t.integer "question_id"
-    t.integer "subject_id"
+    t.integer  "question_id"
+    t.integer  "subject_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   add_index "question_subjects", ["question_id"], name: "index_question_subjects_on_question_id"
@@ -69,7 +81,8 @@ ActiveRecord::Schema.define(version: 20150613145618) do
     t.text     "answer"
     t.boolean  "hot"
     t.datetime "date"
-    t.integer  "type"
+    t.string   "style"
+    t.string   "area"
   end
 
   add_index "questions", ["user_id"], name: "index_questions_on_user_id"
@@ -109,6 +122,16 @@ ActiveRecord::Schema.define(version: 20150613145618) do
     t.datetime "updated_at", null: false
     t.string   "name"
   end
+
+  create_table "test_response", id: false, force: true do |t|
+    t.integer  "response_id"
+    t.integer  "test_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "test_response", ["response_id"], name: "index_test_response_on_response_id"
+  add_index "test_response", ["test_id"], name: "index_test_response_on_test_id"
 
   create_table "tests", force: true do |t|
     t.integer  "course_id"
