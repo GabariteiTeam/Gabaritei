@@ -38,6 +38,9 @@ bower.json
 # coverage report
 coverage
 
+#npm modules
+node_modules
+
 Gemfile.lock
 
 .project
