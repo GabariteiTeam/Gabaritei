@@ -33,7 +33,7 @@
     <% @questions.each do |question| %>
       <tr>
         <td><%= question.text %></td>
-        <td><%= question.type %></td>
+        <td><%= question.style %></td>
         <td><%= question.date %></td>
         <td><%= question.subjects.map { |s| s.name }.join(", ") %></td>
         <td><%= link_to 'Show', question %></td>
