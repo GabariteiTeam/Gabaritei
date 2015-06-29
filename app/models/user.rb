@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id         :integer          not null, primary key
+#  media_id   :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  first_name :string(255)
+#  last_name  :string(255)
+#  email      :string(255)
+#  password   :string(255)
+#  birthdate  :datetime
+#  about      :text
+#
+
 class User < ActiveRecord::Base
 
     # References
@@ -16,6 +32,7 @@ class User < ActiveRecord::Base
     has_many :user_course_roles
     has_many :user_deficit_categories
     has_many :user_roles
+    has_many :roles, through: :user_roles
     has_many :teacher_roles, -> { where(role: "teacher") }, class_name: "UserCourseRole"
     has_many :student_roles, -> { where(role: "student") }, class_name: "UserCourseRole"
     has_many :teacher_courses, through: :teacher_roles, source: :course

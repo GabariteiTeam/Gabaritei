@@ -10,7 +10,7 @@
 #  answer     :text
 #  hot        :boolean
 #  date       :datetime
-#  type       :integer
+#  style      :string(255)
 #
 
 require 'test_helper'

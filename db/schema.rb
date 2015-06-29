@@ -14,17 +14,44 @@
 ActiveRecord::Schema.define(version: 20150613145618) do
 
   create_table "contents", force: true do |t|
-    t.integer  "subject_id"
+    t.integer  "category_id"
+    t.string   "category_type"
     t.integer  "user_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.string   "content_type"
-    t.binary   "data"
+    t.integer  "media_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "name"
     t.text     "description"
+    t.integer  "access_count"
+    t.boolean  "download_protected"
+    t.boolean  "shareable"
   end
 
-  add_index "contents", ["subject_id"], name: "index_contents_on_subject_id"
+  add_index "contents", ["category_id", "category_type"], name: "index_contents_on_category_id_and_category_type"
+  add_index "contents", ["media_id"], name: "index_contents_on_media_id"
   add_index "contents", ["user_id"], name: "index_contents_on_user_id"
+
+  create_table "course_contents", id: false, force: true do |t|
+    t.integer  "course_id"
+    t.integer  "contents_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "course_contents", ["contents_id"], name: "index_course_contents_on_contents_id"
+  add_index "course_contents", ["course_id"], name: "index_course_contents_on_course_id"
+
+  create_table "course_news", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "course_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text     "text"
+    t.datetime "date"
+  end
+
+  add_index "course_news", ["course_id"], name: "index_course_news_on_course_id"
+  add_index "course_news", ["user_id"], name: "index_course_news_on_user_id"
 
   create_table "course_questions", id: false, force: true do |t|
     t.integer  "question_id"
@@ -51,14 +78,15 @@ ActiveRecord::Schema.define(version: 20150613145618) do
   add_index "course_registration_requests", ["user_id"], name: "index_course_registration_requests_on_user_id"
 
   create_table "courses", force: true do |t|
-    t.integer  "subject_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "category_id"
+    t.string   "category_type"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.string   "name"
     t.text     "description"
   end
 
-  add_index "courses", ["subject_id"], name: "index_courses_on_subject_id"
+  add_index "courses", ["category_id", "category_type"], name: "index_courses_on_category_id_and_category_type"
 
   create_table "fields", force: true do |t|
     t.integer  "subject_id"
@@ -70,6 +98,31 @@ ActiveRecord::Schema.define(version: 20150613145618) do
 
   add_index "fields", ["subject_id"], name: "index_fields_on_subject_id"
 
+  create_table "medias", force: true do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "name"
+    t.string   "reference"
+    t.string   "type"
+  end
+
+  create_table "permissions", force: true do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "name"
+  end
+
+  create_table "question_categories", id: false, force: true do |t|
+    t.integer  "question_id"
+    t.integer  "category_id"
+    t.string   "category_type"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "question_categories", ["category_id", "category_type"], name: "index_question_categories_on_category_id_and_category_type"
+  add_index "question_categories", ["question_id"], name: "index_question_categories_on_question_id"
+
   create_table "question_choices", force: true do |t|
     t.integer  "question_id"
     t.datetime "created_at",  null: false
@@ -80,25 +133,15 @@ ActiveRecord::Schema.define(version: 20150613145618) do
 
   add_index "question_choices", ["question_id"], name: "index_question_choices_on_question_id"
 
-  create_table "question_fields", id: false, force: true do |t|
-    t.integer  "question_id"
-    t.integer  "field_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "question_fields", ["field_id"], name: "index_question_fields_on_field_id"
-  add_index "question_fields", ["question_id"], name: "index_question_fields_on_question_id"
-
-  create_table "question_tests", id: false, force: true do |t|
-    t.integer  "test_id"
+  create_table "question_medias", id: false, force: true do |t|
+    t.integer  "media_id"
     t.integer  "question_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
-  add_index "question_tests", ["question_id"], name: "index_question_tests_on_question_id"
-  add_index "question_tests", ["test_id"], name: "index_question_tests_on_test_id"
+  add_index "question_medias", ["media_id"], name: "index_question_medias_on_media_id"
+  add_index "question_medias", ["question_id"], name: "index_question_medias_on_question_id"
 
   create_table "questions", force: true do |t|
     t.integer  "user_id"
@@ -113,19 +156,18 @@ ActiveRecord::Schema.define(version: 20150613145618) do
 
   add_index "questions", ["user_id"], name: "index_questions_on_user_id"
 
-  create_table "ratings", force: true do |t|
+  create_table "ratings", id: false, force: true do |t|
     t.integer  "user_id"
     t.integer  "question_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "level"
-    t.text     "comment"
+    t.integer  "value"
   end
 
   add_index "ratings", ["question_id"], name: "index_ratings_on_question_id"
   add_index "ratings", ["user_id"], name: "index_ratings_on_user_id"
 
-  create_table "recommendations", id: false, force: true do |t|
+  create_table "recommendations", force: true do |t|
     t.integer  "user_source_id"
     t.integer  "user_destination_id"
     t.integer  "resource_id"
@@ -152,34 +194,42 @@ ActiveRecord::Schema.define(version: 20150613145618) do
     t.boolean  "accepted"
   end
 
+  create_table "response_choices", force: true do |t|
+    t.integer  "response_id"
+    t.integer  "question_choices_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "response_choices", ["response_id"], name: "index_response_choices_on_response_id"
+
   create_table "responses", force: true do |t|
     t.integer  "question_id"
     t.integer  "user_id"
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.text     "text"
-    t.decimal  "correction_score",   precision: 4, scale: 2
-    t.text     "correction_comment"
   end
 
   add_index "responses", ["question_id"], name: "index_responses_on_question_id"
   add_index "responses", ["user_id"], name: "index_responses_on_user_id"
 
-  create_table "roles", force: true do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "name"
-  end
-
-  create_table "roles_users", id: false, force: true do |t|
-    t.integer  "user_id"
+  create_table "role_permissions", id: false, force: true do |t|
     t.integer  "role_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "permission_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
-  add_index "roles_users", ["role_id"], name: "index_roles_users_on_role_id"
-  add_index "roles_users", ["user_id"], name: "index_roles_users_on_user_id"
+  add_index "role_permissions", ["permission_id"], name: "index_role_permissions_on_permission_id"
+  add_index "role_permissions", ["role_id"], name: "index_role_permissions_on_role_id"
+
+  create_table "roles", force: true do |t|
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "name"
+    t.text     "description"
+  end
 
   create_table "subjects", force: true do |t|
     t.datetime "created_at",  null: false
@@ -188,11 +238,24 @@ ActiveRecord::Schema.define(version: 20150613145618) do
     t.text     "description"
   end
 
-  create_table "test_responses", id: false, force: true do |t|
-    t.integer  "response_id"
+  create_table "test_questions", id: false, force: true do |t|
     t.integer  "test_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "question_id"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.decimal  "max_score",   precision: 4, scale: 2
+  end
+
+  add_index "test_questions", ["question_id"], name: "index_test_questions_on_question_id"
+  add_index "test_questions", ["test_id"], name: "index_test_questions_on_test_id"
+
+  create_table "test_responses", id: false, force: true do |t|
+    t.integer  "test_id"
+    t.integer  "response_id"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.decimal  "score",       precision: 4, scale: 2
+    t.text     "comment"
   end
 
   add_index "test_responses", ["response_id"], name: "index_test_responses_on_response_id"
@@ -221,8 +284,29 @@ ActiveRecord::Schema.define(version: 20150613145618) do
   add_index "user_course_roles", ["course_id"], name: "index_user_course_roles_on_course_id"
   add_index "user_course_roles", ["user_id"], name: "index_user_course_roles_on_user_id"
 
-  create_table "users", force: true do |t|
+  create_table "user_deficit_categories", id: false, force: true do |t|
+    t.integer  "user_id"
+    t.integer  "category_id"
+    t.string   "category_type"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "user_deficit_categories", ["category_id", "category_type"], name: "index_user_deficit_categories_on_category_id_and_category_type"
+  add_index "user_deficit_categories", ["user_id"], name: "index_user_deficit_categories_on_user_id"
+
+  create_table "user_roles", id: false, force: true do |t|
+    t.integer  "user_id"
     t.integer  "role_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "user_roles", ["role_id"], name: "index_user_roles_on_role_id"
+  add_index "user_roles", ["user_id"], name: "index_user_roles_on_user_id"
+
+  create_table "users", force: true do |t|
+    t.integer  "media_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "first_name"
@@ -230,8 +314,9 @@ ActiveRecord::Schema.define(version: 20150613145618) do
     t.string   "email"
     t.string   "password"
     t.datetime "birthdate"
+    t.text     "about"
   end
 
-  add_index "users", ["role_id"], name: "index_users_on_role_id"
+  add_index "users", ["media_id"], name: "index_users_on_media_id"
 
 end

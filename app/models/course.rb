@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: courses
+#
+#  id            :integer          not null, primary key
+#  category_id   :integer
+#  category_type :string(255)
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  name          :string(255)
+#  description   :text
+#
+
 class Course < ActiveRecord::Base
   
     # References
