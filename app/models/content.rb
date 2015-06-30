@@ -26,5 +26,6 @@ class Content < ActiveRecord::Base
 	# Referenced by
 	has_many :recommendations, as: :resource
 	has_many :course_contents
+	has_many :courses, through: :course_contents
 
 end

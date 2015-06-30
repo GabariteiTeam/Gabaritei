@@ -63,6 +63,7 @@ class AddModelFields < ActiveRecord::Migration
     add_column :course_registration_requests, :accepted, :boolean
 
     # Course news
+    add_column :course_news, :title, :string
     add_column :course_news, :text, :text
     add_column :course_news, :date, :datetime
 
