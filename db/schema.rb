@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20150613145618) do
     t.integer  "course_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "title"
     t.text     "text"
     t.datetime "date"
   end
@@ -103,7 +104,7 @@ ActiveRecord::Schema.define(version: 20150613145618) do
     t.datetime "updated_at", null: false
     t.string   "name"
     t.string   "reference"
-    t.string   "type"
+    t.string   "media_type"
   end
 
   create_table "permissions", force: true do |t|

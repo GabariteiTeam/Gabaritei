@@ -7,6 +7,7 @@
 #  course_id  :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  title      :string(255)
 #  text       :text
 #  date       :datetime
 #

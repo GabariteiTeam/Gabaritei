@@ -16,7 +16,7 @@ class AddModelFields < ActiveRecord::Migration
     # Media
     add_column :medias, :name, :string
     add_column :medias, :reference, :string
-    add_column :medias, :type, :string
+    add_column :medias, :media_type, :string
 
     # Roles
     add_column :roles, :name, :string
