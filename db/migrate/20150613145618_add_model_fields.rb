@@ -49,6 +49,7 @@ class AddModelFields < ActiveRecord::Migration
     add_column :questions, :text, :text
     add_column :questions, :answer, :text
     add_column :questions, :hot, :boolean
+    add_column :questions, :source, :string
     add_column :questions, :date, :datetime
     add_column :questions, :style, :string
 

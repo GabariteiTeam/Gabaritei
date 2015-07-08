@@ -17,7 +17,8 @@ class Response < ActiveRecord::Base
 	belongs_to :user
 
 	# Referenced by
+	has_one :test_response
 	has_many :response_choices
-	has_many :test_responses
+	
   
 end

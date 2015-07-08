@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(version: 20150613145618) do
     t.integer  "category_id"
     t.string   "category_type"
     t.integer  "user_id"
-    t.integer  "media_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.string   "name"
@@ -28,7 +27,6 @@ ActiveRecord::Schema.define(version: 20150613145618) do
   end
 
   add_index "contents", ["category_id", "category_type"], name: "index_contents_on_category_id_and_category_type"
-  add_index "contents", ["media_id"], name: "index_contents_on_media_id"
   add_index "contents", ["user_id"], name: "index_contents_on_user_id"
 
   create_table "course_contents", id: false, force: true do |t|
@@ -100,12 +98,16 @@ ActiveRecord::Schema.define(version: 20150613145618) do
   add_index "fields", ["subject_id"], name: "index_fields_on_subject_id"
 
   create_table "medias", force: true do |t|
+    t.integer  "owner_id"
+    t.string   "owner_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "name"
     t.string   "reference"
     t.string   "media_type"
   end
+
+  add_index "medias", ["owner_id", "owner_type"], name: "index_medias_on_owner_id_and_owner_type"
 
   create_table "permissions", force: true do |t|
     t.datetime "created_at", null: false
@@ -133,16 +135,6 @@ ActiveRecord::Schema.define(version: 20150613145618) do
   end
 
   add_index "question_choices", ["question_id"], name: "index_question_choices_on_question_id"
-
-  create_table "question_medias", id: false, force: true do |t|
-    t.integer  "media_id"
-    t.integer  "question_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "question_medias", ["media_id"], name: "index_question_medias_on_media_id"
-  add_index "question_medias", ["question_id"], name: "index_question_medias_on_question_id"
 
   create_table "questions", force: true do |t|
     t.integer  "user_id"
@@ -307,7 +299,6 @@ ActiveRecord::Schema.define(version: 20150613145618) do
   add_index "user_roles", ["user_id"], name: "index_user_roles_on_user_id"
 
   create_table "users", force: true do |t|
-    t.integer  "media_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "first_name"
@@ -317,7 +308,5 @@ ActiveRecord::Schema.define(version: 20150613145618) do
     t.datetime "birthdate"
     t.text     "about"
   end
-
-  add_index "users", ["media_id"], name: "index_users_on_media_id"
 
 end

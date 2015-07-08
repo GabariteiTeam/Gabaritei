@@ -23,9 +23,9 @@ class Question < ActiveRecord::Base
 	has_many :question_categories
 	has_many :categories, through: :question_categories
 	has_many :question_choices
-	has_many :question_medias
+	has_many :medias, as: :owner
 	has_many :ratings
-	has_many :recommendations, :as => :resource
+	has_many :recommendations, as: :resource
 	has_many :responses											
 	has_many :test_questions
 	has_many :tests, through: :test_questions

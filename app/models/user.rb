@@ -16,10 +16,8 @@
 
 class User < ActiveRecord::Base
 
-    # References
-    belongs_to :media
-
     # Referenced by
+    has_one :profile_picture, class_name: "Media", as: :owner
     has_many :contents
     has_many :course_news
     has_many :course_registration_requests

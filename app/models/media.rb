@@ -12,4 +12,7 @@
 
 class Media < ActiveRecord::Base
 
+	# References
+	belongs_to :owner, polymorphic: true
+
 end

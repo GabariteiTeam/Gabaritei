@@ -7,6 +7,7 @@ class CreateModelRelations < ActiveRecord::Migration
     end
 
     create_table :medias do |t|
+      t.references :owner, polymorphic: true, index: true, required: true
       t.timestamps null: false
     end
 
@@ -28,7 +29,6 @@ class CreateModelRelations < ActiveRecord::Migration
     end
 
     create_table :users do |t|
-      t.belongs_to :media, index: true
       t.timestamps null:false
     end
 
@@ -75,12 +75,6 @@ class CreateModelRelations < ActiveRecord::Migration
       t.belongs_to :role, index: true, required: true
       t.belongs_to :permission, index: true, required: true
       t.timestamps null:false
-    end
-
-    create_table :question_medias, id: false do |t|
-      t.belongs_to :media, index: true, required: true
-      t.belongs_to :question, index: true, required: true
-      t.timestamps null: false
     end
 
     create_table :question_categories, id: false do |t|
@@ -148,7 +142,6 @@ class CreateModelRelations < ActiveRecord::Migration
     create_table :contents do |t|
       t.references :category, polymorphic: true, index: true, required: true
       t.belongs_to :user, index: true, required: true
-      t.belongs_to :media, index: true, required: true
       t.timestamps null: false
     end
 
