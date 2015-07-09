@@ -1,22 +1,21 @@
 # == Schema Information
 #
-# Table name: questions
+# Table name: course_news
 #
 #  id         :integer          not null, primary key
 #  user_id    :integer
+#  course_id  :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  title      :string(255)
 #  text       :text
-#  answer     :text
-#  hot        :boolean
 #  date       :datetime
-#  style      :string(255)
 #
 
-require 'test_helper'
+class CourseNews < ActiveRecord::Base
 
-class QuestionTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+	# References
+	belongs_to :course
+	belongs_to :user
+
 end

@@ -32,10 +32,10 @@
   <tbody id = 'subjectsBody'>
     <% @questions.each do |question| %>
       <tr>
-        <td><%= question.question %></td>
+        <td><%= question.text %></td>
         <td><%= question.style %></td>
-        <td><%= question.year %></td>
-        <td><%= question.subject.name %></td>
+        <td><%= question.date %></td>
+        <td><%= question.subjects.map { |s| s.name }.join(", ") %></td>
         <td><%= link_to 'Show', question %></td>
         <td><%= link_to 'Edit', edit_question_path(question) %></td>
         <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>

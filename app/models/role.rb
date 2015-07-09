@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: subjects
+# Table name: roles
 #
 #  id          :integer          not null, primary key
 #  created_at  :datetime         not null
@@ -9,10 +9,10 @@
 #  description :text
 #
 
-require 'test_helper'
-
-class SubjectTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+class Role < ActiveRecord::Base
+  
+	# Referenced by
+	has_many :role_permissions
+	has_many :user_roles
+  
 end

@@ -6,18 +6,8 @@
 </p>
 
 <p>
-  <strong>Professor:</strong>
-  <%= @subject.professor_id %>
-</p>
-
-<p>
-  <strong>Department:</strong>
-  <%= @subject.department_id %>
-</p>
-
-<p>
-  <strong>Descricao:</strong>
-  <%= @subject.descricao %>
+  <strong>Professores:</strong>
+  <%= @subject.teachers.map { |t| t.name }.join(", ") %>
 </p>
 
 <%= link_to 'Edit', edit_subject_path(@subject) %> |

@@ -1,1 +1,1 @@
-json.extract! @question, :id, :question, :type, :year, :area, :created_at, :updated_at
+json.extract! @question, :id, :text, :type, :date, :subjects, :created_at, :updated_at

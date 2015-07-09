@@ -2,7 +2,7 @@
 
 <p>
   <strong>Question:</strong>
-  <%= @question.question %>
+  <%= @question.text %>
 </p>
 
 <p>
@@ -12,12 +12,12 @@
 
 <p>
   <strong>Year:</strong>
-  <%= @question.year %>
+  <%= @question.date %>
 </p>
 
 <p>
-  <strong>Disciplina:</strong>
-  <%= @question.subject.name %>
+  <strong>Subjects:</strong>
+  <%= @question.subjects.map { |s| s.name }.join(", ") %>
 </p>
 
 <%= link_to 'Edit', edit_question_path(@question) %> |

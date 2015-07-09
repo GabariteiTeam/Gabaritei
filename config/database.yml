@@ -7,13 +7,17 @@ default: &default
   pool: 5
   username: root
   password:
-  socket: /var/run/mysqld/mysqld.sock
+  socket: /tmp/mysql.sock
+  # socket: /var/run/mysqld/mysqld.sock
   timeout: 5000
 
 # Development database settings
+# Using SQLite for convenience purposes
 development:
-  <<: *default
-  database: gabaritei_development
+  adapter: sqlite3
+  database: db/gabaritei_development.sqlite3
+  pool: 5
+  timeout: 5000
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -21,8 +25,10 @@ development:
 
 # Test database settings
 test:
-  <<: *default
-  database: gabaritei_test
+  adapter: sqlite3
+  database: db/gabaritei_test.sqlite3
+  pool: 5
+  timeout: 5000
 
 # Production database settings
 production:
@@ -31,5 +37,7 @@ production:
 
 # Selenium database settings
 selenium:
-  <<: *default
-  database: gabaritei_selenium
+  adapter: sqlite3
+  database: db/gabaritei_selenium.sqlite3
+  pool: 5
+  timeout: 5000

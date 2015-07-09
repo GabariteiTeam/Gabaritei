@@ -1,18 +1,18 @@
 # == Schema Information
 #
-# Table name: subjects
+# Table name: medias
 #
 #  id          :integer          not null, primary key
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  name        :string(255)
-#  description :text
+#  reference   :string(255)
+#  media_type  :string(255)
 #
 
-require 'test_helper'
+class Media < ActiveRecord::Base
 
-class SubjectTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+	# References
+	belongs_to :owner, polymorphic: true
+
 end
