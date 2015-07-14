@@ -15,10 +15,12 @@ module.exports = function(config){
             ],
       reporters: ['nested', 'coverage', 'spec'],
       
+    
     coverageReporter: {
-      type: 'text-summary',
-      dir: 'coverage/'
+      type : 'html',
+      dir : 'coverage/'
     },
+
     preprocessors: {
       'app/assets/javascripts/gabaritei-*': ['coverage']
     },
@@ -39,12 +41,6 @@ module.exports = function(config){
     frameworks: ['jasmine'],
 
     browsers : ['PhantomJS'],
-
-    
-
-
-     
-    
 
     junitReporter : {
       outputFile: 'test_out/unit.xml',
