@@ -36,4 +36,23 @@ class User < ActiveRecord::Base
     has_many :teacher_courses, through: :teacher_roles, source: :course
     has_many :student_courses, through: :student_roles, source: :course
   
+    def self.import_user(user_data)
+
+        # create new user object
+        user = User.new
+
+        # user_data[roles] => array of role names
+        user.roles = Role.where(name: user_data["roles"])
+
+        # set fields
+        user.email = user_data["email"]
+        user.first_name = user_data["first_name"]
+        user.last_name = user_data["last_name"]
+        user.birthdate = DateTime.parse(user_data["birthdate"])
+
+        # save new user
+        user.save
+    
+    end
+
 end
