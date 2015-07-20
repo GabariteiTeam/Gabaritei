@@ -1,6 +1,23 @@
 class CreateModelRelations < ActiveRecord::Migration
   
   def change
+
+    create_table :contents do |t|
+      t.references :category, polymorphic: true, index: true, required: true
+      t.belongs_to :user, index: true, required: true
+      t.timestamps null: false
+    end
+
+    create_table :courses do |t|
+      t.references :category, polymorphic: true, index: true, required: true
+      t.timestamps null: false
+    end
+
+    create_table :course_contents, id: false do |t|
+      t.belongs_to :course, index: true, required: true
+      t.belongs_to :contents, index: true, required: true
+      t.timestamps null: false
+    end
     
     create_table :registration_requests do |t|
       t.timestamps null:false
@@ -32,10 +49,7 @@ class CreateModelRelations < ActiveRecord::Migration
       t.timestamps null:false
     end
 
-    create_table :courses do |t|
-      t.references :category, polymorphic: true, index: true, required: true
-      t.timestamps null: false
-    end
+    
 
     create_table :questions do |t|
       t.belongs_to :user, index: true, required: true
@@ -101,7 +115,7 @@ class CreateModelRelations < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    create_table :response_choices do |t|
+    create_table :response_choices, id: false do |t|
       t.belongs_to :response, index: true, required: true
       t.belongs_to :question_choices, required: true
       t.timestamps null: false
@@ -139,17 +153,9 @@ class CreateModelRelations < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    create_table :contents do |t|
-      t.references :category, polymorphic: true, index: true, required: true
-      t.belongs_to :user, index: true, required: true
-      t.timestamps null: false
-    end
+    
 
-    create_table :course_contents, id: false do |t|
-      t.belongs_to :course, index: true, required: true
-      t.belongs_to :contents, index: true, required: true
-      t.timestamps null: false
-    end
+    
    
   end
   

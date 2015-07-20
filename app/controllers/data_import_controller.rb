@@ -1,0 +1,4 @@
+class DataImportController < ApplicationController
+  
+     
+end

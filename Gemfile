@@ -65,3 +65,6 @@ gem "non-stupid-digest-assets"
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# Delayed jobs => running tasks in background
+gem 'delayed_job_active_record'
+
