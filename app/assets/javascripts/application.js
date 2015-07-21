@@ -16,8 +16,9 @@
 //= require angular-route/angular-route
 //= require angular-resource/angular-resource
 //= require gabaritei-app
-//= require gabaritei-controllers
 //= require gabaritei-resources
+//= require gabaritei-services
+//= require gabaritei-controllers
 //= require gabaritei-routes
 //= require turbolinks
 //= require_tree .

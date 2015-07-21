@@ -143,6 +143,7 @@ ActiveRecord::Schema.define(version: 20150613145618) do
     t.text     "text"
     t.text     "answer"
     t.boolean  "hot"
+    t.string   "source"
     t.datetime "date"
     t.string   "style"
   end

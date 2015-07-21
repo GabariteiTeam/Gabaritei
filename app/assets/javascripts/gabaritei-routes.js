@@ -26,8 +26,20 @@ var subjectsRoutes = angular.module('subjectsRoutes', ['ngRoute']);
 homeRoutes.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
-      when('/subjects', { 
+      when('/subjects/new', { 
+        templateUrl: 'assets/partials/subjects/new.html',
+        controller: 'subjectController'
+      })
+      .when('/subjects/update/:id', {
+        templateUrl: 'assets/partials/subjects/update.html',
+        controller: 'subjectController'
+      })
+      .when('/subjects/success/:status/:action', { 
         templateUrl: 'assets/partials/subjects/index.html',
         controller: 'subjectController'
-      });
+      })
+      .when('/subjects', { 
+        templateUrl: 'assets/partials/subjects/index.html',
+        controller: 'subjectController'
+      })
   }]);
