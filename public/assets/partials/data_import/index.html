@@ -25,7 +25,7 @@
 				<td>{{ data_import.status_text }}</td>
 				<td>
 					<button type="button" class="btn btn-xs btn-primary" ng-disabled="{{ data_import.status != -1 }}" ng-click="importFile(this)">Import</button>
-					<button type="button" class="btn btn-xs btn-danger" ng-disabled="{{ data_import.status == 0 }}">Delete</button>
+					<button type="button" class="btn btn-xs btn-danger" ng-disabled="{{ data_import.status == 0 }}" ng-click="deleteFile(this)">Delete</button>
 				</td>
 			</tr>
 		</tbody>

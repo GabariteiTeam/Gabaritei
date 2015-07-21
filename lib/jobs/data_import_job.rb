@@ -1,3 +1,5 @@
+# Delayed jobs are executed by the rake jobs:work Worker!
+
 class DataImportJob < Struct.new(:data_import_id)
 
 	def enqueue(job)
@@ -9,6 +11,7 @@ class DataImportJob < Struct.new(:data_import_id)
 	def perform
 		data_import = DataImport.find(data_import_id)
 		data_import.import
+		sleep 15
 	end
 
 	def success(job)

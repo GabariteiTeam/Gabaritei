@@ -23,6 +23,11 @@ class DataImportController < ApplicationController
 		render json: {success: true}
 	end
 
+	def delete
+		DataImport.find(params[:data_import_id]).delete
+		render json: {success: true}
+	end
+
 	private 
 
 	    def data_import_params
