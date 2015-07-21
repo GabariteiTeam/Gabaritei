@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
         user = User.new
 
         # user_data[roles] => array of role names
-        user.roles = Role.where(name: user_data["roles"])
+        #user.roles = Role.where(name: user_data["roles"])
 
         # set fields
         user.email = user_data["email"]

@@ -92,6 +92,11 @@ class AddModelFields < ActiveRecord::Migration
     add_column :contents, :download_protected, :boolean
     add_column :contents, :shareable, :boolean
 
+    # Data import
+    add_column :data_imports, :data_type, :string
+    add_column :data_imports, :status, :integer, default: -1
+    add_attachment :data_imports, :data
+
   end
   
 end

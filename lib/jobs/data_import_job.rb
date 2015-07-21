@@ -1,14 +1,26 @@
-require 'CSV'
+class DataImportJob < Struct.new(:data_import_id)
 
-class DataImportJob < Stuct.new(:file_name)
+	def enqueue(job)
+		data_import = DataImport.find(data_import_id)
+		data_import.status = 0
+		data_import.save!
+	end
 
 	def perform
-		role = file_name.chomp(".csv")
-  		CSV.foreach(file_name, headers: true, col_sep: ";") do |row|
-	  		user_data = row.to_hash
-	  		user_data["roles"] = [role]
-	  		User.import_user(user_data)
-  		end
+		data_import = DataImport.find(data_import_id)
+		data_import.import
+	end
+
+	def success(job)
+		data_import = DataImport.find(data_import_id)
+		data_import.status = 1
+		data_import.save!
+	end
+
+	def error(job)
+		data_import = DataImport.find(data_import_id)
+		data_import.status = 2
+		data_import.save!
 	end
 
 end

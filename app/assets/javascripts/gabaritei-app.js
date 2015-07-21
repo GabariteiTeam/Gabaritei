@@ -2,12 +2,13 @@
 // Simply and central
 
 
-var app = angular.module("gabariteiApp",['ngResource', 'ngRoute', 
+var app = angular.module("gabariteiApp",['ngResource', 'ngRoute', 'ngFileUpload',
   'homeRoutes',
   'homeControllers',
   'subjectsRoutes',
   'subjectResource',
-  'subjectControllers'
+  'subjectControllers',
+  'dataImportResource'
   
   ]);
 

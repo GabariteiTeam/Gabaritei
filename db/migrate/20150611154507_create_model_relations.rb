@@ -153,7 +153,9 @@ class CreateModelRelations < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    
+    create_table :data_imports do |t|
+      t.timestamps null: false
+    end
 
     
    

@@ -7,3 +7,11 @@ subjectResourcer.factory('Subject', ['$resource',
       query: {method:'GET', params:{}, isArray:true}
     });
   }]);
+
+var dataImportResourcer = angular.module('dataImportResource',['ngResource']);
+dataImportResourcer.factory('DataImport', ['$resource',
+  function($resource){
+    return $resource('data_import/:data_import.json', {}, {
+      query: {method:'GET', params:{}, isArray:true}
+    });
+  }]);

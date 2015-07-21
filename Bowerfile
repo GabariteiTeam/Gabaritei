@@ -8,3 +8,5 @@ asset 'angular-route'
 asset 'angular-resource'
 # Used to mock http responses - mainly testing
 asset 'angular-mocks'
+# File upload with AngularJS
+asset 'ng-file-upload'
