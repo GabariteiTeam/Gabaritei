@@ -17,7 +17,7 @@
 		</thead>
 		<tbody>
 			<tr data-ng-repeat="data_import in Ctrl.data_imports">
-				<td>{{ data_import.model }}</td>
+				<td>{{ data_import.model_text }}</td>
 				<td>
 					<a href="{{ data_import.data_url }}">{{ data_import.data_file_name }}</a>
 				</td>
@@ -43,18 +43,13 @@
 	<form novalidate>
 		<div class="form-group">
 			<label for="inputCSVFile">Select file: </label>
-    		<input type="file" ngf-select ng-model="DataImport.file" class="form-control" id="inputCSVFile">
+    		<input type="file" ngf-select ng-model="Ctrl.data_import.file" class="form-control" id="inputCSVFile">
 		</div>
 		<div class="form-group">
 			<label for="inputDataType">Select data type: </label>
-    		<select ng-model="DataImport.model" class="form-control" id="inputDataType">
-    			<option value="Students">Students</option>
-    			<option value="Teachers">Teachers</option>
-    			<option value="Courses">Courses</option>
-    			<option value="Subjects">Subjects</option>
-    			<option value="Fields">Fields</option>
+    		<select ng-model="Ctrl.data_import.model" class="form-control" id="inputDataType" ng-options="model for model in Ctrl.models">
     		</select>
 		</div>
-		<button class="btn btn-default" ng-click="Ctrl.uploadFile(DataImport)">Upload file</button>
+		<button class="btn btn-default" ng-click="Ctrl.uploadFile()">Upload file</button>
 	</form>
 </div>

@@ -4,7 +4,7 @@ class DataImportsController < ApplicationController
 	# GET /data_import.json
     def index
 	    @data_imports = DataImport.all
-	    render json: @data_imports, :methods => [:data_url, :status_text]
+	    render json: @data_imports, :methods => [:data_url, :status_text, :model_text]
 	end
 
 	# File upload

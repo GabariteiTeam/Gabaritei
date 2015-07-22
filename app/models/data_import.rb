@@ -58,4 +58,16 @@ class DataImport < ActiveRecord::Base
 		end
 	end
 
+	def model_text
+		case model
+		when 0 then "Admins"
+		when 1 then "Students"
+		when 2 then "Teachers"
+		when 3 then "Subjects"
+		when 4 then "Fields"
+		when 5 then "Courses"
+		else ""
+		end
+	end
+
 end

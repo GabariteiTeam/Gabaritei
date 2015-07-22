@@ -57,7 +57,18 @@
         vm.importData = importData;
         vm.deleteFile = deleteFile;
         vm.data_imports = [];
-
+        vm.models = [
+            "Admins",
+            "Students",
+            "Teachers",
+            "Subjects",
+            "Fields",
+            "Courses"
+        ];
+        vm.data_import = {
+            model: vm.models[0]
+        }
+       
         refresh();
         
         function refresh() {
@@ -69,9 +80,9 @@
             });
         }
 
-        function uploadFile(data) {
-            if (data.file && data.file.length && data.model) {
-                DataImport.upload(data, function (data) {
+        function uploadFile() {
+            if (vm.data_import.file && vm.data_import.file.length && vm.data_import.model) {
+                DataImport.upload(vm.data_import, function (data) {
                     refresh();
                 });
             }

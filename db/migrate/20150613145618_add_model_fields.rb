@@ -93,7 +93,7 @@ class AddModelFields < ActiveRecord::Migration
     add_column :contents, :shareable, :boolean
 
     # Data import
-    add_column :data_imports, :model, :string
+    add_column :data_imports, :model, :integer
     add_column :data_imports, :status, :integer, default: -1
     add_column :data_imports, :progress, :integer, default: 0
     add_attachment :data_imports, :data
