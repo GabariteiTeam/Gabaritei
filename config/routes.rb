@@ -6,9 +6,6 @@ Rails.application.routes.draw do
 
 	resources :questions
 
-	post "/data_import/upload", to: "data_import#upload"
-	post "/data_import/import", to: "data_import#import"
-	post "/data_import/delete", to: "data_import#delete"
-	get "/data_import", to: "data_import#index"
+	resources :data_imports, { new: "upload" }
 
 end

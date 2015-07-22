@@ -1,4 +1,4 @@
-class DataImportController < ApplicationController
+class DataImportsController < ApplicationController
   
 	# GET /data_import
 	# GET /data_import.json
@@ -8,7 +8,7 @@ class DataImportController < ApplicationController
 	end
 
 	# File upload
-	def upload
+	def create
 		@data_import = DataImport.new(data_import_params)
 		if @data_import.save
 	      render json: {success: true}
@@ -18,20 +18,20 @@ class DataImportController < ApplicationController
 	end
 
 	# Data import
-	def import
-		Delayed::Job.enqueue(DataImportJob.new(params[:data_import_id]))
+	def update
+		Delayed::Job.enqueue(DataImportJob.new(params[:id]))
 		render json: {success: true}
 	end
 
-	def delete
-		DataImport.find(params[:data_import_id]).delete
+	def destroy
+		DataImport.find(params[:id]).destroy
 		render json: {success: true}
 	end
 
 	private 
 
 	    def data_import_params
-	    	params.require(:data_import).permit(:data, :data_type)
+	    	params.require(:data_import).permit(:id, :data, :model)
 	    end 
 
 end

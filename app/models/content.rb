@@ -6,7 +6,6 @@
 #  category_id        :integer
 #  category_type      :string(255)
 #  user_id            :integer
-#  media_id           :integer
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  name               :string(255)

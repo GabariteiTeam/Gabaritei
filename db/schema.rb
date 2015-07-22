@@ -90,8 +90,9 @@ ActiveRecord::Schema.define(version: 20150720123715) do
   create_table "data_imports", force: true do |t|
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
-    t.string   "data_type"
+    t.string   "model"
     t.integer  "status",            default: -1
+    t.integer  "progress",          default: 0
     t.string   "data_file_name"
     t.string   "data_content_type"
     t.integer  "data_file_size"
