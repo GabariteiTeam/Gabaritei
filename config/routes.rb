@@ -15,4 +15,11 @@ Rails.application.routes.draw do
 
 	resources :questions
 
+	get "/data_imports/models", to: "data_imports#models"
+	resources :data_imports do 
+		new { put :update }
+	end
+
+
+
 end

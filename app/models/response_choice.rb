@@ -2,7 +2,6 @@
 #
 # Table name: response_choices
 #
-#  id                  :integer          not null, primary key
 #  response_id         :integer
 #  question_choices_id :integer
 #  created_at          :datetime         not null

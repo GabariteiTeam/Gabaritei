@@ -9,6 +9,7 @@
 #  text       :text
 #  answer     :text
 #  hot        :boolean
+#  source     :string(255)
 #  date       :datetime
 #  style      :string(255)
 #

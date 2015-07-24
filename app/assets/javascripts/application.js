@@ -23,5 +23,6 @@
 //= require gabaritei-services
 //= require gabaritei-controllers
 //= require gabaritei-routes
+//= require ng-file-upload/ng-file-upload
 //= require turbolinks
 //= require_tree .

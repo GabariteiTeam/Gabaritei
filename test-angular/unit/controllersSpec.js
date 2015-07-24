@@ -15,6 +15,8 @@ describe('Gabaritei controllers', function() {
   beforeEach(module('homeControllers'));
   beforeEach(module('subjectControllers'));
   beforeEach(module('subjectResource'));
+  beforeEach(module('dataImportResource'));
+  beforeEach(module('DataImportCtrl'));
 
 
   // Karma converted html files into javascript

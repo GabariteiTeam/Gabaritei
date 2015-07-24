@@ -65,3 +65,15 @@ gem "non-stupid-digest-assets"
 # Use debugger
 gem 'byebug', group: [:development, :test]
 
+# Delayed jobs => running tasks in background
+gem 'delayed_job_active_record'
+
+# Paperclip => file upload
+gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
+
+# CSRF protection + AngularJS
+gem 'angular_rails_csrf'
+
+# Parse Excel files
+gem 'roo'
+

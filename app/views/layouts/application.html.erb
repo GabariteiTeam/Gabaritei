@@ -7,16 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="container">
-	<%= render 'layouts/navbar'%>
-		
-		<div class="bs-docs-section clearfix"  >
-			<div class="row" ng-controller="messageController" >
-				<div id="messageContainer"></div>
-			</div>
-			<div ng-view>
-				<%= yield %>
-			</div>
+	<%= render 'layouts/navbar'%>		
+	<div class="bs-docs-section clearfix"  >
+		<div class="row" ng-controller="messageController" >
+			<div id="messageContainer"></div>
 		</div>
+		<div ng-view>
+			<%= yield %>
+		</div>
+	</div>
 </body>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </html>

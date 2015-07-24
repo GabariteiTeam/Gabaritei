@@ -14,3 +14,5 @@ asset 'angular-animate'
 asset 'angular-motion'
 # Angular strap
 asset 'angular-strap'
+# File upload with AngularJS
+asset 'ng-file-upload'

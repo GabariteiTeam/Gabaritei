@@ -1,22 +1,21 @@
 # == Schema Information
 #
-# Table name: questions
+# Table name: users
 #
 #  id         :integer          not null, primary key
-#  user_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  text       :text
-#  answer     :text
-#  hot        :boolean
-#  source     :string(255)
-#  date       :datetime
-#  style      :string(255)
+#  first_name :string(255)
+#  last_name  :string(255)
+#  email      :string(255)
+#  password   :string(255)
+#  birthdate  :datetime
+#  about      :text
 #
 
 require 'test_helper'
 
-class QuestionTest < ActiveSupport::TestCase
+class UserTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
