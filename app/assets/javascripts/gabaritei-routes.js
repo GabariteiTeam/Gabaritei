@@ -42,6 +42,11 @@
                 templateUrl: 'assets/partials/data_import/index.html',
                 controller: 'DataImportController',
                 controllerAs: 'Ctrl'
+            })
+            .when('/data_import/form.html', {
+                templateUrl: 'assets/partials/data_import/_form.html',
+                controller: 'DataImportController',
+                controllerAs: 'Ctrl'
             });
     }
 

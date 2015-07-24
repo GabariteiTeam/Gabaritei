@@ -21,17 +21,33 @@ class DataImport < ActiveRecord::Base
 	has_attached_file :data
 	validates_attachment_content_type :data, content_type: ["text/csv"]
 
+	@@models = [
+		Role.admin_role.name,
+		Role.student_role.name,
+		Role.teacher_role.name,
+		"Subjects",
+		"Fields",
+		"Courses"
+	]
+
 	def import
-		imported_rows = 0
+		if status == 0
+			case model
+			when 0..2 then import_users
+			when 3    then import_subjects
+			when 4    then import_fields
+			when 5    then import_courses
+			end
+		end
+  	end
+
+  	def import_users
+  		imported_rows = 0
 		total_rows = row_count
-		CSV.foreach(file_name, headers: true, col_sep: ";") do |row|
-			user_data = row.to_hash
-			User.import_user(user_data)
+		CSV.foreach(file_name, headers: true, col_sep: ",") do |row|
+			User.import_user(row.to_hash, model_role)
 			imported_rows += 1
-			self.progress = (100 * imported_rows) / total_rows
-			p self.progress
-			self.save!
-			sleep 1
+			update_progress(imported_rows, total_rows)
 		end
   	end
 
@@ -49,24 +65,34 @@ class DataImport < ActiveRecord::Base
 		return count
 	end
 
+	def update_progress(imported_rows, total_rows)
+		self.progress = (100 * imported_rows) / total_rows
+		self.save!
+	end
+
 	def status_text
 		case status
 		when -1 then "Not yet imported"
 		when  0 then "Currently being imported"
 		when  1 then "Successfully imported"
-		else         "Error while importing"
+		else         "Error while importing! Please verify the file"
 		end
 	end
 
+	def self.models
+		@@models
+	end
+
 	def model_text
+		model < @@models.length ? @@models[model] : ""
+	end
+
+	def model_role
 		case model
-		when 0 then "Admins"
-		when 1 then "Students"
-		when 2 then "Teachers"
-		when 3 then "Subjects"
-		when 4 then "Fields"
-		when 5 then "Courses"
-		else ""
+		when 0 then Role.admin_role
+		when 1 then Role.student_role
+		when 2 then Role.teacher_role
+		else nil
 		end
 	end
 

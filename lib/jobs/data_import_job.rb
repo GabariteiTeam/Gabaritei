@@ -19,10 +19,14 @@ class DataImportJob < Struct.new(:data_import_id)
 		data_import.save!
 	end
 
-	def error(job)
+	def failure(job)
 		data_import = DataImport.find(data_import_id)
 		data_import.status = 2
 		data_import.save!
 	end
+
+	def max_attempts
+    	1
+  	end
 
 end

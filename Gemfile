@@ -74,3 +74,6 @@ gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 # CSRF protection + AngularJS
 gem 'angular_rails_csrf'
 
+# Parse Excel files
+gem 'roo'
+

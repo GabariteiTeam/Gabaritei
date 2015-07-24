@@ -6,6 +6,11 @@ Rails.application.routes.draw do
 
 	resources :questions
 
-	resources :data_imports, { new: "upload" }
+	get "/data_imports/models", to: "data_imports#models"
+	resources :data_imports do 
+		new { put :update }
+	end
+
+
 
 end

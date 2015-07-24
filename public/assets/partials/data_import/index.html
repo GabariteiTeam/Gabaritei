@@ -23,7 +23,7 @@
 				</td>
 				<td>{{ data_import.data_updated_at }}</td>
 				<td>
-					{{ data_import.status_text }}
+					<span style="{{ data_import.status == 2 ? 'color: red' : ''}}">{{ data_import.status_text }}</span>
 					<div ng-hide="{{ data_import.status != 0 }}" class="progress" style="margin-top: 5px">
 						<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="{{ data_import.progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ data_import.progress }}%">
     						<span class="sr-only">{{ data_import.progress }}% Complete</span>
@@ -43,12 +43,15 @@
 	<form novalidate>
 		<div class="form-group">
 			<label for="inputCSVFile">Select file: </label>
-    		<input type="file" ngf-select ng-model="Ctrl.data_import.file" class="form-control" id="inputCSVFile">
+			<input type="file" ngf-select ng-model="Ctrl.data_import.file" ng-change="Ctrl.selectFile()"class="form-control" id="inputCSVFile">
+		</div>
+		<div class="form-group" ng-hide="{{ !$parent.Ctrl.show_file_parameters }}">
+			<p>A</p>
 		</div>
 		<div class="form-group">
 			<label for="inputDataType">Select data type: </label>
-    		<select ng-model="Ctrl.data_import.model" class="form-control" id="inputDataType" ng-options="model for model in Ctrl.models">
-    		</select>
+			<select ng-model="Ctrl.data_import.model" class="form-control" id="inputDataType" ng-options="index as model for (index, model) in Ctrl.models">
+			</select>
 		</div>
 		<button class="btn btn-default" ng-click="Ctrl.uploadFile()">Upload file</button>
 	</form>

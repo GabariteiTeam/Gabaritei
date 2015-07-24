@@ -28,6 +28,10 @@ class DataImportsController < ApplicationController
 		render json: {success: true}
 	end
 
+	def models
+		render json: DataImport.models
+	end
+
 	private 
 
 	    def data_import_params

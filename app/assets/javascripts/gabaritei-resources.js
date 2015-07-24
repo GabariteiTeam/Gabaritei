@@ -16,10 +16,9 @@
         });   
     }
 
-    //DataImport.$inject = ['$http', 'Upload'];
-    DataImport.$inject = ['$resource', 'Upload'];
+    DataImport.$inject = ['$http', '$resource', 'Upload'];
 
-    function DataImport($resource, Upload) {
+    function DataImport($http, $resource, Upload) {
         var di = $resource('/data_imports/:id.json', null, {
             update: { 
                 method: 'PUT'
@@ -41,6 +40,15 @@
             .error(function (data) {
                 if (error) error(data);
             }); 
+        }
+        di.models = function(success, error) {
+            $http.get('/data_imports/models')
+                .success(function (data) {
+                    if (success) success(data);
+                })
+                .error(function (data) {
+                    if (error) error(data);
+                }); 
         }
 
         return di;                
