@@ -13,22 +13,9 @@ var APP_NAME = 'gabariteiApp';
 		.module(APP_NAME, [
 			'ngResource',
 			'ngRoute',
+			'ngAnimate',
+			'mgcrea.ngStrap',
 			'ngFileUpload'
 		]);
 
 })();
-
-
-// var app = angular.module("gabariteiApp",['ngResource', 'ngRoute', 'ngFileUpload',
-//   'homeRoutes',
-//   'homeControllers',
-//   'subjectsRoutes',
-//   'subjectResource',
-//   'subjectControllers',
-//   'dataImportResource'
-  
-//   ]);
-
-
-
-

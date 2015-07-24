@@ -1,3 +1,6 @@
+
+
+
 <div class="page-header" id="banner">
   <div class="row">
     <h1>Subjects</h1>
@@ -14,18 +17,24 @@
         <th>Professor</th>
         <th>Department</th>
         <th>Descricao</th>
+        <th>Editar</th>
+        <th>Excluir</th>
       </tr>
     </thead>
 
     <tbody >
-        <tr data-ng-repeat="subject in subjects">
+        <tr data-ng-repeat="subject in Ctrl.subjects">
           <td>{{ subject.name }}</td>
           <td>{{ subject.professor_id }}</td>
           <td>{{ subject.department_id }}</td>
-          <td>{{ subject.descricao }}</td>
+          <td>{{ subject.description }}</td>
+          <td><a href="#subjects/update/{{subject.id}}">Edit</a>
+          <td><a ng-click="Ctrl.deleteSubject(subject.id)">Edit</a>
         </tr>
     </tbody>
   </table>
+
+  <a href="#subjects/new">Add new subject</a>
 
 </div>
 

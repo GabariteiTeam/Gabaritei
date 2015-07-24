@@ -63,7 +63,7 @@ gem "non-stupid-digest-assets"
 # gem 'capistrano-rails', group: :development
 
 # Use debugger
-# gem 'debugger', group: [:development, :test]
+gem 'byebug', group: [:development, :test]
 
 # Delayed jobs => running tasks in background
 gem 'delayed_job_active_record'

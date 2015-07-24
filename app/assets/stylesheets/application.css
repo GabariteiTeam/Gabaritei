@@ -14,4 +14,5 @@
  *= require_self
  *= require bootswatch.min.css
  *= require bootstrap.css
+ *= require angular-motion/dist/angular-motion.min.css
  */

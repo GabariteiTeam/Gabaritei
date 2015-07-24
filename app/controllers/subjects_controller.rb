@@ -12,6 +12,7 @@ class SubjectsController < ApplicationController
   # GET /subjects/1
   # GET /subjects/1.json
   def show
+    render :json => { name: @subject.name, description: @subject.description, id: @subject.id}
   end
 
   # GET /subjects/new
@@ -27,40 +28,52 @@ class SubjectsController < ApplicationController
   # POST /subjects.json
   def create
     @subject = Subject.new(subject_params)
-
-    respond_to do |format|
-      if @subject.save
-        format.html { redirect_to @subject, notice: 'Subject was successfully created.' }
-        format.json { render :show, status: :created, location: @subject }
-      else
-        format.html { render :new }
-        format.json { render json: @subject.errors, status: :unprocessable_entity }
-      end
+    if @subject.save
+      render :json => {}
+    else
+      render :json =>  @subject.errors, status: :unprocessable_entity
     end
+
+    # respond_to do |format|
+    #   if @subject.save
+    #     #format.html { redirect_to @subject, notice: 'Subject was successfully created.' }
+    #     format.json { render :show, status: :created, location: @subject }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @subject.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /subjects/1
   # PATCH/PUT /subjects/1.json
   def update
-    respond_to do |format|
-      if @subject.update(subject_params)
-        format.html { redirect_to @subject, notice: 'Subject was successfully updated.' }
-        format.json { render :show, status: :ok, location: @subject }
-      else
-        format.html { render :edit }
-        format.json { render json: @subject.errors, status: :unprocessable_entity }
-      end
+    if @subject.update(subject_params)
+      render :json => {}
+    else
+      render :json =>  @subject.errors, status: :unprocessable_entity
     end
+    # respond_to do |format|
+    #   if @subject.update(subject_params)
+    #     format.json {}
+    #   else
+    #     format.json { render json: @subject.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # DELETE /subjects/1
   # DELETE /subjects/1.json
   def destroy
-    @subject.destroy
-    respond_to do |format|
-      format.html { redirect_to subjects_url, notice: 'Subject was successfully destroyed.' }
-      format.json { head :no_content }
+    if @subject.destroy
+      render :json => {}
+    else
+      render :json =>  @subject.errors, status: :unprocessable_entity
     end
+    # respond_to do |format|
+    #   format.html { redirect_to subjects_url, notice: 'Subject was successfully destroyed.' }
+    #   format.json { head :no_content }
+    # end
   end
 
   private
@@ -72,6 +85,6 @@ class SubjectsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def subject_params
       #params.require(:subject).permit(:name, :professor_id, :department_id, :descricao)
-      params.require(:subject).permit(:name)
+      params.require(:subject).permit(:id, :name, :description)
     end
 end
