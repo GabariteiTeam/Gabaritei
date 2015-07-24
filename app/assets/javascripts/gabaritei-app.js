@@ -2,7 +2,7 @@
 // Simply and central
 
 
-var app = angular.module("gabariteiApp",['ngResource', 'ngRoute', 
+var app = angular.module("gabariteiApp",['ngResource', 'ngRoute', 'ngAnimate', 'mgcrea.ngStrap',
   'homeRoutes',
   'homeControllers',
   'subjectsRoutes',

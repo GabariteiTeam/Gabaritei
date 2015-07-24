@@ -12,8 +12,6 @@ homeRoutes.config(['$routeProvider',
       when('/home', {
         templateUrl: 'assets/partials/home/home.html',
         controller: 'homeController'
-      }).otherwise({
-        redirectTo: '/home'
       });
   }]);
 
@@ -32,10 +30,6 @@ homeRoutes.config(['$routeProvider',
       })
       .when('/subjects/update/:id', {
         templateUrl: 'assets/partials/subjects/update.html',
-        controller: 'subjectController'
-      })
-      .when('/subjects/success/:status/:action', { 
-        templateUrl: 'assets/partials/subjects/index.html',
         controller: 'subjectController'
       })
       .when('/subjects', { 

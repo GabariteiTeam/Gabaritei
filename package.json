@@ -14,7 +14,8 @@
      "karma-htmlfile-reporter": "~0.2",
      "karma-nested-reporter": "~0.1",
      "karma-spec-reporter": "0.0.19",
-     "karma-coverage": "*"
+     "karma-coverage": "*",
+     "karma-ng-html2js-preprocessor": "*"
   },
   "scripts": {
    

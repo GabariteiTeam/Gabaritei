@@ -11,7 +11,8 @@ module.exports = function(config){
             'karma-nested-reporter',
             'karma-coverage',
             'karma-htmlfile-reporter',
-            'karma-spec-reporter'
+            'karma-spec-reporter',
+            'karma-ng-html2js-preprocessor'
             ],
       reporters: ['nested', 'coverage', 'spec'],
       
@@ -22,7 +23,14 @@ module.exports = function(config){
     },
 
     preprocessors: {
-      'app/assets/javascripts/gabaritei-*': ['coverage']
+      'app/assets/javascripts/gabaritei-*': ['coverage'],
+      'public/assets/**/*.html': ['ng-html2js']
+    },
+
+    ngHtml2JsPreprocessor: {
+      // strip this from the file path
+      stripPrefix: 'public/',
+      moduleName: 'htmltemplates'
     },
 
     files : [
@@ -30,8 +38,12 @@ module.exports = function(config){
       'vendor/assets/bower_components/angular-route/angular-route.js',
       'vendor/assets/bower_components/angular-resource/angular-resource.js',
       'vendor/assets/bower_components/angular-mocks/angular-mocks.js',
+      'vendor/assets/bower_components/angular-animate/angular-animate.js',
+      'vendor/assets/bower_components/angular-strap/dist/angular-strap.js',
       'app/assets/javascripts/gabaritei-*',
-      'test-angular/unit/**/*.js'
+      'test-angular/unit/**/*.js',
+      'public/assets/**/*.html',
+
     ],
 
 

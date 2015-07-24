@@ -8,3 +8,9 @@ asset 'angular-route'
 asset 'angular-resource'
 # Used to mock http responses - mainly testing
 asset 'angular-mocks'
+# Angular animate
+asset 'angular-animate'
+# Angular motion
+asset 'angular-motion'
+# Angular strap
+asset 'angular-strap'

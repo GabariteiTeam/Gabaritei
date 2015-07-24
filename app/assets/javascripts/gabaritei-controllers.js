@@ -1,19 +1,28 @@
 var homeControllers = angular.module('homeControllers', [])
-homeControllers.controller('homeController', ['$scope',
-    function($scope) {
-
+homeControllers.controller('homeController', ['$scope','MessageService',
+    function($scope, MessageService) {
+      
     }
 ]);
 
+app.controller('messageController', ['$scope', '$interval', '$alert','Message', 'MessageService', function($scope, $interval, $alert, Message, MessageService) {
+    $scope.message = new Message();
+
+    $scope.receiveMessage = function(message) {
+        $scope.message = message;
+        $scope.alert = $alert({container: "#messageContainer", duration: 5, title: $scope.message.title, content: $scope.message.content, placement: 'top', type: $scope.message.type, show: true});
+    }
+
+    MessageService.addObserver($scope.receiveMessage);
+}]);
 
 var subjectControllers = angular.module('subjectControllers', [])
-subjectControllers.controller('subjectController', ['$scope', '$location', '$routeParams', 'Subject', 'MessageService',
-    function($scope, $location, $routeParams, Subject, MessageService) {
+subjectControllers.controller('subjectController', ['$scope', '$location', '$routeParams', '$route', 'Subject', 'MessageService', 'RedirectService',
+    function($scope, $location, $routeParams, $route, Subject, MessageService, RedirectService) {
         $scope.subjects = [];
         $scope.subject = new Subject();
 
         if (!($routeParams.id === undefined)) {
-
             $scope.subject = Subject.get({
                 id: $routeParams.id
             });
@@ -22,46 +31,41 @@ subjectControllers.controller('subjectController', ['$scope', '$location', '$rou
             Subject.query(function(data) {
                 $scope.subjects = data;
             });
-        }
-
-        if ($routeParams.status && $routeParams.action) {
-            $scope.message = MessageService.get($routeParams.status, "Subject", $routeParams.action);
         } 
 
         $scope.createSubject = function() {
             $scope.subject.$save(function() {
-                   $location.path("/subjects/success/ok/created");
+                    MessageService.sendMessage("Created!", "Subject was created with success!", "success");
+                    RedirectService.redirect("/subjects");
                 },
                 function(err) {
-                    $location.path("/subjects/success/error/created");
+                    MessageService.sendMessage("Fail!", "Subject was NOT created with success!", "error");
+                    RedirectService.redirect("/subjects");
                 });
         };
 
         $scope.updateSubject = function() {
             $scope.subject.$update(function() {
-            		$scope.redirect("/subjects/success/ok/updated");
+                    MessageService.sendMessage("Updated!", "Subject was updated with success!", "success");
+            		RedirectService.redirect("/subjects");
                     
                 },
                 function(err) {
-                    $scope.redirect("/subjects/success/error/updated");
+                    MessageService.sendMessage("Fail!", "Subject was NOT updated with success!", "error");
+                    RedirectService.redirect("/subjects");
                 });
         }
 
         $scope.deleteSubject = function(id) {
         	
             Subject.destroy({id: id}, function() {
-            		$scope.redirect("/subjects/success/ok/deleted");
+                    MessageService.sendMessage("Deleted!", "Subject was deleted with success!", "success");
+            		RedirectService.redirect("/subjects");
                 },
                 function(err) {
-                    $scope.redirect("/subjects/success/error/deleted");
+                    MessageService.sendMessage("Fail!", "Subject was NOT deleted with success!", "error");
+                    RedirectService.redirect("/subjects");
                 });
-        }
-
-        $scope.redirect = function(newUrl) {
-        	if($location.path() == newUrl)
-        		$location.reload();
-        	else
-        		$location.path(newUrl);
         }
     }
 ]);

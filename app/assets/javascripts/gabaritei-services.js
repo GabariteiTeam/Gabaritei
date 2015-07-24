@@ -1,38 +1,53 @@
 app.factory('MessageService',['Message', function(Message) {
-    var messages = {
-    	"ok": " with success!",
-    	"error": " with success!"	
+    var mTypes = {
+    	"success": "success",
+    	"error": "danger"	
     }
 
-    var alertStatus = {
-        "ok": "success",
-        "error": "error"
+    var message;
+
+    var observers = [];
+
+    function addObserver(functionCallback) {
+        observers.push(functionCallback);
     }
 
-    function get(statusCode, target, action) {
-        var message = new Message();
-        
-        
-        if(alertStatus[statusCode] == alertStatus.ok)
-        {
-            message.content = target + ' ' + action + messages[statusCode];
-            message.isSuccess = true;
-        }
-        if(alertStatus[statusCode] == alertStatus.error)
-        {
-            message.content = target + ' not ' + action + messages[statusCode];
-            message.isError = true;
-        }
-        message.type = alertStatus[statusCode];
-        message.showMessage = true;
+    function alertObservers() {
+        angular.forEach(observers, function(callback){
+            callback(message);
+        });
+    }
 
+    function sendMessage(nTitle, nMessage, nType) {
+        message = new Message();
+        message.title = nTitle;
+        message.content = nMessage;
+        message.type = mTypes[nType];
+        alertObservers();
+    }
+
+    function getMessage() {
         return message;
     }
 
+    return {
+        addObserver: addObserver,
+        sendMessage: sendMessage,
+        getMessage: getMessage
+    }
 
+}]);
+
+app.factory('RedirectService',['$route', '$location', function($route, $location) {
+    function redirect(newUrl) {
+            if($location.path() == newUrl)
+                $route.reload();
+            else
+                $location.path(newUrl);
+    }
 
     return {
-        get: get
+        redirect: redirect
     }
 
 }]);
