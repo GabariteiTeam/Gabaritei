@@ -40,6 +40,7 @@ module.exports = function(config){
       'vendor/assets/bower_components/angular-mocks/angular-mocks.js',
       'vendor/assets/bower_components/angular-animate/angular-animate.js',
       'vendor/assets/bower_components/angular-strap/dist/angular-strap.js',
+      'vendor/assets/bower_components/ng-file-upload/ng-file-upload.js',
       'app/assets/javascripts/gabaritei-*',
       'test-angular/unit/**/*.js',
       'public/assets/**/*.html',

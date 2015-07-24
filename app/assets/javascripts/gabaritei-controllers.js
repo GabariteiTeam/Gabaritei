@@ -81,7 +81,7 @@
             });
         };
 
-        $scope.updateSubject = function() {
+        function updateSubject() {
             vm.subject.$update(function() {
                 MessageService.sendMessage("Updated!", "Subject was updated with success!", "success");
                 RedirectService.redirect("/subjects");
@@ -93,7 +93,7 @@
             });
         }
 
-        $scope.deleteSubject = function(id) {
+        function deleteSubject(id) {
             Subject.destroy({id: id}, function() {
                 MessageService.sendMessage("Deleted!", "Subject was deleted with success!", "success");
                 RedirectService.redirect("/subjects");

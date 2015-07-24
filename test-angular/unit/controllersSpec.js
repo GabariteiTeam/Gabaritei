@@ -12,12 +12,11 @@ describe('Gabaritei controllers', function() {
   });
 
   beforeEach(module('gabariteiApp'));
-  beforeEach(module('homeControllers'));
-  beforeEach(module('subjectControllers'));
-  beforeEach(module('subjectResource'));
-  beforeEach(module('dataImportResource'));
-  beforeEach(module('DataImportCtrl'));
-
+  // beforeEach(module('HomeController'));
+  // beforeEach(module('SubjectController'));
+  // beforeEach(module('DataImportController'));
+  // beforeEach(module('Subject'));
+  // beforeEach(module('DataImport'));
 
   // Karma converted html files into javascript
   // and inject into $templateCache
@@ -28,7 +27,7 @@ describe('Gabaritei controllers', function() {
     beforeEach(inject(function($rootScope, $controller) {
       
       scope = $rootScope.$new();
-      ctrl = $controller('homeController', {$scope: scope});
+      ctrl = $controller('HomeController', {$scope: scope});
     }));
 
     it("Should create controller", function() {
@@ -50,11 +49,11 @@ describe('Gabaritei controllers', function() {
       scope = $rootScope.$new();
       $httpBackend.expectGET('subjects').respond(expectedSubjects);
       
-      ctrl = $controller('subjectController', {$scope: scope, MessageService: $MessageService});
+      ctrl = $controller('SubjectController', {$scope: scope, MessageService: $MessageService});
 
       createController = function() {
         scope = $rootScope.$new();
-        ctrl = $controller('subjectController', {$scope: scope, $routeParams: {id: "1"}});
+        ctrl = $controller('SubjectController', {$scope: scope, $routeParams: {id: "1"}});
         $httpBackend.expectGET('subjects/1').respond(expectedSubject);
       }
 
@@ -62,10 +61,12 @@ describe('Gabaritei controllers', function() {
 
    
     it('Should get subjects list', function() {
-      expect(scope.subjects).toEqual([]);
+      //expect(scope.subjects).toEqual([]);
+      expect(ctrl.subjects).toEqual([]);
       $httpBackend.flush();
 
-      expect(scope.subjects).toEqualData(expectedSubjects);
+      //expect(scope.subjects).toEqualData(expectedSubjects);
+      expect(ctrl.subjects).toEqualData(expectedSubjects);
     });
 
     it('Should get a specific subject', function(){
@@ -74,17 +75,20 @@ describe('Gabaritei controllers', function() {
       createController();
       
       $httpBackend.flush();
-      expect(scope.subject.name).toEqual(expectedSubject.name);
-      expect(scope.subject.id).toEqual(expectedSubject.id);
-      expect(scope.subject.description).toEqual(expectedSubject.description);
-
+      // expect(scope.subject.name).toEqual(expectedSubject.name);
+      // expect(scope.subject.id).toEqual(expectedSubject.id);
+      // expect(scope.subject.description).toEqual(expectedSubject.description);
+      expect(ctrl.subject.name).toEqual(expectedSubject.name);
+      expect(ctrl.subject.id).toEqual(expectedSubject.id);
+      expect(ctrl.subject.description).toEqual(expectedSubject.description);
     });
 
     it('Should send update request', function(){
       $httpBackend.flush();
       $httpBackend.expectPUT('subjects').respond({});
       spyOn($MessageService, "sendMessage");
-      scope.updateSubject();
+      //scope.updateSubject();
+      ctrl.updateSubject();
       $httpBackend.flush();
       expect($MessageService.sendMessage).toHaveBeenCalledWith("Updated!", "Subject was updated with success!", "success");
       
@@ -94,7 +98,8 @@ describe('Gabaritei controllers', function() {
       $httpBackend.flush();
       $httpBackend.expectPUT('subjects').respond(500);
       spyOn($MessageService, "sendMessage");
-      scope.updateSubject();
+      //scope.updateSubject();
+      ctrl.updateSubject();
       $httpBackend.flush();
       expect($MessageService.sendMessage).toHaveBeenCalledWith("Fail!", "Subject was NOT updated with success!", "error");
     });
@@ -103,7 +108,8 @@ describe('Gabaritei controllers', function() {
       $httpBackend.flush();
       $httpBackend.expectDELETE('subjects/1').respond({});
       spyOn($MessageService, "sendMessage");
-      scope.deleteSubject(1);
+      //scope.deleteSubject(1);
+      ctrl.deleteSubject(1);
       $httpBackend.flush();
       expect($MessageService.sendMessage).toHaveBeenCalledWith("Deleted!", "Subject was deleted with success!", "success");
     });
@@ -112,7 +118,8 @@ describe('Gabaritei controllers', function() {
       $httpBackend.flush();
       $httpBackend.expectDELETE('subjects/1').respond(500);
       spyOn($MessageService, "sendMessage");
-      scope.deleteSubject(1);
+      //scope.deleteSubject(1);
+      ctrl.deleteSubject(1);
       $httpBackend.flush();
       expect($MessageService.sendMessage).toHaveBeenCalledWith("Fail!", "Subject was NOT deleted with success!", "error");
     });
@@ -121,7 +128,8 @@ describe('Gabaritei controllers', function() {
       $httpBackend.flush();
       $httpBackend.expectPOST('subjects').respond({});
       spyOn($MessageService, "sendMessage");
-      scope.createSubject();
+      //scope.createSubject();
+      ctrl.createSubject();
       $httpBackend.flush();
       expect($MessageService.sendMessage).toHaveBeenCalledWith("Created!", "Subject was created with success!", "success");
     });
@@ -130,7 +138,8 @@ describe('Gabaritei controllers', function() {
       $httpBackend.flush();
       $httpBackend.expectPOST('subjects').respond(500);
       spyOn($MessageService, "sendMessage");
-      scope.createSubject(1);
+      //scope.createSubject(1);
+      ctrl.createSubject(1);
       $httpBackend.flush();
       expect($MessageService.sendMessage).toHaveBeenCalledWith("Fail!", "Subject was NOT created with success!", "error");
     });
@@ -146,14 +155,15 @@ describe('Gabaritei controllers', function() {
       createController = function createController() {
         $Message = Message;
         scope = $rootScope.$new();
-        ctrl = $controller('messageController', {$scope: scope, MessageService: $MessageService});
+        ctrl = $controller('MessageController', {$scope: scope, MessageService: $MessageService});
       }
     }));
 
     it('Should register an observer', function(){
       spyOn($MessageService, "addObserver");
       createController();
-      expect($MessageService.addObserver).toHaveBeenCalledWith(scope.receiveMessage);
+      //expect($MessageService.addObserver).toHaveBeenCalledWith(scope.receiveMessage);
+      expect($MessageService.addObserver).toHaveBeenCalledWith(ctrl.receiveMessage);
     });
 
     it('Should receive a message', function(){
@@ -163,8 +173,10 @@ describe('Gabaritei controllers', function() {
       message.title = "Hello World!";
       message.content = "Hello Gabaritei!";
       message.type = "success";
-      scope.receiveMessage(message);
-      expect(scope.message).toEqual(message);
+      // scope.receiveMessage(message);
+      // expect(scope.message).toEqual(message);
+      ctrl.receiveMessage(message);
+      expect(ctrl.message).toEqual(message);
     });
   });
 
