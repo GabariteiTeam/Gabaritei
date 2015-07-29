@@ -93,7 +93,6 @@ ActiveRecord::Schema.define(version: 20150720123715) do
     t.integer  "model"
     t.integer  "status",            default: -1
     t.integer  "progress",          default: 0
-    t.boolean  "header"
     t.string   "col_sep"
     t.string   "data_file_name"
     t.string   "data_content_type"

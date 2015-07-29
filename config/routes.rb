@@ -7,17 +7,16 @@ Rails.application.routes.draw do
 
 
 	#subjects routes
-	get "/subjects/", to: "subjects#index", as: "subjects_home"
-	get "/subjects/:id", to: "subjects#show", as: "read_subject"
-	post "/subjects/", to: "subjects#create", as: "subjects_new"
-	put "/subjects/", to: "subjects#update", as: "subjects_update"
-	delete "/subjects/:id", to: "subjects#destroy", as: "subjects_delete"
+	# get "/subjects/", to: "subjects#index", as: "subjects_home"
+	# get "/subjects/:id", to: "subjects#show", as: "read_subject"
+	# post "/subjects/", to: "subjects#create", as: "subjects_new"
+	# put "/subjects/", to: "subjects#update", as: "subjects_update"
+	# delete "/subjects/:id", to: "subjects#destroy", as: "subjects_delete"
+	resources :subjects
 
-	resources :questions
-
-	get "/data_imports/models", to: "data_imports#models"
-	resources :data_imports do 
-		new { put :update }
+	resources :data_imports do
+		put :import, on: :member
+		get :models, on: :collection
 	end
 
 

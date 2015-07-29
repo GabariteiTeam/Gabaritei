@@ -39,16 +39,20 @@ class User < ActiveRecord::Base
 
         # create new user object
         user = User.new
-        
+
         # set role
         user.roles = [user_role]
 
         # set fields
-        user.email = user_data["email"]
-        user.first_name = user_data["first_name"]
-        user.last_name = user_data["last_name"]
-        user.birthdate = DateTime.parse(user_data["birthdate"])
-
+        user.email = user_data[:email]
+        user.first_name = user_data[:first_name]
+        user.last_name = user_data[:last_name]
+        if user_data[:birthdate].is_a?(Date)
+            user.birthdate = user_data[:birthdate]
+        elsif user_data[:birthdate].is_a?(String)
+            user.birthdate = DateTime.parse(user_data[:birthdate])
+        end
+    
         # save new user
         user.save!
     

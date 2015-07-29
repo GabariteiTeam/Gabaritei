@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.7'
+
 # Use MySQL as the database for Active Record
 gem 'mysql2'
 # Use SQLite for the development databas
@@ -38,7 +39,7 @@ gem 'annotate', '~> 2.6.5'
 gem 'simple_form'
 
 #debbug gem
-gem 'byebug'
+#gem 'byebug'
 
 #Selenium like testing!
 gem 'capybara'
@@ -76,4 +77,6 @@ gem 'angular_rails_csrf'
 
 # Parse Excel files
 gem 'roo'
+gem 'roo-xls'
+
 
