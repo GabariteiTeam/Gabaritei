@@ -10,7 +10,8 @@
         .module(APP_NAME)
         .config(HomeRoutes)
         .config(SubjectRoutes)
-        .config(DataImportRoutes);
+        .config(DataImportRoutes)
+        .config(QuestionRoutes);
 
     function HomeRoutes($routeProvider) {
         $routeProvider
@@ -57,31 +58,3 @@
     }
 
 })();
-
-// homeRoutes.config(['$routeProvider',
-//   function($routeProvider) {
-//     $routeProvider.
-//       when('/home', {
-//         templateUrl: 'assets/partials/home/home.html',
-//         controller: 'homeController'
-//       });
-//   }]);
-
-// var subjectsRoutes = angular.module('subjectsRoutes', ['ngRoute']);
-
-// homeRoutes.config(['$routeProvider',
-//   function($routeProvider) {
-//     $routeProvider.
-//       when('/subjects/new', { 
-//         templateUrl: 'assets/partials/subjects/new.html',
-//         controller: 'subjectController'
-//       })
-//       .when('/subjects/update/:id', {
-//         templateUrl: 'assets/partials/subjects/update.html',
-//         controller: 'subjectController'
-//       })
-//       .when('/subjects', { 
-//         templateUrl: 'assets/partials/subjects/index.html',
-//         controller: 'subjectController'
-//       })
-//   }]);

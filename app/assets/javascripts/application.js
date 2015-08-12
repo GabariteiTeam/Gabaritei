@@ -18,11 +18,8 @@
 //= require angular-animate/angular-animate
 //= require angular-route/angular-route
 //= require angular-resource/angular-resource
-//= require gabaritei-app
-//= require gabaritei-resources
-//= require gabaritei-services
-//= require gabaritei-controllers
-//= require gabaritei-routes
+//= require_tree ./angular
+//= require_tree ./angular/questions
 //= require ng-file-upload/ng-file-upload
 //= require turbolinks
 //= require_tree .

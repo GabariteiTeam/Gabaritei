@@ -4,29 +4,14 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
-    if not params.has_key?("subject_id")
-      logger.info("Parameters: #{params}")
-      @questions = Question.all
-    else
-      logger.info "[DEBUG] #{params[:subject_id]}"
-      logger.info "[DEBUG] #{params[:subject_id] == 0}"
-      if params[:subject_id] == "0"
-        @questions = Question.all
-      else
-        @questions = Question.where(subject_id: params[:subject_id])
-      end
-    end 
-    
-    
-    #Para criar dropdown com filtro
-    @subjects = Subject.all
-    
+    render json: Question.all
   end
 
 
   # GET /questions/1
   # GET /questions/1.json
   def show
+    render :json => @question
   end
 
   # GET /questions/new
@@ -43,15 +28,11 @@ class QuestionsController < ApplicationController
   # POST /questions
   # POST /questions.json
   def create
-    @question = Question.new(question_params)
-    respond_to do |format|
-      if @question.save
-        format.html { redirect_to @question, notice: 'Question was successfully created.' }
-        format.json { render :show, status: :created, location: @question }
-      else
-        format.html { render :new }
-        format.json { render json: @question.errors, status: :unprocessable_entity }
-      end
+    @question = Question.new(question_params);
+    if @question.save
+      render :json => {}
+    else
+      render :json =>  @subject.errors, status: :unprocessable_entity
     end
   end
 
@@ -72,10 +53,10 @@ class QuestionsController < ApplicationController
   # DELETE /questions/1
   # DELETE /questions/1.json
   def destroy
-    @question.destroy
-    respond_to do |format|
-      format.html { redirect_to questions_url, notice: 'Question was successfully destroyed.' }
-      format.json { head :no_content }
+    if @question.destroy
+      render :json => {}
+    else
+      render :json =>  @subject.errors, status: :unprocessable_entity
     end
   end
 
@@ -113,6 +94,6 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:question, :style, :year, :area, :subject_id, :hot)
+      params.require(:question).permit(:text, :style, :answer, :source, :hot)
     end
 end
