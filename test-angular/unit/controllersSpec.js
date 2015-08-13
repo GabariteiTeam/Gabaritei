@@ -12,11 +12,6 @@ describe('Gabaritei controllers', function() {
   });
 
   beforeEach(module('gabariteiApp'));
-  // beforeEach(module('HomeController'));
-  // beforeEach(module('SubjectController'));
-  // beforeEach(module('DataImportController'));
-  // beforeEach(module('Subject'));
-  // beforeEach(module('DataImport'));
 
   // Karma converted html files into javascript
   // and inject into $templateCache
@@ -28,6 +23,7 @@ describe('Gabaritei controllers', function() {
       
       scope = $rootScope.$new();
       ctrl = $controller('HomeController', {$scope: scope});
+ 
     }));
 
     it("Should create controller", function() {
@@ -49,11 +45,11 @@ describe('Gabaritei controllers', function() {
       scope = $rootScope.$new();
       $httpBackend.expectGET('subjects').respond(expectedSubjects);
       
-      ctrl = $controller('SubjectController', {$scope: scope, MessageService: $MessageService});
+      ctrl = $controller('SubjectsController', {$scope: scope, MessageService: $MessageService});
 
       createController = function() {
         scope = $rootScope.$new();
-        ctrl = $controller('SubjectController', {$scope: scope, $routeParams: {id: "1"}});
+        ctrl = $controller('SubjectsController', {$scope: scope, $routeParams: {id: "1"}});
         $httpBackend.expectGET('subjects/1').respond(expectedSubject);
       }
 
@@ -155,7 +151,7 @@ describe('Gabaritei controllers', function() {
       createController = function createController() {
         $Message = Message;
         scope = $rootScope.$new();
-        ctrl = $controller('MessageController', {$scope: scope, MessageService: $MessageService});
+        ctrl = $controller('MessagesController', {$scope: scope, MessageService: $MessageService});
       }
     }));
 
