@@ -15,7 +15,6 @@
  		];
 
     function MessagesController($interval, $alert, Message, MessageService) {
-        
         var vm = this;
         vm.receiveMessage = receiveMessage;
         vm.message = new Message();

@@ -17,7 +17,6 @@
 		];
 
     function SubjectsController($location, $routeParams, $route, Subject, MessageService, RedirectService) {
-        
         var vm = this;
         vm.createSubject = createSubject;
         vm.updateSubject = updateSubject;
@@ -48,8 +47,8 @@
             });
         };
 
-        function updateSubject(id) {
-            vm.subject.$update({id: id}, function() {
+        function updateSubject() {
+            vm.subject.$update(function() {
                 MessageService.sendMessage("Updated!", "Subject was updated with success!", "success");
                 RedirectService.redirect("/subjects");
                 
@@ -71,5 +70,3 @@
             });
         }
     };
-
-})();

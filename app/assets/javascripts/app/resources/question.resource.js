@@ -4,18 +4,18 @@
 
     angular
         .module(APP_NAME)
-        .factory('Subject', Subject);
+        .factory('Question', Question);
 
-    Subject.$inject = ['$resource'];
+    Question.$inject = ['$resource'];
 
-    function Subject($resource) {
-        return $resource('subjects/:id', {}, {
+    function Question($resource) {
+        return $resource('questions/:id', {}, {
           query: {method:'GET', params:{id: ''}, isArray:true},
           get: {method:'GET', params:{id: ''}},
           save: {method: 'POST'},
-          update: {method: 'PUT'}
+          update: {method: 'PUT'},
           destroy: {method: 'DELETE', params:{id: ''}}
         });
     }
- 
+
 })();
