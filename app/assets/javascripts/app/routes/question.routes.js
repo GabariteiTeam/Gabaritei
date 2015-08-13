@@ -13,17 +13,17 @@
     function QuestionRoutes($routeProvider) {
         $routeProvider
             .when('/questions/new', {
-                templateUrl: 'assets/partials/questions/new.html',
+                templateUrl: 'templates/questions/new.html',
                 controller: 'NewQuestionController',
                 controllerAs: 'Ctrl'
             })
             .when('/questions', {
-                templateUrl: 'assets/partials/questions/index.html',
+                templateUrl: 'templates/questions/index.html',
                 controller: 'QuestionsController',
                 controllerAs: 'Ctrl'
             })
             .when('/questions/update/:id', {
-                templateUrl: 'assets/partials/questions/update.html',
+                templateUrl: 'templates/questions/update.html',
                 controller: 'UpdateQuestionController',
                 controllerAs: 'Ctrl'
             });

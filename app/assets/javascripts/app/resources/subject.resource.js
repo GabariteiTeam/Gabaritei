@@ -13,7 +13,7 @@
           query: {method:'GET', params:{id: ''}, isArray:true},
           get: {method:'GET', params:{id: ''}},
           save: {method: 'POST'},
-          update: {method: 'PUT'}
+          update: {method: 'PUT'},
           destroy: {method: 'DELETE', params:{id: ''}}
         });
     }

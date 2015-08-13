@@ -1,22 +1,11 @@
 class SubjectsController < ApplicationController
 
-<<<<<<< HEAD
-    before_action :set_subject, only: [:show, :edit, :update, :destroy]
-
-      # GET /subjects
-      # GET /subjects.json
-      def index
-        @subjects = Subject.all
-        render json: @subjects
-      end
-=======
   # GET /subjects
   # GET /subjects.json
   def index
     @subjects = Subject.all
     render json: @subjects
   end
->>>>>>> master
 
       # GET /subjects/1
       # GET /subjects/1.json

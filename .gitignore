@@ -46,3 +46,4 @@ Gemfile.lock
 
 .project
 /docs
+/public/system
