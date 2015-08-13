@@ -9,6 +9,11 @@
 #  score       :decimal(4, 2)
 #  comment     :text
 #
+# Indexes
+#
+#  index_test_responses_on_response_id  (response_id)
+#  index_test_responses_on_test_id      (test_id)
+#
 
 class TestResponse < ActiveRecord::Base
 

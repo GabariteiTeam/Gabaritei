@@ -10,6 +10,12 @@
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #
+# Indexes
+#
+#  index_recommendations_on_resource_id_and_resource_type  (resource_id,resource_type)
+#  index_recommendations_on_user_destination_id            (user_destination_id)
+#  index_recommendations_on_user_source_id                 (user_source_id)
+#
 
 class Recommendation < ActiveRecord::Base
 

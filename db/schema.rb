@@ -129,11 +129,10 @@ ActiveRecord::Schema.define(version: 20150720123715) do
   create_table "medias", force: true do |t|
     t.integer  "owner_id"
     t.string   "owner_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "name"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.string   "reference"
-    t.string   "media_type"
+    t.boolean  "is_attachment"
   end
 
   add_index "medias", ["owner_id", "owner_type"], name: "index_medias_on_owner_id_and_owner_type"

@@ -1,3 +1,12 @@
+/**
+ * @ngdoc controller
+ * @name gabariteiApp.controller:DataImportController
+ * @requires gabariteiApp.service:DataImport
+ * @description
+ *
+ * This controller manages the data import page.
+**/
+
 (function() {
 
 	'use strict';
@@ -35,6 +44,14 @@
        
         refresh();
         
+        /**
+         * @ngdoc method
+         * @name refresh
+         * @methodOf gabariteiApp.controller:DataImportController
+         * @description
+         *
+         * Refreshes displayed data imports. If at least one of the data imports has the status "Currently being imported", this methods schedules its own further execution so as to update the status of the import process (progress bar).
+        **/
         function refresh() {
             DataImport.query(function (data) {
                 vm.data_imports = data;
@@ -44,6 +61,14 @@
             });
         }
 
+        /**
+         * @ngdoc method
+         * @name uploadFile
+         * @methodOf gabariteiApp.controller:DataImportController
+         * @description
+         *
+         * upload file
+        **/
         function uploadFile() {
             if (vm.data_import.file && vm.data_import.file.length && vm.data_import.model) {
                 DataImport.upload(vm.data_import, function (data) {

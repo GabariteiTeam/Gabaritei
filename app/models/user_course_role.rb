@@ -8,6 +8,11 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Indexes
+#
+#  index_user_course_roles_on_course_id  (course_id)
+#  index_user_course_roles_on_user_id    (user_id)
+#
 
 class UserCourseRole < ActiveRecord::Base
 

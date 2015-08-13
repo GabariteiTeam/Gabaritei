@@ -1,4 +1,10 @@
-// Services section
+/**
+ * @ngdoc service
+ * @name gabariteiApp.service:DataImport
+ * @description
+ *
+ * This resource manages the data import page.
+**/
 
 (function() {
 

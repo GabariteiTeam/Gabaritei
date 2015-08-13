@@ -8,6 +8,11 @@
 #  updated_at  :datetime         not null
 #  max_score   :decimal(4, 2)
 #
+# Indexes
+#
+#  index_test_questions_on_question_id  (question_id)
+#  index_test_questions_on_test_id      (test_id)
+#
 
 class TestQuestion < ActiveRecord::Base
 

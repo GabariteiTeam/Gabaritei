@@ -1,7 +1,12 @@
-// We will insert here all Javascript related to Angular
-// Simply and central
-
 // Proposed styleguide: https://github.com/johnpapa/angular-styleguide
+
+/**
+ * @ngdoc object
+ * @name gabariteiApp
+ * @description
+ *
+ * This is the main application module. 
+ */
 
 var APP_NAME = 'gabariteiApp';
 

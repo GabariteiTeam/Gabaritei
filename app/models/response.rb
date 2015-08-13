@@ -9,6 +9,11 @@
 #  updated_at  :datetime         not null
 #  text        :text
 #
+# Indexes
+#
+#  index_responses_on_question_id  (question_id)
+#  index_responses_on_user_id      (user_id)
+#
 
 class Response < ActiveRecord::Base
   
@@ -22,3 +27,4 @@ class Response < ActiveRecord::Base
 	
   
 end
+

@@ -10,6 +10,11 @@
 #  name        :string(255)
 #  description :text
 #
+# Indexes
+#
+#  index_tests_on_course_id  (course_id)
+#  index_tests_on_user_id    (user_id)
+#
 
 class Test < ActiveRecord::Base
   

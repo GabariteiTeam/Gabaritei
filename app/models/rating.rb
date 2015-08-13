@@ -8,6 +8,11 @@
 #  updated_at  :datetime         not null
 #  value       :integer
 #
+# Indexes
+#
+#  index_ratings_on_question_id  (question_id)
+#  index_ratings_on_user_id      (user_id)
+#
 
 class Rating < ActiveRecord::Base
   

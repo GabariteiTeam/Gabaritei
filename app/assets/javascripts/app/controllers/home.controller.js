@@ -1,3 +1,10 @@
+/**
+ * @ngdoc controller
+ * @name gabariteiApp.controller:HomeController
+ * @description
+ * Home page controller
+ */
+
 (function() {
 
 	'use strict';

@@ -16,7 +16,6 @@
 class User < ActiveRecord::Base
 
     # Referenced by
-    has_one :profile_picture, class_name: "Media", as: :owner
     has_many :contents
     has_many :course_news
     has_many :course_registration_requests
@@ -34,6 +33,9 @@ class User < ActiveRecord::Base
     has_many :student_roles, -> { where(role: "student") }, class_name: "UserCourseRole"
     has_many :teacher_courses, through: :teacher_roles, source: :course
     has_many :student_courses, through: :student_roles, source: :course
+
+    # Attachment
+    has_attached_file :avatar
   
     def self.import_user(user_data, user_role)
 

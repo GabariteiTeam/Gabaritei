@@ -7,6 +7,10 @@
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #
+# Indexes
+#
+#  index_response_choices_on_response_id  (response_id)
+#
 
 class ResponseChoice < ActiveRecord::Base
 
