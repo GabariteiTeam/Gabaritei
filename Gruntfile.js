@@ -1,3 +1,6 @@
+// grunt ngdocs
+// creates client-side documentation
+
 module.exports = function (grunt) {
 
   grunt.loadNpmTasks('grunt-ngdocs');
