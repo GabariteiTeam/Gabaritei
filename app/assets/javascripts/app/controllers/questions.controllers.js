@@ -26,15 +26,16 @@
         }
     }
 
-    NewQuestionController.$inject = ['$routeParams', 'MessageService', 'Question'];
+    NewQuestionController.$inject = ['$routeParams', 'MessageService', 'Question', 'RedirectService'];
 
-    function NewQuestionController($routeParams, MessageService, Question) {
+    function NewQuestionController($routeParams, MessageService, Question, RedirectService) {
         var vm = this;
         vm.question = new Question();
         vm.createQuestion = createQuestion;
         function createQuestion() {
             vm.question.$save(function(){
                 MessageService.sendMessage("Created!", "Question was created with success!", "success");
+
                 RedirectService.redirect("/questions");
             },
             function(err){
