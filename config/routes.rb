@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
-	#resources :subjects
 
 	root "home#index"
 
 	get "/home", to: "home#index", as: "home"
-
 
 	# SUBJECTS ROUTES
 
@@ -27,13 +25,11 @@ Rails.application.routes.draw do
 
 	# DATA IMPORT ROUTES
 
-	get "/data_imports/models", to: "data_imports#models"
-	resources :data_imports do 
-		new { put :update }
+	resources :data_imports do
+		put :import, on: :member
+		get :models, on: :collection
 	end
 
 	# END DATA IMPORT ROUTES
-
-
 
 end

@@ -5,9 +5,10 @@
 #  id                :integer          not null, primary key
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
-#  model             :string(255)
+#  model             :integer
 #  status            :integer          default(-1)
 #  progress          :integer          default(0)
+#  col_sep           :string(255)
 #  data_file_name    :string(255)
 #  data_content_type :string(255)
 #  data_file_size    :integer

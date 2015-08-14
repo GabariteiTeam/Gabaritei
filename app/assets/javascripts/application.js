@@ -18,8 +18,11 @@
 //= require angular-animate/angular-animate
 //= require angular-route/angular-route
 //= require angular-resource/angular-resource
-//= require_tree ./angular
-//= require_tree ./angular/questions
 //= require ng-file-upload/ng-file-upload
+//= require app/app
+//= require_tree ./app/routes
+//= require_tree ./app/resources
+//= require_tree ./app/controllers
+//= require_tree ./app/services
 //= require turbolinks
 //= require_tree .

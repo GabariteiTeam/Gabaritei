@@ -9,6 +9,10 @@
 #  text        :string(255)
 #  correct     :boolean
 #
+# Indexes
+#
+#  index_question_choices_on_question_id  (question_id)
+#
 
 class QuestionChoice < ActiveRecord::Base
 

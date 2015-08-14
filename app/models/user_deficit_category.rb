@@ -8,6 +8,11 @@
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #
+# Indexes
+#
+#  index_user_deficit_categories_on_category_id_and_category_type  (category_id,category_type)
+#  index_user_deficit_categories_on_user_id                        (user_id)
+#
 
 class UserDeficitCategory < ActiveRecord::Base
 

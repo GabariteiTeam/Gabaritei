@@ -6,31 +6,26 @@
   "repository": "https://github.com/guipimenta/GabariteiProject",
   "license": "MIT",
   "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-ngdocs": "^0.2.8",
     "karma": "^0.12.16",
     "karma-chrome-launcher": "^0.1.4",
+    "karma-coverage": "*",
+    "karma-firefox-launcher": "*",
+    "karma-htmlfile-reporter": "~0.2",
     "karma-jasmine": "^0.1.5",
+    "karma-nested-reporter": "~0.1",
+    "karma-ng-html2js-preprocessor": "*",
     "karma-phantomjs-launcher": "~0.1",
-     "karma-firefox-launcher": "*",
-     "karma-htmlfile-reporter": "~0.2",
-     "karma-nested-reporter": "~0.1",
-     "karma-spec-reporter": "0.0.19",
-     "karma-coverage": "*",
-     "karma-ng-html2js-preprocessor": "*"
+    "karma-spec-reporter": "0.0.19"
   },
   "scripts": {
-   
-
     "prestart": "npm install",
     "start": "http-server -a 0.0.0.0 -p 8000",
-
     "pretest": "npm install",
     "test": "node node_modules/karma/bin/karma start test-angular/karma.conf.js",
     "test-single-run": "node node_modules/karma/bin/karma start test-angular/karma.conf.js  --single-run",
-
     "preupdate-webdriver": "npm install",
     "update-webdriver": "webdriver-manager update"
-
-
-  
   }
 }

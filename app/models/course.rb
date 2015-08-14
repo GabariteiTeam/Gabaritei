@@ -10,6 +10,10 @@
 #  name          :string(255)
 #  description   :text
 #
+# Indexes
+#
+#  index_courses_on_category_id_and_category_type  (category_id,category_type)
+#
 
 class Course < ActiveRecord::Base
   
@@ -26,5 +30,5 @@ class Course < ActiveRecord::Base
     has_many :student_roles, -> { where(role: "student") }, class_name: "UserCourseRole"
     has_many :teachers, through: :teacher_roles, source: :user
     has_many :students, through: :student_roles, source: :user
-  
+   
 end

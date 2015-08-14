@@ -13,6 +13,10 @@
 #  date       :datetime
 #  style      :string(255)
 #
+# Indexes
+#
+#  index_questions_on_user_id  (user_id)
+#
 
 class Question < ActiveRecord::Base
 
@@ -22,7 +26,8 @@ class Question < ActiveRecord::Base
 	# Referenced by
 	has_many :course_questions
 	has_many :question_categories
-	has_many :categories, through: :question_categories
+	has_many :subjects, through: :question_categories, source: :category, source_type: "Subject"
+	has_many :fields, through: :question_categories, source: :category, source_type: "Field"
 	has_many :question_choices
 	has_many :medias, as: :owner
 	has_many :ratings
@@ -42,7 +47,7 @@ class Question < ActiveRecord::Base
   
 	#Gosto desse tipo de metodos com interrogacao, acho que eles sao auto explicativos tambem
 	def multiple_choice?
-		return (self.style == Question::STYLE_MULTIPLE_CHOICE)
+		(self.style == Question::STYLE_MULTIPLE_CHOICE)
 	end
 
 	def written?
@@ -51,7 +56,7 @@ class Question < ActiveRecord::Base
 	
 	#retorna se a questao e quente ou nao
 	def hot?
-      return self.hot
+      self.hot
 	end
 	
 	#Funciona como um set para tipo de alternativa, nao seria necessario fazer isso no Model, mas ao fazer desse modo, 

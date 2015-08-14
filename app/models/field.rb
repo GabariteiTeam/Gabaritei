@@ -9,6 +9,10 @@
 #  name        :string(255)
 #  description :text
 #
+# Indexes
+#
+#  index_fields_on_subject_id  (subject_id)
+#
 
 class Field < ActiveRecord::Base
 

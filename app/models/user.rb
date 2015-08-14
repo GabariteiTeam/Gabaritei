@@ -16,7 +16,6 @@
 class User < ActiveRecord::Base
 
     # Referenced by
-    has_one :profile_picture, class_name: "Media", as: :owner
     has_many :contents
     has_many :course_news
     has_many :course_registration_requests
@@ -34,21 +33,28 @@ class User < ActiveRecord::Base
     has_many :student_roles, -> { where(role: "student") }, class_name: "UserCourseRole"
     has_many :teacher_courses, through: :teacher_roles, source: :course
     has_many :student_courses, through: :student_roles, source: :course
+
+    # Attachment
+    has_attached_file :avatar
   
     def self.import_user(user_data, user_role)
 
         # create new user object
         user = User.new
-        
+
         # set role
         user.roles = [user_role]
 
         # set fields
-        user.email = user_data["email"]
-        user.first_name = user_data["first_name"]
-        user.last_name = user_data["last_name"]
-        user.birthdate = DateTime.parse(user_data["birthdate"])
-
+        user.email = user_data[:email]
+        user.first_name = user_data[:first_name]
+        user.last_name = user_data[:last_name]
+        if user_data[:birthdate].is_a?(Date)
+            user.birthdate = user_data[:birthdate]
+        elsif user_data[:birthdate].is_a?(String)
+            user.birthdate = DateTime.parse(user_data[:birthdate])
+        end
+    
         # save new user
         user.save!
     

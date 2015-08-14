@@ -5,21 +5,31 @@
 #  id                :integer          not null, primary key
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
-#  model             :string(255)
+#  model             :integer
 #  status            :integer          default(-1)
 #  progress          :integer          default(0)
+#  col_sep           :string(255)
 #  data_file_name    :string(255)
 #  data_content_type :string(255)
 #  data_file_size    :integer
 #  data_updated_at   :datetime
 #
 
-require "CSV"
-
 class DataImport < ActiveRecord::Base
 
+	FILE_CONTENT_TYPE = [
+		FCT_CSV = "text/csv",
+		FCT_XLS = "application/vnd.ms-excel",
+		FCT_XLSX = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+		FCT_ODS = "application/vnd.oasis.opendocument.spreadsheet"
+	]
+
 	has_attached_file :data
-	validates_attachment_content_type :data, content_type: ["text/csv"]
+	validates_attachment_content_type :data, 
+		content_type: [DataImport::FCT_CSV, 
+					   DataImport::FCT_XLS, 
+					   DataImport::FCT_XLSX, 
+					   DataImport::FCT_ODS]
 
 	@@models = [
 		Role.admin_role.name,
@@ -32,6 +42,7 @@ class DataImport < ActiveRecord::Base
 
 	def import
 		if status == 0
+			load_dataset
 			case model
 			when 0..2 then import_users
 			when 3    then import_subjects
@@ -44,11 +55,29 @@ class DataImport < ActiveRecord::Base
   	def import_users
   		imported_rows = 0
 		total_rows = row_count
-		CSV.foreach(file_name, headers: true, col_sep: ",") do |row|
-			User.import_user(row.to_hash, model_role)
-			imported_rows += 1
-			update_progress(imported_rows, total_rows)
+		read_header = false
+		@dataset.each(first_name: 'first_name', last_name: 'last_name', email: 'email', birthdate: 'birthdate') do |hash|
+			if read_header
+				User.import_user(hash, model_role)
+				imported_rows += 1
+				update_progress(imported_rows, total_rows)
+			else
+				read_header = true
+			end
 		end
+  	end
+
+  	def load_dataset
+  		case data_content_type
+  		when FCT_CSV
+  			@dataset = Roo::CSV.new(file_name, csv_options: {col_sep: col_sep})
+  		when FCT_XLS
+  			@dataset = Roo::Excel.new(file_name)
+  		when FCT_XLSX
+  			@dataset = Roo::Excelx.new(file_name)
+  		when FCT_ODS
+  			@dataset = Roo::OpenOffice.new(file_name)
+  		end
   	end
 
 	def data_url
@@ -60,9 +89,7 @@ class DataImport < ActiveRecord::Base
 	end
 
 	def row_count
-		count = 0
-		CSV.foreach(file_name, headers: true, col_sep: ";") { count += 1 }
-		return count
+		@dataset.last_row
 	end
 
 	def update_progress(imported_rows, total_rows)
@@ -84,7 +111,7 @@ class DataImport < ActiveRecord::Base
 	end
 
 	def model_text
-		model < @@models.length ? @@models[model] : ""
+		model && model < @@models.length ? @@models[model] : ""
 	end
 
 	def model_role

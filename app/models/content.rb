@@ -14,6 +14,11 @@
 #  download_protected :boolean
 #  shareable          :boolean
 #
+# Indexes
+#
+#  index_contents_on_category_id_and_category_type  (category_id,category_type)
+#  index_contents_on_user_id                        (user_id)
+#
 
 class Content < ActiveRecord::Base
   

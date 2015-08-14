@@ -1,14 +1,14 @@
 class DataImportsController < ApplicationController
   
-	# GET /data_import
 	# GET /data_import.json
     def index
-	    @data_imports = DataImport.all
-	    render json: @data_imports, :methods => [:data_url, :status_text, :model_text]
+		data_imports = DataImport.all
+		render json: data_imports, :methods => [:data_url, :status_text, :model_text]
 	end
 
 	# File upload
 	def create
+		p data_import_params
 		@data_import = DataImport.new(data_import_params)
 		if @data_import.save
 	      render json: {success: true}
@@ -18,7 +18,7 @@ class DataImportsController < ApplicationController
 	end
 
 	# Data import
-	def update
+	def import
 		Delayed::Job.enqueue(DataImportJob.new(params[:id]))
 		render json: {success: true}
 	end
@@ -35,7 +35,7 @@ class DataImportsController < ApplicationController
 	private 
 
 	    def data_import_params
-	    	params.require(:data_import).permit(:id, :data, :model)
+	    	params.permit(:id, :data, :model, :col_sep)
 	    end 
 
 end

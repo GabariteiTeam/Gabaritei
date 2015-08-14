@@ -45,3 +45,6 @@ node_modules
 Gemfile.lock
 
 .project
+/docs
+/public/system
+/.yardoc

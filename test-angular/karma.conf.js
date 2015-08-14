@@ -23,8 +23,8 @@ module.exports = function(config){
     },
 
     preprocessors: {
-      'app/assets/javascripts/gabaritei-*': ['coverage'],
-      'public/assets/**/*.html': ['ng-html2js']
+      'app/assets/javascripts/app/**/*.js': ['coverage'],
+      'public/templates/**/*.html': ['ng-html2js']
     },
 
     ngHtml2JsPreprocessor: {
@@ -41,9 +41,9 @@ module.exports = function(config){
       'vendor/assets/bower_components/angular-animate/angular-animate.js',
       'vendor/assets/bower_components/angular-strap/dist/angular-strap.js',
       'vendor/assets/bower_components/ng-file-upload/ng-file-upload.js',
-      'app/assets/javascripts/angular/gabaritei-*',
+      'app/assets/javascripts/app/**/*.js',
       'test-angular/unit/**/*.js',
-      'public/assets/**/*.html',
+      'public/templates/**/*.html',
 
     ],
 

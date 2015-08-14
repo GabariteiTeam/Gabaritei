@@ -11,6 +11,11 @@
 #  text       :text
 #  date       :datetime
 #
+# Indexes
+#
+#  index_course_news_on_course_id  (course_id)
+#  index_course_news_on_user_id    (user_id)
+#
 
 class CourseNews < ActiveRecord::Base
 

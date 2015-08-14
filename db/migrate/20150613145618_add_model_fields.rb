@@ -14,9 +14,8 @@ class AddModelFields < ActiveRecord::Migration
     add_column :registration_requests, :accepted, :boolean
 
     # Media
-    add_column :medias, :name, :string
     add_column :medias, :reference, :string
-    add_column :medias, :media_type, :string
+    add_column :medias, :is_attachment, :boolean
 
     # Roles
     add_column :roles, :name, :string
@@ -96,7 +95,6 @@ class AddModelFields < ActiveRecord::Migration
     add_column :data_imports, :model, :integer
     add_column :data_imports, :status, :integer, default: -1
     add_column :data_imports, :progress, :integer, default: 0
-    add_column :data_imports, :header, :boolean
     add_column :data_imports, :col_sep, :string
     add_attachment :data_imports, :data
 

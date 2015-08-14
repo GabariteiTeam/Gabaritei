@@ -18,9 +18,12 @@ class Subject < ActiveRecord::Base
 	has_many :direct_contents, class_name: "Content", as: :category
 	has_many :indirect_contents, class_name: "Content", through: :fields, source: :contents
 	has_many :tests, through: :courses
-  	has_many :teachers, through: :courses
-  	has_many :question_categories, as: :category
-  	has_many :user_deficit_categories, as: :category
+	has_many :teachers, through: :courses
+	has_many :direct_question_categories, class_name: "QuestionCategory", as: :category
+	has_many :indirect_question_categories, class_name: "QuestionCategory", through: :fields, source: :question_categories
+	has_many :direct_questions, through: :direct_question_categories, source: :question
+	has_many :indirect_questions, class_name: "Question", through: :indirect_question_categories, source: :question
+	has_many :user_deficit_categories, as: :category
 
   	def courses
   		direct_courses + indirect_courses
@@ -28,6 +31,10 @@ class Subject < ActiveRecord::Base
 
   	def contents
   		direct_contents + indirect_contents
+  	end
+
+  	def questions
+  		(direct_questions + indirect_questions).uniq
   	end
 
 end

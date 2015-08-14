@@ -87,6 +87,19 @@ ActiveRecord::Schema.define(version: 20150720123715) do
 
   add_index "courses", ["category_id", "category_type"], name: "index_courses_on_category_id_and_category_type"
 
+  create_table "data_imports", force: true do |t|
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "model"
+    t.integer  "status",            default: -1
+    t.integer  "progress",          default: 0
+    t.string   "col_sep"
+    t.string   "data_file_name"
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.datetime "data_updated_at"
+  end
+
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
     t.integer  "attempts",   default: 0, null: false
@@ -116,11 +129,10 @@ ActiveRecord::Schema.define(version: 20150720123715) do
   create_table "medias", force: true do |t|
     t.integer  "owner_id"
     t.string   "owner_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "name"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.string   "reference"
-    t.string   "media_type"
+    t.boolean  "is_attachment"
   end
 
   add_index "medias", ["owner_id", "owner_type"], name: "index_medias_on_owner_id_and_owner_type"
@@ -204,7 +216,7 @@ ActiveRecord::Schema.define(version: 20150720123715) do
     t.boolean  "accepted"
   end
 
-  create_table "response_choices", force: true do |t|
+  create_table "response_choices", id: false, force: true do |t|
     t.integer  "response_id"
     t.integer  "question_choices_id"
     t.datetime "created_at",          null: false
