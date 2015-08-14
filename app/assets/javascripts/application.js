@@ -20,9 +20,6 @@
 //= require angular-resource/angular-resource
 //= require ng-file-upload/ng-file-upload
 //= require app/app
-//= require_tree ./app/routes
-//= require_tree ./app/resources
-//= require_tree ./app/controllers
-//= require_tree ./app/services
+//= require_tree ./app
 //= require turbolinks
 //= require_tree .
