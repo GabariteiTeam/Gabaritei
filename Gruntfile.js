@@ -5,7 +5,7 @@ module.exports = function (grunt) {
   grunt.initConfig({
     ngdocs: {
        	options: {
-       		dest: 'docs',
+       		dest: 'docs/client',
        		title: 'Gabaritei Client Documentation',
        		html5Mode: false,
        		scripts: [

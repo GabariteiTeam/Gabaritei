@@ -79,4 +79,7 @@ gem 'angular_rails_csrf'
 gem 'roo'
 gem 'roo-xls'
 
+# YARD to create server-side docs
+gem 'yard'
+
 
