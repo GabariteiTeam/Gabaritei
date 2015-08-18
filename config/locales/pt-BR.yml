@@ -1,4 +1,11 @@
 pt-BR:
+  menu:
+   questions: 'Questões'
+   subjects: 'Matérias'
+   data_import: 'Importar dados'
+   language: 'Idioma'
+  home:
+   heading: 'Fácil, rápido e simples!'
   activerecord:
     models:
       question: "Questão"

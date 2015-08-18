@@ -14,13 +14,14 @@ var APP_NAME = 'gabariteiApp';
 
     'use strict';
 
-	angular
-		.module(APP_NAME, [
-			'ngResource',
-			'ngRoute',
-			'ngAnimate',
-			'mgcrea.ngStrap',
-			'ngFileUpload'
-		]);
+    angular
+        .module(APP_NAME, [
+            'ngResource',
+            'ngRoute',
+            'ngAnimate',
+            'mgcrea.ngStrap',
+            'ngFileUpload',
+            'pascalprecht.translate'
+        ]);
 
 })();

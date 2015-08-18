@@ -32,4 +32,10 @@ Rails.application.routes.draw do
 
 	# END DATA IMPORT ROUTES
 
+	# TRANSLATIONS ROUTES
+
+	resources :translations, only: :show
+
+	# END TRANSLATIONS ROUTES
+
 end

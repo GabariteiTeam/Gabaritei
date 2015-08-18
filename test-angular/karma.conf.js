@@ -42,7 +42,6 @@ module.exports = function(config){
       'vendor/assets/bower_components/angular-strap/dist/angular-strap.js',
       'vendor/assets/bower_components/ng-file-upload/ng-file-upload.js',
       'app/assets/javascripts/app/**/*.js',
-      'test-angular/unit/**/*.js',
       'public/templates/**/*.html',
 
     ],

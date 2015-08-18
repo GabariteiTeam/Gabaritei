@@ -1,0 +1,8 @@
+fr:
+ menu:
+  questions: 'Questions'
+  subjects: 'Matières'
+  data_import: 'Importation de données'
+  language: 'Langue'
+ home:
+  heading: 'Facile, rapide et simple !'

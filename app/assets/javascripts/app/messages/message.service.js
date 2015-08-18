@@ -11,7 +11,7 @@
     function MessageService(Message) {
         var mTypes = {
             "success": "success",
-            "error": "danger"   
+            "error": "danger"
         }
 
         var message;
@@ -23,7 +23,7 @@
         }
 
         function alertObservers() {
-            angular.forEach(observers, function(callback){
+            angular.forEach(observers, function(callback) {
                 callback(message);
             });
         }
