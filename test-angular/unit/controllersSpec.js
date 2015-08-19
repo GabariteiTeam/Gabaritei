@@ -57,11 +57,9 @@ describe('Gabaritei controllers', function() {
 
    
     it('Should get subjects list', function() {
-      //expect(scope.subjects).toEqual([]);
-      expect(ctrl.subjects).toEqual([]);
-      $httpBackend.flush();
 
-      //expect(scope.subjects).toEqualData(expectedSubjects);
+      expect(ctrl.subjects).toEqualData({});
+      $httpBackend.flush();
       expect(ctrl.subjects).toEqualData(expectedSubjects);
     });
 
@@ -71,9 +69,6 @@ describe('Gabaritei controllers', function() {
       createController();
       
       $httpBackend.flush();
-      // expect(scope.subject.name).toEqual(expectedSubject.name);
-      // expect(scope.subject.id).toEqual(expectedSubject.id);
-      // expect(scope.subject.description).toEqual(expectedSubject.description);
       expect(ctrl.subject.name).toEqual(expectedSubject.name);
       expect(ctrl.subject.id).toEqual(expectedSubject.id);
       expect(ctrl.subject.description).toEqual(expectedSubject.description);
@@ -83,7 +78,6 @@ describe('Gabaritei controllers', function() {
       $httpBackend.flush();
       $httpBackend.expectPUT('subjects').respond({});
       spyOn($MessageService, "sendMessage");
-      //scope.updateSubject();
       ctrl.updateSubject();
       $httpBackend.flush();
       expect($MessageService.sendMessage).toHaveBeenCalledWith("Updated!", "Subject was updated with success!", "success");
@@ -94,7 +88,6 @@ describe('Gabaritei controllers', function() {
       $httpBackend.flush();
       $httpBackend.expectPUT('subjects').respond(500);
       spyOn($MessageService, "sendMessage");
-      //scope.updateSubject();
       ctrl.updateSubject();
       $httpBackend.flush();
       expect($MessageService.sendMessage).toHaveBeenCalledWith("Fail!", "Subject was NOT updated with success!", "error");
@@ -104,7 +97,6 @@ describe('Gabaritei controllers', function() {
       $httpBackend.flush();
       $httpBackend.expectDELETE('subjects/1').respond({});
       spyOn($MessageService, "sendMessage");
-      //scope.deleteSubject(1);
       ctrl.deleteSubject(1);
       $httpBackend.flush();
       expect($MessageService.sendMessage).toHaveBeenCalledWith("Deleted!", "Subject was deleted with success!", "success");
@@ -114,7 +106,6 @@ describe('Gabaritei controllers', function() {
       $httpBackend.flush();
       $httpBackend.expectDELETE('subjects/1').respond(500);
       spyOn($MessageService, "sendMessage");
-      //scope.deleteSubject(1);
       ctrl.deleteSubject(1);
       $httpBackend.flush();
       expect($MessageService.sendMessage).toHaveBeenCalledWith("Fail!", "Subject was NOT deleted with success!", "error");
@@ -124,7 +115,6 @@ describe('Gabaritei controllers', function() {
       $httpBackend.flush();
       $httpBackend.expectPOST('subjects').respond({});
       spyOn($MessageService, "sendMessage");
-      //scope.createSubject();
       ctrl.createSubject();
       $httpBackend.flush();
       expect($MessageService.sendMessage).toHaveBeenCalledWith("Created!", "Subject was created with success!", "success");
@@ -134,7 +124,6 @@ describe('Gabaritei controllers', function() {
       $httpBackend.flush();
       $httpBackend.expectPOST('subjects').respond(500);
       spyOn($MessageService, "sendMessage");
-      //scope.createSubject(1);
       ctrl.createSubject(1);
       $httpBackend.flush();
       expect($MessageService.sendMessage).toHaveBeenCalledWith("Fail!", "Subject was NOT created with success!", "error");
@@ -169,11 +158,144 @@ describe('Gabaritei controllers', function() {
       message.title = "Hello World!";
       message.content = "Hello Gabaritei!";
       message.type = "success";
-      // scope.receiveMessage(message);
-      // expect(scope.message).toEqual(message);
       ctrl.receiveMessage(message);
       expect(ctrl.message).toEqual(message);
     });
+  });
+
+  describe('Questions Controller', function(){
+    var scope, ctrl, $MessageService, $Question, $httpBackend;
+
+    beforeEach(inject(function($rootScope, $controller, Question, MessageService, _$httpBackend_){
+      scope = $rootScope.$new();
+      $Question = Question;
+      $MessageService = MessageService;
+      $httpBackend = _$httpBackend_;
+      $httpBackend.expectGET('questions').respond([]);
+      ctrl = $controller('QuestionsController', {$scope: scope, Question: $Question, MessageService: $MessageService});
+    }));
+
+    it("should initialize variables", function(){
+      expect(ctrl.deleteQuestion).toBeDefined();
+      expect(ctrl.questions).toBeDefined();
+    });
+
+    it("should destroy a question", function(){
+      $httpBackend.expectDELETE("questions/1").respond({});
+      spyOn($MessageService, "sendMessage");
+      ctrl.deleteQuestion(1);
+      $httpBackend.flush();
+      expect($MessageService.sendMessage).toHaveBeenCalled();
+    });
+
+    it("should fail to destroy a question", function(){
+      $httpBackend.expectDELETE("questions/1").respond(500);
+      spyOn($MessageService, "sendMessage");
+      ctrl.deleteQuestion(1);
+      $httpBackend.flush();
+      expect($MessageService.sendMessage).toHaveBeenCalled();
+    });
+  });
+
+  describe('New Question Controller', function(){
+    var scope, ctrl, $MessageService, $Question, $Subject, $httpBackend, $MessageService;
+    var subjectList = [{name: "Subject", id: 1}];
+    beforeEach(inject(function(_$httpBackend_, $rootScope, $controller, Question, Subject, MessageService){
+      scope = $rootScope.$new();
+      $httpBackend = _$httpBackend_;
+      $Question = Question;
+      $Subject = Subject;
+      $MessageService = MessageService;
+      $httpBackend.expectGET("subjects").respond(subjectList);
+      ctrl = $controller('NewQuestionController', {$scope: scope, Question: $Question, Subject: $Subject, MessageService: MessageService});
+    }));
+
+    it('should initialize variables', function(){
+      expect(ctrl.question).toBeDefined();
+      expect(ctrl.createQuestion).toBeDefined();
+    });
+
+    it('should get subjects list', function(){
+      $httpBackend.flush();
+      expect(ctrl.subjectsTags).toEqualData(["Subject"]);
+      expect(ctrl.subjects).toEqualData(subjectList);
+    });
+
+    it('should create a question', function(){
+      $httpBackend.flush();
+      $httpBackend.expectPOST("questions").respond({});
+      spyOn($MessageService, "sendMessage");
+      ctrl.subjectInput = [{text: "a"}];
+      ctrl.subjects = [{name: "b", id: 2}, {name: "a", id: 1}]
+      ctrl.createQuestion();
+      expect(ctrl.question.subjects).toEqualData([1]);
+      $httpBackend.flush();
+      expect($MessageService.sendMessage).toHaveBeenCalled();
+    });
+
+    it('should fail to create a question', function(){
+      $httpBackend.flush();
+      $httpBackend.expectPOST("questions").respond(500);
+      spyOn($MessageService, "sendMessage");
+      ctrl.subjectInput = [];
+      ctrl.createQuestion();
+      $httpBackend.flush();
+      expect($MessageService.sendMessage).toHaveBeenCalled();
+    });
+  });
+
+  describe('Update question controller', function(){
+    var scope, ctrl, routeParams, $MessageService, $Question, $Subject, $httpBackend, $MessageService;
+    var toUpdateQuestion, toUpdateSubjects;
+
+    beforeEach(inject(function(_$httpBackend_, $rootScope, $controller, $routeParams, Question, Subject, MessageService){
+      scope = $rootScope.$new();
+      $httpBackend = _$httpBackend_;
+      $Question = Question;
+      $Subject = Subject;
+      routeParams = $routeParams;
+
+      toUpdateQuestion = new $Question();
+      toUpdateSubjects = [{id: 1, name: "Dummy"}];
+
+      $MessageService = MessageService;
+
+      $httpBackend.expectGET("questions/1").respond({question: toUpdateQuestion, subjects: [{name: "dummy"}]});
+      $httpBackend.expectGET("subjects").respond([{name: "dummy"}]);
+      routeParams.id = 1;
+
+      ctrl = $controller('UpdateQuestionController', {$scope: scope, Question: $Question, Subject: $Subject, MessageService: MessageService, $routeParams: routeParams});
+
+    }));
+
+    it('should initialize variables', function(){
+      ctrl.subjects = [{name: "dummy"}];
+      $httpBackend.flush();
+      expect(ctrl.question).toEqualData(toUpdateQuestion);
+      expect(ctrl.subjects).toBeDefined();
+      expect(ctrl.subjectInput[0].text).toEqual("dummy");
+      expect(ctrl.subjectsTags).toEqualData(["dummy"]);
+      expect(ctrl.updateQuestion).toBeDefined();
+    });
+
+    it('should update question', function(){
+      $httpBackend.flush();
+      $httpBackend.expectPUT('questions').respond({});
+      spyOn($MessageService, "sendMessage");
+      ctrl.updateQuestion();
+      $httpBackend.flush();
+      expect($MessageService.sendMessage).toHaveBeenCalled();
+    });
+
+    it('should fail to update question', function(){
+      $httpBackend.flush();
+      $httpBackend.expectPUT('questions').respond(500);
+      spyOn($MessageService, "sendMessage");
+      ctrl.updateQuestion();
+      $httpBackend.flush();
+      expect($MessageService.sendMessage).toHaveBeenCalled();
+    });
+
   });
 
 

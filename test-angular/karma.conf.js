@@ -41,6 +41,7 @@ module.exports = function(config){
       'vendor/assets/bower_components/angular-animate/angular-animate.js',
       'vendor/assets/bower_components/angular-strap/dist/angular-strap.js',
       'vendor/assets/bower_components/ng-file-upload/ng-file-upload.js',
+      'vendor/assets/bower_components/ng-tags-input/ng-tags-input.js',
       'app/assets/javascripts/app/**/*.js',
       'test-angular/unit/**/*.js',
       'public/templates/**/*.html',

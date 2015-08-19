@@ -1,3 +1,5 @@
+*.js.html
+/app/assets/javascripts/app/**/*.html
 *.rbc
 capybara-*.html
 .rspec

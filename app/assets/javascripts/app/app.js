@@ -20,7 +20,8 @@ var APP_NAME = 'gabariteiApp';
 			'ngRoute',
 			'ngAnimate',
 			'mgcrea.ngStrap',
-			'ngFileUpload'
+			'ngFileUpload',
+			'ngTagsInput'
 		]);
 
 })();

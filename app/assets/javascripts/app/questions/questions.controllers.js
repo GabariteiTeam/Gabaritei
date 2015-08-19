@@ -26,13 +26,30 @@
         }
     }
 
-    NewQuestionController.$inject = ['$routeParams', 'MessageService', 'Question', 'RedirectService'];
+    NewQuestionController.$inject = ['$routeParams', 'MessageService', 'Question', 'RedirectService', 'Subject'];
 
-    function NewQuestionController($routeParams, MessageService, Question, RedirectService) {
+    function NewQuestionController($routeParams, MessageService, Question, RedirectService, Subject) {
         var vm = this;
         vm.question = new Question();
         vm.createQuestion = createQuestion;
+        Subject.query({}, function(data){
+            vm.subjectsTags = [];
+            vm.subjects = data;
+            for(var i = 0; i < data.length; i++)
+                vm.subjectsTags.push(data[i].name);
+        });
+
+
         function createQuestion() {
+            vm.question.subjects = [];
+            for(var i = 0; i < vm.subjectInput.length; i++)
+            {
+                var subjectName = vm.subjectInput[i].text;
+                for(var j = 0; j < vm.subjects.length; j++)
+                    if(vm.subjects[j].name == subjectName)
+                        vm.question.subjects.push(vm.subjects[j].id);
+            }
+
             vm.question.$save(function(){
                 MessageService.sendMessage("Created!", "Question was created with success!", "success");
 
@@ -45,11 +62,26 @@
         }
     }
 
-    UpdateQuestionController.$inject =  ['$routeParams', 'MessageService', 'Question', 'RedirectService']
+    UpdateQuestionController.$inject =  ['$routeParams', 'MessageService', 'Question', 'RedirectService', 'Subject']
 
-    function UpdateQuestionController($routeParams, MessageService, Question, RedirectService) {
+    function UpdateQuestionController($routeParams, MessageService, Question, RedirectService, Subject) {
         var vm = this;
-        vm.question = Question.get({id: $routeParams.id})
+        
+        Question.get({id: $routeParams.id}, function(data){
+            vm.question = data.question;
+            vm.subjectInput = [];
+            for(var i = 0; i < data.subjects.length; i++)
+                vm.subjectInput.push({text: data.subjects[i].name});
+        });
+
+        Subject.query({}, function(data){
+            vm.subjectsTags = [];
+            vm.subjects = data;
+            for(var i = 0; i < data.length; i++)
+                vm.subjectsTags.push(data[i].name);
+        });
+
+
         vm.updateQuestion = updateQuestion;
 
         function updateQuestion () {
