@@ -21,7 +21,7 @@
 				<td>
 					<a href="{{ data_import.data_url }}">{{ data_import.data_file_name }}</a>
 				</td>
-				<td>{{ data_import.data_updated_at }}</td>
+				<td>{{ data_import.update_date_text }}</td>
 				<td>
 					<span style="{{ data_import.status == 2 ? 'color: red' : ''}}">{{ data_import.status_text }}</span>
 					<div ng-hide="{{ data_import.status != 0 }}" class="progress" style="margin-top: 5px">
@@ -39,6 +39,6 @@
 	</table>
 </div>
 
-<div class="row" ng-include="'templates/data_imports/_form.html'">
-	
+<div class="row">
+	<form novalidate ng-include="'templates/data_imports/_form.html'" ng-submit="Ctrl.uploadFile()"></form>
 </div>

@@ -23,14 +23,17 @@
 
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown" ng-controller="TranslationsController as Ctrl">
-		          	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+		          	<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 		          		<span translate>menu.language</span>
 		     			<span class="caret"></span>
 		          	</a>
 			        <ul class="dropdown-menu">
-			            <li><a href="#" ng-click="Ctrl.changeLanguage('en')">English</a></li>
-			            <li><a href="#" ng-click="Ctrl.changeLanguage('pt-BR')">Português</a></li>
-			            <li><a href="#" class="selected" ng-click="Ctrl.changeLanguage('fr')">Français</a></li>
+			            <li ng-repeat="(key, language) in Ctrl.languages">
+			            	<a ng-click="Ctrl.changeLanguage(key)">
+			            		<span ng-hide="Ctrl.currentLanguage() != key" class="glyphicon glyphicon-ok" style="padding-right: 6px"></span>
+			            		{{ language }}
+			            	</a>
+			            </li>
 			        </ul>
 		        </li>
 			</ul>

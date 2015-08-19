@@ -2,16 +2,6 @@
 
 describe('unit: SubjectsController', function() {
 
-    beforeEach(function() {
-        this.addMatchers({
-            toEqualData: function(expected) {
-                return angular.equals(this.actual, expected);
-            }
-        });
-    });
-    beforeEach(module('gabariteiApp'));
-    beforeEach(module('htmltemplates'));
-
     var scope, ctrl, $httpBackend, $location;
     var createController;
     var location;
@@ -28,12 +18,15 @@ describe('unit: SubjectsController', function() {
     var $MessageService = {
         sendMessage: function(title, content, type) {}
     };
+    var expectedTranslation = {};
     beforeEach(inject(function(_$httpBackend_, $rootScope, $controller, _$location_) {
         $httpBackend = _$httpBackend_;
         $location = _$location_;
 
         scope = $rootScope.$new();
+        $httpBackend.expectGET('translations/en.json').respond(expectedTranslation);
         $httpBackend.expectGET('subjects').respond(expectedSubjects);
+
 
         ctrl = $controller('SubjectsController', {
             $scope: scope,

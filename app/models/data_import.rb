@@ -25,6 +25,9 @@ class DataImport < ActiveRecord::Base
 	]
 
 	has_attached_file :data
+
+	validates :model, presence: true
+	validates_attachment_presence :data
 	validates_attachment_content_type :data, 
 		content_type: [DataImport::FCT_CSV, 
 					   DataImport::FCT_XLS, 
@@ -112,6 +115,10 @@ class DataImport < ActiveRecord::Base
 
 	def model_text
 		model && model < @@models.length ? @@models[model] : ""
+	end
+
+	def update_date_text
+		data_updated_at.strftime("%d/%m/%Y %H:%M:%S")
 	end
 
 	def model_role

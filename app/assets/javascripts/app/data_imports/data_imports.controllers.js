@@ -18,10 +18,11 @@
     DataImportsController
         .$inject = [
             '$timeout',
+            'MessageService',
             'DataImport'
         ];
 
-    function DataImportsController($timeout, DataImport) {
+    function DataImportsController($timeout, MessageService, DataImport) {
 
         var vm = this;
         var pollingPeriod = 3000;
@@ -34,10 +35,10 @@
         vm.data_imports = [];
         vm.models = [];
         vm.data_import = new DataImport();
+        vm.missingFile = false;
 
         DataImport.models(function(data) {
             vm.models = data;
-            vm.data_import.header = true;
             vm.data_import.model = "0";
             vm.data_import.col_sep = ";";
         });
@@ -55,6 +56,7 @@
         function refresh() {
             DataImport.query(function(data) {
                 vm.data_imports = data;
+                vm.missingFile = false;
                 var statusProduct = 1;
                 for (var i = 0; i < data.length; i++) statusProduct *= data[i].status;
                 if (statusProduct == 0) $timeout(refresh, pollingPeriod);
@@ -70,11 +72,13 @@
          * upload file
          **/
         function uploadFile() {
-            if (vm.data_import.file && vm.data_import.file.length && vm.data_import.model) {
-                DataImport.upload(vm.data_import, function(data) {
-                    refresh();
-                });
-            }
+            vm.data_import.upload(function(data) {
+                MessageService.sendMessage("Created!", "File was uploaded with success!", "success");
+                refresh();
+            }, function(data) {
+                MessageService.sendMessage("Error!", "File could not be uploaded!", "error");
+                vm.missingFile = true;
+            });
         }
 
         function importData(data_import_id) {
