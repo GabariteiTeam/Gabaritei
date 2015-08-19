@@ -71,9 +71,6 @@ describe('Gabaritei controllers', function() {
       createController();
       
       $httpBackend.flush();
-      // expect(scope.subject.name).toEqual(expectedSubject.name);
-      // expect(scope.subject.id).toEqual(expectedSubject.id);
-      // expect(scope.subject.description).toEqual(expectedSubject.description);
       expect(ctrl.subject.name).toEqual(expectedSubject.name);
       expect(ctrl.subject.id).toEqual(expectedSubject.id);
       expect(ctrl.subject.description).toEqual(expectedSubject.description);
@@ -83,7 +80,6 @@ describe('Gabaritei controllers', function() {
       $httpBackend.flush();
       $httpBackend.expectPUT('subjects').respond({});
       spyOn($MessageService, "sendMessage");
-      //scope.updateSubject();
       ctrl.updateSubject();
       $httpBackend.flush();
       expect($MessageService.sendMessage).toHaveBeenCalledWith("Updated!", "Subject was updated with success!", "success");
@@ -94,7 +90,6 @@ describe('Gabaritei controllers', function() {
       $httpBackend.flush();
       $httpBackend.expectPUT('subjects').respond(500);
       spyOn($MessageService, "sendMessage");
-      //scope.updateSubject();
       ctrl.updateSubject();
       $httpBackend.flush();
       expect($MessageService.sendMessage).toHaveBeenCalledWith("Fail!", "Subject was NOT updated with success!", "error");
@@ -104,7 +99,6 @@ describe('Gabaritei controllers', function() {
       $httpBackend.flush();
       $httpBackend.expectDELETE('subjects/1').respond({});
       spyOn($MessageService, "sendMessage");
-      //scope.deleteSubject(1);
       ctrl.deleteSubject(1);
       $httpBackend.flush();
       expect($MessageService.sendMessage).toHaveBeenCalledWith("Deleted!", "Subject was deleted with success!", "success");
@@ -114,7 +108,6 @@ describe('Gabaritei controllers', function() {
       $httpBackend.flush();
       $httpBackend.expectDELETE('subjects/1').respond(500);
       spyOn($MessageService, "sendMessage");
-      //scope.deleteSubject(1);
       ctrl.deleteSubject(1);
       $httpBackend.flush();
       expect($MessageService.sendMessage).toHaveBeenCalledWith("Fail!", "Subject was NOT deleted with success!", "error");
@@ -124,7 +117,6 @@ describe('Gabaritei controllers', function() {
       $httpBackend.flush();
       $httpBackend.expectPOST('subjects').respond({});
       spyOn($MessageService, "sendMessage");
-      //scope.createSubject();
       ctrl.createSubject();
       $httpBackend.flush();
       expect($MessageService.sendMessage).toHaveBeenCalledWith("Created!", "Subject was created with success!", "success");
@@ -134,7 +126,6 @@ describe('Gabaritei controllers', function() {
       $httpBackend.flush();
       $httpBackend.expectPOST('subjects').respond(500);
       spyOn($MessageService, "sendMessage");
-      //scope.createSubject(1);
       ctrl.createSubject(1);
       $httpBackend.flush();
       expect($MessageService.sendMessage).toHaveBeenCalledWith("Fail!", "Subject was NOT created with success!", "error");

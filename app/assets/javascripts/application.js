@@ -19,6 +19,7 @@
 //= require angular-route/angular-route
 //= require angular-resource/angular-resource
 //= require ng-file-upload/ng-file-upload
+//= require ng-tags-input/ng-tags-input
 //= require app/app
 //= require_tree ./app
 //= require turbolinks

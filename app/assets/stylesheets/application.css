@@ -12,6 +12,8 @@
  *
  *= require_tree .
  *= require_self
+ *= require ng-tags-input/ng-tags-input.min.css
+ *= require ng-tags-input/ng-tags-input.bootstrap.min.css
  *= require bootswatch.min.css
  *= require bootstrap.css
  *= require angular-motion/dist/angular-motion.min.css

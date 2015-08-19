@@ -28,7 +28,13 @@ class QuestionsController < ApplicationController
   # POST /questions
   # POST /questions.json
   def create
-    @question = Question.new(question_params);
+    @question = Question.new(question_params)
+    
+    params["subjects"].each do |id|
+      subject = Subject.find(id)
+      @question.subjects.push(subject)
+    end
+
     if @question.save
       render :json => {}
     else
@@ -94,6 +100,6 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:text, :style, :answer, :source, :hot)
+      params.require(:question).permit(:text, :style, :answer, :source, :hot, :subjects)
     end
 end
