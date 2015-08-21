@@ -2,8 +2,8 @@ class DataImportsController < ApplicationController
   
 	# GET /data_import.json
     def index
-		data_imports = DataImport.all
-		render json: data_imports, :methods => [:data_url, :status_text, :model_text, :update_date_text]
+		@data_imports = DataImport.includes(:role).all
+		render json: @data_imports, :methods => [:data_url, :status_text, :role_name, :update_date_text]
 	end
 
 	# File upload
@@ -12,7 +12,7 @@ class DataImportsController < ApplicationController
 		if @data_import.save
 	      render json: {success: true}
 	    else
-	      render json: @data_import.errors, status: 422
+	      render json: @data_import.errors, status: :unprocessable_entity
 	    end  
 	end
 
@@ -27,14 +27,10 @@ class DataImportsController < ApplicationController
 		render json: {success: true}
 	end
 
-	def models
-		render json: DataImport.models
-	end
-
 	private 
 
 	    def data_import_params
-	    	params.permit(:id, :data, :model, :col_sep)
+	    	params.permit(:id, :data, :model, :role_id, :col_sep)
 	    end 
 
 end

@@ -19,10 +19,11 @@
         .$inject = [
             '$timeout',
             'MessageService',
-            'DataImport'
+            'DataImport',
+            'Role'
         ];
 
-    function DataImportsController($timeout, MessageService, DataImport) {
+    function DataImportsController($timeout, MessageService, DataImport, Role) {
 
         var vm = this;
         var pollingPeriod = 3000;
@@ -31,18 +32,18 @@
         vm.uploadFile = uploadFile;
         vm.importData = importData;
         vm.deleteFile = deleteFile;
+        vm.fileNameChanged = fileNameChanged;
         vm.show_file_parameters = false;
         vm.data_imports = [];
-        vm.models = [];
+        vm.models = ['Users', 'Subjects and Fields', 'Courses'];
         vm.data_import = new DataImport();
+        vm.data_import.col_sep = ",";
+        vm.data_import.model = '0';
         vm.missingFile = false;
-
-        DataImport.models(function(data) {
-            vm.models = data;
-            vm.data_import.model = "0";
-            vm.data_import.col_sep = ";";
+        vm.csv_file = false;
+        Role.query(function(data) {
+            vm.user_roles = data;
         });
-
         refresh();
 
         /**
@@ -97,6 +98,11 @@
             }, function(data) {
                 refresh();
             });
+        }
+
+        function fileNameChanged(element) {
+            var file = element.files[0]; 
+            vm.csv_file = (file !== undefined && file.type == "text/csv")
         }
 
     };

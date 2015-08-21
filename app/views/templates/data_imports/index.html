@@ -17,7 +17,7 @@
 		</thead>
 		<tbody>
 			<tr data-ng-repeat="data_import in Ctrl.data_imports">
-				<td>{{ data_import.model_text }}</td>
+				<td>{{ Ctrl.models[data_import.model] }}{{ data_import.role_name ? " (" + data_import.role_name + ")" : "" }}</td>
 				<td>
 					<a href="{{ data_import.data_url }}">{{ data_import.data_file_name }}</a>
 				</td>

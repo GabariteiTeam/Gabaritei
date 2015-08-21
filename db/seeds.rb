@@ -6,6 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Role.new({name: 'Admin'}).save!
-Role.new({name: 'Student'}).save!
-Role.new({name: 'Teacher'}).save!
+# PERMISSIONS
+Permission.new({name: 'crud.role'}).save!
+Permission.new({name: 'crud.user'}).save!
+Permission.new({name: 'crud.courses'}).save!
+Permission.new({name: 'crud.subjects_and_fields'}).save!
+Permission.new({name: 'crud.questions'}).save!
+Permission.new({name: 'crud.tests'}).save!
+Permission.new({name: 'crud.role'}).save!

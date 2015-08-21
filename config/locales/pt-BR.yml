@@ -6,6 +6,32 @@ pt-BR:
    language: 'Idioma'
   home:
    heading: 'Fácil, rápido e simples!'
+  crud:
+   create: 'Criar'
+   add: 'Adicionar'
+   update: 'Atualizar'
+   modify: 'Modificar'
+   delete: 'Deletar'
+   show: 'Mostrar'
+   save: 'Salvar'
+   edit: 'Editar'
+   import: 'Importar'
+  models:
+   content: 'Conteúdo'
+   course: 'Curso'
+   course_news: 'Novidade'
+   course_registration_request: 'Pedido de inscrição em curso'
+   field: 'Área'
+   permission: 'Permissão'
+   question: 'Questão'
+   rating: 'Rating'
+   recommendation: 'Recomendação'
+   registration_request: 'Pedido de inscrição'
+   response: 'Resposta'
+   role: 'Função'
+   subject: 'Matéria'
+   test: 'Teste'
+   user: 'Usuário'
   activerecord:
     models:
       question: "Questão"
