@@ -1,5 +1,13 @@
 # This file manages the client-side code libraries
 
+# jQuery
+asset 'jquery'
+# jQuery-ujs
+asset 'jquery-ujs'
+# Bootstrap
+asset 'bootstrap'
+# Bootswatch
+asset 'bootswatch'
 # Main angular module
 asset 'angular'
 # Needed to ajax routing **using instead of default rails routing file** 
@@ -14,5 +22,8 @@ asset 'angular-animate'
 asset 'angular-motion'
 # Angular strap
 asset 'angular-strap'
+# Angular translate
+asset 'angular-translate'
+asset 'angular-translate-loader-static-files'
 # File upload with AngularJS
 asset 'ng-file-upload'

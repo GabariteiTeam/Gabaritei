@@ -11,18 +11,31 @@
 		<div class="navbar-collapse collapse" id="navbar-main">
 			<ul class="nav navbar-nav">
 				<li>
-					<a href="#questions">Questions</a>
+					<a href="#questions" translate>menu.questions</a>
 				</li>
 				<li>
-					<a href="#subjects">Subjects</a>
+					<a href="#subjects" translate>menu.subjects</a>
 				</li>
 				<li>
-					<a href="#data_imports">Data import</a>
+					<a href="#data_imports" translate>menu.data_import</a>
 				</li>
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">
-				
+				<li class="dropdown" ng-controller="TranslationsController as Ctrl">
+		          	<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+		          		<span translate>menu.language</span>
+		     			<span class="caret"></span>
+		          	</a>
+			        <ul class="dropdown-menu">
+			            <li ng-repeat="(key, language) in Ctrl.languages">
+			            	<a ng-click="Ctrl.changeLanguage(key)">
+			            		<span ng-hide="Ctrl.currentLanguage() != key" class="glyphicon glyphicon-ok" style="padding-right: 6px"></span>
+			            		{{ language }}
+			            	</a>
+			            </li>
+			        </ul>
+		        </li>
 			</ul>
 
 		</div>

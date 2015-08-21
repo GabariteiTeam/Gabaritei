@@ -41,10 +41,11 @@ module.exports = function(config){
       'vendor/assets/bower_components/angular-animate/angular-animate.js',
       'vendor/assets/bower_components/angular-strap/dist/angular-strap.js',
       'vendor/assets/bower_components/ng-file-upload/ng-file-upload.js',
+      'vendor/assets/bower_components/angular-translate/angular-translate.js',
+      'vendor/assets/bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js',
       'app/assets/javascripts/app/**/*.js',
-      'test-angular/unit/**/*.js',
       'public/templates/**/*.html',
-
+      'test-angular/spec_helper.js'
     ],
 
 

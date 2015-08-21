@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-	root "home#index"
+	root "templates#home"
 
 	get "/home", to: "home#index", as: "home"
 
@@ -27,9 +27,26 @@ Rails.application.routes.draw do
 
 	resources :data_imports do
 		put :import, on: :member
-		get :models, on: :collection
 	end
 
 	# END DATA IMPORT ROUTES
+
+	# DATA IMPORT ROUTES
+
+	resources :roles
+
+	# END DATA IMPORT ROUTES
+
+	# TRANSLATIONS ROUTES
+
+	resources :translations, only: :show
+
+	# END TRANSLATIONS ROUTES
+
+	# TEMPLATES ROUTES
+
+	get "templates/*path", to: "templates#serve"
+
+	# END TEMPLATES ROUTES
 
 end

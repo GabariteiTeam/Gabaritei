@@ -11,5 +11,5 @@
     function Message($resource) {
         return $resource();
     }
- 
+
 })();

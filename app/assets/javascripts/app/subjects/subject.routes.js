@@ -8,7 +8,7 @@
 
     function SubjectRoutes($routeProvider) {
         $routeProvider
-            .when('/subjects/new', { 
+            .when('/subjects/new', {
                 templateUrl: 'templates/subjects/new.html',
                 controller: 'SubjectsController',
                 controllerAs: 'Ctrl'
@@ -18,7 +18,7 @@
                 controller: 'SubjectsController',
                 controllerAs: 'Ctrl'
             })
-            .when('/subjects', { 
+            .when('/subjects', {
                 templateUrl: 'templates/subjects/index.html',
                 controller: 'SubjectsController',
                 controllerAs: 'Ctrl'

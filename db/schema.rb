@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 20150720123715) do
   add_index "courses", ["category_id", "category_type"], name: "index_courses_on_category_id_and_category_type"
 
   create_table "data_imports", force: true do |t|
+    t.integer  "role_id"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.integer  "model"
@@ -99,6 +100,8 @@ ActiveRecord::Schema.define(version: 20150720123715) do
     t.integer  "data_file_size"
     t.datetime "data_updated_at"
   end
+
+  add_index "data_imports", ["role_id"], name: "index_data_imports_on_role_id"
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
@@ -295,16 +298,15 @@ ActiveRecord::Schema.define(version: 20150720123715) do
   add_index "tests", ["course_id"], name: "index_tests_on_course_id"
   add_index "tests", ["user_id"], name: "index_tests_on_user_id"
 
-  create_table "user_course_roles", id: false, force: true do |t|
+  create_table "user_courses", id: false, force: true do |t|
     t.integer  "user_id"
     t.integer  "course_id"
-    t.string   "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "user_course_roles", ["course_id"], name: "index_user_course_roles_on_course_id"
-  add_index "user_course_roles", ["user_id"], name: "index_user_course_roles_on_user_id"
+  add_index "user_courses", ["course_id"], name: "index_user_courses_on_course_id"
+  add_index "user_courses", ["user_id"], name: "index_user_courses_on_user_id"
 
   create_table "user_deficit_categories", id: false, force: true do |t|
     t.integer  "user_id"
@@ -317,17 +319,8 @@ ActiveRecord::Schema.define(version: 20150720123715) do
   add_index "user_deficit_categories", ["category_id", "category_type"], name: "index_user_deficit_categories_on_category_id_and_category_type"
   add_index "user_deficit_categories", ["user_id"], name: "index_user_deficit_categories_on_user_id"
 
-  create_table "user_roles", id: false, force: true do |t|
-    t.integer  "user_id"
-    t.integer  "role_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "user_roles", ["role_id"], name: "index_user_roles_on_role_id"
-  add_index "user_roles", ["user_id"], name: "index_user_roles_on_user_id"
-
   create_table "users", force: true do |t|
+    t.integer  "role_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "first_name"
@@ -337,5 +330,7 @@ ActiveRecord::Schema.define(version: 20150720123715) do
     t.datetime "birthdate"
     t.text     "about"
   end
+
+  add_index "users", ["role_id"], name: "index_users_on_role_id"
 
 end

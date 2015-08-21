@@ -4,7 +4,6 @@
 #
 #  user_id    :integer
 #  course_id  :integer
-#  role       :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -14,7 +13,7 @@
 #  index_user_course_roles_on_user_id    (user_id)
 #
 
-class UserCourseRole < ActiveRecord::Base
+class UserCourse < ActiveRecord::Base
 
 	# References
   	belongs_to :course
