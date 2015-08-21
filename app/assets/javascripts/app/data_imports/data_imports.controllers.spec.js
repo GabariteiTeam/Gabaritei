@@ -9,14 +9,6 @@ describe('unit: DataImportsController', function() {
         {id: 1, model: 0, status: -1, progress: 0, col_sep: ";"}
     ];
     var expectedTranslation = {};
-    var expectedModels = [
-        "Admin",
-        "Student",
-        "Teacher",
-        "Subjects",
-        "Fields",
-        "Courses"
-    ];
     beforeEach(inject(function(_$httpBackend_, $rootScope, $controller) {
         $httpBackend = _$httpBackend_;
         scope = $rootScope.$new();
@@ -24,7 +16,6 @@ describe('unit: DataImportsController', function() {
             $scope: scope
         });
         $httpBackend.expectGET('translations/en.json').respond(expectedTranslation);
-        $httpBackend.expectGET('data_imports/models.json').respond(expectedModels);
         $httpBackend.expectGET('data_imports.json').respond(expectedDataImports);
     }));
 
