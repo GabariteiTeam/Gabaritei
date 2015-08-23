@@ -10,6 +10,11 @@
 
     function Subject($resource) {
         return $resource('subjects/:id', {}, {
+            queryNames: {
+                URL: "subjects/names", 
+                method: 'GET', 
+                isArray: true
+            },
             query: {
                 method: 'GET',
                 params: {

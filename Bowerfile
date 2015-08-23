@@ -27,3 +27,5 @@ asset 'angular-translate'
 asset 'angular-translate-loader-static-files'
 # File upload with AngularJS
 asset 'ng-file-upload'
+# Nice input tag with autocomplete
+asset 'ng-tags-input'

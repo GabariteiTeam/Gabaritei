@@ -23,7 +23,7 @@
         vm.deleteSubject = deleteSubject;
 
         vm.subjects = [];
-        vm.subject = new Subject();
+        vm.subjects = new Subject();
 
         if (!($routeParams.id === undefined)) {
             vm.subject = Subject.get({
@@ -31,6 +31,7 @@
             });
 
         } else {
+            vm.subject = new Subject();
             Subject.query(function(data) {
                 vm.subjects = data;
             });

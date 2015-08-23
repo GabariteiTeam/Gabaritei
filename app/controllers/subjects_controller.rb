@@ -20,6 +20,8 @@ class SubjectsController < ApplicationController
 
       # GET /subjects/1/edit
       def edit
+        set_subject
+        render :json => { name: @subject.name, description: @subject.description, id: @subject.id}
       end
 
       # POST /subjects
@@ -46,6 +48,7 @@ class SubjectsController < ApplicationController
       # PATCH/PUT /subjects/1
       # PATCH/PUT /subjects/1.json
       def update
+        set_subject
         if @subject.update(subject_params)
           render :json => {}
         else
@@ -63,6 +66,7 @@ class SubjectsController < ApplicationController
       # DELETE /subjects/1
       # DELETE /subjects/1.json
     def destroy
+        set_subject
         if @subject.destroy
           render :json => {}
         else
@@ -83,6 +87,6 @@ class SubjectsController < ApplicationController
         # Never trust parameters from the scary internet, only allow the white list through.
         def subject_params
           #params.require(:subject).permit(:name, :professor_id, :department_id, :descricao)
-          params.require(:subject).permit(:id, :name, :description)
+          params.require(:subject).permit(:id, :name, :description, :subject)
         end
 end
