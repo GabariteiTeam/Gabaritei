@@ -50,3 +50,5 @@ Gemfile.lock
 /docs
 /public/system
 /.yardoc
+/app/assets/stylesheets/.sass-cache/
+

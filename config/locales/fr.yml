@@ -1,0 +1,34 @@
+fr:
+ menu:
+  questions: 'Questions'
+  subjects: 'Matières'
+  data_import: 'Importation de données'
+  language: 'Langue'
+ home:
+  heading: 'Facile, rapide et simple !'
+ crud:
+  create: 'Créer'
+  add: 'Ajouter'
+  update: 'Mettre à jour'
+  modify: 'Modifier'
+  delete: 'Effacer'
+  show: 'Afficher'
+  save: 'Sauvegarder'
+  edit: 'Editer'
+  import: 'Importer'
+ models:
+  content: 'Contenu'
+  course: 'Cours'
+  course_news: 'News'
+  course_registration_request: "Demande d'inscription en cours"
+  field: 'Domaine'
+  permission: 'Permission'
+  question: 'Question'
+  rating: 'Rating'
+  recommendation: 'Recommendation'
+  registration_request: "Demande d'inscription"
+  response: 'Réponse'
+  role: 'Fonction'
+  subject: 'Matière'
+  test: 'Test'
+  user: 'Utilisateur'

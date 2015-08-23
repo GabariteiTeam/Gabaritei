@@ -1,4 +1,4 @@
-(function(){
+(function() {
     'use strict';
 
     angular
@@ -15,14 +15,16 @@
         vm.questions = Question.query();
 
         function deleteQuestion(id) {
-            Question.destroy({id: id}, function(){
-                MessageService.sendMessage("Deleted!", "Question was deleted with success!", "success");
-                RedirectService.redirect("/questions");
-            },
-            function(err){
-                MessageService.sendMessage("Fail!", "Question was NOT deleted with success!", "error");
-                RedirectService.redirect("/questions");
-            });
+            Question.destroy({
+                    id: id
+                }, function() {
+                    MessageService.sendMessage("Deleted!", "Question was deleted with success!", "success");
+                    RedirectService.redirect("/questions");
+                },
+                function(err) {
+                    MessageService.sendMessage("Fail!", "Question was NOT deleted with success!", "error");
+                    RedirectService.redirect("/questions");
+                });
         }
     }
 
@@ -52,18 +54,16 @@
 
             vm.question.$save(function(){
                 MessageService.sendMessage("Created!", "Question was created with success!", "success");
-
-                RedirectService.redirect("/questions");
-            },
-            function(err){
-                MessageService.sendMessage("Fail!", "Question was NOT created with success!", "error");
-                RedirectService.redirect("/questions");
-            });
+                    RedirectService.redirect("/questions");
+                },
+                function(err) {
+                    MessageService.sendMessage("Fail!", "Question was NOT created with success!", "error");
+                    RedirectService.redirect("/questions");
+                });
         }
     }
 
-    UpdateQuestionController.$inject =  ['$routeParams', 'MessageService', 'Question', 'RedirectService', 'Subject']
-
+    UpdateQuestionController.$inject =  ['$routeParams', 'MessageService', 'Question', 'RedirectService', 'Subject'];
     function UpdateQuestionController($routeParams, MessageService, Question, RedirectService, Subject) {
         var vm = this;
         
@@ -81,18 +81,17 @@
                 vm.subjectsTags.push(data[i].name);
         });
 
-
         vm.updateQuestion = updateQuestion;
 
-        function updateQuestion () {
-            vm.question.$update(function(){
-                MessageService.sendMessage("Updated!", "Question was updated with success!", "success");
-                RedirectService.redirect("/questions");
-            },
-            function(){
-                MessageService.sendMessage("Fail!", "Question was NOT updated with success!", "success");
-                RedirectService.redirect("/questions");
-            });
+        function updateQuestion() {
+            vm.question.$update(function() {
+                    MessageService.sendMessage("Updated!", "Question was updated with success!", "success");
+                    RedirectService.redirect("/questions");
+                },
+                function() {
+                    MessageService.sendMessage("Fail!", "Question was NOT updated with success!", "success");
+                    RedirectService.redirect("/questions");
+                });
         }
     }
 })();

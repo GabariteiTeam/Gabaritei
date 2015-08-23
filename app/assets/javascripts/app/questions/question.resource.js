@@ -10,11 +10,31 @@
 
     function Question($resource) {
         return $resource('questions/:id', {}, {
-          query: {method:'GET', params:{id: ''}, isArray:true},
-          get: {method:'GET', params:{id: ''}},
-          save: {method: 'POST'},
-          update: {method: 'PUT'},
-          destroy: {method: 'DELETE', params:{id: ''}}
+            query: {
+                method: 'GET',
+                params: {
+                    id: ''
+                },
+                isArray: true
+            },
+            get: {
+                method: 'GET',
+                params: {
+                    id: ''
+                }
+            },
+            save: {
+                method: 'POST'
+            },
+            update: {
+                method: 'PUT'
+            },
+            destroy: {
+                method: 'DELETE',
+                params: {
+                    id: ''
+                }
+            }
         });
     }
 

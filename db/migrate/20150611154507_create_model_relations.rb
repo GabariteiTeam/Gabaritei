@@ -46,10 +46,9 @@ class CreateModelRelations < ActiveRecord::Migration
     end
 
     create_table :users do |t|
+      t.belongs_to :role, index: :true, required: true
       t.timestamps null:false
     end
-
-    
 
     create_table :questions do |t|
       t.belongs_to :user, index: true, required: true
@@ -77,12 +76,6 @@ class CreateModelRelations < ActiveRecord::Migration
       t.belongs_to :user, index: true, required: true
       t.references :category, polymorphic: true, index: true, required: true
       t.timestamps null: false
-    end
-
-    create_table :user_roles, id: false do |t|
-      t.belongs_to :user, index: true, required: true
-      t.belongs_to :role, index: true, required: true
-      t.timestamps null:false
     end
 
     create_table :role_permissions, id: false do |t|
@@ -139,10 +132,9 @@ class CreateModelRelations < ActiveRecord::Migration
       t.timestamps null: false
     end
     
-    create_table :user_course_roles, id: false do |t|
+    create_table :user_courses, id: false do |t|
       t.belongs_to :user, index: true, required: true
       t.belongs_to :course, index: true, required: true
-      t.string :role, required: true
       t.timestamps null: false
     end
 
@@ -154,6 +146,7 @@ class CreateModelRelations < ActiveRecord::Migration
     end
 
     create_table :data_imports do |t|
+      t.belongs_to :role, index: true
       t.timestamps null: false
     end
 

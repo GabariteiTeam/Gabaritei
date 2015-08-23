@@ -7,16 +7,16 @@
 
 (function() {
 
-	'use strict';
+    'use strict';
 
-	angular
+    angular
         .module(APP_NAME)
         .controller('HomeController', HomeController);
 
     HomeController.$inject = ['MessageService'];
 
     function HomeController(MessageService) {
-    
-    };
+
+    }
 
 })();

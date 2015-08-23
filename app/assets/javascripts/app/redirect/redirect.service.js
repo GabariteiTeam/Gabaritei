@@ -10,7 +10,7 @@
 
     function RedirectService($route, $location) {
         function redirect(newUrl) {
-            if($location.path() == newUrl)
+            if ($location.path() == newUrl)
                 $route.reload();
             else
                 $location.path(newUrl);

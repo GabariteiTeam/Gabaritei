@@ -10,17 +10,26 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
+//= require jquery/dist/jquery
+//= require jquery-ujs/src/rails
+//= require bootstrap/dist/js/bootstrap
 //= require angular/angular
 //= require angular-strap/dist/angular-strap
 //= require angular-strap/dist/angular-strap.tpl
 //= require angular-animate/angular-animate
 //= require angular-route/angular-route
 //= require angular-resource/angular-resource
+//= require angular-translate/angular-translate
+//= require angular-translate-loader-static-files/angular-translate-loader-static-files
 //= require ng-file-upload/ng-file-upload
 //= require ng-tags-input/ng-tags-input
 //= require app/app
 //= require_tree ./app
+//= stub app/home/home.controllers.spec
+//= stub app/messages/messages.controllers.spec
+//= stub app/messages/message.service.spec
+//= stub app/redirect/redirect.service.spec
+//= stub app/subjects/subjects.controllers.spec
+//= stub app/data_imports/data_imports.controllers.spec
 //= require turbolinks
 //= require_tree .

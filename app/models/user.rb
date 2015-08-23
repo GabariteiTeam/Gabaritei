@@ -3,6 +3,7 @@
 # Table name: users
 #
 #  id         :integer          not null, primary key
+#  role_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  first_name :string(255)
@@ -12,8 +13,15 @@
 #  birthdate  :datetime
 #  about      :text
 #
+# Indexes
+#
+#  index_users_on_role_id  (role_id)
+#
 
 class User < ActiveRecord::Base
+
+    # References
+    belongs_to :role
 
     # Referenced by
     has_many :contents
@@ -25,14 +33,9 @@ class User < ActiveRecord::Base
     has_many :received_recommendations, class_name: "Recommendation", foreign_key: "user_destination_id"
     has_many :responses
     has_many :tests
-    has_many :user_course_roles
+    has_many :user_courses
+    has_many :courses, through: :user_courses
     has_many :user_deficit_categories
-    has_many :user_roles
-    has_many :roles, through: :user_roles
-    has_many :teacher_roles, -> { where(role: "teacher") }, class_name: "UserCourseRole"
-    has_many :student_roles, -> { where(role: "student") }, class_name: "UserCourseRole"
-    has_many :teacher_courses, through: :teacher_roles, source: :course
-    has_many :student_courses, through: :student_roles, source: :course
 
     # Attachment
     has_attached_file :avatar
@@ -43,7 +46,7 @@ class User < ActiveRecord::Base
         user = User.new
 
         # set role
-        user.roles = [user_role]
+        user.role = user_role
 
         # set fields
         user.email = user_data[:email]

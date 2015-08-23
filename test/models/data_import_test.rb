@@ -3,6 +3,7 @@
 # Table name: data_imports
 #
 #  id                :integer          not null, primary key
+#  role_id           :integer
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  model             :integer
@@ -13,6 +14,10 @@
 #  data_content_type :string(255)
 #  data_file_size    :integer
 #  data_updated_at   :datetime
+#
+# Indexes
+#
+#  index_data_imports_on_role_id  (role_id)
 #
 
 require 'test_helper'
