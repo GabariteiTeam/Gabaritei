@@ -62,11 +62,26 @@
         }
     }
 
-    UpdateQuestionController.$inject =  ['$routeParams', 'MessageService', 'Question', 'RedirectService']
+    UpdateQuestionController.$inject =  ['$routeParams', 'MessageService', 'Question', 'RedirectService', 'Subject']
 
-    function UpdateQuestionController($routeParams, MessageService, Question, RedirectService) {
+    function UpdateQuestionController($routeParams, MessageService, Question, RedirectService, Subject) {
         var vm = this;
-        vm.question = Question.get({id: $routeParams.id})
+        
+        Question.get({id: $routeParams.id}, function(data){
+            vm.question = data.question;
+            vm.subjectInput = [];
+            for(var i = 0; i < data.subjects.length; i++)
+                vm.subjectInput.push({text: data.subjects[i].name});
+        });
+
+        Subject.query({}, function(data){
+            vm.subjectsTags = [];
+            vm.subjects = data;
+            for(var i = 0; i < data.length; i++)
+                vm.subjectsTags.push(data[i].name);
+        });
+
+
         vm.updateQuestion = updateQuestion;
 
         function updateQuestion () {

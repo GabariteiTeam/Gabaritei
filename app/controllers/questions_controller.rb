@@ -11,7 +11,14 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.json
   def show
-    render :json => @question
+    subjects = []
+    
+    @question.subjects.each do |subject|
+      j_subject = {:id => subject.id, :name => subject.name}
+      subjects.append(j_subject)
+    end
+    
+    render :json => {:question => @question, :subjects => subjects}
   end
 
   # GET /questions/new
@@ -29,7 +36,6 @@ class QuestionsController < ApplicationController
   # POST /questions.json
   def create
     @question = Question.new(question_params)
-    
     params["subjects"].each do |id|
       subject = Subject.find(id)
       @question.subjects.push(subject)
