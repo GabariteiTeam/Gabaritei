@@ -11,9 +11,7 @@
 var APP_NAME = 'gabariteiApp';
 
 (function() {
-
     'use strict';
-
     angular
         .module(APP_NAME, [
             'ngResource',
@@ -21,7 +19,7 @@ var APP_NAME = 'gabariteiApp';
             'ngAnimate',
             'mgcrea.ngStrap',
             'ngFileUpload',
+            'ngTagsInput',
             'pascalprecht.translate'
         ]);
-
 })();

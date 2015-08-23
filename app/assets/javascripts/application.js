@@ -22,6 +22,7 @@
 //= require angular-translate/angular-translate
 //= require angular-translate-loader-static-files/angular-translate-loader-static-files
 //= require ng-file-upload/ng-file-upload
+//= require ng-tags-input/ng-tags-input
 //= require app/app
 //= require_tree ./app
 //= stub app/home/home.controllers.spec

@@ -33,7 +33,6 @@ describe('unit: MessagesController', function() {
     it('Should register an observer', function() {
         spyOn($MessageService, "addObserver");
         createController();
-        //expect($MessageService.addObserver).toHaveBeenCalledWith(scope.receiveMessage);
         expect($MessageService.addObserver).toHaveBeenCalledWith(ctrl.receiveMessage);
     });
 
@@ -44,8 +43,6 @@ describe('unit: MessagesController', function() {
         message.title = "Hello World!";
         message.content = "Hello Gabaritei!";
         message.type = "success";
-        // scope.receiveMessage(message);
-        // expect(scope.message).toEqual(message);
         ctrl.receiveMessage(message);
         expect(ctrl.message).toEqual(message);
     });
