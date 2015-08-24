@@ -67,7 +67,7 @@
     function UpdateQuestionController($routeParams, MessageService, Question, RedirectService, Subject) {
         var vm = this;
         
-        Question.get({id: $routeParams.id}, function(data){
+        vm.questionModel = Question.get({id: $routeParams.id}, function(data){
             vm.question = data.question;
             vm.subjectInput = [];
             for(var i = 0; i < data.subjects.length; i++)
@@ -84,7 +84,18 @@
         vm.updateQuestion = updateQuestion;
 
         function updateQuestion() {
-            vm.question.$update(function() {
+            vm.questionModel.question = vm.question
+
+            vm.question.subjects = [];
+            for(var i = 0; i < vm.subjectInput.length; i++)
+            {
+                var subjectName = vm.subjectInput[i].text;
+                for(var j = 0; j < vm.subjects.length; j++)
+                    if(vm.subjects[j].name == subjectName)
+                        vm.question.subjects.push(vm.subjects[j].id);
+            }
+
+            vm.questionModel.$update(function() {
                     MessageService.sendMessage("Updated!", "Question was updated with success!", "success");
                     RedirectService.redirect("/questions");
                 },
