@@ -39,6 +39,15 @@
 	</table>
 </div>
 
+<div class="row" ng-hide="!Ctrl.fileUpload.uploading">
+	<p>Uploading file:</p>
+	<div class="progress" style="height: 25px;">
+		<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="{{ Ctrl.fileUpload.progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ Ctrl.fileUpload.progress }}%">
+	    	<span class="sr-only">{{ Ctrl.fileUpload.progress }}% Complete</span>
+	  	</div>
+	  </div>
+</div>
+
 <div class="row">
 	<form novalidate ng-include="'templates/data_imports/_form.html'" ng-submit="Ctrl.uploadFile()"></form>
 </div>

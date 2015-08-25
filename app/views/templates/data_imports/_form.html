@@ -1,19 +1,19 @@
 <div class="form-group" ng-class="{'has-error': Ctrl.missingFile}">
 	<label for="inputCSVFile">Select file: </label>
-	<input type="file" ngf-select ng-model="Ctrl.data_import.file" class="form-control" id="inputCSVFile" onchange="angular.element(this).scope().$parent.Ctrl.fileNameChanged(this)"/>
+	<input type="file" ngf-select ng-model="Ctrl.data_import.file" class="form-control" id="inputCSVFile" onchange="angular.element(this).scope().$parent.Ctrl.fileNameChanged(this)" ng-disabled="Ctrl.fileUpload.uploading"/>
 </div>
 <div class="form-group form-inline" ng-hide="!Ctrl.csv_file">
 	<label for="inputCSVSep">CSV separator: </label>
-	<input type="text" ng-model="Ctrl.data_import.col_sep" class="form-control" id="inputCSVSep" />
+	<input type="text" ng-model="Ctrl.data_import.col_sep" class="form-control" id="inputCSVSep" ng-disabled="Ctrl.fileUpload.uploading"/>
 </div>
 <div class="form-group">
 	<label for="inputDataType">Select data type: </label>
-	<select ng-model="Ctrl.data_import.model" class="form-control" id="inputDataType" ng-options="index as model for (index, model) in Ctrl.models">
+	<select ng-model="Ctrl.data_import.model" class="form-control" id="inputDataType" ng-options="index as model for (index, model) in Ctrl.models" ng-disabled="Ctrl.fileUpload.uploading">
 	</select>
 </div>
 <div class="form-group" ng-hide="Ctrl.data_import.model != '0'">
 	<label for="inputUsersRole">Select users' role: </label>
-	<select ng-model="Ctrl.data_import.role" class="form-control" id="inputUsersRole" ng-options="role.id as role.name for role in Ctrl.user_roles">
+	<select ng-model="Ctrl.data_import.role" class="form-control" id="inputUsersRole" ng-options="role.id as role.name for role in Ctrl.user_roles" ng-disabled="Ctrl.fileUpload.uploading">
 	</select>
 </div>
 <input type="submit" class="btn btn-default" value="Upload file"/>

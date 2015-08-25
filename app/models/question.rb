@@ -39,19 +39,16 @@ class Question < ActiveRecord::Base
 	#Opcoes de tipo de Questao, funciona mais ou menos como um enum
 	STYLES = [
 		STYLE_WRITTEN = 'written', 
-		STYLE_MULTIPLE_CHOICE = 'multiple choice'
+		STYLE_CHOICE = 'choice'
 	]
 	
-	#Definicao de questao
-	HOT = false
-  
 	#Gosto desse tipo de metodos com interrogacao, acho que eles sao auto explicativos tambem
 	def multiple_choice?
 		(self.style == Question::STYLE_MULTIPLE_CHOICE)
 	end
 
 	def written?
-		return (self.style == Question::STYLE_TYPE_WRITTEN)
+		(self.style == Question::STYLE_TYPE_WRITTEN)
 	end
 	
 	#retorna se a questao e quente ou nao
