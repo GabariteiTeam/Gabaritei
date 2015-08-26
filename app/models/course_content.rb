@@ -1,3 +1,9 @@
+# == Description
+#
+# This is an auxiliary model of a join table between {Course} and {Content}. It establishes the "many-to-many" relationship between these models.
+# @see Course#contents
+# @see Content#courses
+#
 # == Schema Information
 #
 # Table name: course_contents

@@ -78,6 +78,7 @@ class Content < ActiveRecord::Base
 	# @!method courses
 	# 	List of all {Course courses} that have access to the content.
 	# 	@return [Array<Course>] all courses that have access to the content.
+	# 	@see Course#contents
 	has_many :courses, through: :course_contents
 
 	# @!endgroup

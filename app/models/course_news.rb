@@ -1,3 +1,6 @@
+# == Description
+#
+#
 # == Schema Information
 #
 # Table name: course_news
@@ -19,7 +22,31 @@
 
 class CourseNews < ActiveRecord::Base
 
+	# @!attribute title
+	# 	Title of the news.
+	# 	@return [String] the title of the news.
+	#  
+	# @!attribute text 
+	# 	Text of the news.
+	# 	@return [String] the text of the news.
+	#  
+	# @!attribute date 
+	# 	Publication date of the news.
+	# 	@return [DateTime] the date in which the news has been published.	
+
+	# @!group Belongs to
+
+	# @!method course
+	# 	The {Course course} to which the news is published.
+	# 	@return [Course] the course of publication of the news.
 	belongs_to :course
-	belongs_to :user
+	
+	# @!method owner
+	# 	The owner is the {User user} who published the news.
+	# 	@return [User] the user who published the news.
+	belongs_to :owner, class_name: "User"
+
+    # @!endgroup
+
 
 end

@@ -1,3 +1,6 @@
+# == Description
+#
+#
 # == Schema Information
 #
 # Table name: user_roles

@@ -1,3 +1,6 @@
+# == Description
+#
+#
 # == Schema Information
 #
 # Table name: data_imports
@@ -29,8 +32,51 @@ class DataImport < ActiveRecord::Base
 		FCT_ODS = "application/vnd.oasis.opendocument.spreadsheet"
 	]
 
-	belongs_to :role
+	# @!attribute model
+	# 	Determines what kind of the imported entities.
+	# 	 (model = 0) => Import of Users
+	# 	 (model = 1) => Import of Subjects and Fields
+	# 	 (model = 2) => Import of Courses
+	# 	@return [Integer] the integer value corresponding to the type of the imported entities.
+	#  
+	# @!attribute status  
+	# 	Describes in what state the import of data is.
+	# 	 (status = -1) => Not yet imported
+	# 	 (status =  0) => Currently being imported
+	# 	 (status =  1) => Successfully imported
+	# 	 (status >  1) => Error 
+	# 	@return [Integer] the integer value corresponding to the status of the import.
+	#
+	# @!attribute [r] progress
+	# 	Percentage of how many entities have been imported.
+	# 	@note This attribute should only be set by a background process which executes the data import. It can
+	# 		be used to display almost in real time the progress of the import.
+	# 	@return [Integer] the progress of the data import in percentage.
+	#
+	# @!attribute col_sep
+	# 	Character or string that is used as separator in case data is contained in a CSV file.
+	# 	@return [String] the CSV file separator.
+	#
+	# @!attribute data
+	# 	Uploaded file which contains the imported data.
+	# 	@return [File] the file which contains the imported data.
 	has_attached_file :data
+
+	# @!group Belongs to
+
+	# @!method role
+	# 	If the imported entities are {User users} ({DataImport#model model} = 0), this association indicates
+	# 	the {Role role} of the {User users} being imported. 
+	# 	@return [Role] the role of imported users.
+	belongs_to :role
+	
+	# @!endgroup
+
+	# @!group Validations
+
+	# @!method validates model, presence=true
+	# 	Validates the presence of the attribute {DataImport#model model}. 
+	# 	@return [Boolean] 
 	validates :model, presence: true
 	validates_attachment_presence :data
 	validates_attachment_content_type :data, 
@@ -38,6 +84,8 @@ class DataImport < ActiveRecord::Base
 					   DataImport::FCT_XLS, 
 					   DataImport::FCT_XLSX, 
 					   DataImport::FCT_ODS]
+
+	# @!endgroup
 
 	def import
 		if status == 0
