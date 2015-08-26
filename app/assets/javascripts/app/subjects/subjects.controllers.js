@@ -13,17 +13,19 @@
             '$route',
             'Subject',
             'MessageService',
-            'RedirectService'
+            'RedirectService',
+            'ModalService',
+            'Modal'
         ];
 
-    function SubjectsController($location, $routeParams, $route, Subject, MessageService, RedirectService) {
+    function SubjectsController($location, $routeParams, $route, Subject, MessageService, RedirectService, ModalService, Modal) {
         var vm = this;
         vm.createSubject = createSubject;
         vm.updateSubject = updateSubject;
         vm.deleteSubject = deleteSubject;
+        vm.c_delete = c_delete;
 
         vm.subjects = [];
-        vm.subjects = new Subject();
 
         if (!($routeParams.id === undefined)) {
             vm.subject = Subject.get({
@@ -61,6 +63,28 @@
         }
 
         function deleteSubject(id) {
+
+            Subject.validateDestroy({id: id}, function(data) {
+                if(data.model_bind) {
+                    var modal = new Modal();
+                    modal.title = 'Confirmation';
+                    modal.body = "Deleting this Subject will delete all questions associated with it. Want to continue?\n"
+                                  + "Questions related: " + data.count;
+                    modal.pack = id;
+                    modal.confirmCallback = c_delete;
+                    ModalService.alert(modal);
+                } else {
+                    var modal = new Modal();
+                    modal.title = "Confirmation";
+                    modal.body = "Are you sure you want to delete?";
+                    modal.confirmCallback = c_delete;
+                    modal.pack = id;
+                    ModalService.alert(modal);
+                }
+            });
+        }
+
+        function c_delete(id) {
             Subject.destroy({
                     id: id
                 }, function() {

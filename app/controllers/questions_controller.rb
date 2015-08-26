@@ -7,7 +7,6 @@ class QuestionsController < ApplicationController
     render json: Question.all
   end
 
-
   # GET /questions/1
   # GET /questions/1.json
   def show
@@ -33,7 +32,7 @@ class QuestionsController < ApplicationController
   # POST /questions
   # POST /questions.json
   def create
-    @question = Question.new(question_params["question"])
+    @question = Question.new(question_params)
     params["subjects"].each do |id|
       subject = Subject.find(id)
       @question.subjects.push(subject)
@@ -115,7 +114,6 @@ class QuestionsController < ApplicationController
     def set_subjects
       #Start from zero
       @question.subjects.clear
-      byebug
       params["question"]["subjects"].each do |subject|
         if Subject.find(subject)
           @question.subjects.append Subject.find(subject)

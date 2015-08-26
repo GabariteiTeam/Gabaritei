@@ -44,12 +44,13 @@
 
         function createQuestion() {
             vm.question.subjects = [];
-            for(var i = 0; i < vm.subjectInput.length; i++)
-            {
+            for(var i = 0; i < vm.subjectInput.length; i++) {
                 var subjectName = vm.subjectInput[i].text;
-                for(var j = 0; j < vm.subjects.length; j++)
-                    if(vm.subjects[j].name == subjectName)
+                for(var j = 0; j < vm.subjects.length; j++) {
+                    if(vm.subjects[j].name == subjectName){
                         vm.question.subjects.push(vm.subjects[j].id);
+                    }
+                }
             }
 
             vm.question.$save(function(){
@@ -100,9 +101,9 @@
                     RedirectService.redirect("/questions");
                 },
                 function() {
-                    MessageService.sendMessage("Fail!", "Question was NOT updated with success!", "success");
+                    MessageService.sendMessage("Fail!", "Question was NOT updated with success!", "error");
                     RedirectService.redirect("/questions");
-                });
+            });
         }
     }
 })();
