@@ -12,10 +12,7 @@
 
 class Media < ActiveRecord::Base
 
-	# References
 	belongs_to :owner, polymorphic: true
-
-	# Attachments
 	has_attached_file :data
 
 end

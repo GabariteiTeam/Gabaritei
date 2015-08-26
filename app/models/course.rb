@@ -17,10 +17,7 @@
 
 class Course < ActiveRecord::Base
   
-    # References
-    belongs_to :category, polymorphic: true
-
-    # Referenced by
+    belongs_to :category, polymorphic: true  
     has_many :course_contents
     has_many :course_news
     has_many :course_questions

@@ -20,10 +20,10 @@
 
 class User < ActiveRecord::Base
 
-    # References
+    
     belongs_to :role
 
-    # Referenced by
+    
     has_many :contents
     has_many :course_news
     has_many :course_registration_requests

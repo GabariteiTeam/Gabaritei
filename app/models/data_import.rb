@@ -29,11 +29,8 @@ class DataImport < ActiveRecord::Base
 		FCT_ODS = "application/vnd.oasis.opendocument.spreadsheet"
 	]
 
-	# References
 	belongs_to :role
-
 	has_attached_file :data
-
 	validates :model, presence: true
 	validates_attachment_presence :data
 	validates_attachment_content_type :data, 

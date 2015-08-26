@@ -11,7 +11,7 @@
 
 class Subject < ActiveRecord::Base
 
-	# Referenced by
+	
 	has_many :fields
 	has_many :direct_courses, class_name: "Course", as: :category
 	has_many :indirect_courses, class_name: "Course", through: :fields, source: :courses

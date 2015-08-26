@@ -17,11 +17,11 @@
 
 class Response < ActiveRecord::Base
   
-	# References
+	
 	belongs_to :question
 	belongs_to :user
 
-	# Referenced by
+	
 	has_one :test_response
 	has_many :response_choices
 	

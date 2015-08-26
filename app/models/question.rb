@@ -20,10 +20,7 @@
 
 class Question < ActiveRecord::Base
 
-	# References
 	belongs_to :user
-
-	# Referenced by
 	has_many :course_questions
 	has_many :question_categories
 	has_many :subjects, through: :question_categories, source: :category, source_type: "Subject"
