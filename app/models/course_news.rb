@@ -1,12 +1,9 @@
-# == Description
-#
-#
 # == Schema Information
 #
 # Table name: course_news
 #
 #  id         :integer          not null, primary key
-#  user_id    :integer
+#  owner_id   :integer
 #  course_id  :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -17,9 +14,12 @@
 # Indexes
 #
 #  index_course_news_on_course_id  (course_id)
-#  index_course_news_on_user_id    (user_id)
+#  index_course_news_on_owner_id   (owner_id)
 #
 
+# == Description
+#
+#
 class CourseNews < ActiveRecord::Base
 
 	# @!attribute title
@@ -36,14 +36,12 @@ class CourseNews < ActiveRecord::Base
 
 	# @!group Belongs to
 
-	# @!method course
-	# 	The {Course course} to which the news is published.
-	# 	@return [Course] the course of publication of the news.
+	# The {Course course} to which the news is published.
+	# @return [Course] the course of publication of the news.
 	belongs_to :course
 	
-	# @!method owner
-	# 	The owner is the {User user} who published the news.
-	# 	@return [User] the user who published the news.
+	# The owner is the {User user} who published the news.
+	# @return [User] the user who published the news.
 	belongs_to :owner, class_name: "User"
 
     # @!endgroup

@@ -1,5 +1,6 @@
-# == Description
-#
+# This is an auxiliary model of a join table between {User} and {Course}. It establishes the "many-to-many" relationship between these models.
+# @see User#courses
+# @see Course#users
 #
 # == Schema Information
 #
@@ -18,7 +19,6 @@
 
 class UserCourse < ActiveRecord::Base
 
-	
   	belongs_to :course
   	belongs_to :user
   	

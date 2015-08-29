@@ -1,5 +1,6 @@
-# == Description
-#
+# This is an auxiliary model of a join table between {Test} and {Question}. It establishes the "many-to-many" relationship between these models.
+# @see Test#questions
+# @see Question#tests
 #
 # == Schema Information
 #
@@ -19,7 +20,10 @@
 
 class TestQuestion < ActiveRecord::Base
 
-	
+	# @!attribute max_score
+	# 	The max score of the question in the test.
+	# 	@return [Float] the max score of the question in the test.
+
   	belongs_to :question
   	belongs_to :test
   

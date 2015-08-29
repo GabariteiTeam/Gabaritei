@@ -1,6 +1,3 @@
-# == Description
-#
-#
 # == Schema Information
 #
 # Table name: fields
@@ -19,11 +16,45 @@
 
 class Field < ActiveRecord::Base
 
+	# @!attribute name
+	# 	Name of the field.
+	# 	@return [String] the name of the field.
+	#  
+	# @!attribute description  
+	# 	Description of the field.
+	# 	@return [String] the description of the field.
+
+	# @!group Belongs to
+
+	# Subject to which the field belongs to.
+	# @return [Role] the subject to which the field belongs to.
 	belongs_to :subject
+
+	# @!endgroup
+
+	# @!group Has many
+
+    # List of all {Content contents} associated to the field.
+    # @return [Array<Content>] all contents of the field.
+    # @see Content#category
 	has_many :contents, as: :category
+  
+    # List of all {Course courses} associated to the field.
+    # @return [Array<Course>] all courses of the field.
+    # @see Course#category	
 	has_many :courses, as: :category
-	has_many :question_categories, as: :category
+
+	# List of all {Question questions} associated to the field.
+	# @return [Array<Question>] all questions of the field.
 	has_many :questions, through: :question_categories
-	has_many :user_deficit_categories, as: :category
-	
+
+	# List of all {User users} who have difficulties in the field.
+	# @return [Array<User>] all users with difficulties in the field.
+	has_many :users_in_difficulty, through: :category, source: :user
+
+	# @!endgroup
+
+	has_many :question_categories, as: :category
+	has_many :category_difficulties, as: :category
+
 end

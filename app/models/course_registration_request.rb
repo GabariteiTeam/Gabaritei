@@ -1,12 +1,9 @@
-# == Description
-#
-#
 # == Schema Information
 #
 # Table name: course_registration_requests
 #
 #  id            :integer          not null, primary key
-#  user_id       :integer
+#  requirer_id   :integer
 #  course_id     :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
@@ -17,10 +14,13 @@
 #
 # Indexes
 #
-#  index_course_registration_requests_on_course_id  (course_id)
-#  index_course_registration_requests_on_user_id    (user_id)
+#  index_course_registration_requests_on_course_id    (course_id)
+#  index_course_registration_requests_on_requirer_id  (requirer_id)
 #
 
+# == Description
+#
+#
 class CourseRegistrationRequest < ActiveRecord::Base
 
 	# @!attribute text
@@ -41,14 +41,12 @@ class CourseRegistrationRequest < ActiveRecord::Base
 
 	# @!group Belongs to
 
-	# @!method course
-	# 	The {Course course} to which the {CourseRegistrationRequest#requirer requirer} requests their registration.
-	# 	@return [Course] the target course of the request.
+	# The {Course course} to which the {CourseRegistrationRequest#requirer requirer} requests their registration.
+	# @return [Course] the target course of the request.
 	belongs_to :course
 	
-	# @!method requirer
-	# 	The requirer is the {User user} who requests their registration to the {CourseRegistrationRequest#course course}.
-	# 	@return [User] the requirer of the request.
+	# The requirer is the {User user} who requests their registration to the {CourseRegistrationRequest#course course}.
+	# @return [User] the requirer of the request.
 	belongs_to :requirer, class_name: "User"
 
     # @!endgroup

@@ -1,6 +1,3 @@
-# == Description
-#
-#
 # == Schema Information
 #
 # Table name: recommendations
@@ -19,12 +16,23 @@
 #  index_recommendations_on_user_destination_id            (user_destination_id)
 #  index_recommendations_on_user_source_id                 (user_source_id)
 #
-
 class Recommendation < ActiveRecord::Base
 
+	# @!group Belongs to
 	
+	# The resource is the {Question question} or {Content content} that is being recommended.
+	# @return [Question, Content] the recommended question or content.
 	belongs_to :resource, polymorphic: true
+
+	# The target {User user} of the recommendation.
+	# @return [User] the target user of the recommendation.
 	belongs_to :user_destination, class_name: "User"
+	
+	# The source {User user} of the recommendation.
+	# @return [User] the source user of the recommendation.
 	belongs_to :user_source, class_name: "User"
+
+	# @!endgroup
+
 	
 end

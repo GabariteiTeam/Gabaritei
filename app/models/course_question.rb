@@ -1,5 +1,3 @@
-# == Description
-#
 # This is an auxiliary model of a join table between {Course} and {Question}. It establishes the "many-to-many" relationship between these models.
 # @see Course#questions
 # @see Question#courses

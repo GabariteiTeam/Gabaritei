@@ -6,7 +6,6 @@ class AddModelFields < ActiveRecord::Migration
     add_column :registration_requests, :first_name, :string
     add_column :registration_requests, :last_name, :string
     add_column :registration_requests, :email, :string
-    add_column :registration_requests, :password, :string
     add_column :registration_requests, :birthdate, :datetime
     add_column :registration_requests, :text, :text
     add_column :registration_requests, :response_date, :datetime

@@ -1,6 +1,3 @@
-# == Description
-#
-#
 # == Schema Information
 #
 # Table name: data_imports
@@ -23,13 +20,17 @@
 #  index_data_imports_on_role_id  (role_id)
 #
 
+# == Description
+#
+#
 class DataImport < ActiveRecord::Base
 
+	# These are the allowed file formats (content-types) for the data import.
 	FILE_CONTENT_TYPE = [
-		FCT_CSV = "text/csv",
-		FCT_XLS = "application/vnd.ms-excel",
-		FCT_XLSX = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-		FCT_ODS = "application/vnd.oasis.opendocument.spreadsheet"
+		FCT_CSV = "text/csv", # CSV file
+		FCT_XLS = "application/vnd.ms-excel", # MS Excel 97-2004 (XLS)
+		FCT_XLSX = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", # MS Excel (XLSX)
+		FCT_ODS = "application/vnd.oasis.opendocument.spreadsheet" # OpenOffice Spreadsheet (ODS)
 	]
 
 	# @!attribute model
@@ -64,26 +65,32 @@ class DataImport < ActiveRecord::Base
 
 	# @!group Belongs to
 
-	# @!method role
-	# 	If the imported entities are {User users} ({DataImport#model model} = 0), this association indicates
-	# 	the {Role role} of the {User users} being imported. 
-	# 	@return [Role] the role of imported users.
+	# If the imported entities are {User users} ({DataImport#model model} = 0), this association indicates
+	# the {Role role} of the {User users} being imported. 
+	# @return [Role] the role of imported users.
 	belongs_to :role
 	
 	# @!endgroup
 
 	# @!group Validations
 
-	# @!method validates model, presence=true
-	# 	Validates the presence of the attribute {DataImport#model model}. 
-	# 	@return [Boolean] 
+	# Validates the presence of the attribute {DataImport#model model}. If the attribute is absent, the object cannot be saved.
+	# @return [Boolean] "true" if the attribute is present, "false" otherwise.
 	validates :model, presence: true
+
+	# Validates the presence of the file attachment {DataImport#data data}. If the attachment is absent, the object cannot be saved.
+	# @return [Boolean] "true" if the attachment is present, "false" otherwise.
 	validates_attachment_presence :data
-	validates_attachment_content_type :data, 
-		content_type: [DataImport::FCT_CSV, 
-					   DataImport::FCT_XLS, 
-					   DataImport::FCT_XLSX, 
-					   DataImport::FCT_ODS]
+
+	# Validates the content type of the file attachment {DataImport#data data}. If the file's content type is not among the specified ones, 
+	# the object cannot be saved.
+	# Allowed content types:
+	#  DataImport::FCT_CSV  = "text/csv"
+	#  DataImport::FCT_XLS  = "application/vnd.ms-excel"
+	#  DataImport::FCT_XLSX = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+	#  DataImport::FCT_ODS  = "application/vnd.oasis.opendocument.spreadsheet"
+	# @return [Boolean] "true" if the file has an allowed content type, "false" otherwise.
+	validates_attachment_content_type :data, content_type: [DataImport::FCT_CSV, DataImport::FCT_XLS, DataImport::FCT_XLSX, DataImport::FCT_ODS]
 
 	# @!endgroup
 
