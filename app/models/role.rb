@@ -1,3 +1,6 @@
+# A role is an aggregation of {Permission permissions} which determine the actions a
+# {User user} who has the role can execute.
+#
 # == Schema Information
 #
 # Table name: roles
@@ -8,6 +11,7 @@
 #  name        :string(255)
 #  description :text
 #
+
 class Role < ActiveRecord::Base
   
 	# @!attribute name
@@ -22,10 +26,12 @@ class Role < ActiveRecord::Base
 
 	# All {Permission permissions} that the role has.
 	# @return [Array<Permissions>] a list of all permissions of the role.
+	# @Permission#roles
 	has_many :permissions, through: :role_permissions
 
 	# All {User users} who have the role.
 	# @return [Array<Role>] a list of all users who have the role.
+	# @see User#role
 	has_many :users
 
 	# @!endgroup

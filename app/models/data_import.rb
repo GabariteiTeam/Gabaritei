@@ -1,3 +1,7 @@
+# Data imports are objects that allow data to be parsed and extracted from files. Each data import has a unique file,
+# and they import a specific type of data. When importing {User users}, data imports must be associated with a {Role role},
+# which indicates the {Role role} of the {User users} who are being imported.
+#
 # == Schema Information
 #
 # Table name: data_imports
@@ -20,9 +24,6 @@
 #  index_data_imports_on_role_id  (role_id)
 #
 
-# == Description
-#
-#
 class DataImport < ActiveRecord::Base
 
 	# These are the allowed file formats (content-types) for the data import.
@@ -94,6 +95,10 @@ class DataImport < ActiveRecord::Base
 
 	# @!endgroup
 
+	# @!group Import
+
+	# Imports the data of the data import if it has not been imported yet.
+	# @return [void]
 	def import
 		if status == 0
 			load_dataset
@@ -105,6 +110,9 @@ class DataImport < ActiveRecord::Base
 		end
   	end
 
+  	private
+	# Parses the dataset looking for users and saving them.
+	# @return [void]
   	def import_users
   		imported_rows = 0
 		total_rows = row_count
@@ -120,6 +128,8 @@ class DataImport < ActiveRecord::Base
 		end
   	end
 
+	# Parses the dataset looking for subjects and fields and saving them.
+	# @return [void]
   	def import_subjects_and_fields
   		imported_rows = 0
 		total_rows = row_count
@@ -142,6 +152,8 @@ class DataImport < ActiveRecord::Base
 		end
   	end
 
+	# Parses the dataset looking for courses and saving them.
+	# @return [void]
   	def import_courses
   		imported_columns = 0
   		total_columns = @dataset.last_column
@@ -165,7 +177,10 @@ class DataImport < ActiveRecord::Base
 		end
   	end
 
+	# Loads the dataset from the file according to its content-type.
+	# @return [void]
   	def load_dataset
+  		file_name = "public" + data.url.split("?")[0]
   		case data_content_type
   		when FCT_CSV
   			@dataset = Roo::CSV.new(file_name, csv_options: {col_sep: col_sep})
@@ -178,27 +193,41 @@ class DataImport < ActiveRecord::Base
   		end
   	end
 
-	def data_url
-		data.url
-	end
-
-	def file_name
-		"public" + data_url.split("?")[0]
-	end
-
-	def row_count
-		@dataset.last_row
-	end
-
-	def role_name
-		role != nil ? role.name : nil
-	end
-
-	def update_progress(imported_rows, total_rows)
+  	# Updates the progress of the data import by calculating the percentage of imported rows.
+  	# @param [Integer] imported_rows Number of rows that have been imported.
+  	# @param [Integer] total_rows Total number of rows to be imported
+  	# @return [void]
+  	def update_progress(imported_rows, total_rows)
 		self.progress = (100 * imported_rows) / total_rows
 		self.save!
 	end
 
+	# Retrieves how many rows there are in the dataset, once it is loaded.
+	# @return [Integer] the number of rows in the dataset.
+	def row_count
+		@dataset.last_row
+	end
+
+  	# @!endgroup
+
+	# @!group Auxiliary data format methods
+
+	public
+
+	# Returns the data file URL.
+	# @return [String] the data file URL.
+	def data_url
+		data.url
+	end
+
+	# If the data import is associated with a {DataImport#role role}, returns the role name.
+	# @return [String] the role name.
+	def role_name
+		role != nil ? role.name : nil
+	end
+
+	# Returns a description of the {DataImport#status status}.
+	# @return [String] the description of the status.
 	def status_text
 		case status
 		when -1 then "Not yet imported"
@@ -208,8 +237,12 @@ class DataImport < ActiveRecord::Base
 		end
 	end
 
+	# Returns a formatted string of the date in which the file has been uploaded.
+	# @return [String] the formatted string of the file upload date.
 	def update_date_text
 		data_updated_at.strftime("%d/%m/%Y %H:%M:%S")
 	end
+
+	# @!endgroup
 
 end

@@ -1,3 +1,7 @@
+# A subject describe the nature of several entities, like {Course courses}, {Content contents},
+# {Question questions} and {Test tests}. A subject can be divided in several {Field fields}.
+# {User Users} can also declare they have difficulties in a subject.
+#
 # == Schema Information
 #
 # Table name: subjects

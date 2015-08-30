@@ -1,3 +1,5 @@
+# A user is a person who uses the system.
+#
 # == Schema Information
 #
 # Table name: users
@@ -53,6 +55,7 @@ class User < ActiveRecord::Base
     
     # The role the user has.
     # @return [Role] the role of the user.
+    # @see Role#users
     belongs_to :role
 
     # @!endgroup
@@ -61,43 +64,52 @@ class User < ActiveRecord::Base
     
     # All {Content contents} created by the user.
     # @return [Array<Content>] a list of all contents created by the user.
-    # @see Content#user
+    # @see Content#owner
     has_many :contents
 
     # All {CourseNews news} created by the user.
     # @return [Array<CourseNews>] a list of all news created by the user.
+    # @see CourseNews#owner
     has_many :course_news
 
     # All {CourseRegistrationRequest requests} created by the user.
-    # @return [Array<CourseRegistrationRequest>] a list of all requests created by the user.  
+    # @return [Array<CourseRegistrationRequest>] a list of all requests created by the user.
+    # @see CourseRegistrationRequest#requirer
     has_many :course_registration_requests
 
     # All {Question questions} created by the user.
     # @return [Array<Question>] a list of all questions created by the user.
+    # @see Question#owner
     has_many :questions
 
     # All {Rating ratings} created by the user.
     # @return [Array<Rating>] a list of all ratings created by the user.
+    # @see Rating#owner
     has_many :ratings
 
     # All {Recommendation recommendations} given by the user.
     # @return [Array<Recommendation>] a list of all recommendations given by the user.
+    # @see Recommendation#user_source
     has_many :sent_recommendations, class_name: "Recommendation", foreign_key: "user_source_id"
 
     # All {Recommendation news} received by the user.
     # @return [Array<Recommendation>] a list of all recommendations received by the user.
+    # @see Recommendation#user_destination
     has_many :received_recommendations, class_name: "Recommendation", foreign_key: "user_destination_id"
 
     # All {Response responses} created by the user.
     # @return [Array<Response>] a list of all responses created by the user.
+    # @see Response#owner
     has_many :responses
 
     # All {Test tests} created by the user.
     # @return [Array<Test>] a list of all tests created by the user.
+    # @see Test#owner
     has_many :tests
 
     # All {Course courses} in which the user takes part.
     # @return [Array<Course>] a list of all courses in which the user takes part.
+    # @see Course#users
     has_many :courses, through: :user_courses
 
     # All {Subject subjects} in which the user has difficulties.
@@ -115,6 +127,10 @@ class User < ActiveRecord::Base
     has_many :user_courses
     has_many :category_difficulties
   
+    # Imports a new user.
+    # @param [Hash] user_data Hash containing the user information.
+    # @param [Role] user_role Role of the user.
+    # @return [void]
     def self.import_user(user_data, user_role)
 
         # create new user object

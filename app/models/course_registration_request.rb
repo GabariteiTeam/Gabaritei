@@ -1,3 +1,5 @@
+# A course registration request is a request a {User user} can create when they want to be registered in a {Course course}.
+#
 # == Schema Information
 #
 # Table name: course_registration_requests
@@ -18,9 +20,6 @@
 #  index_course_registration_requests_on_requirer_id  (requirer_id)
 #
 
-# == Description
-#
-#
 class CourseRegistrationRequest < ActiveRecord::Base
 
 	# @!attribute text
@@ -43,10 +42,12 @@ class CourseRegistrationRequest < ActiveRecord::Base
 
 	# The {Course course} to which the {CourseRegistrationRequest#requirer requirer} requests their registration.
 	# @return [Course] the target course of the request.
+	# @see Course#course_registration_requests
 	belongs_to :course
 	
 	# The requirer is the {User user} who requests their registration to the {CourseRegistrationRequest#course course}.
 	# @return [User] the requirer of the request.
+	# @see User#course_registration_requests
 	belongs_to :requirer, class_name: "User"
 
     # @!endgroup

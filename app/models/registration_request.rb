@@ -1,3 +1,6 @@
+# A person can request their registration in the system via a registration request. The data
+# this object stores can then be used to create a new {User user}.
+#
 # == Schema Information
 #
 # Table name: registration_requests
@@ -14,6 +17,7 @@
 #  response      :text
 #  accepted      :boolean
 #
+
 class RegistrationRequest < ActiveRecord::Base
 
 	# @!attribute first_name

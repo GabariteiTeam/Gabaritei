@@ -48,6 +48,7 @@ class Content < ActiveRecord::Base
 	
 	# The owner is the {User user} who created the content.
 	# @return [User] user who created the content.
+	# @see User#contents
 	belongs_to :owner, class_name: "User"
 
 	# The category is the {Subject subject} or {Field field} to which the content belongs.
@@ -62,6 +63,7 @@ class Content < ActiveRecord::Base
 
 	# The {Media media} keeps a file or a reference to an online resource.
 	# @return [Media] media object containing a file or a reference to an online resource.
+	# @see Media#owner
 	has_one :media, as: :owner
 
 	# @!endgroup
@@ -70,6 +72,7 @@ class Content < ActiveRecord::Base
 
 	# List of all {Recommendation recommendations} of the content.
 	# @return [Array<Recommendation>] all recommendations of the content.
+	# @see Recommendation#resource
 	has_many :recommendations, as: :resource
 
 	# List of all {Course courses} that have access to the content.

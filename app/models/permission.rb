@@ -1,3 +1,6 @@
+# A permission is an object which determines if a {User user} with a certain {Role role}
+# is allowed to executed and determined action.
+#
 # == Schema Information
 #
 # Table name: permissions
@@ -7,10 +10,7 @@
 #  updated_at :datetime         not null
 #  name       :string(255)
 #
-#
-# == Description
-#
-#
+
 class Permission < ActiveRecord::Base
 
 	# @!attribute name

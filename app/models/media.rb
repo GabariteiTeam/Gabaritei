@@ -1,3 +1,6 @@
+# A media is an object which keeps a file or a reference to an online resource. It can be integrated and rendered
+# in several different ways, depending on the context.
+#
 # == Schema Information
 #
 # Table name: medias
@@ -36,6 +39,8 @@ class Media < ActiveRecord::Base
 
 	# The owner is the entity that possesses the media. Any entity can possess media objects, as long as they reference this model as "owner".
 	# @return The object which possesses the media object.
+	# @see Content#media
+	# @see Question#medias
 	belongs_to :owner, polymorphic: true
 
 	# @!endgroup

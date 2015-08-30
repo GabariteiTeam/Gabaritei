@@ -1,3 +1,8 @@
+# A question can be used in a {Test test}, or just be available as an exercise in a {Course course}.
+# It must belong to a category ({Subject subject} or {Field field}). It can contain {Media mediae}.
+# It can be {Recommendation recommended}, {Rating rated} and {Response answered} by users.
+# If its style is "multiple choice", it contains {QuestionChoice choices} as well.
+#
 # == Schema Information
 #
 # Table name: questions
@@ -17,6 +22,7 @@
 #
 #  index_questions_on_owner_id  (owner_id)
 #
+
 class Question < ActiveRecord::Base
 
 	# These are the available questions styles.
@@ -54,6 +60,7 @@ class Question < ActiveRecord::Base
 	
 	# The owner is the {User user} who created the question.
 	# @return [User] user who created the question.
+	# @see User#questions
 	belongs_to :owner, class_name: "User"
 	
 	# @!endgroup
@@ -62,6 +69,7 @@ class Question < ActiveRecord::Base
 
 	# All {Course courses} that have access to the question.
 	# @return [Array<Course>] a list of all courses that have access to the question.
+	# @see Course#questions
 	has_many :courses, through: :course_questions
 	
 	# All {Subject subjects} to which the question belongs.
@@ -76,29 +84,37 @@ class Question < ActiveRecord::Base
 	
 	# All {QuestionChoice choices} of the question in case of a multiple choice question.
 	# @return [Array<QuestionChoice>] a list containing all the question choices.
+	# @see QuestionChoice#question
 	has_many :question_choices
 
 	# All {Media media} objects possessed by the question.
 	# @return [Array<Media>] a list of all media objects of the question.
+	# @see Media#owner
 	has_many :medias, as: :owner
 
 	# All {Rating ratings} of the question.
 	# @return [Array<Rating>] a list of all ratings of the question.
+	# @see Rating#question
 	has_many :ratings
 
 	# All {Recommendation recommendations} of the question.
 	# @return [Array<Recommendation>] a list of all recommendations of the question.
+	# @see Recommendation#resource
 	has_many :recommendations, as: :resource
 
 	# All {Response responses} to the question.
 	# @return [Array<Response>] a list of all responses to the question.
+	# @see Response#question
 	has_many :responses											
 	
 	# All {Test tests} containing the question.
 	# @return [Array<Test>] a list of all tests containing the question.
+	# @see Test#questions
 	has_many :tests, through: :test_questions
 
 	# All {Subject subjects} and {Field fields} to which the question belongs.
+	# @note This method cannot be used to modify the categories to which the question belongs.
+	#  The {Question#subjects subjects} and {Question#fields fields} methods should be used instead.
 	# @return [Array<Subject, Field>] a list of all subjects and fields to which the question belongs.
 	def categories
 		subjects + fields

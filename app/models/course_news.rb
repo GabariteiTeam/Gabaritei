@@ -1,3 +1,5 @@
+# A course news is an announcement that a {User user} can create and broadcast to all participants of a {Course course}.
+#
 # == Schema Information
 #
 # Table name: course_news
@@ -17,9 +19,6 @@
 #  index_course_news_on_owner_id   (owner_id)
 #
 
-# == Description
-#
-#
 class CourseNews < ActiveRecord::Base
 
 	# @!attribute title
@@ -38,10 +37,12 @@ class CourseNews < ActiveRecord::Base
 
 	# The {Course course} to which the news is published.
 	# @return [Course] the course of publication of the news.
+	# @see Course#course_news
 	belongs_to :course
 	
 	# The owner is the {User user} who published the news.
 	# @return [User] the user who published the news.
+	# @see User#course_news
 	belongs_to :owner, class_name: "User"
 
     # @!endgroup

@@ -1,3 +1,9 @@
+# This is an auxiliary model of a join table between {User} and a category ({Subject} or {Field}). It establishes the "many-to-many" relationship between these models.
+# @see User#difficult_subjects
+# @see User#difficult_fields
+# @see Subject#users_in_difficulty
+# @see Field#users_in_difficulty
+#
 # == Schema Information
 #
 # Table name: category_difficulties

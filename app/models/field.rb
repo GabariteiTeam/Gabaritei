@@ -1,3 +1,7 @@
+# A field is a sub-division of a {Subject}. {Course Courses}, {Content contents} and {Question questions}
+# can be related to a specific field instead of a general {Subject subject}. "Geometry", for example, would be a 
+# field of the subject "Math".
+#
 # == Schema Information
 #
 # Table name: fields
@@ -28,6 +32,7 @@ class Field < ActiveRecord::Base
 
 	# Subject to which the field belongs to.
 	# @return [Role] the subject to which the field belongs to.
+	# @see Subject#fields
 	belongs_to :subject
 
 	# @!endgroup
@@ -46,10 +51,12 @@ class Field < ActiveRecord::Base
 
 	# List of all {Question questions} associated to the field.
 	# @return [Array<Question>] all questions of the field.
+	# @see Question#fields
 	has_many :questions, through: :question_categories
 
 	# List of all {User users} who have difficulties in the field.
 	# @return [Array<User>] all users with difficulties in the field.
+	# @see User#difficult_fields
 	has_many :users_in_difficulty, through: :category, source: :user
 
 	# @!endgroup

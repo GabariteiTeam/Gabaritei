@@ -1,3 +1,7 @@
+# If a {Question question} is a "multiple choice" question, it has to have question choice objects
+# that represent each of the choices. The {Response responses} from {User users} to this kind of {Question question} are also associated to
+# the question choices, indicating the choices a {User user} chose when answering a {Question question}.
+#
 # == Schema Information
 #
 # Table name: question_choices
@@ -13,6 +17,7 @@
 #
 #  index_question_choices_on_question_id  (question_id)
 #
+
 class QuestionChoice < ActiveRecord::Base
 
 	# @!attribute text
@@ -27,6 +32,7 @@ class QuestionChoice < ActiveRecord::Base
 	
 	# The question to which the question choice belongs.
 	# @return [Question] the question of the question choice.
+	# @see Question@question_choices
 	belongs_to :question
 	
 	# @!endgroup
@@ -34,7 +40,8 @@ class QuestionChoice < ActiveRecord::Base
 	# @!group Has many
 
 	# All responses associated to the question choice.
-	# @return [Array<Response>] a list of all response associated to the question choice.
+	# @return [Array<Response>] a list of all responses associated to the question choice.
+	# @see Response#question_choices
 	has_many :responses, through: :response_choices
 
 	# @!endgroup

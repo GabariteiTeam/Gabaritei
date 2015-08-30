@@ -1,3 +1,8 @@
+# A response is the answer of a {User user} to a {Question question}. If the {Question question} is answered
+# in the context of a {Test test}, then the response object is associated to the {Test test} object, so
+# that it can be distinguished from an answer to the same {Question question} as an exercise. If the {Question question}
+# has a "multiple choice" style, the chosen {QuestionChoice choices} are associated to the response as well. 
+#
 # == Schema Information
 #
 # Table name: responses
@@ -14,6 +19,7 @@
 #  index_responses_on_owner_id     (owner_id)
 #  index_responses_on_question_id  (question_id)
 #
+
 class Response < ActiveRecord::Base
 
 	# @!attribute text
@@ -24,10 +30,12 @@ class Response < ActiveRecord::Base
 	
 	# {Question} to which the response refers.
 	# @return [Question] the question to which the response refers.
+	# @see Question#responses
 	belongs_to :question
 
 	# The {User user} who wrote the response.
 	# @return [User] the user who wrote the response.
+	# User#responses
 	belongs_to :owner, class_name: "User"
 
 	# @!endgroup
@@ -37,6 +45,7 @@ class Response < ActiveRecord::Base
 	# The test to which the response belongs. This method
 	# is only used if the response is produced during a test.
 	# @return [Test] the test to which the response belongs.
+	# @see Test#responses
 	has_one :test, through: :test_response
 
 	# @!endgroup
@@ -47,6 +56,7 @@ class Response < ActiveRecord::Base
 	# method is only valid if the {Response#question question} has
 	# a multiple choice style.
 	# @return [Array<QuestionChoice>] a list of all question choices of the response.
+	# @see QuestionChoice#responses
 	has_many :question_choices
 
 	# @!endgroup

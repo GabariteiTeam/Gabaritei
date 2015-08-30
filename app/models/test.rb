@@ -1,3 +1,6 @@
+# A test is an aggregation of {Question questions}. It can be evaluated
+# and provide results to its participants in a {Course course}.
+#
 # == Schema Information
 #
 # Table name: tests
@@ -30,10 +33,12 @@ class Test < ActiveRecord::Base
 
 	# The {Course course} to which the test belongs.
 	# @return [Course] the course to which the test belongs.
+	# @see Course#tests
 	belongs_to :course
 
 	# The owner is the {User user} who created the test.
 	# @return [User] user who created the test.
+	# @see User#tests
  	belongs_to :owner, class_name: "User"
 
  	# @!endgroup
@@ -42,10 +47,12 @@ class Test < ActiveRecord::Base
 
     # List of all {Question questions} of the test.
     # @return [Array<Question>] all questions of the test.
+    # @see Question#tests
   	has_many :questions, through: :test_questions
 
   	# List of all {Response responses} of the test's questions.
     # @return [Array<Response>] all responses of the test's question.
+    # @see Response#test
   	has_many :responses, through: :test_responses
 
   	# @!endgroup

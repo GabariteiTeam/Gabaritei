@@ -1,3 +1,5 @@
+# A rating is a integer value which represents the level of complexity of a {Question question} felt by a {User user}. 
+#
 # == Schema Information
 #
 # Table name: ratings
@@ -13,6 +15,7 @@
 #  index_ratings_on_owner_id     (owner_id)
 #  index_ratings_on_question_id  (question_id)
 #
+
 class Rating < ActiveRecord::Base
 
 	# @!attribute value
@@ -23,10 +26,12 @@ class Rating < ActiveRecord::Base
 
 	# The rated {Question question}.
 	# @return [Question] the rated question.
+	# @see Question#rating
 	belongs_to :question
 
 	# The {User user} who gives the rating.
 	# @return [User] the owner of the rating.
+	# @see User#ratings
 	belongs_to :owner, class_name: "User"
 
 	# @!endgroup
