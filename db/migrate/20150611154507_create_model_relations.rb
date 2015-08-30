@@ -132,7 +132,7 @@ class CreateModelRelations < ActiveRecord::Migration
       t.timestamps null: false
     end
     
-    create_table :user_courses, id: false do |t|
+    create_table :user_courses do |t|
       t.belongs_to :user, index: true, required: true
       t.belongs_to :course, index: true, required: true
       t.timestamps null: false

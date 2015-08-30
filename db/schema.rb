@@ -104,7 +104,6 @@ ActiveRecord::Schema.define(version: 20150720123715) do
     t.datetime "updated_at",                     null: false
     t.integer  "model"
     t.integer  "status",            default: -1
-    t.integer  "progress",          default: 0
     t.string   "col_sep"
     t.string   "data_file_name"
     t.string   "data_content_type"
@@ -222,7 +221,6 @@ ActiveRecord::Schema.define(version: 20150720123715) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
-    t.string   "password"
     t.datetime "birthdate"
     t.text     "text"
     t.datetime "response_date"
@@ -309,7 +307,7 @@ ActiveRecord::Schema.define(version: 20150720123715) do
   add_index "tests", ["course_id"], name: "index_tests_on_course_id"
   add_index "tests", ["owner_id"], name: "index_tests_on_owner_id"
 
-  create_table "user_courses", id: false, force: true do |t|
+  create_table "user_courses", force: true do |t|
     t.integer  "user_id"
     t.integer  "course_id"
     t.datetime "created_at", null: false

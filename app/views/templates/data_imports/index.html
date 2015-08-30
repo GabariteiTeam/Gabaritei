@@ -24,11 +24,6 @@
 				<td>{{ data_import.update_date_text }}</td>
 				<td>
 					<span style="{{ data_import.status == 2 ? 'color: red' : ''}}">{{ data_import.status_text }}</span>
-					<div ng-hide="{{ data_import.status != 0 }}" class="progress" style="margin-top: 5px">
-						<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="{{ data_import.progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ data_import.progress }}%">
-    						<span class="sr-only">{{ data_import.progress }}% Complete</span>
-  						</div>
-					</div>
 				</td>
 				<td>
 					<button type="button" class="btn btn-xs btn-primary" ng-disabled="{{ data_import.status != -1 }}" ng-click="Ctrl.importData(data_import.id)">Import data</button>

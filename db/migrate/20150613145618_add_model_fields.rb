@@ -93,7 +93,6 @@ class AddModelFields < ActiveRecord::Migration
     # Data import
     add_column :data_imports, :model, :integer
     add_column :data_imports, :status, :integer, default: -1
-    add_column :data_imports, :progress, :integer, default: 0
     add_column :data_imports, :col_sep, :string
     add_attachment :data_imports, :data
 

@@ -115,12 +115,12 @@ class User < ActiveRecord::Base
     # All {Subject subjects} in which the user has difficulties.
     # @return [Array<Subject>] a list of all subjects in which the user has difficulties.
     # @see Subject#users_in_difficulty
-    has_many :difficult_subjects, claas_name: "Subject", through: :category_difficulties, source: :category, source_type: "Subject"
+    has_many :difficult_subjects, class_name: "Subject", through: :category_difficulties, source: :category, source_type: "Subject"
     
     # All {Field fields} in which the user has difficulties.
     # @return [Array<Field>] a list of all fields in which the user has difficulties.
     # @see Field#users_in_difficulty
-    has_many :difficult_fields, claas_name: "Field", through: :category_difficulties, source: :category, source_type: "Field"
+    has_many :difficult_fields, class_name: "Field", through: :category_difficulties, source: :category, source_type: "Field"
     
     # @!endgroup
 
