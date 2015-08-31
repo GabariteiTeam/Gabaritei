@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
 	get "/subjects/", to: "subjects#index", as: "subjects_home"
 	get "/subjects/:id", to: "subjects#show", as: "read_subject"
+	get "/subjects/validate/destroy/:id", to: "subjects#validate_destroy"
 	post "/subjects/", to: "subjects#create", as: "subjects_new"
 	put "/subjects/", to: "subjects#update", as: "subjects_update"
 	delete "/subjects/:id", to: "subjects#destroy", as: "subjects_delete"
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
 
 	get "/questions", to: "questions#index"
 	get "/questions/:id", to: "questions#show"
+	put "/questions", to: "questions#customUpdate"
 	post "/questions/", to: "questions#create"
 	delete "/questions/:id", to: "questions#destroy"
 

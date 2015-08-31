@@ -2,7 +2,7 @@
 
 describe('unit: SubjectsController', function() {
 
-    var scope, ctrl, $httpBackend, $location;
+    var scope, ctrl, $httpBackend, $location, $ModalService;
     var createController;
     var location;
     var expectedSubjects = [{
@@ -19,10 +19,11 @@ describe('unit: SubjectsController', function() {
         sendMessage: function(title, content, type) {}
     };
     var expectedTranslation = {};
-    beforeEach(inject(function(_$httpBackend_, $rootScope, $controller, _$location_) {
+    beforeEach(inject(function(_$httpBackend_, $rootScope, $controller, _$location_, ModalService) {
         $httpBackend = _$httpBackend_;
         $location = _$location_;
 
+        $ModalService = ModalService;
         scope = $rootScope.$new();
         $httpBackend.expectGET('translations/en.json').respond(expectedTranslation);
         $httpBackend.expectGET('subjects').respond(expectedSubjects);
@@ -30,7 +31,8 @@ describe('unit: SubjectsController', function() {
 
         ctrl = $controller('SubjectsController', {
             $scope: scope,
-            MessageService: $MessageService
+            MessageService: $MessageService,
+            ModalService: $ModalService
         });
 
         createController = function() {
@@ -48,23 +50,15 @@ describe('unit: SubjectsController', function() {
 
 
     it('Should get subjects list', function() {
-        //expect(scope.subjects).toEqual([]);
         expect(ctrl.subjects).toEqual([]);
         $httpBackend.flush();
-
-        //expect(scope.subjects).toEqualData(expectedSubjects);
         expect(ctrl.subjects).toEqualData(expectedSubjects);
     });
 
     it('Should get a specific subject', function() {
         $httpBackend.flush();
-
         createController();
-
         $httpBackend.flush();
-        // expect(scope.subject.name).toEqual(expectedSubject.name);
-        // expect(scope.subject.id).toEqual(expectedSubject.id);
-        // expect(scope.subject.description).toEqual(expectedSubject.description);
         expect(ctrl.subject.name).toEqual(expectedSubject.name);
         expect(ctrl.subject.id).toEqual(expectedSubject.id);
         expect(ctrl.subject.description).toEqual(expectedSubject.description);
@@ -74,7 +68,6 @@ describe('unit: SubjectsController', function() {
         $httpBackend.flush();
         $httpBackend.expectPUT('subjects').respond({});
         spyOn($MessageService, "sendMessage");
-        //scope.updateSubject();
         ctrl.updateSubject();
         $httpBackend.flush();
         expect($MessageService.sendMessage).toHaveBeenCalledWith("Updated!", "Subject was updated with success!", "success");
@@ -85,7 +78,6 @@ describe('unit: SubjectsController', function() {
         $httpBackend.flush();
         $httpBackend.expectPUT('subjects').respond(500);
         spyOn($MessageService, "sendMessage");
-        //scope.updateSubject();
         ctrl.updateSubject();
         $httpBackend.flush();
         expect($MessageService.sendMessage).toHaveBeenCalledWith("Fail!", "Subject was NOT updated with success!", "error");
@@ -93,21 +85,27 @@ describe('unit: SubjectsController', function() {
 
     it('Should send delete request', function() {
         $httpBackend.flush();
+        $httpBackend.expectGET('subjects/validate/destroy/1').respond({model_bind: true, count: 1});
         $httpBackend.expectDELETE('subjects/1').respond({});
         spyOn($MessageService, "sendMessage");
-        //scope.deleteSubject(1);
+        spyOn($ModalService, "alert");
         ctrl.deleteSubject(1);
+        ctrl.c_delete(1);
         $httpBackend.flush();
         expect($MessageService.sendMessage).toHaveBeenCalledWith("Deleted!", "Subject was deleted with success!", "success");
+        expect($ModalService.alert).toHaveBeenCalled();
     });
 
     it('Should send delete request and fail', function() {
         $httpBackend.flush();
+        $httpBackend.expectGET('subjects/validate/destroy/1').respond({model_bind: false, count: 1});
         $httpBackend.expectDELETE('subjects/1').respond(500);
+        spyOn($ModalService, "alert");
         spyOn($MessageService, "sendMessage");
-        //scope.deleteSubject(1);
         ctrl.deleteSubject(1);
+        ctrl.c_delete(1);
         $httpBackend.flush();
+        expect($ModalService.alert).toHaveBeenCalled();
         expect($MessageService.sendMessage).toHaveBeenCalledWith("Fail!", "Subject was NOT deleted with success!", "error");
     });
 
@@ -115,7 +113,6 @@ describe('unit: SubjectsController', function() {
         $httpBackend.flush();
         $httpBackend.expectPOST('subjects').respond({});
         spyOn($MessageService, "sendMessage");
-        //scope.createSubject();
         ctrl.createSubject();
         $httpBackend.flush();
         expect($MessageService.sendMessage).toHaveBeenCalledWith("Created!", "Subject was created with success!", "success");
@@ -125,7 +122,6 @@ describe('unit: SubjectsController', function() {
         $httpBackend.flush();
         $httpBackend.expectPOST('subjects').respond(500);
         spyOn($MessageService, "sendMessage");
-        //scope.createSubject(1);
         ctrl.createSubject(1);
         $httpBackend.flush();
         expect($MessageService.sendMessage).toHaveBeenCalledWith("Fail!", "Subject was NOT created with success!", "error");

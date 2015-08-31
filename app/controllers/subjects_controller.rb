@@ -18,6 +18,16 @@ class SubjectsController < ApplicationController
         @subject = Subject.new
       end
 
+      # checks to see related models
+      def validate_destroy
+        set_subject
+        if @subject.questions.count > 0
+          render :json => { single: false, model_bind: "questions", count: @subject.questions.count}
+        else
+          render :json => { single: true }
+        end
+      end
+
       # GET /subjects/1/edit
       def edit
         set_subject
@@ -67,6 +77,10 @@ class SubjectsController < ApplicationController
       # DELETE /subjects/1.json
     def destroy
         set_subject
+        @subject.questions.each do |question|
+          question.destroy
+        end
+
         if @subject.destroy
           render :json => {}
         else

@@ -39,6 +39,13 @@
                 params: {
                     id: ''
                 }
+            },
+            validateDestroy: {
+                url: 'subjects/validate/destroy/:id',
+                method: 'GET',
+                params: {
+                    id: ''
+                }
             }
         });
     }

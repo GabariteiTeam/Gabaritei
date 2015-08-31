@@ -7,17 +7,14 @@ class QuestionsController < ApplicationController
     render json: Question.all
   end
 
-
   # GET /questions/1
   # GET /questions/1.json
   def show
     subjects = []
-    
     @question.subjects.each do |subject|
       j_subject = {:id => subject.id, :name => subject.name}
       subjects.append(j_subject)
     end
-    
     render :json => {:question => @question, :subjects => subjects}
   end
 
@@ -72,6 +69,20 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def customUpdate
+    @question = Question.find(question_params["id"])
+    if set_subjects
+      if @question.update(question_params)
+        render :json => {}
+      else
+        render :json => @subject.errors, status: :unprocessable_entity
+      end
+    else
+      render :json => "Error updating", status: :unprocessable_entity
+    end
+  end
+
+
   def getQuestionsSubject
     response = Array.new
     if not params.has_key?("id")
@@ -99,6 +110,21 @@ class QuestionsController < ApplicationController
 
 
   private
+    # Helper to update subjects
+    def set_subjects
+      #Start from zero
+      @question.subjects.clear
+      params["question"]["subjects"].each do |subject|
+        if Subject.find(subject)
+          @question.subjects.append Subject.find(subject)
+        else
+          logger.info("[DEBUG] Error finding subject")
+          return
+        end
+      end
+    end
+
+
     # Use callbacks to share common setup or constraints between actions.
     def set_question
       @question = Question.find(params[:id])
@@ -106,6 +132,6 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:text, :style, :answer, :source, :hot, :subjects)
+      params.require(:question).permit(:id, :text, :style, :answer, :source, :hot, :subjects)
     end
 end
