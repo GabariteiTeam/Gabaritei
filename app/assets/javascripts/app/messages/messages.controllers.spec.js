@@ -2,16 +2,6 @@
 
 describe('unit: MessagesController', function() {
 
-    beforeEach(function() {
-        this.addMatchers({
-            toEqualData: function(expected) {
-                return angular.equals(this.actual, expected);
-            }
-        });
-    });
-    beforeEach(module('gabariteiApp'));
-    beforeEach(module('htmltemplates'));
-
     var scope, ctrl;
     var $MessageService = {
         addObserver: function(callback) {}

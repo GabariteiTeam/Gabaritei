@@ -3,7 +3,7 @@
 # Table name: questions
 #
 #  id         :integer          not null, primary key
-#  user_id    :integer
+#  owner_id   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  text       :text
@@ -15,7 +15,7 @@
 #
 # Indexes
 #
-#  index_questions_on_user_id  (user_id)
+#  index_questions_on_owner_id  (owner_id)
 #
 
 require 'test_helper'

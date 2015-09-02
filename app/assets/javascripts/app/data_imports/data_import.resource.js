@@ -21,7 +21,7 @@
                     url: 'data_imports/:id/import'
             }
         });
-        di.prototype.upload = function(success, error) {
+        di.prototype.upload = function(success, error, progress) {
             Upload.upload({
                     url: 'data_imports',
                     fields: {
@@ -31,6 +31,9 @@
                     },
                     file: this.file,
                     fileFormDataName: 'data'
+                })
+                .progress(function(evt) {
+                    if (progress) progress(evt.loaded, evt.totalSize);
                 })
                 .success(function(data) {
                     if (success) success(data);

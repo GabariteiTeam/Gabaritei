@@ -32,10 +32,6 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
-
-#translate model to text
-gem 'annotate', '~> 2.6.5'
-
 gem 'simple_form'
 
 #debbug gem
@@ -81,5 +77,4 @@ gem 'roo-xls'
 
 # YARD to create server-side docs
 gem 'yard'
-
-
+gem 'annotate', '~> 2.6.6'
