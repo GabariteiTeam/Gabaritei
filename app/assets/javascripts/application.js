@@ -12,6 +12,7 @@
 //
 //= require jquery/dist/jquery
 //= require jquery-ujs/src/rails
+//= require lodash/lodash
 //= require bootstrap/dist/js/bootstrap
 //= require angular/angular
 //= require angular-strap/dist/angular-strap

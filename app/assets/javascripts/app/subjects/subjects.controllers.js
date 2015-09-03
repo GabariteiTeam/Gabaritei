@@ -15,15 +15,17 @@
             'MessageService',
             'RedirectService',
             'ModalService',
-            'Modal'
+            'Modal',
+            'TagInputUtils'
         ];
 
-    function SubjectsController($location, $routeParams, $route, Subject, MessageService, RedirectService, ModalService, Modal) {
+    function SubjectsController($location, $routeParams, $route, Subject, MessageService, RedirectService, ModalService, Modal, TagInputUtils) {
         var vm = this;
         vm.createSubject = createSubject;
         vm.updateSubject = updateSubject;
         vm.deleteSubject = deleteSubject;
-        vm.c_delete = c_delete;
+        vm.c_delete      = c_delete;
+        vm.addField      = addField;
 
         vm.subjects = [];
 
@@ -37,6 +39,31 @@
             Subject.query(function(data) {
                 vm.subjects = data;
             });
+        }
+
+        function addField() {
+            if(vm.fields === undefined) {
+                vm.fields = new Array();
+            }
+            if(vm.fieldsInput === undefined) {
+                vm.fieldsInput = new Array();
+            }
+            if(TagInputUtils.isInArray(vm.fieldsInput, vm.field.name)) {
+                for(var i in vm.fields)
+                    if(vm.fields[i].name === vm.field.name)
+                        vm.fields.splice(i, 1);
+                var fieldUpdate = {name: "", description: ""};
+                fieldUpdate.name = vm.field.name;
+                fieldUpdate.description = vm.field.description;
+                vm.fields.push(fieldUpdate);
+                
+            } else {
+                vm.fields.push({name: vm.field.name, description: vm.field.description});
+                vm.fieldsInput.push({text: vm.field.name});
+                vm.field.name        = "";
+                vm.field.description = "";
+            }
+            $("#FieldModal").modal('hide');
         }
 
         function createSubject() {
