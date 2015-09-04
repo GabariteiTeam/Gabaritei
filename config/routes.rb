@@ -24,6 +24,14 @@ Rails.application.routes.draw do
 	delete "/questions/:id", to: "questions#destroy"
 
 	# END QUESTIONS ROUTES
+	
+	# FIELDS ROUTES
+	post "/fields/", to: "fields#create"
+	get "/fields/:id", to: "fields#index"
+	delete "/fields/:id", to: "fields#destroy"
+	
+	
+	# END FIELDS ROUTES
 
 	# DATA IMPORT ROUTES
 

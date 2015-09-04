@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: user_course_roles
+# Table name: user_courses
 #
 #  user_id    :integer
 #  course_id  :integer
@@ -9,8 +9,8 @@
 #
 # Indexes
 #
-#  index_user_course_roles_on_course_id  (course_id)
-#  index_user_course_roles_on_user_id    (user_id)
+#  index_user_courses_on_course_id  (course_id)
+#  index_user_courses_on_user_id    (user_id)
 #
 
 class UserCourse < ActiveRecord::Base

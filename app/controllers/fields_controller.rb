@@ -1,10 +1,9 @@
-class SubjectsController < ApplicationController
+class FieldsController < ApplicationController
 
-      # GET /subjects
-      # GET /subjects.json
+      # GET /fields
       def index
-        @subjects = Subject.all
-        render json: @subjects
+        @fields = Subject.find(params[:id]).fields
+        render json: @fields
       end
 
       # GET /subjects/1
@@ -14,19 +13,8 @@ class SubjectsController < ApplicationController
         render :json => { name: @subject.name, description: @subject.description, id: @subject.id, fields: @subject.fields}
       end
 
-      # GET /subjects/new
+      # GET /fields/new
       def new
-        @subject = Subject.new
-      end
-
-      # checks to see related models
-      def validate_destroy
-        set_subject
-        if @subject.questions.count > 0
-          render :json => { single: false, model_bind: "questions", count: @subject.questions.count}
-        else
-          render :json => { single: true }
-        end
       end
 
       # GET /subjects/1/edit
@@ -35,14 +23,15 @@ class SubjectsController < ApplicationController
         render :json => { name: @subject.name, description: @subject.description, id: @subject.id}
       end
 
-      # POST /subjects
-      # POST /subjects.json
+      # POST /fields
       def create
-        @subject = Subject.new(subject_params)
-        if @subject.save
+        @field = Field.new(fields_params)
+        @subject = Subject.find(params[:subject_id]);
+        @subject.fields.push(@field)
+        if @field.save && @subject.save
           render :json => {}
         else
-          render :json =>  @subject.errors, status: :unprocessable_entity
+          render :json =>  @fields.errors, status: :unprocessable_entity
         end
       end
 
@@ -60,14 +49,8 @@ class SubjectsController < ApplicationController
       # DELETE /subjects/1
       # DELETE /subjects/1.json
     def destroy
-        set_subject
-        @subject.questions.each do |question|
-          question.destroy
-        end
-        @subject.fields.each do |field|
-          field.destroy
-        end
-        if @subject.destroy
+        set_field
+        if @field.destroy
           render :json => {}
         else
           render :json =>  @subject.errors, status: :unprocessable_entity
@@ -76,13 +59,17 @@ class SubjectsController < ApplicationController
 
     private
         # Use callbacks to share common setup or constraints between actions.
-        def set_subject
-          @subject = Subject.find(params[:id])
+        def set_fields
+          @fields = Subject.find(params[:id]).fields
+        end
+        
+        def set_field
+            @field = Field.find(params[:id])
         end
 
         # Never trust parameters from the scary internet, only allow the white list through.
-        def subject_params
+        def fields_params
           #params.require(:subject).permit(:name, :professor_id, :department_id, :descricao)
-          params.require(:subject).permit(:id, :name, :description, :subject)
+          params.require(:field).permit(:id, :name, :description)
         end
 end

@@ -11,9 +11,8 @@
     <thead>
       <tr>
         <th>Name</th>
-        <th>Professor</th>
-        <th>Department</th>
-        <th>Descricao</th>
+        <th>Description</th>
+        <th>Fields</th>
         <th translate>crud.edit</th>
         <th translate>crud.delete</th>
       </tr>
@@ -22,11 +21,10 @@
     <tbody >
         <tr data-ng-repeat="subject in Ctrl.subjects">
           <td>{{ subject.name }}</td>
-          <td>{{ subject.professor_id }}</td>
-          <td>{{ subject.department_id }}</td>
           <td>{{ subject.description }}</td>
+          <td><a href="#fields/{{subject.id}}">View Fields</a></td>
           <td><a href="#subjects/update/{{subject.id}}">Edit</a>
-          <td><a ng-click="Ctrl.deleteSubject(subject.id)">Edit</a>
+          <td><a href ng-click="Ctrl.deleteSubject(subject.id)">Delete</a>
         </tr>
     </tbody>
   </table>
