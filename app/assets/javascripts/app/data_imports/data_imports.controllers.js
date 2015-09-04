@@ -26,8 +26,7 @@
     function DataImportsController($timeout, MessageService, DataImport, Role) {
 
         var vm = this;
-        var pollingPeriod = 3000;
-
+        
         vm.refresh = refresh;
         vm.uploadFile = uploadFile;
         vm.importData = importData;
@@ -41,10 +40,15 @@
         vm.data_import.model = '0';
         vm.missingFile = false;
         vm.csv_file = false;
+        vm.pollingPeriod = 3000;
+        vm.fileUpload = {
+            uploading: false,
+            progress: 0
+        };
         Role.query(function(data) {
             vm.user_roles = data;
         });
-        refresh();
+        vm.refresh();
 
         /**
          * @ngdoc method
@@ -60,7 +64,7 @@
                 vm.missingFile = false;
                 var statusProduct = 1;
                 for (var i = 0; i < data.length; i++) statusProduct *= data[i].status;
-                if (statusProduct == 0) $timeout(refresh, pollingPeriod);
+                if (statusProduct == 0) $timeout(vm.refresh, vm.pollingPeriod);
             });
         }
 
@@ -73,12 +77,17 @@
          * upload file
          **/
         function uploadFile() {
+            vm.fileUpload.uploading = true;
             vm.data_import.upload(function(data) {
-                MessageService.sendMessage("Created!", "File was uploaded with success!", "success");
-                refresh();
+                vm.fileUpload.uploading = false;
+                MessageService.sendMessage("Uploaded!", "File was uploaded with success!", "success");
+                vm.refresh();
             }, function(data) {
+                vm.fileUpload.uploading = false;
                 MessageService.sendMessage("Error!", "File could not be uploaded!", "error");
                 vm.missingFile = true;
+            }, function(loaded, totalSize) {
+                vm.fileUpload.progress = totalSize != 0 ? 100 * (loaded / totalSize) : 0;
             });
         }
 
@@ -88,7 +97,7 @@
             }, {
                 id: data_import_id
             }, function(data) {
-                refresh();
+                vm.refresh();
             });
         }
 
@@ -96,7 +105,10 @@
             DataImport.delete({
                 id: data_import_id
             }, function(data) {
-                refresh();
+                MessageService.sendMessage("Deleted!", "File was deleted with success!", "success");
+                vm.refresh();
+            }, function(data) {
+                MessageService.sendMessage("Error!", "File could not be deleted!", "error");
             });
         }
 

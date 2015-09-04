@@ -1,3 +1,6 @@
+# A {User user} can recommend a resource (a {Question question} or {Content content}) to another {User user} via 
+# a recommendation object.
+#
 # == Schema Information
 #
 # Table name: recommendations
@@ -19,9 +22,25 @@
 
 class Recommendation < ActiveRecord::Base
 
-	# References
+	# @!group Belongs to
+	
+	# The resource is the {Question question} or {Content content} that is being recommended.
+	# @return [Question, Content] the recommended question or content.
+	# @see Question#recommendations
+	# @see Content#recommendations
 	belongs_to :resource, polymorphic: true
+
+	# The target {User user} of the recommendation.
+	# @return [User] the target user of the recommendation.
+	# @see User#sent_recommendations
 	belongs_to :user_destination, class_name: "User"
+	
+	# The source {User user} of the recommendation.
+	# @return [User] the source user of the recommendation.
+	# @see User#received_recommendations
 	belongs_to :user_source, class_name: "User"
+
+	# @!endgroup
+
 	
 end

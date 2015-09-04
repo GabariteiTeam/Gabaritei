@@ -1,3 +1,7 @@
+# This is an auxiliary model of a join table between {Test} and {Response}. It establishes the "one-to-many" relationship between these models.
+# @see Test#responses
+# @see Response#test
+#
 # == Schema Information
 #
 # Table name: test_responses
@@ -17,7 +21,14 @@
 
 class TestResponse < ActiveRecord::Base
 
-	# References
+	# @!attribute score
+	# 	The score obtained with the response in the test.
+	# 	@return [Float] the score obtained with the response of the question in the test.
+
+	# @!attribute comment 
+	# 	Comment over the {TestResponse#score score}.
+	# 	@return [String] the comment over the score obtained.
+	
 	belongs_to :response 
 	belongs_to :test
 	

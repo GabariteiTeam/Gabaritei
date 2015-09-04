@@ -6,7 +6,6 @@ class AddModelFields < ActiveRecord::Migration
     add_column :registration_requests, :first_name, :string
     add_column :registration_requests, :last_name, :string
     add_column :registration_requests, :email, :string
-    add_column :registration_requests, :password, :string
     add_column :registration_requests, :birthdate, :datetime
     add_column :registration_requests, :text, :text
     add_column :registration_requests, :response_date, :datetime
@@ -94,7 +93,6 @@ class AddModelFields < ActiveRecord::Migration
     # Data import
     add_column :data_imports, :model, :integer
     add_column :data_imports, :status, :integer, default: -1
-    add_column :data_imports, :progress, :integer, default: 0
     add_column :data_imports, :col_sep, :string
     add_attachment :data_imports, :data
 

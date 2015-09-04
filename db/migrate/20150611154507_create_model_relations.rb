@@ -4,7 +4,7 @@ class CreateModelRelations < ActiveRecord::Migration
 
     create_table :contents do |t|
       t.references :category, polymorphic: true, index: true, required: true
-      t.belongs_to :user, index: true, required: true
+      t.belongs_to :owner, index: true, required: true
       t.timestamps null: false
     end
 
@@ -18,14 +18,14 @@ class CreateModelRelations < ActiveRecord::Migration
       t.belongs_to :contents, index: true, required: true
       t.timestamps null: false
     end
-    
-    create_table :registration_requests do |t|
-      t.timestamps null:false
-    end
 
     create_table :medias do |t|
       t.references :owner, polymorphic: true, index: true, required: true
       t.timestamps null: false
+    end
+    
+    create_table :registration_requests do |t|
+      t.timestamps null:false
     end
 
     create_table :roles do |t|
@@ -51,7 +51,7 @@ class CreateModelRelations < ActiveRecord::Migration
     end
 
     create_table :questions do |t|
-      t.belongs_to :user, index: true, required: true
+      t.belongs_to :owner, index: true, required: true
       t.timestamps null: false
     end
 
@@ -61,18 +61,18 @@ class CreateModelRelations < ActiveRecord::Migration
     end
 
     create_table :course_registration_requests do |t|
-      t.belongs_to :user, index: true, required: true
+      t.belongs_to :requirer, index: true, required: true
       t.belongs_to :course, index: true, required: true
       t.timestamps null:false
     end
 
     create_table :course_news do |t|
-      t.belongs_to :user, index: true, required: true
+      t.belongs_to :owner, index: true, required: true
       t.belongs_to :course, index: true, required: true
       t.timestamps null: false
     end
 
-    create_table :user_deficit_categories, id: false do |t|
+    create_table :category_difficulties, id: false do |t|
       t.belongs_to :user, index: true, required: true
       t.references :category, polymorphic: true, index: true, required: true
       t.timestamps null: false
@@ -91,7 +91,7 @@ class CreateModelRelations < ActiveRecord::Migration
     end
 
     create_table :ratings, id: false do |t|
-      t.belongs_to :user, index: true, required: true
+      t.belongs_to :owner, index: true, required: true
       t.belongs_to :question, index: true, required: true
       t.timestamps null: false
     end
@@ -104,7 +104,7 @@ class CreateModelRelations < ActiveRecord::Migration
     
     create_table :responses do |t|
       t.belongs_to :question, index: true, required: true
-      t.belongs_to :user, index: true, required: true
+      t.belongs_to :owner, index: true, required: true
       t.timestamps null: false
     end
 
@@ -116,7 +116,7 @@ class CreateModelRelations < ActiveRecord::Migration
     
     create_table :tests do |t|
       t.belongs_to :course, index: true, required: true
-      t.belongs_to :user, index: true, required: true
+      t.belongs_to :owner, index: true, required: true
       t.timestamps null: false
     end
 
@@ -132,7 +132,7 @@ class CreateModelRelations < ActiveRecord::Migration
       t.timestamps null: false
     end
     
-    create_table :user_courses, id: false do |t|
+    create_table :user_courses do |t|
       t.belongs_to :user, index: true, required: true
       t.belongs_to :course, index: true, required: true
       t.timestamps null: false
@@ -150,8 +150,8 @@ class CreateModelRelations < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    
-   
+
+
   end
   
 end
