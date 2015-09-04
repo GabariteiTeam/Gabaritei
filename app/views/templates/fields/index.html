@@ -19,13 +19,13 @@
         <tr data-ng-repeat="field in Ctrl.fields">
           <td>{{ field.name }}</td>
           <td>{{ field.description }}</td>
-          <td><a href="#fields/update/{{field.id}}/{{Ctrl.subject.id}}">Edit</a>
+          <td><a ng-href="#fields/update/{{field.id}}/{{Ctrl.subject.id}}">Edit</a>
           <td><a href ng-click="Ctrl.confirmDelete(field.id)">Delete</a>
         </tr>
     </tbody>
   </table>
 
-  <a href="#fields/new/{{Ctrl.subject.id}}">Add new field</a>
+  <a ng-href="#fields/new/{{Ctrl.subject.id}}">Add new field</a>
 
 </div>
 

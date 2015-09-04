@@ -23,6 +23,9 @@
                 controller: 'FieldsCreateController',
                 controllerAs: 'Ctrl'
             })
+            .otherwise({
+                redirectTo: "subjects/"
+            });
     }
 
 })();

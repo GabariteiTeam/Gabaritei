@@ -1,7 +1,7 @@
-// Resources
-
 (function() {
-
+    
+    "use strict";
+    
     angular
         .module(APP_NAME)
         .factory('Field', Field);

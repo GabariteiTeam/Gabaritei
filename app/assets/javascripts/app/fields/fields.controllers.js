@@ -1,3 +1,4 @@
+/* global APP_NAME */
 (function() {
 
     'use strict';
@@ -25,7 +26,7 @@
        var vm = this;
        vm.subject_id    = $routeParams.id;
        vm.confirmDelete = confirmDelete;
-
+       vm.confirmed_delete = confirmed_delete;
        vm.fields        = Field.get({id: vm.subject_id});
        vm.subject       = Subject.get({id: vm.subject_id});
        
