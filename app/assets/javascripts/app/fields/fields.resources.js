@@ -11,17 +11,25 @@
     function Field($resource) {
         return $resource('fields/:id', {}, {
             save: {
-                URL: "fields/", 
+                url: "fields/", 
                 method: 'POST'
             },
             get: {
-                URL: 'fields/:id', 
+                url: 'fields/:id', 
                 method: "GET",
                 isArray: true
             },
             destroy: {
-                URL: 'fields/:id',
+                url: 'fields/:id',
                 method: "DELETE"
+            },
+            query: {
+                url: '/field/:id/edit',
+                method: "GET"
+            },
+            update: {
+                url: '/fields/',
+                method: 'PUT'
             }
         });
     }

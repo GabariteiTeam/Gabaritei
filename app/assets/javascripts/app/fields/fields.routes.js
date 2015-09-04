@@ -13,7 +13,7 @@
                 controller: 'FieldsController',
                 controllerAs: 'Ctrl'
             })
-            .when('/fields/update/:id', {
+            .when('/fields/update/:id/:subject_id', {
                 templateUrl: 'templates/fields/update.html',
                 controller: 'FieldsUpdateController',
                 controllerAs: 'Ctrl'

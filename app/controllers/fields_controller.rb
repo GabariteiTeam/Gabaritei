@@ -5,22 +5,15 @@ class FieldsController < ApplicationController
         @fields = Subject.find(params[:id]).fields
         render json: @fields
       end
-
-      # GET /subjects/1
-      # GET /subjects/1.json
-      def show
-        set_subject
-        render :json => { name: @subject.name, description: @subject.description, id: @subject.id, fields: @subject.fields}
-      end
-
+      
       # GET /fields/new
       def new
       end
 
-      # GET /subjects/1/edit
+      # GET /field/1/edit
       def edit
-        set_subject
-        render :json => { name: @subject.name, description: @subject.description, id: @subject.id}
+        set_field
+        render json: @field
       end
 
       # POST /fields
@@ -38,8 +31,9 @@ class FieldsController < ApplicationController
       # PATCH/PUT /subjects/1
       # PATCH/PUT /subjects/1.json
       def update
-        set_subject
-        if @subject.update(subject_params)
+        set_field
+        byebug
+        if @field.update(fields_params)
           render :json => {}
         else
           render :json =>  @subject.errors, status: :unprocessable_entity
@@ -58,11 +52,7 @@ class FieldsController < ApplicationController
       end
 
     private
-        # Use callbacks to share common setup or constraints between actions.
-        def set_fields
-          @fields = Subject.find(params[:id]).fields
-        end
-        
+        # Use callbacks to share common setup or constraints between actions.        
         def set_field
             @field = Field.find(params[:id])
         end
