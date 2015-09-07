@@ -7,6 +7,7 @@
 #
 # Table name: question_categories
 #
+#  id            :integer          not null, primary key
 #  question_id   :integer
 #  category_id   :integer
 #  category_type :string(255)
@@ -18,6 +19,7 @@
 #  index_question_categories_on_category_id_and_category_type  (category_id,category_type)
 #  index_question_categories_on_question_id                    (question_id)
 #
+
 class QuestionCategory < ActiveRecord::Base
 
 	belongs_to :category, polymorphic: true

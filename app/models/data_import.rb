@@ -12,7 +12,6 @@
 #  updated_at        :datetime         not null
 #  model             :integer
 #  status            :integer          default(-1)
-#  col_sep           :string(255)
 #  data_file_name    :string(255)
 #  data_content_type :string(255)
 #  data_file_size    :integer
@@ -47,10 +46,6 @@ class DataImport < ActiveRecord::Base
 	# 	 (status =  1) => Successfully imported
 	# 	 (status >  1) => Error 
 	# 	@return [Integer] the integer value corresponding to the status of the import.
-	#
-	# @!attribute col_sep
-	# 	Character or string that is used as separator in case data is contained in a CSV file.
-	# 	@return [String] the CSV file separator.
 	#
 	# @!attribute data
 	# 	Uploaded file which contains the imported data.
@@ -182,7 +177,7 @@ class DataImport < ActiveRecord::Base
   		file_name = "public" + data.url.split("?")[0]
   		case data_content_type
   		when FCT_CSV
-  			@dataset = Roo::CSV.new(file_name, csv_options: {col_sep: col_sep})
+  			@dataset = Roo::CSV.new(file_name, csv_options: {col_sep: ";"})
   		when FCT_XLS
   			@dataset = Roo::Excel.new(file_name)
   		when FCT_XLSX
@@ -202,12 +197,6 @@ class DataImport < ActiveRecord::Base
 	# @return [String] the data file URL.
 	def data_url
 		data.url
-	end
-
-	# If the data import is associated with a {DataImport#role role}, returns the role name.
-	# @return [String] the role name.
-	def role_name
-		role != nil ? role.name : nil
 	end
 
 	# Returns a description of the {DataImport#status status}.

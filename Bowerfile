@@ -29,3 +29,5 @@ asset 'angular-translate-loader-static-files'
 asset 'ng-file-upload'
 # Nice input tag with autocomplete
 asset 'ng-tags-input'
+# Bootstrap toggle
+asset 'bootstrap-toggle'

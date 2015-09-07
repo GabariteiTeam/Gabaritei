@@ -4,6 +4,8 @@ pt-BR:
    subjects: 'Matérias'
    data_import: 'Importar dados'
    language: 'Idioma'
+   roles: 'Papéis'
+   users: 'Usuários'
   home:
    heading: 'Fácil, rápido e simples!'
   crud:
@@ -28,7 +30,7 @@ pt-BR:
    recommendation: 'Recomendação'
    registration_request: 'Pedido de inscrição'
    response: 'Resposta'
-   role: 'Função'
+   role: 'Papel'
    subject: 'Matéria'
    test: 'Teste'
    user: 'Usuário'

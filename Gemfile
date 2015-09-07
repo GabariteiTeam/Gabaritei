@@ -68,6 +68,9 @@ gem 'delayed_job_active_record'
 # Paperclip => file upload
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 
+# RMagick => interface to ImageMagick. Install ImageMagick before using it
+gem "rmagick"
+
 # CSRF protection + AngularJS
 gem 'angular_rails_csrf'
 

@@ -6,6 +6,7 @@
 #
 # Table name: role_permissions
 #
+#  id            :integer          not null, primary key
 #  role_id       :integer
 #  permission_id :integer
 #  created_at    :datetime         not null
@@ -16,6 +17,7 @@
 #  index_role_permissions_on_permission_id  (permission_id)
 #  index_role_permissions_on_role_id        (role_id)
 #
+
 class RolePermission < ActiveRecord::Base
 
 	belongs_to :permission

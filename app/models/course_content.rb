@@ -6,6 +6,7 @@
 #
 # Table name: course_contents
 #
+#  id          :integer          not null, primary key
 #  course_id   :integer
 #  contents_id :integer
 #  created_at  :datetime         not null

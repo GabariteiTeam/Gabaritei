@@ -25,6 +25,8 @@ en:
    subjects: 'Subjects'
    data_import: 'Data import'
    language: 'Language'
+   roles: 'Roles'
+   users: 'Users'
   home:
    heading: 'Easy, fast and simple!'
   crud:

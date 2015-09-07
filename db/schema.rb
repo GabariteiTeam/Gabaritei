@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20150720123715) do
 
-  create_table "category_difficulties", id: false, force: true do |t|
+  create_table "category_difficulties", force: true do |t|
     t.integer  "user_id"
     t.integer  "category_id"
     t.string   "category_type"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20150720123715) do
   add_index "contents", ["category_id", "category_type"], name: "index_contents_on_category_id_and_category_type"
   add_index "contents", ["owner_id"], name: "index_contents_on_owner_id"
 
-  create_table "course_contents", id: false, force: true do |t|
+  create_table "course_contents", force: true do |t|
     t.integer  "course_id"
     t.integer  "contents_id"
     t.datetime "created_at",  null: false
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20150720123715) do
   add_index "course_news", ["course_id"], name: "index_course_news_on_course_id"
   add_index "course_news", ["owner_id"], name: "index_course_news_on_owner_id"
 
-  create_table "course_questions", id: false, force: true do |t|
+  create_table "course_questions", force: true do |t|
     t.integer  "question_id"
     t.integer  "course_id"
     t.datetime "created_at",  null: false
@@ -104,7 +104,6 @@ ActiveRecord::Schema.define(version: 20150720123715) do
     t.datetime "updated_at",                     null: false
     t.integer  "model"
     t.integer  "status",            default: -1
-    t.string   "col_sep"
     t.string   "data_file_name"
     t.string   "data_content_type"
     t.integer  "data_file_size"
@@ -142,10 +141,14 @@ ActiveRecord::Schema.define(version: 20150720123715) do
   create_table "medias", force: true do |t|
     t.integer  "owner_id"
     t.string   "owner_type"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.string   "reference"
     t.boolean  "is_attachment"
+    t.string   "data_file_name"
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.datetime "data_updated_at"
   end
 
   add_index "medias", ["owner_id", "owner_type"], name: "index_medias_on_owner_id_and_owner_type"
@@ -156,7 +159,7 @@ ActiveRecord::Schema.define(version: 20150720123715) do
     t.string   "name"
   end
 
-  create_table "question_categories", id: false, force: true do |t|
+  create_table "question_categories", force: true do |t|
     t.integer  "question_id"
     t.integer  "category_id"
     t.string   "category_type"
@@ -228,7 +231,7 @@ ActiveRecord::Schema.define(version: 20150720123715) do
     t.boolean  "accepted"
   end
 
-  create_table "response_choices", id: false, force: true do |t|
+  create_table "response_choices", force: true do |t|
     t.integer  "response_id"
     t.integer  "question_choices_id"
     t.datetime "created_at",          null: false
@@ -248,7 +251,7 @@ ActiveRecord::Schema.define(version: 20150720123715) do
   add_index "responses", ["owner_id"], name: "index_responses_on_owner_id"
   add_index "responses", ["question_id"], name: "index_responses_on_question_id"
 
-  create_table "role_permissions", id: false, force: true do |t|
+  create_table "role_permissions", force: true do |t|
     t.integer  "role_id"
     t.integer  "permission_id"
     t.datetime "created_at",    null: false
@@ -319,14 +322,18 @@ ActiveRecord::Schema.define(version: 20150720123715) do
 
   create_table "users", force: true do |t|
     t.integer  "role_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
     t.string   "password"
     t.datetime "birthdate"
     t.text     "about"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["role_id"], name: "index_users_on_role_id"

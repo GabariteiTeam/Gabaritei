@@ -13,7 +13,7 @@ class CreateModelRelations < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    create_table :course_contents, id: false do |t|
+    create_table :course_contents do |t|
       t.belongs_to :course, index: true, required: true
       t.belongs_to :contents, index: true, required: true
       t.timestamps null: false
@@ -72,19 +72,19 @@ class CreateModelRelations < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    create_table :category_difficulties, id: false do |t|
+    create_table :category_difficulties do |t|
       t.belongs_to :user, index: true, required: true
       t.references :category, polymorphic: true, index: true, required: true
       t.timestamps null: false
     end
 
-    create_table :role_permissions, id: false do |t|
+    create_table :role_permissions do |t|
       t.belongs_to :role, index: true, required: true
       t.belongs_to :permission, index: true, required: true
       t.timestamps null:false
     end
 
-    create_table :question_categories, id: false do |t|
+    create_table :question_categories do |t|
       t.belongs_to :question, index: true, required: true
       t.references :category, polymorphic: true, index: true, required: true
       t.timestamps null: false
@@ -96,7 +96,7 @@ class CreateModelRelations < ActiveRecord::Migration
       t.timestamps null: false
     end
     
-    create_table :course_questions, id: false do |t|
+    create_table :course_questions do |t|
       t.belongs_to :question, index: true, required: true
       t.belongs_to :course, index: true, required: true
       t.timestamps null: false
@@ -108,7 +108,7 @@ class CreateModelRelations < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    create_table :response_choices, id: false do |t|
+    create_table :response_choices do |t|
       t.belongs_to :response, index: true, required: true
       t.belongs_to :question_choices, required: true
       t.timestamps null: false

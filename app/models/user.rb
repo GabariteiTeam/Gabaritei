@@ -4,16 +4,20 @@
 #
 # Table name: users
 #
-#  id         :integer          not null, primary key
-#  role_id    :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  first_name :string(255)
-#  last_name  :string(255)
-#  email      :string(255)
-#  password   :string(255)
-#  birthdate  :datetime
-#  about      :text
+#  id                  :integer          not null, primary key
+#  role_id             :integer
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  first_name          :string(255)
+#  last_name           :string(255)
+#  email               :string(255)
+#  password            :string(255)
+#  birthdate           :datetime
+#  about               :text
+#  avatar_file_name    :string(255)
+#  avatar_content_type :string(255)
+#  avatar_file_size    :integer
+#  avatar_updated_at   :datetime
 #
 # Indexes
 #
@@ -49,7 +53,8 @@ class User < ActiveRecord::Base
     # @!attribute avatar
     #   User's avatar
     #   @return [File] the user's avatar.
-    has_attached_file :avatar
+    has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }
+    validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
     # @!group Belongs to
     
@@ -126,6 +131,8 @@ class User < ActiveRecord::Base
 
     has_many :user_courses
     has_many :category_difficulties
+
+    before_save :sanitize
   
     # Imports a new user.
     # @param [Hash] user_data Hash containing the user information.
@@ -143,15 +150,31 @@ class User < ActiveRecord::Base
         user.email = user_data[:email]
         user.first_name = user_data[:first_name]
         user.last_name = user_data[:last_name]
-        if user_data[:birthdate].is_a?(Date)
-            user.birthdate = user_data[:birthdate]
-        elsif user_data[:birthdate].is_a?(String)
-            user.birthdate = DateTime.parse(user_data[:birthdate])
-        end
+        user.birthdate = user_data[:birthdate]
     
         # save new user
         user.save!
     
     end
+
+    def has_avatar
+        avatar_file_name ? true : false
+    end
+
+    def avatar_url_thumb
+        has_avatar ? avatar.url(:thumb) : nil
+    end
+
+    def avatar_url_medium
+        has_avatar ? avatar.url(:medium) : nil
+    end
+
+    private
+
+        def sanitize
+            if self.birthdate.is_a?(String)
+                self.birthdate = DateTime.parse(self.birthdate)
+            end
+        end
 
 end

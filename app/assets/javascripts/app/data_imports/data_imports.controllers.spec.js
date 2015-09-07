@@ -13,7 +13,9 @@ describe('unit: DataImportsController', function() {
         sendMessage: function(title, content, type) {}
     };
     var roles = [
-        'Admin', 'Student', 'Teacher'
+        {id: 1, name: 'Admin'}, 
+        {id: 2, name: 'Student'},
+        {id: 3, name: 'Teacher'}
     ];
 
     beforeEach(inject(function(_$httpBackend_, _$timeout_, $rootScope, $controller) {
@@ -26,16 +28,17 @@ describe('unit: DataImportsController', function() {
         });
         $httpBackend.expectGET('translations/en.json').respond({});
         $httpBackend.expectGET('roles.json').respond(roles);
-        $httpBackend.expectGET('data_imports.json').respond(initialDataImports);
     }));
 
-    it("should retrieve data imports list", function() {
+    it("should retrieve roles", function() {
+        $httpBackend.expectGET('data_imports.json').respond(initialDataImports);
         $httpBackend.flush();
-        expect(ctrl.data_imports).toEqualData(initialDataImports);
         expect(ctrl.user_roles).toEqualData(roles);
     });
 
     it("should refresh data", function() {
+        $httpBackend.expectGET('data_imports.json').respond(initialDataImports);
+        $httpBackend.flush();
         ctrl.refresh();
         $httpBackend.expectGET('data_imports.json').respond(initialDataImports);
         $httpBackend.flush();

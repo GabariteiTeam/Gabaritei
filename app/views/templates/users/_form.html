@@ -1,0 +1,53 @@
+<div class="form-group">
+  <label for="role" class="col-sm-2 control-label">Role</label>
+  <div class="col-sm-10">
+    <select ng-model="Ctrl.user.role_id" class="form-control" id="role" ng-options="role.id as role.name for role in Ctrl.roles"></select>
+  </div>
+</div>
+<div class="form-group">
+  <label for="first_name" class="col-sm-2 control-label">First name</label>
+  <div class="col-sm-10">
+    <input type="text" ng-model="Ctrl.user.first_name" class="form-control" id="name" placeholder="User's first name here"/>
+  </div>
+</div>
+<div class="form-group">
+  <label for="last_name" class="col-sm-2 control-label">Last name</label>
+  <div class="col-sm-10">
+    <input type="text" ng-model="Ctrl.user.last_name" class="form-control" id="name" placeholder="User's last name here"/>
+  </div>
+</div>
+<div class="form-group">
+  <label for="email" class="col-sm-2 control-label">E-mail</label>
+  <div class="col-sm-10">
+    <input type="email" ng-model="Ctrl.user.email" class="form-control" id="email" placeholder="User's e-mail here"/>
+  </div>
+</div>
+<div class="form-group">
+  <label for="birthdate" class="col-sm-2 control-label">Birthdate</label>
+  <div class="col-sm-10">
+    <input type="date" ng-model="Ctrl.user.birthdate" class="form-control" id="birthdate" placeholder="yyyy-mm-dd"/>
+  </div>
+</div>
+<div class="form-group">
+  <label for="about" class="col-sm-2 control-label">About</label>
+  <div class="col-sm-10">
+    <textarea ng-model="Ctrl.user.about" class="form-control" id="about" placeholder="About…"></textarea>
+  </div>
+</div>
+<div class="form-group">
+  <label for="avatar" class="col-sm-2 control-label">Avatar</label>
+  <div class="col-sm-10">
+    <div class="well well-lg avatar" ngf-drop ng-model="Ctrl.user.avatar" ngf-drag-over-class="drag-file" ng-hide="Ctrl.user.avatar">Drop image here</div>
+    <img class="preview-avatar" ngf-src="Ctrl.user.avatar" ng-hide="!Ctrl.user.avatar"/>
+    <div class="form-inline" ng-hide="Ctrl.user.avatar">
+      <label for="avatar">Or select file: </label>
+      <input type="file" ngf-select ng-model="Ctrl.user.avatar" class="form-control" id="avatar" />
+    </div>
+    <button type="button" class="btn" ng-click="Ctrl.clearAvatar()" ng-hide="!Ctrl.user.avatar">Clear</button>
+  </div>
+</div>
+<div class="form-group">
+  <div class="col-sm-offset-2 col-sm-10">
+    <input type="submit" class="btn btn-primary" value="Save"/>
+  </div>
+</div>

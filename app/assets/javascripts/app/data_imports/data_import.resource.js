@@ -15,17 +15,20 @@
     DataImport.$inject = ['$http', '$resource', 'Upload'];
 
     function DataImport($http, $resource, Upload) {
-        var di = $resource('data_imports/:id.json', null, {
+        var di = $resource('data_imports/:id.json', {id: '@id'}, {
                 import: {
                     method: 'PUT',
                     url: 'data_imports/:id/import'
-            }
+                },
+                update: {
+                    method: 'PUT',
+                    transformRequest: sanitizeUpdateRequest
+                }
         });
         di.prototype.upload = function(success, error, progress) {
             Upload.upload({
                     url: 'data_imports',
                     fields: {
-                        col_sep: this.file.type == 'text/csv' ? this.col_sep : null,
                         model: this.model,
                         role_id: this.model == 0 ? this.role : null
                     },
@@ -43,6 +46,15 @@
                 });
         };
         return di;
+    }
+
+    function sanitizeUpdateRequest(data) {
+        var permittedParameters = {
+            id: data.id,
+            model: data.model,
+            role_id: data.model == 0 ? data.role.id : null
+        };
+        return angular.toJson(permittedParameters);
     }
 
 })();
