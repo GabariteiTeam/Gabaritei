@@ -81,3 +81,6 @@ gem 'roo-xls'
 # YARD to create server-side docs
 gem 'yard'
 gem 'annotate', '~> 2.6.6'
+
+# Pagination
+gem 'clean_pagination'

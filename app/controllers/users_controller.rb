@@ -1,8 +1,12 @@
-class UsersController < ApplicationController
+class UsersController < ApplicationController 
+
+	include CleanPagination
 
 	def index
-		users = User.all
-		render json: users, methods: [:avatar_url_thumb]
+		max_per_page = 10
+		paginate User.count, max_per_page do |limit, offset|
+      		render json: User.limit(limit).offset(offset), methods: [:avatar_url_thumb]
+    	end
 	end
 
 	def show
@@ -36,12 +40,12 @@ class UsersController < ApplicationController
 	    end  
 	end
 
-	def delete
-		set_role
-	    if @role.destroy
+	def destroy
+		set_user
+	    if @user.destroy
 	      render :json => {}
 	    else
-	      render :json =>  @role.errors, status: :unprocessable_entity
+	      render :json =>  @user.errors, status: :unprocessable_entity
 	    end
 	end
 

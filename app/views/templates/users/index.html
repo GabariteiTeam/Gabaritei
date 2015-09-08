@@ -25,11 +25,13 @@
           <td>
             <a href="#users/{{user.id}}" class="btn btn-xs btn-default">View</a>
             <a href="#users/update/{{user.id}}" class="btn btn-xs btn-primary">Edit</a>
-            <button ng-click="Ctrl.deleteRole(user.id)" class="btn btn-xs btn-danger">Delete</button>
+            <button ng-click="Ctrl.deleteUser(user.id)" class="btn btn-xs btn-danger">Delete</button>
           </td>
         </tr>
     </tbody>
   </table>
+
+  <bgf-pagination collection="Ctrl.users" url="'users.json'"></bgf-pagination>
 
   <a href="#users/new">Add new user</a>
 

@@ -7,30 +7,9 @@
         .controller('UsersController', UsersController)
         .controller('EditUserController', EditUserController);
 
-    UsersController
-        .$inject = [
-            '$location',
-            '$routeParams',
-            '$route',
-            'User',
-            'MessageService',
-            'RedirectService',
-            'ModalService',
-            'Modal'
-        ];
+    UsersController.$inject = ['$routeParams', 'User', 'Role', 'MessageService', 'RedirectService', 'ModalService', 'Modal'];
 
-    EditUserController
-        .$inject = [
-            '$location',
-            '$routeParams',
-            '$route',
-            'User',
-            'Role',
-            'MessageService',
-            'RedirectService'
-        ];
-
-    function UsersController($location, $routeParams, $route, User, Role, MessageService, RedirectService, ModalService, Modal) {
+    function UsersController($routeParams, User, Role, MessageService, RedirectService, ModalService, Modal) {
         
         var vm = this;
         vm.deleteUser = deleteUser;
@@ -49,30 +28,16 @@
         }
 
         function deleteUser(user_id) {
-            User.validateDestroy({id: role_id}, function(data) {
-                if(data.count) {
-                    var modal = new Modal();
-                    modal.title = 'Confirmation';
-                    modal.body = "Deleting this user will delete all data associated with them. Want to continue?\n"
-                                  + "Users related: " + data.count;
-                    modal.pack = role_id;
-                    modal.confirmCallback = c_delete;
-                    ModalService.alert(modal);
-                } else {
-                    var modal = new Modal();
-                    modal.title = "Confirmation";
-                    modal.body = "Are you sure you want to delete?";
-                    modal.confirmCallback = c_delete;
-                    modal.pack = role_id;
-                    ModalService.alert(modal);
-                }
-            });
+            var modal = new Modal();
+            modal.title = "Confirmation";
+            modal.body = "Are you sure you want to delete this user? All objects owned by them will also be destroyed.";
+            modal.confirmCallback = c_delete;
+            modal.pack = user_id;
+            ModalService.alert(modal);
         }
 
         function c_delete(id) {
-            User.delete({
-                id: id
-            }, function() {
+            User.delete({id: id}, function() {
                 MessageService.sendMessage("Deleted!", "Role was deleted with success!", "success");
                 RedirectService.redirect("/users");
             },
@@ -84,7 +49,9 @@
 
     };
 
-    function EditUserController($location, $routeParams, $route, User, Role, MessageService, RedirectService) {
+    EditUserController.$inject = ['$routeParams', 'User', 'Role', 'MessageService', 'RedirectService'];
+
+    function EditUserController($routeParams, User, Role, MessageService, RedirectService) {
 
         var vm = this;
         vm.createUser = createUser;

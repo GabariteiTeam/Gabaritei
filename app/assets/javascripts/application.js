@@ -21,6 +21,7 @@
 //= require angular-resource/angular-resource
 //= require angular-translate/angular-translate
 //= require angular-translate-loader-static-files/angular-translate-loader-static-files
+//= require angular-paginate-anything/dist/paginate-anything-tpls
 //= require ng-file-upload/ng-file-upload
 //= require ng-tags-input/ng-tags-input
 //= require bootstrap-toggle/js/bootstrap-toggle

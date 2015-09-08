@@ -20,6 +20,7 @@ var APP_NAME = 'gabariteiApp';
             'mgcrea.ngStrap',
             'ngFileUpload',
             'ngTagsInput',
-            'pascalprecht.translate'
+            'pascalprecht.translate',
+            'bgf.paginateAnything'
         ]);
 })();

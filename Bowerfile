@@ -31,3 +31,5 @@ asset 'ng-file-upload'
 asset 'ng-tags-input'
 # Bootstrap toggle
 asset 'bootstrap-toggle'
+# Pagination
+asset 'angular-paginate-anything'
