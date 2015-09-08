@@ -23,6 +23,9 @@
                 controller: 'SubjectsController',
                 controllerAs: 'Ctrl'
             })
+            .otherwise({
+                redirectTo: "/subjects"
+            });
     }
 
 })();

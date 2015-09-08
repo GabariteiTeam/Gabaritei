@@ -52,3 +52,6 @@ Gemfile.lock
 /.yardoc
 /app/assets/stylesheets/.sass-cache/
 
+#Visual Studio Code
+/typings/
+

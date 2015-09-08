@@ -23,7 +23,7 @@
         vm.createSubject = createSubject;
         vm.updateSubject = updateSubject;
         vm.deleteSubject = deleteSubject;
-        vm.c_delete = c_delete;
+        vm.c_delete      = c_delete;
 
         vm.subjects = [];
 
@@ -38,6 +38,7 @@
                 vm.subjects = data;
             });
         }
+        
 
         function createSubject() {
             vm.subject.$save(function() {
