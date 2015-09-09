@@ -14,7 +14,7 @@
         var vm = this;
         vm.deleteUser = deleteUser;
         vm.c_delete = c_delete;
-       
+    
         activate();
 
         function activate() {
@@ -39,12 +39,16 @@
         function c_delete(id) {
             User.delete({id: id}, function() {
                 MessageService.sendMessage("Deleted!", "Role was deleted with success!", "success");
-                RedirectService.redirect("/users");
+                reloadPage();
             },
             function(err) {
                 MessageService.sendMessage("Fail!", "Role was NOT deleted with success!", "error");
-                RedirectService.redirect("/users");
+                reloadPage();
             });
+        }
+
+        function reloadPage() {
+            vm.reload = true;
         }
 
     };
@@ -57,6 +61,7 @@
         vm.createUser = createUser;
         vm.updateUser = updateUser;
         vm.clearAvatar = clearAvatar;
+
 
         activate();
 
