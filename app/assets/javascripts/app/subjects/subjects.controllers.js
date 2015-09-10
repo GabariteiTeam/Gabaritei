@@ -68,7 +68,7 @@
             Subject.validateDestroy({id: id}, function(data) {
                 if(data.model_bind) {
                     var modal = new Modal();
-                    modal.title = 'Confirmation';
+                    modal.title = 'questions.delete.title';
                     modal.body = "Deleting this Subject will delete all questions associated with it. Want to continue?\n"
                                   + "Questions related: " + data.count;
                     modal.pack = id;
