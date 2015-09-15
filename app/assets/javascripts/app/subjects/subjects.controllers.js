@@ -42,7 +42,7 @@
 
         function createSubject() {
             vm.subject.$save(function() {
-                    MessageService.sendMessage("Created!", "Subject was created with success!", "success");
+                    MessageService.sendMessage('subject.created.success');
                     RedirectService.redirect("/subjects");
                 },
                 function(err) {
@@ -67,20 +67,9 @@
 
             Subject.validateDestroy({id: id}, function(data) {
                 if(data.model_bind) {
-                    var modal = new Modal();
-                    modal.title = 'questions.delete.title';
-                    modal.body = "Deleting this Subject will delete all questions associated with it. Want to continue?\n"
-                                  + "Questions related: " + data.count;
-                    modal.pack = id;
-                    modal.confirmCallback = c_delete;
-                    ModalService.alert(modal);
+                    ModalService.customModal('subjects.confirm_delete_questions', c_delete, id);
                 } else {
-                    var modal = new Modal();
-                    modal.title = "Confirmation";
-                    modal.body = "Are you sure you want to delete?";
-                    modal.confirmCallback = c_delete;
-                    modal.pack = id;
-                    ModalService.alert(modal);
+                    ModalService.customModal('subjects.confirm_delete', c_delete, id);
                 }
             });
         }

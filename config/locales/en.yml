@@ -43,6 +43,18 @@ en:
    edit: 'Edit'
    import: 'Import'
    subjects:
+    alerts:
+      create:
+        success:
+          title: 'Created!'
+          content: 'Subject was created with success!'
+    modal:
+      delete_with_questions:
+        title: 'Warning!'
+        body: 'There are one or more questions associated with this subject. Do you want to proceed?'
+      delete:
+        title: 'Warning!'
+        body: 'Are you sure you want to delete this subject?'
     index:
       heading: 'Subjects'
       sub_heading: 'Create a new subject to your Virtual Class!'
