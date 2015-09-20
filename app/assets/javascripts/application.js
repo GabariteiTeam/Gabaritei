@@ -24,6 +24,7 @@
 //= require angular-paginate-anything/dist/paginate-anything-tpls
 //= require ng-file-upload/ng-file-upload
 //= require ng-tags-input/ng-tags-input
+//= require ngActivityIndicator/ngActivityIndicator
 //= require bootstrap-toggle/js/bootstrap-toggle
 //= require app/app
 //= require_tree ./app

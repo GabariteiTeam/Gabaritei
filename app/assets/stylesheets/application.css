@@ -17,5 +17,6 @@
  *= require bootswatch/flatly/bootstrap.css
  *= require angular-motion/dist/angular-motion.min.css
  *= require bootstrap-toggle/css/bootstrap-toggle.css
+ *= require ngActivityIndicator/css/ngActivityIndicator.css
  *= require drag-drop-file
  */

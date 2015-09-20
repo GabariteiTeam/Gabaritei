@@ -21,6 +21,7 @@ var APP_NAME = 'gabariteiApp';
             'ngFileUpload',
             'ngTagsInput',
             'pascalprecht.translate',
-            'bgf.paginateAnything'
+            'bgf.paginateAnything',
+            'ngActivityIndicator'
         ]);
 })();

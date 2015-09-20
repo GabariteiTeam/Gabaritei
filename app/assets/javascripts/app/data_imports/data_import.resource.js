@@ -25,18 +25,15 @@
                     transformRequest: sanitizeUpdateRequest
                 }
         });
-        di.prototype.upload = function(success, error, progress) {
+        di.prototype.upload = function(success, error) {
             Upload.upload({
-                    url: 'data_imports',
+                    url: '/data_imports',
                     fields: {
                         model: this.model,
                         role_id: this.model == 0 ? this.role : null
                     },
                     file: this.file,
                     fileFormDataName: 'data'
-                })
-                .progress(function(evt) {
-                    if (progress) progress(evt.loaded, evt.totalSize);
                 })
                 .success(function(data) {
                     if (success) success(data);

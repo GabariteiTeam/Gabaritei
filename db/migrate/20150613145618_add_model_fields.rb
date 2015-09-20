@@ -97,6 +97,10 @@ class AddModelFields < ActiveRecord::Migration
     add_column :data_imports, :status, :integer, default: -1
     add_attachment :data_imports, :data
 
+    # Lesson
+    add_column :lessons, :title, :string
+    add_column :lessons, :description, :text
+
   end
   
 end

@@ -138,6 +138,26 @@ ActiveRecord::Schema.define(version: 20150720123715) do
 
   add_index "fields", ["subject_id"], name: "index_fields_on_subject_id"
 
+  create_table "lesson_contents", force: true do |t|
+    t.integer  "lesson_id"
+    t.integer  "contents_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "lesson_contents", ["contents_id"], name: "index_lesson_contents_on_contents_id"
+  add_index "lesson_contents", ["lesson_id"], name: "index_lesson_contents_on_lesson_id"
+
+  create_table "lessons", force: true do |t|
+    t.integer  "course_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "title"
+    t.text     "description"
+  end
+
+  add_index "lessons", ["course_id"], name: "index_lessons_on_course_id"
+
   create_table "medias", force: true do |t|
     t.integer  "owner_id"
     t.string   "owner_type"

@@ -33,3 +33,5 @@ asset 'ng-tags-input'
 asset 'bootstrap-toggle'
 # Pagination
 asset 'angular-paginate-anything'
+# Activity indicator
+asset 'ngActivityIndicator'

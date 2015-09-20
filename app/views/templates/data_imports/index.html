@@ -27,6 +27,7 @@
 				</td>
 				<td>{{ data_import.update_date_text }}</td>
 				<td>
+					<div ng-activity-indicator="CircledDark" style="float: left; margin-right: 5px;" ng-hide="data_import.status != 0"></div>
 					<span style="{{ data_import.status == 2 ? 'color: red' : ''}}">{{ data_import.status_text }}</span>
 				</td>
 				<td>

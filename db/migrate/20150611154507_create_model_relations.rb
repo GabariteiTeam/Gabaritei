@@ -19,6 +19,12 @@ class CreateModelRelations < ActiveRecord::Migration
       t.timestamps null: false
     end
 
+    create_table :lesson_contents do |t|
+      t.belongs_to :lesson, index: true, required: true
+      t.belongs_to :contents, index: true, required: true
+      t.timestamps null: false
+    end
+
     create_table :medias do |t|
       t.references :owner, polymorphic: true, index: true, required: true
       t.timestamps null: false
@@ -150,7 +156,10 @@ class CreateModelRelations < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-
+    create_table :lessons do |t|
+      t.belongs_to :course, index: true, required: true
+      t.timestamps null: false
+    end
 
   end
   

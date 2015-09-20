@@ -19,12 +19,13 @@
         .$inject = [
             '$scope',
             '$timeout',
+            '$activityIndicator',
             'MessageService',
             'DataImport',
             'Role'
         ];
 
-    function DataImportsController($scope, $timeout, MessageService, DataImport, Role) {
+    function DataImportsController($scope, $timeout, $activityIndicator, MessageService, DataImport, Role) {
 
         var vm = this;
 
@@ -55,7 +56,6 @@
             vm.refresh();
         });
         
-
         $scope.$watch('Ctrl.data_import.file', uploadFile);
 
         /**
@@ -79,7 +79,13 @@
                 }
                 var statusProduct = 1;
                 for (var i = 0; i < data.length; i++) statusProduct *= data[i].status;
-                if (statusProduct == 0) $timeout(vm.refresh, vm.pollingPeriod);
+                if (statusProduct == 0) {
+                    $timeout(vm.refresh, vm.pollingPeriod);
+                    if (!$activityIndicator.isAnimating()) $activityIndicator.startAnimating();
+                }
+                else {
+                    if ($activityIndicator.isAnimating()) $activityIndicator.stopAnimating();
+                }
             });
         }
 
@@ -103,8 +109,6 @@
                     vm.fileUpload.uploading = false;
                     MessageService.sendMessage("Error!", "File could not be uploaded!", "error");
                     vm.data_import.file = null;
-                }, function(loaded, totalSize) {
-                    vm.fileUpload.progress = totalSize != 0 ? 100 * (loaded / totalSize) : 0;
                 });
             }
         }

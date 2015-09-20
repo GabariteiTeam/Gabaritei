@@ -23,3 +23,8 @@ img.preview-avatar {
 	max-width: 150px;
 	max-height: 150px;
 }
+
+.ai-circled {
+	width: 20px;
+	height: 20px;
+}
