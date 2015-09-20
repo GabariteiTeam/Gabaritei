@@ -6,24 +6,34 @@ Rails.application.routes.draw do
 
 	# SUBJECTS ROUTES
 
-	get "/subjects/", to: "subjects#index", as: "subjects_home"
-	get "/subjects/:id", to: "subjects#show", as: "read_subject"
-	get "/subjects/validate/destroy/:id", to: "subjects#validate_destroy"
-	post "/subjects/", to: "subjects#create", as: "subjects_new"
-	put "/subjects/", to: "subjects#update", as: "subjects_update"
-	delete "/subjects/:id", to: "subjects#destroy", as: "subjects_delete"
+	get 	"/subjects/", 		to: "subjects#index", as: "subjects_home"
+	get 	"/subjects/:id", 	to: "subjects#show", as: "read_subject"
+	get 	"/subjects/validate/destroy/:id", to: "subjects#validate_destroy"
+	post 	"/subjects/", 		to: "subjects#create", as: "subjects_new"
+	put 	"/subjects/", 		to: "subjects#update", as: "subjects_update"
+	delete 	"/subjects/:id", 	to: "subjects#destroy", as: "subjects_delete"
 
 	# END SUBJECTS ROUTES
 
 	# QUESTIONS ROUTES
 
-	get "/questions", to: "questions#index"
-	get "/questions/:id", to: "questions#show"
-	put "/questions", to: "questions#customUpdate"
-	post "/questions/", to: "questions#create"
-	delete "/questions/:id", to: "questions#destroy"
+	get 	"/questions", 		to: "questions#index"
+	get 	"/questions/:id", 	to: "questions#show"
+	put 	"/questions", 		to: "questions#customUpdate"
+	post 	"/questions/", 		to: "questions#create"
+	delete 	"/questions/:id", 	to: "questions#destroy"
 
 	# END QUESTIONS ROUTES
+	
+	# FIELDS ROUTES
+	post 	"/fields/", 		to: "fields#create"
+	get 	"/field/:id/edit", 	to: "fields#edit"
+	get 	"/fields/:id", 		to: "fields#index"
+	delete 	"/fields/:id", 		to: "fields#destroy"
+	put 	"/fields/", 		to: "fields#update"
+	
+	
+	# END FIELDS ROUTES
 
 	# USERS ROUTES
 

@@ -1,16 +1,17 @@
 class SubjectsController < ApplicationController
 
-  # GET /subjects
-  # GET /subjects.json
-  def index
-    @subjects = Subject.all
-    render json: @subjects
-  end
+      # GET /subjects
+      # GET /subjects.json
+      def index
+        @subjects = Subject.all
+        render json: @subjects
+      end
 
       # GET /subjects/1
       # GET /subjects/1.json
       def show
-        render :json => { name: @subject.name, description: @subject.description, id: @subject.id}
+        set_subject
+        render :json => { name: @subject.name, description: @subject.description, id: @subject.id, fields: @subject.fields}
       end
 
       # GET /subjects/new
@@ -43,16 +44,6 @@ class SubjectsController < ApplicationController
         else
           render :json =>  @subject.errors, status: :unprocessable_entity
         end
-
-        # respond_to do |format|
-        #   if @subject.save
-        #     #format.html { redirect_to @subject, notice: 'Subject was successfully created.' }
-        #     format.json { render :show, status: :created, location: @subject }
-        #   else
-        #     format.html { render :new }
-        #     format.json { render json: @subject.errors, status: :unprocessable_entity }
-        #   end
-        # end
       end
 
       # PATCH/PUT /subjects/1
@@ -64,13 +55,6 @@ class SubjectsController < ApplicationController
         else
           render :json =>  @subject.errors, status: :unprocessable_entity
         end
-        # respond_to do |format|
-        #   if @subject.update(subject_params)
-        #     format.json {}
-        #   else
-        #     format.json { render json: @subject.errors, status: :unprocessable_entity }
-        #   end
-        # end
       end
 
       # DELETE /subjects/1
@@ -80,16 +64,14 @@ class SubjectsController < ApplicationController
         @subject.questions.each do |question|
           question.destroy
         end
-
+        @subject.fields.each do |field|
+          field.destroy
+        end
         if @subject.destroy
           render :json => {}
         else
           render :json =>  @subject.errors, status: :unprocessable_entity
         end
-        # respond_to do |format|
-        #   format.html { redirect_to subjects_url, notice: 'Subject was successfully destroyed.' }
-        #   format.json { head :no_content }
-        # end
       end
 
     private

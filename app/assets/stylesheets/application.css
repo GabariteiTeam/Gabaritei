@@ -11,10 +11,10 @@
  * file per style scope.
  *
  *= require_self
- *= require ng-tags-input/ng-tags-input.min.css
- *= require ng-tags-input/ng-tags-input.bootstrap.min.css
  *= require bootswatch.min.css
  *= require bootswatch/flatly/bootstrap.css
+ *= require ng-tags-input/ng-tags-input.min.css
+ *= require ng-tags-input/ng-tags-input.bootstrap.min.css
  *= require angular-motion/dist/angular-motion.min.css
  *= require bootstrap-toggle/css/bootstrap-toggle.css
  *= require ngActivityIndicator/css/ngActivityIndicator.css

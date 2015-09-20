@@ -35,5 +35,4 @@
 //= stub app/subjects/subjects.controllers.spec
 //= stub app/questions/questions.controllers.spec
 //= stub app/data_imports/data_imports.controllers.spec
-//= require turbolinks
 //= require_tree .

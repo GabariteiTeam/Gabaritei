@@ -8,7 +8,7 @@
 
     function ModalController(ModalService, Modal) {
     	var vm = this;
-
+        vm.showModal = showModal;
     	ModalService.registerModalController(showModal);
 
     	function showModal(modal) {
