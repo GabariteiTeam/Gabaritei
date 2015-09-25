@@ -14,6 +14,7 @@
         var vm = this;
         vm.deleteUser = deleteUser;
         vm.c_delete = c_delete;
+        vm.users = [];
     
         activate();
 
@@ -38,11 +39,11 @@
 
         function c_delete(id) {
             User.delete({id: id}, function() {
-                MessageService.sendMessage("Deleted!", "Role was deleted with success!", "success");
+                MessageService.sendMessage("Deleted!", "User was deleted with success!", "success");
                 reloadPage();
             },
             function(err) {
-                MessageService.sendMessage("Fail!", "Role was NOT deleted with success!", "error");
+                MessageService.sendMessage("Fail!", "User was NOT deleted with success!", "error");
                 reloadPage();
             });
         }

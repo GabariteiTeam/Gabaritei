@@ -9,12 +9,7 @@
     User.$inject = ['$resource', 'Upload'];
 
     function User($resource, Upload) {
-        var u = $resource('users/:id.json', {id: '@id'}, {
-            validateDestroy: {
-                url: 'users/:id/validate/destroy',
-                method: 'GET'
-            }
-        });
+        var u = $resource('users/:id.json', {id: '@id'});
         u.prototype.$save = function(success, error) {
             upload(this, 'users/', 'POST', success, error);
         }
