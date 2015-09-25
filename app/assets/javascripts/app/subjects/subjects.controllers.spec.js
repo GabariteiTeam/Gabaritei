@@ -25,10 +25,11 @@ describe('unit: SubjectsController', function() {
 
         $ModalService = ModalService;
         scope = $rootScope.$new();
-        $httpBackend.expectGET('translations/en.json').respond(expectedTranslation);
-        $httpBackend.expectGET('subjects').respond(expectedSubjects);
-
-
+        $httpBackend.expectGET('translations/en.json')
+                    .respond(expectedTranslation);
+        $httpBackend.expectGET('subjects')
+                    .respond(expectedSubjects);
+                    
         ctrl = $controller('SubjectsController', {
             $scope: scope,
             MessageService: $MessageService,
@@ -88,24 +89,24 @@ describe('unit: SubjectsController', function() {
         $httpBackend.expectGET('subjects/validate/destroy/1').respond({model_bind: true, count: 1});
         $httpBackend.expectDELETE('subjects/1').respond({});
         spyOn($MessageService, "sendMessage");
-        spyOn($ModalService, "alert");
+        spyOn($ModalService, "customModal");
         ctrl.deleteSubject(1);
         ctrl.c_delete(1);
         $httpBackend.flush();
         expect($MessageService.sendMessage).toHaveBeenCalledWith("Deleted!", "Subject was deleted with success!", "success");
-        expect($ModalService.alert).toHaveBeenCalled();
+        expect($ModalService.customModal).toHaveBeenCalled();
     });
 
     it('Should send delete request and fail', function() {
         $httpBackend.flush();
         $httpBackend.expectGET('subjects/validate/destroy/1').respond({model_bind: false, count: 1});
         $httpBackend.expectDELETE('subjects/1').respond(500);
-        spyOn($ModalService, "alert");
+        spyOn($ModalService, "customModal");
         spyOn($MessageService, "sendMessage");
         ctrl.deleteSubject(1);
         ctrl.c_delete(1);
         $httpBackend.flush();
-        expect($ModalService.alert).toHaveBeenCalled();
+        expect($ModalService.customModal).toHaveBeenCalled();
         expect($MessageService.sendMessage).toHaveBeenCalledWith("Fail!", "Subject was NOT deleted with success!", "error");
     });
 

@@ -27,7 +27,12 @@ en:
    language: 'Language'
   home:
    heading: 'Easy, fast and simple!'
+  actions:
+    buttons:
+      save: "Save"
   crud:
+   name: "Name"
+   description: 'Description'
    create: 'Create'
    add: 'Add'
    update: 'Update'
@@ -37,6 +42,73 @@ en:
    save: 'Save'
    edit: 'Edit'
    import: 'Import'
+   subjects:
+    alerts:
+      create:
+        success:
+          title: 'Created!'
+          content: 'Subject was created with success!'
+    modal:
+      delete_with_questions:
+        title: 'Warning!'
+        body: 'There are one or more questions associated with this subject. Do you want to proceed?'
+      delete:
+        title: 'Warning!'
+        body: 'Are you sure you want to delete this subject?'
+    index:
+      heading: 'Subjects'
+      sub_heading: 'Create a new subject to your Virtual Class!'
+      fields: 'Fields'
+      view_fields: 'View Fields'
+    create: 
+      heading: 'New Subject'
+    update:
+      heading: 'Update Subject'
+    form:
+      subject_name:
+        title: 'Subject name:'
+        placeholder: 'Subject name here'
+      subject_description: 
+        title: 'Subject description:'
+        placeholder: 'Subject description here'
+   questions:
+    index:
+      header: 'Questions'
+      sub_header: 'Create a new question for your students'
+      add: 'Add new question'
+    create:
+      title: 'New Question'
+    update:
+      title: 'Edit Question'
+    form:
+      professor:
+        label: 'Professor'
+      style:
+        label: 'Style'
+        written: 'Written'
+        multiple_choice: 'Multiple choice'
+      subject:
+        label: 'Subject'
+        placeholder: 'Type a Subject'
+      hot:
+        label: 'Hot'
+      text:
+        label: 'Text'
+        placeholder: 'Enter your question here'
+      answer:
+        label: 'Answer'
+        placeholder: 'Enter the answer of your question here'
+      source:
+        label: 'Source'
+        placeholder: 'Enter the source of your question here'
+    table:
+      headers:
+        id: 'ID'
+        professor: 'Professor'
+        source: 'Source'
+        text: 'Text'
+        date: 'Date'
+        options: 'Options'
   models:
    content: 'Content'
    course: 'Course'
@@ -50,7 +122,5 @@ en:
    registration_request: 'Registration Request'
    response: 'Response'
    role: 'Role'
-   subject: 'Subject'
    test: 'Test'
    user: 'User'
-
