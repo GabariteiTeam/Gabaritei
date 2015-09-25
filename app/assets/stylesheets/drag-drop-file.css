@@ -1,0 +1,30 @@
+[ngf-drop] {
+	color: #BBB;
+	font-size: 20px;
+	text-align: center;
+	border: 3px dashed #BBB;
+	-webkit-transition: 0.1s;
+}
+
+.drag-file[ngf-drop] {
+	color: #999;
+	border-color: #999;
+	-webkit-transform: scale(1.05);
+	-webkit-transition: 0.1s;
+}
+
+.avatar[ngf-drop] {
+	width: 150px;
+	height: 150px;
+	line-height: 30px;
+}
+
+img.preview-avatar {
+	max-width: 150px;
+	max-height: 150px;
+}
+
+.ai-circled {
+	width: 20px;
+	height: 20px;
+}

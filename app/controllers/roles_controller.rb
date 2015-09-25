@@ -10,7 +10,8 @@ class RolesController < ApplicationController
   # GET /roles/1
   # GET /roles/1.json
   def show
-    render :json => { name: @role.name, description: @role.description, id: @role.id}
+    role = Role.includes(:permissions).find(params[:id])
+    render json: role, methods: [:permissions]
   end
 
   # GET /Roles/new
@@ -22,67 +23,69 @@ class RolesController < ApplicationController
   def edit
   end
 
-      # POST /Roles
-      # POST /Roles.json
-      def create
-        @role = Role.new(role_params)
-        if @role.save
-          render :json => {}
-        else
-          render :json =>  @role.errors, status: :unprocessable_entity
-        end
+  # POST /Roles
+  # POST /Roles.json
+  def create
+    @role = Role.new(role_params)
+    if params["permissions"]
+      @role.permissions = Permission.find(params["permissions"])
+    end
+    if @role.save
+      render :json => {}
+    else
+      render :json =>  @role.errors, status: :unprocessable_entity
+    end
+  end
 
-        # respond_to do |format|
-        #   if @role.save
-        #     #format.html { redirect_to @role, notice: 'Role was successfully created.' }
-        #     format.json { render :show, status: :created, location: @role }
-        #   else
-        #     format.html { render :new }
-        #     format.json { render json: @role.errors, status: :unprocessable_entity }
-        #   end
-        # end
-      end
+  # PATCH/PUT /Roles/1
+  # PATCH/PUT /Roles/1.json
+  def update
+    set_role
+    @role.permissions = []
+    if params["permissions"]
+      @role.permissions = Permission.find(params["permissions"])
+    end
+    if @role.update(role_params)
+      render :json => {}
+    else
+      render :json =>  @role.errors, status: :unprocessable_entity
+    end
+  end
 
-      # PATCH/PUT /Roles/1
-      # PATCH/PUT /Roles/1.json
-      def update
-        if @role.update(role_params)
-          render :json => {}
-        else
-          render :json =>  @role.errors, status: :unprocessable_entity
-        end
-        # respond_to do |format|
-        #   if @role.update(role_params)
-        #     format.json {}
-        #   else
-        #     format.json { render json: @role.errors, status: :unprocessable_entity }
-        #   end
-        # end
-      end
+  # DELETE /Roles/1
+  # DELETE /Roles/1.json
+  def destroy
+    set_role
+    if @role.destroy
+      render :json => {}
+    else
+      render :json =>  @role.errors, status: :unprocessable_entity
+    end
+    # respond_to do |format|
+    #   format.html { redirect_to Roles_url, notice: 'Role was successfully destroyed.' }
+    #   format.json { head :no_content }
+    # end
+  end
 
-      # DELETE /Roles/1
-      # DELETE /Roles/1.json
-    def destroy
-        if @role.destroy
-          render :json => {}
-        else
-          render :json =>  @role.errors, status: :unprocessable_entity
-        end
-        # respond_to do |format|
-        #   format.html { redirect_to Roles_url, notice: 'Role was successfully destroyed.' }
-        #   format.json { head :no_content }
-        # end
-      end
+  def validate_destroy
+    set_role
+    user_count = @role.users.count
+    if user_count > 0
+      render :json => { single: false, count: user_count}
+    else
+      render :json => { single: true }
+    end
+  end
 
-    private
-        # Use callbacks to share common setup or constraints between actions.
-        def set_Role
-          @role = Role.find(params[:id])
-        end
+private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_role
+      @role = Role.find(params[:id])
+    end
 
-        # Never trust parameters from the scary internet, only allow the white list through.
-        def role_params
-          #params.require(:Role).permit(:name, :professor_id, :department_id, :descricao)
-          params.require(:Role).permit(:id, :name, :description)
-        end
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def role_params
+      #params.require(:Role).permit(:name, :professor_id, :department_id, :descricao)
+      params.require(:role).permit(:id, :name, :description)
+    end
 end

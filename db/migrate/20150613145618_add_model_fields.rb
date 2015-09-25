@@ -15,6 +15,7 @@ class AddModelFields < ActiveRecord::Migration
     # Media
     add_column :medias, :reference, :string
     add_column :medias, :is_attachment, :boolean
+    add_attachment :medias, :data
 
     # Roles
     add_column :roles, :name, :string
@@ -38,6 +39,7 @@ class AddModelFields < ActiveRecord::Migration
     add_column :users, :password, :string
     add_column :users, :birthdate, :datetime
     add_column :users, :about, :text
+    add_attachment :users, :avatar
 
     # Courses
     add_column :courses, :name, :string
@@ -93,8 +95,11 @@ class AddModelFields < ActiveRecord::Migration
     # Data import
     add_column :data_imports, :model, :integer
     add_column :data_imports, :status, :integer, default: -1
-    add_column :data_imports, :col_sep, :string
     add_attachment :data_imports, :data
+
+    # Lesson
+    add_column :lessons, :title, :string
+    add_column :lessons, :description, :text
 
   end
   

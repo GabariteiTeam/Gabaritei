@@ -1,0 +1,16 @@
+<div class="text-center">
+  <div class="btn-group" ng-if="numPages > 1">
+    <button type="button" class="btn btn-default" ng-class="{disabled: page <= 0}" ng-click="gotoPage(page-1)">&laquo;</button>
+    <button type="button" class="btn btn-default" ng-if="linkGroupFirst() > 0" ng-click="gotoPage(0)">1</button>
+    <button type="button" ng-if="linkGroupFirst() > 1" class="btn btn-default disabled">&hellip;</button>
+    <button type="button" class="btn btn-default"
+      ng-repeat=
+        "p in [linkGroupFirst(), linkGroupLast()] | makeRange"
+      ng-class="{active: p === page}"
+      ng-click="gotoPage(p)"
+    >{{p+1}}</button>
+    <button type="button" ng-if="linkGroupLast() < numPages - 2" class="btn btn-default disabled">&hellip;</button>
+    <button type="button" class="btn btn-default" ng-if="isFinite() && linkGroupLast() < numPages - 1" ng-click="gotoPage(numPages-1)">{{numPages}}</button>
+    <button type="button" class="btn btn-default" ng-class="{disabled: page >= numPages - 1}" ng-click="gotoPage(page+1)">&raquo;</button>
+  </div>
+</div>

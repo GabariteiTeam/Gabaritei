@@ -17,17 +17,25 @@
 		</thead>
 		<tbody>
 			<tr data-ng-repeat="data_import in Ctrl.data_imports">
-				<td>{{ Ctrl.models[data_import.model] }}{{ data_import.role_name ? " (" + data_import.role_name + ")" : "" }}</td>
+				<td>
+					<select ng-model="data_import.model" class="form-control input-sm" ng-options="index as model for (index, model) in Ctrl.models" ng-hide="!data_import.edit"></select>
+					<select ng-model="data_import.role.id" class="form-control input-sm" ng-options="role.id as role.name for role in Ctrl.user_roles" ng-hide="!data_import.edit || data_import.model != '0'"></select>
+					<span ng-hide="data_import.edit">{{ Ctrl.models[data_import.model] }}{{ data_import.role.name ? " (" + data_import.role.name + ")" : "" }}</span>
+				</td>
 				<td>
 					<a href="{{ data_import.data_url }}">{{ data_import.data_file_name }}</a>
 				</td>
 				<td>{{ data_import.update_date_text }}</td>
 				<td>
+					<div ng-activity-indicator="CircledDark" style="float: left; margin-right: 5px;" ng-hide="data_import.status != 0"></div>
 					<span style="{{ data_import.status == 2 ? 'color: red' : ''}}">{{ data_import.status_text }}</span>
 				</td>
 				<td>
-					<button type="button" class="btn btn-xs btn-primary" ng-disabled="{{ data_import.status != -1 }}" ng-click="Ctrl.importData(data_import.id)">Import data</button>
-					<button type="button" class="btn btn-xs btn-danger" ng-disabled="{{ data_import.status == 0 }}" ng-click="Ctrl.deleteFile(data_import.id)">Delete file</button>
+					<button type="button" class="btn btn-xs" ng-disabled="{{ data_import.status != -1 }}" ng-click="Ctrl.editFile(data_import)" ng-hide="data_import.edit">Edit</button>
+					<button type="button" class="btn btn-xs btn-primary" ng-disabled="{{ data_import.status != -1 }}" ng-click="Ctrl.updateFile(data_import)" ng-hide="!data_import.edit">Update</button>
+					<button type="button" class="btn btn-xs btn-danger" ng-disabled="{{ data_import.status != -1 }}" ng-click="Ctrl.cancelFileUpdate(data_import)" ng-hide="!data_import.edit">Cancel</button>
+					<button type="button" class="btn btn-xs btn-primary" ng-disabled="{{ data_import.status != -1 }}" ng-click="Ctrl.importData(data_import.id)" ng-hide="data_import.edit">Import data</button>
+					<button type="button" class="btn btn-xs btn-danger" ng-disabled="{{ data_import.status == 0 }}" ng-click="Ctrl.deleteFile(data_import.id)" ng-hide="data_import.edit">Delete file</button>
 				</td>
 			</tr>
 		</tbody>
@@ -44,5 +52,23 @@
 </div>
 
 <div class="row">
-	<form novalidate ng-include="'templates/data_imports/_form.html'" ng-submit="Ctrl.uploadFile()"></form>
+	<form novalidate>
+		<div class="form-group">
+			<label for="inputDataType">Select data type: </label>
+			<select ng-model="Ctrl.data_import.model" class="form-control" id="inputDataType" ng-options="index as model for (index, model) in Ctrl.models" ng-disabled="Ctrl.fileUpload.uploading">
+			</select>
+		</div>
+		<div class="form-group" ng-hide="Ctrl.data_import.model != '0'">
+			<label for="inputUsersRole">Select users' role: </label>
+			<select ng-model="Ctrl.data_import.role" class="form-control" id="inputUsersRole" ng-options="role.id as role.name for role in Ctrl.user_roles" ng-disabled="Ctrl.fileUpload.uploading">
+			</select>
+		</div>
+		<div class="form-group form-inline">
+			<label for="inputCSVFile">Drag and drop a file below: </label>
+			<div class="well well-lg" ngf-drop ng-model="Ctrl.data_import.file" ngf-drag-over-class="drag-file">{{ Ctrl.data_import.file ? Ctrl.data_import.file.name : "Drop file here" }}</div>
+			<label for="inputCSVFile">Or select file: </label>
+			<input type="file" ngf-select ng-model="Ctrl.data_import.file" class="form-control" id="inputCSVFile" ng-disabled="Ctrl.fileUpload.uploading"/>
+		</div>
+		
+	</form>
 </div>

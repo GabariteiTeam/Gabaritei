@@ -66,6 +66,9 @@ gem 'delayed_job_active_record'
 # Paperclip => file upload
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 
+# RMagick => interface to ImageMagick. Install ImageMagick before using it
+gem "rmagick"
+
 # CSRF protection + AngularJS
 gem 'angular_rails_csrf'
 
@@ -76,3 +79,6 @@ gem 'roo-xls'
 # YARD to create server-side docs
 gem 'yard'
 gem 'annotate', '~> 2.6.6'
+
+# Pagination
+gem 'clean_pagination'

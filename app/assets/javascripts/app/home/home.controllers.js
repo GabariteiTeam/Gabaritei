@@ -15,6 +15,6 @@
 
     HomeController.$inject = ['MessageService', 'ModalService', 'Modal'];
 
-    function HomeController() {
-    }
+    function HomeController() {}
+    
 })();

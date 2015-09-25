@@ -17,29 +17,32 @@
 
     DataImportsController
         .$inject = [
+            '$scope',
             '$timeout',
+            '$activityIndicator',
             'MessageService',
             'DataImport',
             'Role'
         ];
 
-    function DataImportsController($timeout, MessageService, DataImport, Role) {
+    function DataImportsController($scope, $timeout, $activityIndicator, MessageService, DataImport, Role) {
 
         var vm = this;
-        
+
         vm.refresh = refresh;
         vm.uploadFile = uploadFile;
         vm.importData = importData;
         vm.deleteFile = deleteFile;
-        vm.fileNameChanged = fileNameChanged;
+        vm.editFile = editFile;
+        vm.updateFile = updateFile;
+        vm.cancelFileUpdate = cancelFileUpdate;
         vm.show_file_parameters = false;
         vm.data_imports = [];
         vm.models = ['Users', 'Subjects and Fields', 'Courses'];
         vm.data_import = new DataImport();
         vm.data_import.col_sep = ",";
         vm.data_import.model = '0';
-        vm.missingFile = false;
-        vm.csv_file = false;
+        vm.data_import.file = null;
         vm.pollingPeriod = 3000;
         vm.fileUpload = {
             uploading: false,
@@ -47,8 +50,13 @@
         };
         Role.query(function(data) {
             vm.user_roles = data;
+            if (vm.user_roles.length > 0) vm.data_import.role = vm.user_roles[0].id;
+            vm.refresh();
+        }, function(data) {
+            vm.refresh();
         });
-        vm.refresh();
+        
+        $scope.$watch('Ctrl.data_import.file', uploadFile);
 
         /**
          * @ngdoc method
@@ -61,10 +69,23 @@
         function refresh() {
             DataImport.query(function(data) {
                 vm.data_imports = data;
-                vm.missingFile = false;
+                for (var i = 0; i < vm.data_imports.length; i++) {
+                    vm.data_imports[i].model = vm.data_imports[i].model.toString();
+                    if (vm.data_imports[i].model != '0') {
+                        vm.data_imports[i].role = {
+                            id: vm.user_roles[0].id
+                        }
+                    }
+                }
                 var statusProduct = 1;
                 for (var i = 0; i < data.length; i++) statusProduct *= data[i].status;
-                if (statusProduct == 0) $timeout(vm.refresh, vm.pollingPeriod);
+                if (statusProduct == 0) {
+                    $timeout(vm.refresh, vm.pollingPeriod);
+                    if (!$activityIndicator.isAnimating()) $activityIndicator.startAnimating();
+                }
+                else {
+                    if ($activityIndicator.isAnimating()) $activityIndicator.stopAnimating();
+                }
             });
         }
 
@@ -77,18 +98,19 @@
          * upload file
          **/
         function uploadFile() {
-            vm.fileUpload.uploading = true;
-            vm.data_import.upload(function(data) {
-                vm.fileUpload.uploading = false;
-                MessageService.sendMessage("Uploaded!", "File was uploaded with success!", "success");
-                vm.refresh();
-            }, function(data) {
-                vm.fileUpload.uploading = false;
-                MessageService.sendMessage("Error!", "File could not be uploaded!", "error");
-                vm.missingFile = true;
-            }, function(loaded, totalSize) {
-                vm.fileUpload.progress = totalSize != 0 ? 100 * (loaded / totalSize) : 0;
-            });
+            if (vm.data_import.file) {
+                vm.fileUpload.uploading = true;
+                vm.data_import.upload(function(data) {
+                    vm.fileUpload.uploading = false;
+                    MessageService.sendMessage("Uploaded!", "File was uploaded with success!", "success");
+                    vm.data_import.file = null;
+                    vm.refresh();
+                }, function(data) {
+                    vm.fileUpload.uploading = false;
+                    MessageService.sendMessage("Error!", "File could not be uploaded!", "error");
+                    vm.data_import.file = null;
+                });
+            }
         }
 
         function importData(data_import_id) {
@@ -112,9 +134,23 @@
             });
         }
 
-        function fileNameChanged(element) {
-            var file = element.files[0]; 
-            vm.csv_file = (file !== undefined && file.type == "text/csv")
+        function editFile(elem) {
+            elem.edit = true;
+        }
+
+        function updateFile(elem) {
+            elem.$update(function(data) {
+                MessageService.sendMessage("Updated!", "File was updated with success!", "success");
+                vm.refresh();
+            }, function(err) {
+                MessageService.sendMessage("Error!", "File could not be updated!", "error");
+                vm.refresh();
+            });
+        }
+
+        function cancelFileUpdate(elem) {
+            elem.edit = false;
+            vm.refresh();
         }
 
     };

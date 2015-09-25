@@ -1,0 +1,27 @@
+<div class="row">
+	<div class="page-header">
+		<h1>{{Ctrl.user.first_name + " " + Ctrl.user.last_name}}</h1>
+	</div>
+	<dl class="dl-horizontal">
+		<dt>Role</dt>
+		<dd>{{ Ctrl.user.role.name }}</dd>
+		<dt>First name</dt>
+		<dd>{{ Ctrl.user.first_name }}</dd>
+		<dt>Last name</dt>
+		<dd>{{ Ctrl.user.last_name }}</dd>
+		<dt>E-mail</dt>
+		<dd>{{ Ctrl.user.email }}</dd>
+		<dt>Birthdate</dt>
+		<dd>{{ Ctrl.user.birthdate | date: "dd/MM/yyyy" }}</dd>
+		<dt>About</dt>
+		<dd>{{ Ctrl.user.about }}</dd>
+		<dt>Avatar</dt>
+		<dd>
+			<img ng-src="{{ Ctrl.user.avatar_url_medium }}" />
+		</dd>
+	</dl>
+	<div class="well">
+		<a class="btn btn-primary" href="#users/update/{{Ctrl.user.id}}">Edit</a>
+		<button class="btn btn-danger" ng-click="Ctrl.deleteUser(user.id)">Delete</button>
+	</div>
+</div>

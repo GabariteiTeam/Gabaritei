@@ -21,8 +21,11 @@
 //= require angular-resource/angular-resource
 //= require angular-translate/angular-translate
 //= require angular-translate-loader-static-files/angular-translate-loader-static-files
+//= require angular-paginate-anything/dist/paginate-anything-tpls
 //= require ng-file-upload/ng-file-upload
 //= require ng-tags-input/ng-tags-input
+//= require ngActivityIndicator/ngActivityIndicator
+//= require bootstrap-toggle/js/bootstrap-toggle
 //= require app/app
 //= require_tree ./app
 //= stub app/home/home.controllers.spec
@@ -32,4 +35,8 @@
 //= stub app/subjects/subjects.controllers.spec
 //= stub app/questions/questions.controllers.spec
 //= stub app/data_imports/data_imports.controllers.spec
+//= stub app/fields/fields.controllers.spec
+//= stub app/modal/modal.controllers.spec
+//= stub app/roles/roles.controllers.spec
+//= stub app/users/users.controllers.spec
 //= require_tree .

@@ -8,6 +8,7 @@
 #
 # Table name: category_difficulties
 #
+#  id            :integer          not null, primary key
 #  user_id       :integer
 #  category_id   :integer
 #  category_type :string(255)

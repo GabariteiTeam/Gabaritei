@@ -44,6 +44,8 @@ module.exports = function(config){
       'vendor/assets/bower_components/ng-tags-input/ng-tags-input.js',
       'vendor/assets/bower_components/angular-translate/angular-translate.js',
       'vendor/assets/bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js',
+      'vendor/assets/bower_components/angular-paginate-anything/dist/paginate-anything-tpls.js',
+      'vendor/assets/bower_components/ngActivityIndicator/ngActivityIndicator.js',
       'app/assets/javascripts/app/**/*.js',
       'app/views/templates/**/*.html',
       'test-angular/spec_helper.js'

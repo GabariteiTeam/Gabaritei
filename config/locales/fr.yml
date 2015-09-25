@@ -4,6 +4,8 @@ fr:
   subjects: 'Matières'
   data_import: 'Importation de données'
   language: 'Langue'
+  roles: 'Rôles'
+  users: 'Utilisateurs'
  home:
   heading: 'Facile, rapide et simple !'
  crud:

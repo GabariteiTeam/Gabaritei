@@ -35,6 +35,12 @@ Rails.application.routes.draw do
 	
 	# END FIELDS ROUTES
 
+	# USERS ROUTES
+
+	resources :users
+
+	# END USERS ROUTES
+
 	# DATA IMPORT ROUTES
 
 	resources :data_imports do
@@ -43,11 +49,14 @@ Rails.application.routes.draw do
 
 	# END DATA IMPORT ROUTES
 
-	# DATA IMPORT ROUTES
+	# ROLES AND PERMISSIONS ROUTES
 
-	resources :roles
+	resources :roles do
+		get "validate/destroy", to: "roles#validate_destroy", on: :member
+	end
+	resources :permissions, only: :index
 
-	# END DATA IMPORT ROUTES
+	# END ROLES AND PERMISSIONS ROUTES
 
 	# TRANSLATIONS ROUTES
 

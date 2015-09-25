@@ -1,5 +1,5 @@
 # Contents can be created by {User users} (for example, teachers) as additional resources to their
-# courses. By being associated with a {Media media} object, a content can have a wide variety of formats, 
+# {Course courses} and/or {Lesson lessons}. By being associated with a {Media media} object, a content can have a wide variety of formats, 
 # like PDFs, images, MS Office documents, or even online resources, like YouTube videos.
 # They must be associated to a {Subject subject} or a {Field field}, and they can be recommended to one user by
 # another user.
@@ -80,8 +80,14 @@ class Content < ActiveRecord::Base
 	# @see Course#contents
 	has_many :courses, through: :course_contents
 
+	# List of all {Lesson lessons} that have access to the content.
+	# @return [Array<Lesson>] all lessons that have access to the content.
+	# @see Lesson#contents
+	has_many :lessons, through: :lesson_contents
+
 	# @!endgroup
 
 	has_many :course_contents
+	has_many :lesson_contents
 
 end

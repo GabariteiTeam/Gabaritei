@@ -15,8 +15,8 @@ describe('unit: MessageService', function() {
         };
         $MessageService.addObserver(common.callback);
         spyOn(common, "callback");
-        $MessageService.sendMessage("Message Title", "Message content", "success");
-
+        //$MessageService.sendMessage("Message Title", "Message content", "success");
+        $MessageService.sendMessage('subject.created.success');
     });
 
 });
