@@ -116,7 +116,8 @@ describe('unit: SubjectsController', function() {
         spyOn($MessageService, "sendMessage");
         ctrl.createSubject();
         $httpBackend.flush();
-        expect($MessageService.sendMessage).toHaveBeenCalledWith("Created!", "Subject was created with success!", "success");
+        //expect($MessageService.sendMessage).toHaveBeenCalledWith("Created!", "Subject was created with success!", "success");
+        expect($MessageService.sendMessage).toHaveBeenCalledWith('subject.created.success');
     });
 
     it('Should send create request and fail', function() {
