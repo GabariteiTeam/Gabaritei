@@ -1,5 +1,3 @@
-// Services section
-
 (function() {
 	'use strict';
     angular
