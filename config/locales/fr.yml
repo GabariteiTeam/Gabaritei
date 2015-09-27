@@ -6,6 +6,7 @@ fr:
   language: 'Langue'
   roles: 'Rôles'
   users: 'Utilisateurs'
+  courses: 'Cours'
  home:
   heading: 'Facile, rapide et simple !'
  crud:

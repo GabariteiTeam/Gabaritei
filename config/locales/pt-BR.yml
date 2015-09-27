@@ -6,6 +6,7 @@ pt-BR:
    language: 'Idioma'
    roles: 'Papéis'
    users: 'Usuários'
+   courses: 'Salas'
   home:
    heading: 'Fácil, rápido e simples!'
   crud:

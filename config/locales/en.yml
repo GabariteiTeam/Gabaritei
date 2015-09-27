@@ -27,6 +27,7 @@ en:
    language: 'Language'
    roles: 'Roles'
    users: 'Users'
+   courses: 'Courses'
   home:
    heading: 'Easy, fast and simple!'
   actions:
