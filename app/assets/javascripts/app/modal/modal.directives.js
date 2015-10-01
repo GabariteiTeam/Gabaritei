@@ -3,19 +3,8 @@
 		.module(APP_NAME)
 		.directive("gabConfirmModal", gabConfirmModal);
 
-	gabConfirmModalController.$inject = ['$scope'];
-
-	function gabConfirmModalController($scope) {
-		$scope.closeModal = closeModal;
-
-		function closeModal() {
-			$("#" + $scope.modalid).modal('hide');
-		}
-	}
-
 	function gabConfirmModal() {
 		return {
-			controller: gabConfirmModalController,
 			scope: {
 				modalid: '@',
 				title: '@',
@@ -23,6 +12,11 @@
 				callback: '&',
 				args: '='
 			},
+			controller: ['$scope', 'ModalService', function($scope, ModalService){
+				$scope.hey = function() {
+					ModalService.alert();
+				};
+			}],
 			templateUrl: 'templates/modal/confirm-modal.html'
 		};
 	}

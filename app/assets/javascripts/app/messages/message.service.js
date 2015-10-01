@@ -18,7 +18,42 @@
                 'title': 'crud.subjects.alerts.create.success.title',
                 'content': 'crud.subjects.alerts.create.success.content',
                 'type': mTypes['success']
-                }
+            },
+            'subject.created.error': {
+                'title': 'crud.subjects.alerts.create.error.title',
+                'content': 'crud.subjects.alerts.create.error.content',
+                'type': mTypes['error']
+            },
+            'subject.deleted.success': {
+                'title': 'crud.subjects.alerts.delete.success.title',
+                'content': 'crud.subjects.alerts.delete.success.content',
+                'type': mTypes['success']
+            },
+            'subject.deleted.error': {
+                'title': 'crud.subjects.alerts.delete.error.title',
+                'content': 'crud.subjects.alerts.delete.error.content',
+                'type': mTypes['error']
+            },
+            'subject.updated.success': {
+                'title': 'crud.subjects.alerts.update.success.title',
+                'content': 'crud.subjects.alerts.update.success.content',
+                'type': mTypes['success']
+            },
+            'subject.updated.error': {
+                'title': 'crud.subjects.alerts.update.error.title',
+                'content': 'crud.subjects.alerts.update.error.content',
+                'type': mTypes['error']
+            },
+            'question.created.sucess': {
+                'title': 'crud.questions.alerts.create.success.title',
+                'content': 'crud.questions.alerts.create.success.content',
+                'type': mTypes['success']
+            },
+            'question.created.error': {
+                'title': 'crud.questions.alerts.create.error.title',
+                'content': 'crud.questions.alerts.create.error.content',
+                'type': mTypes['error']
+            }
         };
         var observers = [];
         var message;

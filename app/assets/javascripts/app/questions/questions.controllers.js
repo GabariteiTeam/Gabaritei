@@ -7,14 +7,23 @@
         .controller('NewQuestionController', NewQuestionController)
         .controller('UpdateQuestionController', UpdateQuestionController);
 
-    QuestionsController.$inject = ['$routeParams', 'MessageService', 'Question', 'RedirectService'];
+    QuestionsController.$inject = ['$routeParams', 'MessageService', 'Question', 'RedirectService', 'ModalService'];
 
-    function QuestionsController($routeParams, MessageService, Question, RedirectService) {
+    function QuestionsController($routeParams, MessageService, Question, RedirectService, ModalService) {
         var vm = this;
         vm.deleteQuestion = deleteQuestion;
         vm.questions = Question.query();
+        vm.delete_modal_id = 'confirmDeleteQuestion';
+
 
         function deleteQuestion(id) {
+            ModalService.registerCallback(c_delete);
+            ModalService.setArgs(id);
+            console.log("#" + vm.delete_modal_id);
+            $("#" + vm.delete_modal_id).modal();
+        }
+
+        function c_delete(id) {
             Question.destroy({
                     id: id
                 }, function() {
@@ -24,7 +33,7 @@
                 function(err) {
                     MessageService.sendMessage("Fail!", "Question was NOT deleted with success!", "error");
                     RedirectService.redirect("/questions");
-                });
+            });
         }
     }
 
@@ -53,12 +62,12 @@
                 }
             }
 
-            vm.question.$save(function(){
-                MessageService.sendMessage("Created!", "Question was created with success!", "success");
+            vm.question.$save({'subjects[]': vm.question.subjects},function(){
+                MessageService.sendMessage('question.created.sucess');
                     RedirectService.redirect("/questions");
                 },
                 function(err) {
-                    MessageService.sendMessage("Fail!", "Question was NOT created with success!", "error");
+                    MessageService.sendMessage('question.created.error');
                     RedirectService.redirect("/questions");
                 });
         }
