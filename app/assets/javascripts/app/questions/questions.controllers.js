@@ -12,6 +12,7 @@
     function QuestionsController($routeParams, MessageService, Question, RedirectService, ModalService) {
         var vm = this;
         vm.deleteQuestion = deleteQuestion;
+        vm.c_delete = c_delete;
         vm.questions = Question.query();
         vm.delete_modal_id = 'confirmDeleteQuestion';
 
@@ -19,19 +20,19 @@
         function deleteQuestion(id) {
             ModalService.registerCallback(c_delete);
             ModalService.setArgs(id);
-            console.log("#" + vm.delete_modal_id);
             $("#" + vm.delete_modal_id).modal();
         }
 
         function c_delete(id) {
+            ModalService.hideModal();
             Question.destroy({
                     id: id
                 }, function() {
-                    MessageService.sendMessage("Deleted!", "Question was deleted with success!", "success");
+                    MessageService.sendMessage("question.deleted.sucess");
                     RedirectService.redirect("/questions");
                 },
                 function(err) {
-                    MessageService.sendMessage("Fail!", "Question was NOT deleted with success!", "error");
+                    MessageService.sendMessage('question.deleted.error');
                     RedirectService.redirect("/questions");
             });
         }
@@ -53,15 +54,18 @@
 
         function createQuestion() {
             vm.question.subjects = [];
-            for(var i = 0; i < vm.subjectInput.length; i++) {
-                var subjectName = vm.subjectInput[i].text;
-                for(var j = 0; j < vm.subjects.length; j++) {
-                    if(vm.subjects[j].name == subjectName){
-                        vm.question.subjects.push(vm.subjects[j].id);
+            if(vm.subjectInput !== undefined)
+            {
+                for(var i = 0; i < vm.subjectInput.length; i++) {
+                    var subjectName = vm.subjectInput[i].text;
+                    for(var j = 0; j < vm.subjects.length; j++) {
+                        if(vm.subjects[j].name == subjectName){
+                            vm.question.subjects.push(vm.subjects[j].id);
+                        }
                     }
                 }
             }
-
+            
             vm.question.$save({'subjects[]': vm.question.subjects},function(){
                 MessageService.sendMessage('question.created.sucess');
                     RedirectService.redirect("/questions");
@@ -106,11 +110,11 @@
             }
 
             vm.questionModel.$update(function() {
-                    MessageService.sendMessage("Updated!", "Question was updated with success!", "success");
+                    MessageService.sendMessage('question.updated.sucess');
                     RedirectService.redirect("/questions");
                 },
                 function() {
-                    MessageService.sendMessage("Fail!", "Question was NOT updated with success!", "error");
+                    MessageService.sendMessage('question.deleted.error');
                     RedirectService.redirect("/questions");
             });
         }

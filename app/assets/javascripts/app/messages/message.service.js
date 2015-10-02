@@ -53,6 +53,26 @@
                 'title': 'crud.questions.alerts.create.error.title',
                 'content': 'crud.questions.alerts.create.error.content',
                 'type': mTypes['error']
+            },
+            'question.deleted.sucess': {
+                'title': 'crud.questions.alerts.delete.success.title',
+                'content': 'crud.questions.alerts.delete.success.content',
+                'type': mTypes['success']
+            },
+            'question.deleted.error': {
+                'title': 'crud.questions.alerts.delete.error.title',
+                'content': 'crud.questions.alerts.delete.error.content',
+                'type': mTypes['error']
+            },
+            'question.updated.sucess': {
+                'title': 'crud.questions.alerts.update.success.title',
+                'content': 'crud.questions.alerts.update.success.content',
+                'type': mTypes['success']
+            },
+            'question.updated.error': {
+                'title': 'crud.questions.alerts.update.error.title',
+                'content': 'crud.questions.alerts.update.error.content',
+                'type': mTypes['success']
             }
         };
         var observers = [];

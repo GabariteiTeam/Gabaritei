@@ -14,11 +14,10 @@
             'Subject',
             'MessageService',
             'RedirectService',
-            'ModalService',
-            'Modal'
+            'ModalService'
         ];
 
-    function SubjectsController($location, $routeParams, $route, Subject, MessageService, RedirectService, ModalService, Modal) {
+    function SubjectsController($location, $routeParams, $route, Subject, MessageService, RedirectService, ModalService) {
         var vm = this;
         vm.createSubject    = createSubject;
         vm.updateSubject    = updateSubject;

@@ -96,6 +96,20 @@ en:
         error:
           title: 'Failed!'
           content: 'Question was NOT created!'
+      delete:
+        success:
+          title: 'Deleted!'
+          content: 'Question was deleted with success'
+        error:
+          titlte: 'Failed'
+          content: 'Question was not deleted!'
+      update:
+        success:
+          title: "Updated!"
+          content: "Question was updated with success"
+        error:
+          title: "Failed!"
+          content: "Question was NOT updated"
     index:
       header: 'Questions'
       sub_header: 'Create a new question for your students'
