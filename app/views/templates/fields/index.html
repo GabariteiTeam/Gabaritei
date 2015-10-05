@@ -1,17 +1,19 @@
-<div class="page-header" id="banner">
-  <div class="row">
-    <h1>{{Ctrl.subject.name}}</h1>
-    <p class="lead">Organize your subjects in Fields</p>
-  </div>
+<div class="page-header">
+  <h1>{{Ctrl.subject.name}}</h1>
+  <p class="lead">Organize your subject in Fields</p>
 </div>
 
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <!-- <h3 class="panel-title">Fields</h3> -->
+  </div>
 
-<div class="row">
   <table class="table table-striped table-hover">
     <thead>
       <tr>
         <th>Name</th>
         <th>Description</th>
+        <th class="col-sm-3">Options</th>
       </tr>
     </thead>
 
@@ -19,14 +21,13 @@
         <tr data-ng-repeat="field in Ctrl.fields">
           <td>{{ field.name }}</td>
           <td>{{ field.description }}</td>
-          <td><a ng-href="#fields/update/{{field.id}}/{{Ctrl.subject.id}}">Edit</a>
-          <td><a href ng-click="Ctrl.confirmDelete(field.id)">Delete</a>
+          <td>
+            <a href="#fields/update/{{field.id}}/{{Ctrl.subject.id}}" class="btn btn-xs btn-primary">Edit</a>
+            <button ng-click="Ctrl.confirmDelete(field.id)" class="btn btn-xs btn-danger">Delete</button>
+          </td>
         </tr>
     </tbody>
   </table>
-
-  <a ng-href="#fields/new/{{Ctrl.subject.id}}">Add new field</a>
-
 </div>
 
-
+<a href="#fields/new/{{Ctrl.subject.id}}" class="btn btn-primary">Add new field</a>

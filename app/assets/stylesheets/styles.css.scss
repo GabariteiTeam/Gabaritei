@@ -7,6 +7,10 @@
     #sidebar-wrapper {
         display: none; /* mobile n aparece */
     }
+
+    #page-content-wrapper {
+        margin-top: 20px;
+    }
 }
 
 .navbar-collapse .glyphicon {
@@ -26,6 +30,7 @@
         padding-left: 200px;
 
         #page-content-wrapper {
+            margin-top: 0px;
             padding: 20px;
             width: 100%;
         }
