@@ -1,0 +1,1 @@
+var $ =  function(){return {modal: function(){}, removeClass: function(){}, remove: function(){}}};

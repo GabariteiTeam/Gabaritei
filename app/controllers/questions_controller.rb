@@ -33,10 +33,17 @@ class QuestionsController < ApplicationController
   # POST /questions.json
   def create
     @question = Question.new(question_params)
-    params["subjects"].each do |id|
-      subject = Subject.find(id)
-      @question.subjects.push(subject)
+    
+    # validation of subjects as arrau (avoid crashes)
+    if not params["subjects"].nil?
+      if params["subjects"].class == Array
+        params["subjects"].each do |id|
+          subject = Subject.find(id)
+          @question.subjects.push(subject)
+        end
+      end
     end
+
 
     if @question.save
       render :json => {}

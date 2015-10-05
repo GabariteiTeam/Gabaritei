@@ -19,7 +19,7 @@
     </tr>
   </thead>
 
-  <tbody >
+  <tbody>
         <tr data-ng-repeat="question in Ctrl.questions">
           <td>{{ question.id }}</td>
           <td>{{ question.user_id }}</td>
@@ -31,7 +31,7 @@
         </tr>
     </tbody>
   </table>
-
+    <div gab-confirm-modal modalid="confirmDeleteQuestion" title="crud.questions.modal.delete.title" body="crud.questions.modal.delete.content" callback="c_delete()" args="delete_id"></div>
   <a href="#questions/new" translate>crud.questions.index.add</a>
 
 </div>

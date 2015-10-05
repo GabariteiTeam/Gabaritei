@@ -22,9 +22,6 @@
                 templateUrl: 'templates/subjects/index.html',
                 controller: 'SubjectsController',
                 controllerAs: 'Ctrl'
-            })
-            .otherwise({
-                redirectTo: "/subjects"
             });
     }
 
