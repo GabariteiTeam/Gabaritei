@@ -48,6 +48,37 @@
                 'title': 'data_import.alerts.delete.error.title',
                 'content': 'data_import.alerts.delete.error.content',
                 'type': mTypes['error']
+            },
+            'field.created.success': {
+                'title': 'crud.fields.alerts.create.success.title',
+                'content': 'crud.fields.alerts.create.success.content',
+                'type': mTypes['success']
+            },
+            'field.created.error': {
+                'title': 'crud.fields.alerts.create.error.title',
+                'content': 'crud.fields.alerts.create.error.content',
+                'type': mTypes['error']
+            },
+            'field.updated.success': {
+                'title': 'crud.fields.alerts.update.success.title',
+                'content': 'crud.fields.alerts.update.success.content',
+                'type': mTypes['success']
+            },
+            'field.updated.error': {
+                'title': 'crud.fields.alerts.update.error.title',
+                'content': 'crud.fields.alerts.update.error.content',
+                'type': mTypes['error']
+            }
+            ,
+            'field.deleted.success': {
+                'title': 'crud.fields.alerts.delete.success.title',
+                'content': 'crud.fields.alerts.delete.success.content',
+                'type': mTypes['success']
+            },
+            'field.deleted.error': {
+                'title': 'crud.fields.alerts.delete.error.title',
+                'content': 'crud.fields.alerts.delete.error.content',
+                'type': mTypes['error']
             }
         };
         var observers = [];

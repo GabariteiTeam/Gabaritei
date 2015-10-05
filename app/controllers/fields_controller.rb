@@ -32,7 +32,7 @@ class FieldsController < ApplicationController
       # PATCH/PUT /subjects/1.json
       def update
         set_field
-        byebug
+        # byebug
         if @field.update(fields_params)
           render :json => {}
         else

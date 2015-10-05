@@ -111,6 +111,29 @@ en:
         text: 'Text'
         date: 'Date'
         options: 'Options'
+   fields:
+    alerts:
+      create:
+        success:
+          title: 'Created!'
+          content: 'Field was created with success!'
+        error:
+          title: 'Error!'
+          content: 'Field could not be created!'
+      update:
+        success:
+          title: 'Updated!'
+          content: 'Field was updated with success!'
+        error:
+          title: 'Error!'
+          content: 'Field could not be updated!'
+      delete:
+        success:
+          title: 'Deleted!'
+          content: 'Field was deleted with success!'
+        error:
+          title: 'Error!'
+          content: 'Field could not be deleted!'
   data_import:
     alerts:
       upload:

@@ -18,6 +18,29 @@ pt-BR:
    save: 'Salvar'
    edit: 'Editar'
    import: 'Importar'
+   fields:
+    alerts:
+      create:
+        success:
+          title: 'Criado!'
+          content: 'Área foi criada com sucesso!'
+        error:
+          title: 'Erro!'
+          content: 'Área não pôde ser criada!'
+      update:
+        success:
+          title: 'Atualizado!'
+          content: 'Área foi atualizada com sucesso!'
+        error:
+          title: 'Erro!'
+          content: 'Área não pôde ser atualizada!'
+      delete:
+        success:
+          title: 'Apagado!'
+          content: 'Área foi apagada com sucesso!'
+        error:
+          title: 'Erro!'
+          content: 'Área não pôde ser apagada!'
   data_import:
     alerts:
       upload:
