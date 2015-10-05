@@ -18,6 +18,11 @@
                 controller: 'CoursesController',
                 controllerAs: 'Ctrl'
             })
+            .when('/courses/participants/:id', {
+                templateUrl: 'templates/courses/participants.html',
+                controller: 'CourseParticipantsController',
+                controllerAs: 'Ctrl'
+            })
             .when('/courses', {
                 templateUrl: 'templates/courses/index.html',
                 controller: 'CoursesController',

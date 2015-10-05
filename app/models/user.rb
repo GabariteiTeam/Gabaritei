@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
     # @!attribute avatar
     #   User's avatar
     #   @return [File] the user's avatar.
-    has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }
+    has_attached_file :avatar, styles: { medium: "300x300>", thumb: "75x75>" }
     validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
     # @!group Belongs to

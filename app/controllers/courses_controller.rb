@@ -19,7 +19,7 @@ class CoursesController < ApplicationController
 
 	def show
     	@course = Course.find(params[:id])
-    	render json: @course, methods: [:category]
+    	render json: @course, methods: [:category, :users_info]
   	end
 
 	def update

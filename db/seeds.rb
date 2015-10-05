@@ -12,10 +12,4 @@ Role.new(name: "Student").save!
 Role.new(name: "Teacher").save!
 
 # PERMISSIONS
-Permission.new({name: 'crud.role'}).save!
-Permission.new({name: 'crud.user'}).save!
-Permission.new({name: 'crud.courses'}).save!
-Permission.new({name: 'crud.subjects_and_fields'}).save!
-Permission.new({name: 'crud.questions'}).save!
-Permission.new({name: 'crud.tests'}).save!
-Permission.new({name: 'crud.role'}).save!
+Permission.new({name: 'permission.take_part_in_courses'}).save!

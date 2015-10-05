@@ -20,6 +20,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  permission:
+   take_part_in_courses: 'Take part in courses'
   menu:
    questions: 'Questions'
    subjects: 'Subjects'

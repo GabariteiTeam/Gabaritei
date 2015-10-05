@@ -1,4 +1,6 @@
 pt-BR:
+  permission:
+   take_part_in_courses: 'Participar de salas'
   menu:
    questions: 'Questões'
    subjects: 'Matérias'

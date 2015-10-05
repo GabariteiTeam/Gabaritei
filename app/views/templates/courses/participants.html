@@ -1,0 +1,28 @@
+<div class="row">
+	<div class="page-header">
+		<h1>Edit participants</h1>
+	</div>
+</div>
+
+<div ng-repeat="role in Ctrl.roles" class="row panel panel-default">
+	<div class="panel-heading">
+		<h2 class="panel-title">{{ role.name }}</h2>
+	</div>
+	<table class="table table-striped">
+		<tbody>
+			<tr data-ng-repeat="user in Ctrl.course.users_info | filter:{role_name: role.name}">
+				<td>
+					<img ng-src="{{ user.avatar_file_name }}" />
+				</td>
+				<td>{{ user.first_name + ' ' + user.last_name }}</td>
+				<td>{{ user.email }}</td>
+				<td>
+					<a href="#users/{{user.id}}" class="btn btn-xs btn-primary">View</a>
+					<button ng-click="Ctrl.removeParticipant(user.id)" class="btn btn-xs btn-danger">Remove</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="panel-body">
+	</div>
+</div>

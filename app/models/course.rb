@@ -91,4 +91,10 @@ class Course < ActiveRecord::Base
         end
     end
 
+    def users_info
+        users.joins(:role).select("id", "first_name", "last_name", "email", "avatar_file_name", "roles.name AS role_name").each do |u|
+            u.avatar_file_name = u.avatar_url_thumb
+        end
+    end
+
 end

@@ -1,4 +1,6 @@
 fr:
+ permission:
+  take_part_in_courses: 'Participer à des cours'
  menu:
   questions: 'Questions'
   subjects: 'Matières'

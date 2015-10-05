@@ -4,7 +4,8 @@
 
     angular
         .module(APP_NAME)
-        .controller('CoursesController', CoursesController);
+        .controller('CoursesController', CoursesController)
+        .controller('CourseParticipantsController', CourseParticipantsController);
 
     CoursesController
         .$inject = [
@@ -107,5 +108,46 @@
         }
 
     };
+
+    CourseParticipantsController
+        .$inject = [
+            '$location',
+            '$routeParams',
+            '$route',
+            'Course',
+            'User',
+            'Role',
+            'MessageService',
+            'RedirectService',
+            'ModalService',
+            'Modal'
+        ];
+
+    function CourseParticipantsController($location, $routeParams, $route, Course, User, Role, MessageService, RedirectService, ModalService, Modal) {
+        
+        var vm = this;
+
+        vm.removeParticipant = removeParticipant;
+
+        vm.roles = [];
+
+        initialize();
+
+        function initialize() {
+            vm.course = Course.get({
+                id: $routeParams.id
+            }, function() {
+
+                Role.query({take_part_in_courses: true}, function(data) {
+                    vm.roles = data;
+                });
+            });   
+        }
+
+        function removeParticipant(user_id) {
+
+        }
+
+    }
 
 })();
