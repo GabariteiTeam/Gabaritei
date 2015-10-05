@@ -61,11 +61,11 @@
                 if (vm.permissions[i].allowed) vm.role.permissions.push(vm.permissions[i].id);
             }
             vm.role.$save(function() {
-                MessageService.sendMessage("Created!", "Role was created with success!", "success");
+                MessageService.sendMessage('role.created.success');
                 RedirectService.redirect("/roles");
             },
             function(err) {
-                MessageService.sendMessage("Fail!", "Role was NOT created with success!", "error");
+                MessageService.sendMessage('role.created.error');
                 RedirectService.redirect("/roles");
             });
         };
@@ -77,11 +77,11 @@
             }
             if (vm.role.permissions.length == 0) vm.role.permissions = undefined;
             vm.role.$update(function() {
-                MessageService.sendMessage("Updated!", "Role was updated with success!", "success");
+                MessageService.sendMessage('role.updated.success');
                 RedirectService.redirect("/roles");
             },
             function(err) {
-                MessageService.sendMessage("Fail!", "Role was NOT updated with success!", "error");
+                MessageService.sendMessage('role.updated.error');
                 RedirectService.redirect("/roles");
             });
         }
@@ -111,11 +111,11 @@
             Role.delete({
                 id: id
             }, function() {
-                MessageService.sendMessage("Deleted!", "Role was deleted with success!", "success");
+                MessageService.sendMessage('role.deleted.success');
                 RedirectService.redirect("/roles");
             },
             function(err) {
-                MessageService.sendMessage("Fail!", "Role was NOT deleted with success!", "error");
+                MessageService.sendMessage('role.deleted.error');
                 RedirectService.redirect("/roles");
             });
         }

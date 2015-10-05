@@ -108,6 +108,36 @@
                 'title': 'crud.users.alerts.delete.error.title',
                 'content': 'crud.fields.alerts.delete.error.content',
                 'type': mTypes['error']
+            },
+            'role.created.success': {
+                'title': 'crud.fields.alerts.create.success.title',
+                'content': 'crud.fields.alerts.create.success.content',
+                'type': mTypes['success']
+            },
+            'role.created.error': {
+                'title': 'crud.roles.alerts.create.error.title',
+                'content': 'crud.roles.alerts.create.error.content',
+                'type': mTypes['error']
+            },
+            'role.updated.success': {
+                'title': 'crud.roles.alerts.update.success.title',
+                'content': 'crud.roles.alerts.update.success.content',
+                'type': mTypes['success']
+            },
+            'role.updated.error': {
+                'title': 'crud.roles.alerts.update.error.title',
+                'content': 'crud.roles.alerts.update.error.content',
+                'type': mTypes['error']
+            },
+            'role.deleted.success': {
+                'title': 'crud.roles.alerts.delete.success.title',
+                'content': 'crud.roles.alerts.delete.success.content',
+                'type': mTypes['success']
+            },
+            'role.deleted.error': {
+                'title': 'crud.roles.alerts.delete.error.title',
+                'content': 'crud.fields.alerts.delete.error.content',
+                'type': mTypes['error']
             }
         };
         var observers = [];

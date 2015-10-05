@@ -158,6 +158,29 @@ en:
       error:
        title: 'Error!'
        content: 'User could not be deleted!'
+   roles:
+    alerts:
+     create:
+      success:
+       title: 'Created!'
+       content: 'Role was created with success!'
+      error:
+       title: 'Error!'
+       content: 'Role could not be created!'
+     update:
+      success:
+       title: 'Updated!'
+       content: 'Role was updated with success!'
+      error:
+       title: 'Error!'
+       content: 'Role could not be updated!'
+     delete:
+      success:
+       title: 'Deleted!'
+       content: 'Role was deleted with success!'
+      error:
+       title: 'Error!'
+       content: 'Role could not be deleted!'
   data_import:
    alerts:
      upload:
