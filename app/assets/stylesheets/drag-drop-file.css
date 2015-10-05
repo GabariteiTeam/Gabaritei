@@ -29,3 +29,7 @@ img.preview-avatar {
 	width: 20px;
 	height: 20px;
 }
+
+input[type="file"]#inputCSVFile {
+	width: 100%;
+}
