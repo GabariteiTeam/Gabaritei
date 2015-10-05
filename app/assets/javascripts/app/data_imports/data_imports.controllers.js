@@ -102,12 +102,12 @@
                 vm.fileUpload.uploading = true;
                 vm.data_import.upload(function(data) {
                     vm.fileUpload.uploading = false;
-                    MessageService.sendMessage("Uploaded!", "File was uploaded with success!", "success");
+                    MessageService.sendMessage('data_import.upload.success');
                     vm.data_import.file = null;
                     vm.refresh();
                 }, function(data) {
                     vm.fileUpload.uploading = false;
-                    MessageService.sendMessage("Error!", "File could not be uploaded!", "error");
+                    MessageService.sendMessage('data_import.upload.error');
                     vm.data_import.file = null;
                 });
             }
@@ -127,10 +127,10 @@
             DataImport.delete({
                 id: data_import_id
             }, function(data) {
-                MessageService.sendMessage("Deleted!", "File was deleted with success!", "success");
+                MessageService.sendMessage('data_import.delete.success');
                 vm.refresh();
             }, function(data) {
-                MessageService.sendMessage("Error!", "File could not be deleted!", "error");
+                MessageService.sendMessage('data_import.delete.error');
             });
         }
 
@@ -140,10 +140,10 @@
 
         function updateFile(elem) {
             elem.$update(function(data) {
-                MessageService.sendMessage("Updated!", "File was updated with success!", "success");
+                MessageService.sendMessage('data_import.update.success');
                 vm.refresh();
             }, function(err) {
-                MessageService.sendMessage("Error!", "File could not be updated!", "error");
+                MessageService.sendMessage('data_import.update.error');
                 vm.refresh();
             });
         }
