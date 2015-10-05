@@ -19,32 +19,32 @@
                 'content': 'crud.subjects.alerts.create.success.content',
                 'type': mTypes['success']
                 },
-            'data_import.upload.success': {
+            'data_import.uploaded.success': {
                 'title': 'data_import.alerts.upload.success.title',
                 'content': 'data_import.alerts.upload.success.content',
                 'type': mTypes['success']
             },
-            'data_import.upload.error': {
+            'data_import.uploaded.error': {
                 'title': 'data_import.alerts.upload.error.title',
                 'content': 'data_import.alerts.upload.error.content',
                 'type': mTypes['error']
             },
-            'data_import.update.success': {
+            'data_import.updated.success': {
                 'title': 'data_import.alerts.update.success.title',
                 'content': 'data_import.alerts.update.success.content',
                 'type': mTypes['success']
             },
-            'data_import.update.error': {
+            'data_import.updated.error': {
                 'title': 'data_import.alerts.update.error.title',
                 'content': 'data_import.alerts.update.error.content',
                 'type': mTypes['error']
             },
-            'data_import.delete.success': {
+            'data_import.deleted.success': {
                 'title': 'data_import.alerts.delete.success.title',
                 'content': 'data_import.alerts.delete.success.content',
                 'type': mTypes['success']
             },
-            'data_import.delete.error': {
+            'data_import.deleted.error': {
                 'title': 'data_import.alerts.delete.error.title',
                 'content': 'data_import.alerts.delete.error.content',
                 'type': mTypes['error']

@@ -102,12 +102,12 @@
                 vm.fileUpload.uploading = true;
                 vm.data_import.upload(function(data) {
                     vm.fileUpload.uploading = false;
-                    MessageService.sendMessage('data_import.upload.success');
+                    MessageService.sendMessage('data_import.uploaded.success');
                     vm.data_import.file = null;
                     vm.refresh();
                 }, function(data) {
                     vm.fileUpload.uploading = false;
-                    MessageService.sendMessage('data_import.upload.error');
+                    MessageService.sendMessage('data_import.uploaded.error');
                     vm.data_import.file = null;
                 });
             }
@@ -127,10 +127,10 @@
             DataImport.delete({
                 id: data_import_id
             }, function(data) {
-                MessageService.sendMessage('data_import.delete.success');
+                MessageService.sendMessage('data_import.deleted.success');
                 vm.refresh();
             }, function(data) {
-                MessageService.sendMessage('data_import.delete.error');
+                MessageService.sendMessage('data_import.deleted.error');
             });
         }
 
@@ -140,10 +140,10 @@
 
         function updateFile(elem) {
             elem.$update(function(data) {
-                MessageService.sendMessage('data_import.update.success');
+                MessageService.sendMessage('data_import.updated.success');
                 vm.refresh();
             }, function(err) {
-                MessageService.sendMessage('data_import.update.error');
+                MessageService.sendMessage('data_import.updated.error');
                 vm.refresh();
             });
         }
