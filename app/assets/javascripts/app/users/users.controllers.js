@@ -39,11 +39,11 @@
 
         function c_delete(id) {
             User.delete({id: id}, function() {
-                MessageService.sendMessage("Deleted!", "User was deleted with success!", "success");
+                MessageService.sendMessage('user.deleted.success');
                 reloadPage();
             },
             function(err) {
-                MessageService.sendMessage("Fail!", "User was NOT deleted with success!", "error");
+                MessageService.sendMessage('user.deleted.error');
                 reloadPage();
             });
         }
@@ -86,11 +86,11 @@
 
         function createUser() {
             vm.user.$save(function() {
-                MessageService.sendMessage("Created!", "User was created with success!", "success");
+                MessageService.sendMessage('user.created.success');
                 RedirectService.redirect("/users");
             },
             function(err) {
-                MessageService.sendMessage("Fail!", "User was NOT created with success!", "error");
+                MessageService.sendMessage('user.created.error');
                 RedirectService.redirect("/users");
             });
         }
@@ -98,11 +98,11 @@
         function updateUser() {
             if (vm.formerAvatar == vm.user.avatar) vm.user.avatar = "";
             vm.user.$update(function() {
-                MessageService.sendMessage("Updated!", "User was updated with success!", "success");
+                MessageService.sendMessage('user.updated.success');
                 RedirectService.redirect("/users");
             },
             function(err) {
-                MessageService.sendMessage("Fail!", "User was NOT updated with success!", "error");
+                MessageService.sendMessage('user.updated.error');
                 RedirectService.redirect("/users");
             });
         }

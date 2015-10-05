@@ -86,7 +86,7 @@ describe('unit: UsersController', function() {
         ctrl.deleteUser(1);
         ctrl.c_delete(1);
         $httpBackend.flush();
-        expect($MessageService.sendMessage).toHaveBeenCalledWith("Deleted!", "User was deleted with success!", "success");
+        expect($MessageService.sendMessage).toHaveBeenCalledWith('user.deleted.success');
         expect($ModalService.alert).toHaveBeenCalled();
     });
 
@@ -99,7 +99,7 @@ describe('unit: UsersController', function() {
         ctrl.c_delete(1);
         $httpBackend.flush();
         expect($ModalService.alert).toHaveBeenCalled();
-        expect($MessageService.sendMessage).toHaveBeenCalledWith("Fail!", "User was NOT deleted with success!", "error");
+        expect($MessageService.sendMessage).toHaveBeenCalledWith('user.deleted.error');
     });
 
 });
@@ -157,7 +157,7 @@ describe('unit: EditUserController', function() {
         spyOn($MessageService, "sendMessage");
         ctrl.updateUser();
         $httpBackend.flush();
-        expect($MessageService.sendMessage).toHaveBeenCalledWith("Updated!", "User was updated with success!", "success");
+        expect($MessageService.sendMessage).toHaveBeenCalledWith('user.updated.success');
 
     });
 
@@ -167,7 +167,7 @@ describe('unit: EditUserController', function() {
         spyOn($MessageService, "sendMessage");
         ctrl.updateUser();
         $httpBackend.flush();
-        expect($MessageService.sendMessage).toHaveBeenCalledWith("Fail!", "User was NOT updated with success!", "error");
+        expect($MessageService.sendMessage).toHaveBeenCalledWith('user.updated.error');
     });
 
     it('Should send create request', function() {
@@ -176,7 +176,7 @@ describe('unit: EditUserController', function() {
         spyOn($MessageService, "sendMessage");
         ctrl.createUser();
         $httpBackend.flush();
-        expect($MessageService.sendMessage).toHaveBeenCalledWith("Created!", "User was created with success!", "success");
+        expect($MessageService.sendMessage).toHaveBeenCalledWith('user.created.success');
     });
 
     it('Should send create request and fail', function() {
@@ -185,7 +185,7 @@ describe('unit: EditUserController', function() {
         spyOn($MessageService, "sendMessage");
         ctrl.createUser(1);
         $httpBackend.flush();
-        expect($MessageService.sendMessage).toHaveBeenCalledWith("Fail!", "User was NOT created with success!", "error");
+        expect($MessageService.sendMessage).toHaveBeenCalledWith('user.created.error');
     });
 
 });

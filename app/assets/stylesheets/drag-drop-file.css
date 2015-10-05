@@ -30,6 +30,6 @@ img.preview-avatar {
 	height: 20px;
 }
 
-input[type="file"]#inputCSVFile {
+.form-inline input[type="file"] {
 	width: 100%;
 }

@@ -114,50 +114,73 @@ en:
         options: 'Options'
    fields:
     alerts:
-      create:
-        success:
-          title: 'Created!'
-          content: 'Field was created with success!'
-        error:
-          title: 'Error!'
-          content: 'Field could not be created!'
-      update:
-        success:
-          title: 'Updated!'
-          content: 'Field was updated with success!'
-        error:
-          title: 'Error!'
-          content: 'Field could not be updated!'
-      delete:
-        success:
-          title: 'Deleted!'
-          content: 'Field was deleted with success!'
-        error:
-          title: 'Error!'
-          content: 'Field could not be deleted!'
-  data_import:
+     create:
+      success:
+       title: 'Created!'
+       content: 'Field was created with success!'
+      error:
+       title: 'Error!'
+       content: 'Field could not be created!'
+     update:
+      success:
+       title: 'Updated!'
+       content: 'Field was updated with success!'
+      error:
+       title: 'Error!'
+       content: 'Field could not be updated!'
+     delete:
+      success:
+       title: 'Deleted!'
+       content: 'Field was deleted with success!'
+      error:
+       title: 'Error!'
+       content: 'Field could not be deleted!'
+   users:
     alerts:
-      upload:
-        success:
-          title: 'Uploaded!'
-          content: 'File was uploaded with success!'
-        error:
-          title: 'Error!'
-          content: 'File could not be uploaded!'
-      update:
-        success:
-          title: 'Updated!'
-          content: 'File was updated with success!'
-        error:
-          title: 'Error!'
-          content: 'File could not be updated!'
-      delete:
-        success:
-          title: 'Deleted!'
-          content: 'File was deleted with success!'
-        error:
-          title: 'Error!'
-          content: 'File could not be deleted!'
+     create:
+      success:
+       title: 'Created!'
+       content: 'User was created with success!'
+      error:
+       title: 'Error!'
+       content: 'User could not be created!'
+     update:
+      success:
+       title: 'Updated!'
+       content: 'User was updated with success!'
+      error:
+       title: 'Error!'
+       content: 'User could not be updated!'
+     delete:
+      success:
+       title: 'Deleted!'
+       content: 'User was deleted with success!'
+      error:
+       title: 'Error!'
+       content: 'User could not be deleted!'
+  data_import:
+   alerts:
+     upload:
+      success:
+       title: 'Uploaded!'
+       content: 'File was uploaded with success!'
+      error:
+       title: 'Error!'
+       content: 'File could not be uploaded!'
+     update:
+      success:
+       title: 'Updated!'
+       content: 'File was updated with success!'
+      error:
+       title: 'Error!'
+       content: 'File could not be updated!'
+     delete:
+      success:
+       title: 'Deleted!'
+       content: 'File was deleted with success!'
+      error:
+       title: 'Error!'
+       content: 'File could not be deleted!'
   models:
    content: 'Content'
    course: 'Course'

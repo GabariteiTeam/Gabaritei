@@ -68,8 +68,7 @@
                 'title': 'crud.fields.alerts.update.error.title',
                 'content': 'crud.fields.alerts.update.error.content',
                 'type': mTypes['error']
-            }
-            ,
+            },
             'field.deleted.success': {
                 'title': 'crud.fields.alerts.delete.success.title',
                 'content': 'crud.fields.alerts.delete.success.content',
@@ -77,6 +76,36 @@
             },
             'field.deleted.error': {
                 'title': 'crud.fields.alerts.delete.error.title',
+                'content': 'crud.fields.alerts.delete.error.content',
+                'type': mTypes['error']
+            },
+            'user.created.success': {
+                'title': 'crud.fields.alerts.create.success.title',
+                'content': 'crud.fields.alerts.create.success.content',
+                'type': mTypes['success']
+            },
+            'user.created.error': {
+                'title': 'crud.users.alerts.create.error.title',
+                'content': 'crud.users.alerts.create.error.content',
+                'type': mTypes['error']
+            },
+            'user.updated.success': {
+                'title': 'crud.users.alerts.update.success.title',
+                'content': 'crud.users.alerts.update.success.content',
+                'type': mTypes['success']
+            },
+            'user.updated.error': {
+                'title': 'crud.users.alerts.update.error.title',
+                'content': 'crud.users.alerts.update.error.content',
+                'type': mTypes['error']
+            },
+            'user.deleted.success': {
+                'title': 'crud.users.alerts.delete.success.title',
+                'content': 'crud.users.alerts.delete.success.content',
+                'type': mTypes['success']
+            },
+            'user.deleted.error': {
+                'title': 'crud.users.alerts.delete.error.title',
                 'content': 'crud.fields.alerts.delete.error.content',
                 'type': mTypes['error']
             }
