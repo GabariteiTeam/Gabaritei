@@ -28,7 +28,7 @@
         <td>{{ question.text }}</td>
         <td>{{ question.answer }}</td>
         <td>
-          <a href="#questions/update/{{question.id}}" class="btn btn-xs btn-primary" translate>crud.edit</a>
+          <a href="#questions/update/{{question.id}}" class="btn btn-xs btn-info" translate>crud.edit</a>
           <a href ng-click="Ctrl.deleteQuestion(question.id)" class="btn btn-xs btn-danger" translate>crud.delete</a>
         </td>
       </tr>
@@ -37,5 +37,3 @@
 </div>
 
 <a href="#questions/new" class="btn btn-primary" translate>crud.questions.index.add</a>
-
-
