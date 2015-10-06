@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
     # @!attribute avatar
     #   User's avatar
     #   @return [File] the user's avatar.
-    has_attached_file :avatar, styles: { medium: "300x300>", thumb: "75x75>" }
+    has_attached_file :avatar, styles: { medium: "300x300>", thumb: "75x75>" }, default_url: "/images/missing_avatar/:style.png"
     validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
     # @!group Belongs to
@@ -162,11 +162,11 @@ class User < ActiveRecord::Base
     end
 
     def avatar_url_thumb
-        has_avatar ? avatar.url(:thumb) : nil
+        avatar.url(:thumb)
     end
 
     def avatar_url_medium
-        has_avatar ? avatar.url(:medium) : nil
+        avatar.url(:medium)
     end
 
     private

@@ -126,7 +126,11 @@
         var vm = this;
 
         vm.removeParticipant = removeParticipant;
-        vm.searchUser = searchUser;
+        vm.searchUsers = searchUsers;
+        vm.clearSearch = clearSearch;
+        vm.selectUser = selectUser;
+        vm.selectAllUsers = selectAllUsers;
+
         vm.roles = [];
 
         initialize();
@@ -142,8 +146,23 @@
             });   
         }
 
-        function searchUser() {
+        function searchUsers(id, role) {
+            Course.searchUsers({id: id, role_id: role.id, search_string: role.searchString}, function(data) {
+                role.users = data;
+            });
+        }
 
+        function clearSearch(role) {
+            role.searchString = "";
+            role.users = [];
+        }
+
+        function selectUser(user) {
+            user.selected = !user.selected;
+        }
+
+        function selectAllUsers(role, selection) {
+            for (var i = 0; i < role.users.length; i++) role.users[i].selected = selection;
         }
 
         function removeParticipant(user_id) {

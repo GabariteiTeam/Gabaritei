@@ -61,7 +61,9 @@ Rails.application.routes.draw do
 
 	# COURSES ROUTES
 
-	resources :courses
+	resources :courses do
+		get :search_users, to: "courses#search_users", on: :member
+	end
 	
 	# COURSES ROUTES
 

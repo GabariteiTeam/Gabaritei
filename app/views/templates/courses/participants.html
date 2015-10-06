@@ -9,7 +9,7 @@
 		<h2 class="panel-title">{{ role.name }}</h2>
 	</div>
 	<div class="panel-body">
-		<form class="form-inline" role="form" ng-submit="Ctrl.searchUsers()">
+		<form class="form-inline" role="form" ng-submit="Ctrl.searchUsers(Ctrl.course.id, role)">
 			<div ng-include="'templates/courses/_search_form.html'"></div>
 		</form>
 	</div>

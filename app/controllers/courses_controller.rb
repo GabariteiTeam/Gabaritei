@@ -37,6 +37,11 @@ class CoursesController < ApplicationController
 		render json: {success: true}
 	end
 
+	def search_users
+		@users = User.joins(:courses).where("role_id = :role_id AND courses.id != :course_id AND (first_name LIKE :search_string OR last_name LIKE :search_string OR email LIKE :search_string)", {role_id: search_user_params[:role_id], course_id: search_user_params[:id], search_string: "%#{search_user_params[:search_string]}%"})
+		render json: @users, methods: [:avatar_url_thumb]
+	end
+
 	private 
 
 	    def course_params
@@ -45,6 +50,10 @@ class CoursesController < ApplicationController
 
 	    def category_params
 	    	params.permit(:subject_id, :field_id)
+	    end
+
+	    def search_user_params
+	    	params.permit(:id, :role_id, :search_string)
 	    end
 
 end

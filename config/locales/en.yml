@@ -189,6 +189,10 @@ en:
    courses:
     search:
      label: 'Search user'
+     clear: 'Clear search'
+     select_all: 'Select all'
+     deselect_all: 'Deselect all'
+     add_selected: 'Add selected'
   models:
    content: 'Content'
    course: 'Course'

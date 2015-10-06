@@ -8,7 +8,12 @@
 
     function Course($resource) {
         return $resource('courses/:id.json', {id: '@id'}, {
-        	update: { method: 'PUT' }
+        	update: { method: 'PUT' },
+        	searchUsers: {
+        		url: 'courses/:id/search_users',
+        		method: 'GET',
+        		isArray: true
+        	}
         });
     }
 
