@@ -100,7 +100,7 @@ describe('unit: RolesController', function() {
         spyOn($MessageService, "sendMessage");
         ctrl.updateRole();
         $httpBackend.flush();
-        expect($MessageService.sendMessage).toHaveBeenCalledWith("Updated!", "Role was updated with success!", "success");
+        expect($MessageService.sendMessage).toHaveBeenCalledWith('role.updated.success');
 
     });
 
@@ -110,7 +110,7 @@ describe('unit: RolesController', function() {
         spyOn($MessageService, "sendMessage");
         ctrl.updateRole();
         $httpBackend.flush();
-        expect($MessageService.sendMessage).toHaveBeenCalledWith("Fail!", "Role was NOT updated with success!", "error");
+        expect($MessageService.sendMessage).toHaveBeenCalledWith('role.updated.error');
     });
 
     it('Should send delete request', function() {
@@ -122,7 +122,7 @@ describe('unit: RolesController', function() {
         ctrl.deleteRole(1);
         ctrl.c_delete(1);
         $httpBackend.flush();
-        expect($MessageService.sendMessage).toHaveBeenCalledWith("Deleted!", "Role was deleted with success!", "success");
+        expect($MessageService.sendMessage).toHaveBeenCalledWith('role.deleted.success');
         expect($ModalService.alert).toHaveBeenCalled();
     });
 
@@ -136,7 +136,7 @@ describe('unit: RolesController', function() {
         ctrl.c_delete(1);
         $httpBackend.flush();
         expect($ModalService.alert).toHaveBeenCalled();
-        expect($MessageService.sendMessage).toHaveBeenCalledWith("Fail!", "Role was NOT deleted with success!", "error");
+        expect($MessageService.sendMessage).toHaveBeenCalledWith('role.deleted.error');
     });
 
     it('Should send create request', function() {
@@ -145,7 +145,7 @@ describe('unit: RolesController', function() {
         spyOn($MessageService, "sendMessage");
         ctrl.createRole();
         $httpBackend.flush();
-        expect($MessageService.sendMessage).toHaveBeenCalledWith("Created!", "Role was created with success!", "success");
+        expect($MessageService.sendMessage).toHaveBeenCalledWith('role.created.success');
     });
 
     it('Should send create request and fail', function() {
@@ -154,7 +154,7 @@ describe('unit: RolesController', function() {
         spyOn($MessageService, "sendMessage");
         ctrl.createRole(1);
         $httpBackend.flush();
-        expect($MessageService.sendMessage).toHaveBeenCalledWith("Fail!", "Role was NOT created with success!", "error");
+        expect($MessageService.sendMessage).toHaveBeenCalledWith('role.created.error');
     });
 
 });
