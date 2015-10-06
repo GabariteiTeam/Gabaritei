@@ -25,7 +25,7 @@
           <td><a href="#fields/{{subject.id}}" translate>crud.subjects.index.view_fields</a></td>
           <td><a href="#subjects/update/{{subject.id}}" translate>crud.edit</a>
           <td>
-          <gab-show-modal-button text="crud.delete" callback="Ctrl.deleteSubject()" args="subject.id" modalid="confirmDeleteSubject" class="btn btn-danger"/><gab-show-modal-button> </td>
+          <gab-show-modal-button text="crud.delete" args="subject.id" modalid="confirmDeleteSubject" class="btn btn-danger"/><gab-show-modal-button> </td>
         </tr>
     </tbody>
   </table>
@@ -35,4 +35,4 @@
 
 </div>
 
- <div gab-confirm-modal modalid="confirmDeleteSubject" title="crud.subjects.modal.delete.title" body="crud.subjects.modal.delete.body" callback="c_delete()" args="delete_id"></div>
+ <div gab-confirm-modal modalid="confirmDeleteSubject" title="crud.subjects.modal.delete.title" body="crud.subjects.modal.delete.body" callback="Ctrl.c_delete(id)"></div>

@@ -14,6 +14,9 @@
 				class: "@",
 				text: "@"
 			},
+			controller:function($scope, ModalService){
+				ModalService.setArgs($scope.args);
+			},
 			replace: true,
 			transclude: false,
 			template: '<button type="button" ng-click="callback(args)"' +
@@ -31,11 +34,14 @@
 				callback: '&',
 				args: '='
 			},
-			controller: ['$scope', 'ModalService', function($scope, ModalService){
-				$scope.hey = function() {
-					ModalService.alert();
+			controller:function($scope, ModalService){
+				$scope.click_handler = function() {
+					jQuery("#" + $scope.modalid).modal('hide');
+					jQuery('body').removeClass('modal-open');
+					jQuery('.modal-backdrop').remove();
+					$scope.callback({id: ModalService.getArgs()});
 				};
-			}],
+			},
 			templateUrl: 'templates/modal/confirm-modal.html'
 		};
 	}
