@@ -135,8 +135,8 @@
                 'type': mTypes['error']
             },
             'user.created.success': {
-                'title': 'crud.fields.alerts.create.success.title',
-                'content': 'crud.fields.alerts.create.success.content',
+                'title': 'crud.users.alerts.create.success.title',
+                'content': 'crud.users.alerts.create.success.content',
                 'type': mTypes['success']
             },
             'user.created.error': {
@@ -161,12 +161,12 @@
             },
             'user.deleted.error': {
                 'title': 'crud.users.alerts.delete.error.title',
-                'content': 'crud.fields.alerts.delete.error.content',
+                'content': 'crud.users.alerts.delete.error.content',
                 'type': mTypes['error']
             },
             'role.created.success': {
-                'title': 'crud.fields.alerts.create.success.title',
-                'content': 'crud.fields.alerts.create.success.content',
+                'title': 'crud.roles.alerts.create.success.title',
+                'content': 'crud.roles.alerts.create.success.content',
                 'type': mTypes['success']
             },
             'role.created.error': {
@@ -191,7 +191,7 @@
             },
             'role.deleted.error': {
                 'title': 'crud.roles.alerts.delete.error.title',
-                'content': 'crud.fields.alerts.delete.error.content',
+                'content': 'crud.roles.alerts.delete.error.content',
                 'type': mTypes['error']
             }
         };
