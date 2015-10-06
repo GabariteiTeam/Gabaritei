@@ -24,13 +24,13 @@
           <td><a href="#fields/{{subject.id}}" translate>crud.subjects.index.view_fields</a></td>
           <td>
             <a href="#subjects/update/{{subject.id}}" class="btn btn-xs btn-info" translate>crud.edit</a>
-            <a href ng-click="Ctrl.deleteSubject(subject.id)" class="btn btn-xs btn-danger" translate>crud.delete</a>
+            <gab-show-modal-button text="crud.delete" args="subject.id" modalid="confirmDeleteSubject" class="btn btn-xs btn-danger"/><gab-show-modal-button>
           </td>
         </tr>
     </tbody>
   </table>
 </div>
-
+ 
 <a href="#subjects/new" class="btn btn-primary" translate>crud.add</a>
 
-
+<div gab-confirm-modal modalid="confirmDeleteSubject" title="crud.subjects.modal.delete.title" body="crud.subjects.modal.delete.body" callback="Ctrl.c_delete(id)"></div>

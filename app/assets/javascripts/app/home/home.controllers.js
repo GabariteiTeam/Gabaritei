@@ -13,7 +13,7 @@
         .module(APP_NAME)
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['MessageService', 'ModalService', 'Modal'];
+    HomeController.$inject = ['MessageService', 'ModalService'];
 
     function HomeController() {}
     

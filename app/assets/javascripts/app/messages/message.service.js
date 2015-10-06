@@ -19,6 +19,61 @@
                 'content': 'crud.subjects.alerts.create.success.content',
                 'type': mTypes['success']
                 },
+            'subject.created.error': {
+                'title': 'crud.subjects.alerts.create.error.title',
+                'content': 'crud.subjects.alerts.create.error.content',
+                'type': mTypes['error']
+            },
+            'subject.deleted.success': {
+                'title': 'crud.subjects.alerts.delete.success.title',
+                'content': 'crud.subjects.alerts.delete.success.content',
+                'type': mTypes['success']
+            },
+            'subject.deleted.error': {
+                'title': 'crud.subjects.alerts.delete.error.title',
+                'content': 'crud.subjects.alerts.delete.error.content',
+                'type': mTypes['error']
+            },
+            'subject.updated.success': {
+                'title': 'crud.subjects.alerts.update.success.title',
+                'content': 'crud.subjects.alerts.update.success.content',
+                'type': mTypes['success']
+            },
+            'subject.updated.error': {
+                'title': 'crud.subjects.alerts.update.error.title',
+                'content': 'crud.subjects.alerts.update.error.content',
+                'type': mTypes['error']
+            },
+            'question.created.success': {
+                'title': 'crud.questions.alerts.create.success.title',
+                'content': 'crud.questions.alerts.create.success.content',
+                'type': mTypes['success']
+            },
+            'question.created.error': {
+                'title': 'crud.questions.alerts.create.error.title',
+                'content': 'crud.questions.alerts.create.error.content',
+                'type': mTypes['error']
+            },
+            'question.deleted.success': {
+                'title': 'crud.questions.alerts.delete.success.title',
+                'content': 'crud.questions.alerts.delete.success.content',
+                'type': mTypes['success']
+            },
+            'question.deleted.error': {
+                'title': 'crud.questions.alerts.delete.error.title',
+                'content': 'crud.questions.alerts.delete.error.content',
+                'type': mTypes['error']
+            },
+            'question.updated.success': {
+                'title': 'crud.questions.alerts.update.success.title',
+                'content': 'crud.questions.alerts.update.success.content',
+                'type': mTypes['success']
+            },
+            'question.updated.error': {
+                'title': 'crud.questions.alerts.update.error.title',
+                'content': 'crud.questions.alerts.update.error.content',
+                'type': mTypes['success']
+            },
             'data_import.uploaded.success': {
                 'title': 'data_import.alerts.upload.success.title',
                 'content': 'data_import.alerts.upload.success.content',
