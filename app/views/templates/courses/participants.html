@@ -8,6 +8,11 @@
 	<div class="panel-heading">
 		<h2 class="panel-title">{{ role.name }}</h2>
 	</div>
+	<div class="panel-body">
+		<form class="form-inline" role="form" ng-submit="Ctrl.searchUsers()">
+			<div ng-include="'templates/courses/_search_form.html'"></div>
+		</form>
+	</div>
 	<table class="table table-striped">
 		<tbody>
 			<tr data-ng-repeat="user in Ctrl.course.users_info | filter:{role_name: role.name}">
@@ -23,6 +28,4 @@
 			</tr>
 		</tbody>
 	</table>
-	<div class="panel-body">
-	</div>
 </div>

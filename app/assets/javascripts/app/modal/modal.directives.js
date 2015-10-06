@@ -16,7 +16,7 @@
 			},
 			replace: true,
 			transclude: false,
-			template: '<button ng-transclude type="button" ng-click="callback(args)"' +
+			template: '<button type="button" ng-click="callback(args)"' +
 					' data-toggle="modal" data-target="#{{modalid}}"' +
 					'class={{class}}> <span translate> {{text}} </span></button>'
 

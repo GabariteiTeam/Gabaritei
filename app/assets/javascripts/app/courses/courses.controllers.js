@@ -16,11 +16,10 @@
             'Subject',
             'MessageService',
             'RedirectService',
-            'ModalService',
-            'Modal'
+            'ModalService'
         ];
 
-    function CoursesController($location, $routeParams, $route, Course, Subject, MessageService, RedirectService, ModalService, Modal) {
+    function CoursesController($location, $routeParams, $route, Course, Subject, MessageService, RedirectService, ModalService) {
         
         var vm = this;
 
@@ -119,16 +118,15 @@
             'Role',
             'MessageService',
             'RedirectService',
-            'ModalService',
-            'Modal'
+            'ModalService'
         ];
 
-    function CourseParticipantsController($location, $routeParams, $route, Course, User, Role, MessageService, RedirectService, ModalService, Modal) {
+    function CourseParticipantsController($location, $routeParams, $route, Course, User, Role, MessageService, RedirectService, ModalService) {
         
         var vm = this;
 
         vm.removeParticipant = removeParticipant;
-
+        vm.searchUser = searchUser;
         vm.roles = [];
 
         initialize();
@@ -137,11 +135,15 @@
             vm.course = Course.get({
                 id: $routeParams.id
             }, function() {
-
                 Role.query({take_part_in_courses: true}, function(data) {
+                    for (var i = 0; i < data.length; i++) data[i].users = [];
                     vm.roles = data;
                 });
             });   
+        }
+
+        function searchUser() {
+
         }
 
         function removeParticipant(user_id) {
