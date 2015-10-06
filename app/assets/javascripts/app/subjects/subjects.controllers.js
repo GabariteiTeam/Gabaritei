@@ -21,7 +21,6 @@
         var vm = this;
         vm.createSubject    = createSubject;
         vm.updateSubject    = updateSubject;
-        vm.deleteSubject    = deleteSubject;
         vm.c_delete         = c_delete;
         vm.delete_modal_id  = "confirmDeleteSubject";
 
@@ -64,14 +63,8 @@
                 });
         }
 
-        function deleteSubject(id) {
-            ModalService.registerCallback(c_delete);
-            ModalService.setArgs(id);
-            $("#" + vm.delete_modal_id).modal();
-        }
 
         function c_delete(id) {
-            ModalService.hideModal();
             Subject.destroy({
                     id: id
                 }, function() {
