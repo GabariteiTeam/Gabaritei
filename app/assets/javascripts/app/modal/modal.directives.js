@@ -14,12 +14,16 @@
 				class: "@",
 				text: "@"
 			},
-			controller:function($scope, ModalService){
-				ModalService.setArgs($scope.args);
+			controller:function($scope, ModalService) {
+				$scope.storeAndGo = storeAndGo;
+				function storeAndGo() {
+					ModalService.setArgs($scope.args);
+					$scope.callback($args);
+				}
 			},
 			replace: true,
 			transclude: false,
-			template: '<button type="button" ng-click="callback(args)"' +
+			template: '<button type="button" ng-click="storeAndGo()"' +
 					' data-toggle="modal" data-target="#{{modalid}}"' +
 					'class={{class}}> <span translate> {{text}} </span></button>'
 
