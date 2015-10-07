@@ -42,7 +42,7 @@
                 reloadPage();
             },
             function(err) {
-                MessageService.sendMessage('user.deleted.success');
+                MessageService.sendMessage('user.deleted.error');
                 reloadPage();
             });
         }
