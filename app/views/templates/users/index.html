@@ -1,7 +1,7 @@
 <div class="page-header" id="banner">
   <div class="row">
-    <h1 translate>menu.users</h1>
-    <p class="lead">Create a new user to your Virtual Class!</p>
+    <h1 translate>crud.users.index.heading</h1>
+    <p class="lead" translate>crud.users.index.sub_heading</p>
   </div>
 </div>
 
@@ -10,9 +10,9 @@
     <thead>
       <tr>
         <th></th>
-        <th>Name</th>
+        <th translate>crud.name</th>
         <th>E-mail</th>
-        <th>Options</th>
+        <th translate>crud.options</th>
       </tr>
     </thead>
     <tbody >
@@ -23,9 +23,10 @@
           <td>{{ user.first_name + " " + user.last_name }}</td>
           <td>{{ user.email }}</td>
           <td>
-            <a href="#users/{{user.id}}" class="btn btn-xs btn-default">View</a>
-            <a href="#users/update/{{user.id}}" class="btn btn-xs btn-primary">Edit</a>
-            <button ng-click="Ctrl.deleteUser(user.id)" class="btn btn-xs btn-danger">Delete</button>
+            <a href="#users/{{user.id}}" class="btn btn-xs btn-default" translate>crud.view</a>
+            <a href="#users/update/{{user.id}}" class="btn btn-xs btn-primary" translate>crud.edit</a>
+            {{ user.id }}
+            <gab-show-modal-button text="crud.delete" args="user.id" modalid="confirmDeleteUser" class="btn btn-xs btn-danger"></gab-show-modal-button>
           </td>
         </tr>
     </tbody>
@@ -33,6 +34,8 @@
 
   <bgf-pagination collection="Ctrl.users" url="'users.json'" template-url="templates/pagination/_pagination.html" link-group-size="1" reload-page="Ctrl.reload"></bgf-pagination>
 
-  <a href="#users/new">Add new user</a>
+  <a href="#users/new" translate>crud.add</a>
 
 </div>
+
+<div gab-confirm-modal modalid="confirmDeleteUser" title="crud.users.modal.delete.title" body="crud.users.modal.delete.body" callback="Ctrl.c_delete(id)"></div>

@@ -7,13 +7,21 @@
         .controller('UsersController', UsersController)
         .controller('EditUserController', EditUserController);
 
-    UsersController.$inject = ['$routeParams', 'User', 'Role', 'MessageService', 'RedirectService', 'ModalService', 'Modal'];
+    UsersController
+        .$inject = [
+            '$routeParams',
+            'User',
+            'Role',
+            'MessageService',
+            'RedirectService',
+            'ModalService'
+        ];
 
-    function UsersController($routeParams, User, Role, MessageService, RedirectService, ModalService, Modal) {
+    function UsersController($routeParams, User, Role, MessageService, RedirectService, ModalService) {
         
         var vm = this;
-        vm.deleteUser = deleteUser;
         vm.c_delete = c_delete;
+        vm.delete_modal_id  = "confirmDeleteUser";
         vm.users = [];
     
         activate();
@@ -28,22 +36,13 @@
             }           
         }
 
-        function deleteUser(user_id) {
-            var modal = new Modal();
-            modal.title = "Confirmation";
-            modal.body = "Are you sure you want to delete this user? All objects owned by them will also be destroyed.";
-            modal.confirmCallback = c_delete;
-            modal.pack = user_id;
-            ModalService.alert(modal);
-        }
-
         function c_delete(id) {
             User.delete({id: id}, function() {
-                MessageService.sendMessage("Deleted!", "User was deleted with success!", "success");
+                MessageService.sendMessage('user.deleted.success');
                 reloadPage();
             },
             function(err) {
-                MessageService.sendMessage("Fail!", "User was NOT deleted with success!", "error");
+                MessageService.sendMessage('user.deleted.success');
                 reloadPage();
             });
         }

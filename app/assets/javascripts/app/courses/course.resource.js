@@ -13,7 +13,11 @@
         		url: 'courses/:id/search_users',
         		method: 'GET',
         		isArray: true
-        	}
+        	},
+            removeParticipant: {
+                url: 'courses/:id/remove_participant/:user_id',
+                method: 'PUT'
+            }
         });
     }
 

@@ -11,9 +11,9 @@ class CoursesController < ApplicationController
 		@course = Course.new(course_params)
 		@course.category = category_params.has_key?(:field_id) && category_params[:field_id] != nil ? Field.find(category_params[:field_id]) : Subject.find(category_params[:subject_id])
 		if @course.save
-	      render json: {success: true}
+	      	render json: {success: true}
 	    else
-	      render json: @course.errors, status: :unprocessable_entity
+	      	render json: @course.errors, status: :unprocessable_entity
 	    end  
 	end
 
@@ -26,9 +26,9 @@ class CoursesController < ApplicationController
 		@course = Course.find(course_params[:id])
 		@course.category = category_params.has_key?(:field_id) && category_params[:field_id] != nil ? Field.find(category_params[:field_id]) : Subject.find(category_params[:subject_id])
 		if @course.update(course_params)
-	      render json: {success: true}
+	      	render json: {success: true}
 	    else
-	      render json: @course.errors, status: :unprocessable_entity
+	      	render json: @course.errors, status: :unprocessable_entity
 	    end 
 	end
 
@@ -40,6 +40,16 @@ class CoursesController < ApplicationController
 	def search_users
 		@users = User.joins(:courses).where("role_id = :role_id AND courses.id != :course_id AND (first_name LIKE :search_string OR last_name LIKE :search_string OR email LIKE :search_string)", {role_id: search_user_params[:role_id], course_id: search_user_params[:id], search_string: "%#{search_user_params[:search_string]}%"})
 		render json: @users, methods: [:avatar_url_thumb]
+	end
+
+	def remove_participant
+		@course = Course.find(params[:id])
+		@course.users.delete_if {|user| user.id != params[:user_id]}
+		if @course.update
+	      	render json: {success: true}
+	    else
+	      	render json: @course.errors, status: :unprocessable_entity
+	    end 
 	end
 
 	private 

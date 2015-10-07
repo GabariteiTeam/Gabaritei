@@ -24,37 +24,40 @@
 
         vm.createRole = createRole;
         vm.updateRole = updateRole;
-        vm.deleteRole = deleteRole;
         vm.c_delete = c_delete;
         vm.delete_modal_id  = "confirmDeleteRole";
 
         vm.roles = [];
         vm.permissions = [];
-        
-        if (!($routeParams.id === undefined)) {
-            vm.role = Role.get({
-                id: $routeParams.id
-            }, function() {
-                Permission.query(function(data) {
-                    vm.permissions = data;
-                    for (var i = 0; i < vm.permissions.length; i++) {
-                        vm.permissions[i].allowed = vm.role.permissions.some(function(element) {
-                            return element.id == vm.permissions[i].id
-                        });
-                    }
-                }); 
-            });
-        } else {
-            vm.role = new Role();
-            Role.query(function(data) {
-                vm.roles = data;
-                Permission.query(function(data) {
-                    vm.permissions = data;
-                    for (var i = 0; i < vm.permissions.length; i++) vm.permissions[i].allowed = false;
-                });
-            });
-        }
 
+        activate();
+
+        function activate() {
+            if (!($routeParams.id === undefined)) {
+                vm.role = Role.get({
+                    id: $routeParams.id
+                }, function() {
+                    Permission.query(function(data) {
+                        vm.permissions = data;
+                        for (var i = 0; i < vm.permissions.length; i++) {
+                            vm.permissions[i].allowed = vm.role.permissions.some(function(element) {
+                                return element.id == vm.permissions[i].id
+                            });
+                        }
+                    }); 
+                });
+            } else {
+                vm.role = new Role();
+                Role.query(function(data) {
+                    vm.roles = data;
+                    Permission.query(function(data) {
+                        vm.permissions = data;
+                        for (var i = 0; i < vm.permissions.length; i++) vm.permissions[i].allowed = false;
+                    });
+                });
+            }       
+        }
+        
         function createRole() {
             vm.role.permissions = [];
             for (var i = 0; i < vm.permissions.length; i++) {
@@ -86,17 +89,8 @@
             });
         }
 
-        function deleteRole(id) {
-            ModalService.registerCallback(c_delete);
-            ModalService.setArgs(id);
-            $("#" + vm.delete_modal_id).modal();
-        }
-
         function c_delete(id) {
-            ModalService.hideModal();
-            Role.delete({
-                id: id
-            }, function() {
+            Role.delete({id: id}, function() {
                 MessageService.sendMessage('role.deleted.success');
                 RedirectService.redirect("/roles");
             },
@@ -105,6 +99,7 @@
                 RedirectService.redirect("/roles");
             });
         }
+
     };
 
 })();

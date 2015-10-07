@@ -63,6 +63,7 @@ Rails.application.routes.draw do
 
 	resources :courses do
 		get :search_users, to: "courses#search_users", on: :member
+		put "remove_participant/:user_id", to: "courses#remove_participant", on: :member
 	end
 	
 	# COURSES ROUTES

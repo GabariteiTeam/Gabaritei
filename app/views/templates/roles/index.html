@@ -20,7 +20,7 @@
           <td>{{ role.description }}</td>
           <td>
             <a href="#roles/update/{{role.id}}" class="btn btn-xs btn-primary" translate>crud.edit</a>
-            <div gab-show-modal-button text="crud.delete" callback="Ctrl.deleteRole()" args="role.id" modalid="confirmDeleteRole" class="btn btn-xs btn-danger"></div>
+            <gab-show-modal-button text="crud.delete" args="role.id" modalid="confirmDeleteRole" class="btn btn-xs btn-danger"></gab-show-modal-button>
           </td>
         </tr>
     </tbody>
@@ -30,4 +30,4 @@
 
 </div>
 
-<div gab-confirm-modal modalid="confirmDeleteRole" title="crud.roles.modal.delete.title" body="crud.roles.modal.delete.body" callback="c_delete()" args="delete_id"></div>
+ <div gab-confirm-modal modalid="confirmDeleteRole" title="crud.roles.modal.delete.title" body="crud.roles.modal.delete.body" callback="Ctrl.c_delete(id)"></div>
