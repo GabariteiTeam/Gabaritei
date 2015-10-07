@@ -1,11 +1,12 @@
-<div class="page-header" id="banner">
-  <div class="row">
+<div class="page-header">
     <h1 translate>crud.users.index.heading</h1>
     <p class="lead" translate>crud.users.index.sub_heading</p>
-  </div>
 </div>
 
-<div class="row">
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  </div>
+
   <table class="table table-striped table-hover">
     <thead>
       <tr>
@@ -24,18 +25,17 @@
           <td>{{ user.email }}</td>
           <td>
             <a href="#users/{{user.id}}" class="btn btn-xs btn-default" translate>crud.view</a>
-            <a href="#users/update/{{user.id}}" class="btn btn-xs btn-primary" translate>crud.edit</a>
+            <a href="#users/update/{{user.id}}" class="btn btn-xs btn-info" translate>crud.edit</a>
             {{ user.id }}
             <gab-show-modal-button text="crud.delete" args="user.id" modalid="confirmDeleteUser" class="btn btn-xs btn-danger"></gab-show-modal-button>
           </td>
         </tr>
     </tbody>
   </table>
-
-  <bgf-pagination collection="Ctrl.users" url="'users.json'" template-url="templates/pagination/_pagination.html" link-group-size="1" reload-page="Ctrl.reload"></bgf-pagination>
-
-  <a href="#users/new" translate>crud.add</a>
-
 </div>
+
+<bgf-pagination collection="Ctrl.users" url="'users.json'" template-url="templates/pagination/_pagination.html" link-group-size="1" reload-page="Ctrl.reload"></bgf-pagination>
+
+<a href="#users/new" class="btn btn-primary" translate>crud.add</a>
 
 <div gab-confirm-modal modalid="confirmDeleteUser" title="crud.users.modal.delete.title" body="crud.users.modal.delete.body" callback="Ctrl.c_delete(id)"></div>

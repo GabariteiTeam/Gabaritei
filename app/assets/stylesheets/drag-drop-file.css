@@ -1,8 +1,9 @@
 [ngf-drop] {
-	color: #BBB;
+	color: #2c3e50;
 	font-size: 20px;
 	text-align: center;
-	border: 3px dashed #BBB;
+	border: 2px dashed #dce4ec;
+	background-color: #F4F6F9;
 	-webkit-transition: 0.1s;
 }
 
@@ -101,4 +102,8 @@ img.preview-avatar {
 
 table.participants-table > tbody > tr > td {
 	vertical-align: middle;
+}
+
+.form-inline input[type="file"] {
+	width: 100%;
 }

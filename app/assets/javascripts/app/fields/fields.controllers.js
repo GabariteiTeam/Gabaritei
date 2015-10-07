@@ -43,10 +43,10 @@
            var field    = new Field();
            field.id     = id;
            Field.destroy({id:id}, function(data){
-               MessageService.sendMessage("Deleted!", "Field was deleted with success!", "success");
+               MessageService.sendMessage('field.deleted.success');
                RedirectService.redirect("/fields/" + vm.subject_id);
            }, function(err){
-               MessageService.sendMessage("Fail!", "Field was NOT deleted with success!", "error");
+               MessageService.sendMessage('field.deleted.error');
                RedirectService.redirect("/fields/" + vm.subject_id);
            })
        }
@@ -73,10 +73,10 @@
         function createField() {
             vm.field.subject_id = vm.subject_id;
             vm.field.$save({}, function(data){
-                MessageService.sendMessage("Created!", "Field was created with success!", "success");
+                MessageService.sendMessage('field.created.success');
                 RedirectService.redirect("/fields/" + vm.subject_id);
             }, function(err) {
-                MessageService.sendMessage("Fail!", "Field was NOT created with success!", "error");
+                MessageService.sendMessage('field.created.error');
                 RedirectService.redirect("/fields/" + vm.subject_id);
             })
         }
@@ -102,10 +102,10 @@
         
         function updateField() {
             vm.field.$update({}, function(data){
-                MessageService.sendMessage("Edited!", "Field was Edited with success!", "success");
+                MessageService.sendMessage('field.updated.success');
                 RedirectService.redirect("/fields/" + vm.subject_id);
             }, function(err){
-                MessageService.sendMessage("Edited!", "Field was NOT Edited with success!", "error");
+                MessageService.sendMessage('field.updated.error');
                 RedirectService.redirect("/fields/" + vm.subject_id);
             });
         }

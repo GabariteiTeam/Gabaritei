@@ -51,6 +51,7 @@ en:
    edit: 'Edit'
    search: 'Search'
    import: 'Import'
+   options: 'Options'
    subjects:
     alerts:
       create:
@@ -158,11 +159,16 @@ en:
         text: 'Text'
         date: 'Date'
         options: 'Options'
+<<<<<<< HEAD
    roles:
+=======
+   fields:
+>>>>>>> new-menu
     alerts:
      create:
       success:
        title: 'Created!'
+<<<<<<< HEAD
        content: 'Role was created with success!'
       error:
        title: 'Failed!'
@@ -188,6 +194,26 @@ en:
      delete:
       title: 'Warning!'
       body: 'Are you sure you want to delete this role?'
+=======
+       content: 'Field was created with success!'
+      error:
+       title: 'Error!'
+       content: 'Field could not be created!'
+     update:
+      success:
+       title: 'Updated!'
+       content: 'Field was updated with success!'
+      error:
+       title: 'Error!'
+       content: 'Field could not be updated!'
+     delete:
+      success:
+       title: 'Deleted!'
+       content: 'Field was deleted with success!'
+      error:
+       title: 'Error!'
+       content: 'Field could not be deleted!'
+>>>>>>> new-menu
    users:
     alerts:
      create:
@@ -195,13 +221,26 @@ en:
        title: 'Created!'
        content: 'User was created with success!'
       error:
+<<<<<<< HEAD
        title: 'Failed!'
        content: 'User was NOT created!'
+=======
+       title: 'Error!'
+       content: 'User could not be created!'
+     update:
+      success:
+       title: 'Updated!'
+       content: 'User was updated with success!'
+      error:
+       title: 'Error!'
+       content: 'User could not be updated!'
+>>>>>>> new-menu
      delete:
       success:
        title: 'Deleted!'
        content: 'User was deleted with success!'
       error:
+<<<<<<< HEAD
        title: 'Failed!'
        content: 'User was NOT deleted'
      update:
@@ -289,6 +328,56 @@ en:
      heading: 'Courses'
      sub_heading: 'Create a new course to your Virtual Class!'
      edit_participants: 'Edit participants'
+=======
+       title: 'Error!'
+       content: 'User could not be deleted!'
+   roles:
+    alerts:
+     create:
+      success:
+       title: 'Created!'
+       content: 'Role was created with success!'
+      error:
+       title: 'Error!'
+       content: 'Role could not be created!'
+     update:
+      success:
+       title: 'Updated!'
+       content: 'Role was updated with success!'
+      error:
+       title: 'Error!'
+       content: 'Role could not be updated!'
+     delete:
+      success:
+       title: 'Deleted!'
+       content: 'Role was deleted with success!'
+      error:
+       title: 'Error!'
+       content: 'Role could not be deleted!'
+  data_import:
+   alerts:
+     upload:
+      success:
+       title: 'Uploaded!'
+       content: 'File was uploaded with success!'
+      error:
+       title: 'Error!'
+       content: 'File could not be uploaded!'
+     update:
+      success:
+       title: 'Updated!'
+       content: 'File was updated with success!'
+      error:
+       title: 'Error!'
+       content: 'File could not be updated!'
+     delete:
+      success:
+       title: 'Deleted!'
+       content: 'File was deleted with success!'
+      error:
+       title: 'Error!'
+       content: 'File could not be deleted!'
+>>>>>>> new-menu
   models:
    content: 'Content'
    course: 'Course'

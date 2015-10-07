@@ -28,7 +28,7 @@
             Question.destroy({
                     id: id
                 }, function() {
-                    MessageService.sendMessage("question.deleted.sucess");
+                    MessageService.sendMessage("question.deleted.success");
                     RedirectService.redirect("/questions");
                 },
                 function(err) {
@@ -67,7 +67,7 @@
             }
             
             vm.question.$save({'subjects[]': vm.question.subjects},function(){
-                MessageService.sendMessage('question.created.sucess');
+                MessageService.sendMessage('question.created.success');
                     RedirectService.redirect("/questions");
                 },
                 function(err) {
@@ -110,11 +110,11 @@
             }
 
             vm.questionModel.$update(function() {
-                    MessageService.sendMessage('question.updated.sucess');
+                    MessageService.sendMessage('question.updated.success');
                     RedirectService.redirect("/questions");
                 },
                 function() {
-                    MessageService.sendMessage('question.deleted.error');
+                    MessageService.sendMessage('question.updated.error');
                     RedirectService.redirect("/questions");
             });
         }
