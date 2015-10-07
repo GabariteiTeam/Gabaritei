@@ -193,6 +193,26 @@
                 'title': 'crud.courses.alerts.update.error.title',
                 'content': 'crud.courses.alerts.update.error.content',
                 'type': mTypes['error']
+            },
+            'course.participants.added.success': {
+                'title': 'crud.courses.alerts.participants.add.success.title',
+                'content': 'crud.courses.alerts.participants.add.success.content',
+                'type': mTypes['success']                
+            },
+            'course.participants.added.error': {
+                'title': 'crud.courses.alerts.participants.add.error.title',
+                'content': 'crud.courses.alerts.participants.add.error.content',
+                'type': mTypes['error']                
+            },
+            'course.participants.removed.success': {
+                'title': 'crud.courses.alerts.participants.remove.success.title',
+                'content': 'crud.courses.alerts.participants.remove.success.content',
+                'type': mTypes['success']                
+            },
+            'course.participants.removed.error': {
+                'title': 'crud.courses.alerts.participants.remove.error.title',
+                'content': 'crud.courses.alerts.participants.remove.error.content',
+                'type': mTypes['error']                
             }
         };
         var observers = [];

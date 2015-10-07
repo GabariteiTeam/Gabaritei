@@ -123,6 +123,7 @@
         vm.clearSearch = clearSearch;
         vm.selectUser = selectUser;
         vm.selectAllUsers = selectAllUsers;
+        vm.addSelected = addSelected;
 
         vm.roles = [];
 
@@ -158,11 +159,24 @@
             for (var i = 0; i < role.users.length; i++) role.users[i].selected = selection;
         }
 
-        function removeParticipant(user_id) {
-            vm.course.$removeParticipant({user_id: user_id}, function(data) {
+        function addSelected(role) {
+            var newParticipants = role.users.filter(function(value) {
+                return value.selected;
+            });
+            Course.addParticipants({id: vm.course.id}, {participants: newParticipants}, function(data) {
+                MessageService.sendMessage('course.participants.added.success');
                 initialize();
             }, function(data) {
+                MessageService.sendMessage('course.participants.added.error');
+            });
+        }
 
+        function removeParticipant(user_id) {
+            vm.course.$removeParticipant({user_id: user_id}, function(data) {
+                MessageService.sendMessage('course.participants.removed.success');
+                vm.course = Course.get({id: $routeParams.id});
+            }, function(data) {
+                MessageService.sendMessage('course.participants.removed.error');
             });
         }
 

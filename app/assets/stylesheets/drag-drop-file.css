@@ -47,33 +47,33 @@ img.preview-avatar {
 
 @-webkit-keyframes shake {
 	0% {transform: rotate(0deg);}
-	25% {transform: rotate(-2deg);}
+	25% {transform: rotate(-1deg);}
 	50% {transform: rotate(0deg);}
-	75% {transform: rotate(2deg);}
+	75% {transform: rotate(1deg);}
 	100% {transform: rotate(0deg);}
 }
 
 @-moz-keyframes shake {
 	0% {transform: rotate(0deg);}
-	25% {transform: rotate(-2deg);}
+	25% {transform: rotate(-1deg);}
 	50% {transform: rotate(0deg);}
-	75% {transform: rotate(2deg);}
+	75% {transform: rotate(1deg);}
 	100% {transform: rotate(0deg);}
 }
 
 @-o-keyframes shake {
 	0% {transform: rotate(0deg);}
-	25% {transform: rotate(-2deg);}
+	25% {transform: rotate(-1deg);}
 	50% {transform: rotate(0deg);}
-	75% {transform: rotate(2deg);}
+	75% {transform: rotate(1deg);}
 	100% {transform: rotate(0deg);}
 }
 
 @keyframes shake {
 	0% {transform: rotate(0deg);}
-	25% {transform: rotate(-2deg);}
+	25% {transform: rotate(-1deg);}
 	50% {transform: rotate(0deg);}
-	75% {transform: rotate(2deg);}
+	75% {transform: rotate(1deg);}
 	100% {transform: rotate(0deg);}
 }
 
@@ -81,21 +81,24 @@ img.preview-avatar {
 	font-weight: bold;
 	border-width: 2px;
 	-webkit-animation-name: shake;
-	-webkit-animation-duration: 0.3s;
+	-webkit-animation-duration: 0.2s;
 	-webkit-animation-iteration-count: infinite;
 	-moz-animation-name: shake;
-	-moz-animation-duration: 0.3s;
+	-moz-animation-duration: 0.2s;
 	-moz-animation-iteration-count: infinite;
 	-o-animation-name: shake;
-	-o-animation-duration: 0.3s;
+	-o-animation-duration: 0.2s;
 	-o-animation-iteration-count: infinite;
 	animation-name: shake;
-	animation-duration: 0.3s;
+	animation-duration: 0.2s;
 	animation-iteration-count: infinite;
 }
 
-
-
 .search-form input, .search-form button {
-	margin-left: 10px;
+	margin-left: 5px;
+	margin-bottom: 5px;
+}
+
+table.participants-table > tbody > tr > td {
+	vertical-align: middle;
 }

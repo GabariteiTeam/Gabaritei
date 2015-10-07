@@ -38,14 +38,32 @@ class CoursesController < ApplicationController
 	end
 
 	def search_users
-		@users = User.joins(:courses).where("role_id = :role_id AND courses.id != :course_id AND (first_name LIKE :search_string OR last_name LIKE :search_string OR email LIKE :search_string)", {role_id: search_user_params[:role_id], course_id: search_user_params[:id], search_string: "%#{search_user_params[:search_string]}%"})
+		@users = User.joins(:courses).where("role_id = :role_id AND (first_name LIKE :search_string OR last_name LIKE :search_string OR email LIKE :search_string) AND NOT EXISTS (SELECT * FROM user_courses WHERE user_courses.user_id = users.id AND user_courses.course_id = :course_id)", {role_id: search_user_params[:role_id], search_string: "%#{search_user_params[:search_string]}%", course_id: search_user_params[:id]})
 		render json: @users, methods: [:avatar_url_thumb]
+	end
+
+	def add_participants
+		@course = Course.find(params[:id])
+		users = @course.users.to_a
+		params[:participants].each do |participant|
+			user = User.find(participant[:id])
+			users.push(user)
+		end
+		@course.users = users.uniq
+		if @course.save
+	      	render json: {success: true}
+	    else
+	      	render json: @course.errors, status: :unprocessable_entity
+	    end 
 	end
 
 	def remove_participant
 		@course = Course.find(params[:id])
-		@course.users.delete_if {|user| user.id != params[:user_id]}
-		if @course.update
+		users = @course.users.to_a
+		users.delete_if {|user| user.id == params[:user_id].to_i}
+		p users
+		@course.users = users
+		if @course.save
 	      	render json: {success: true}
 	    else
 	      	render json: @course.errors, status: :unprocessable_entity

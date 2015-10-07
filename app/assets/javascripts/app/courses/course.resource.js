@@ -14,6 +14,10 @@
         		method: 'GET',
         		isArray: true
         	},
+            addParticipants: {
+                url: 'courses/:id/add_participants',
+                method: 'PUT'
+            },
             removeParticipant: {
                 url: 'courses/:id/remove_participant/:user_id',
                 method: 'PUT'
