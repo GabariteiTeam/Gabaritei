@@ -29,7 +29,7 @@
           <td>{{ question.answer }}</td>
           <td>
             <a href="#questions/update/{{question.id}}" class="btn btn-xs btn-info" translate>crud.edit</a>
-            <a href ng-click="Ctrl.deleteQuestion(question.id)" class="btn btn-xs btn-danger" translate>crud.delete</a>
+            <gab-show-modal-button text="crud.delete" args="question.id" modalid="confirmDeleteQuestion" class="btn btn-danger"/><gab-show-modal-button>
           </td>
         </tr>
     </tbody>
@@ -38,4 +38,4 @@
   
 <a href="#questions/new" class="btn btn-primary" translate>crud.questions.index.add</a>
 
-<div gab-confirm-modal modalid="confirmDeleteQuestion" title="crud.questions.modal.delete.title" body="crud.questions.modal.delete.content" callback="c_delete()" args="delete_id"></div>
+<div gab-confirm-modal modalid="confirmDeleteQuestion" title="crud.questions.modal.delete.title" body="crud.questions.modal.delete.body" callback="Ctrl.c_delete(id)"></div>

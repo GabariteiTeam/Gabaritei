@@ -9,7 +9,6 @@
 		return {
 			scope: {
 				modalid: "@",
-				callback: "&",
 				args: "=", 
 				class: "@",
 				text: "@"
@@ -18,7 +17,6 @@
 				$scope.storeAndGo = storeAndGo;
 				function storeAndGo() {
 					ModalService.setArgs($scope.args);
-					$scope.callback($args);
 				}
 			},
 			replace: true,

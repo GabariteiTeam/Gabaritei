@@ -12,7 +12,6 @@ describe('Questions Controller', function(){
     }));
 
     it("should initialize variables", function(){
-      expect(ctrl.deleteQuestion).toBeDefined();
       expect(ctrl.questions).toBeDefined();
     });
 
