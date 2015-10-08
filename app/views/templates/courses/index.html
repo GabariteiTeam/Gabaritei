@@ -1,7 +1,7 @@
 <div class="page-header" id="banner">
   <div class="row">
     <h1 translate>crud.courses.index.heading</h1>
-    <p class="lead" translate>crud.courses.index.sub_heading</p>
+    <p class="lead" translate>crud.courses.index.sub_header</p>
   </div>
 </div>
 
@@ -24,7 +24,7 @@
           <td>{{ course.description }}</td>
           <td>
             <a href="#courses/participants/{{course.id}}" class="btn btn-xs btn-default" translate>crud.courses.index.edit_participants</a>
-            <a href="#courses/update/{{course.id}}" class="btn btn-xs btn-primary" translate>crud.edit</a>
+            <a href="#courses/update/{{course.id}}" class="btn btn-xs btn-info" translate>crud.edit</a>
             <gab-show-modal-button text="crud.delete" args="course.id" modalid="confirmDeleteCourse" class="btn btn-xs btn-danger"></gab-show-modal-button>
           </td>
         </tr>
