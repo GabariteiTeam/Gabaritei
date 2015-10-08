@@ -95,6 +95,46 @@ en:
       subject_description: 
         title: 'Subject description:'
         placeholder: 'Subject description here'
+   fields:
+    alerts:
+      create:
+        success:
+          title: 'Created!'
+          content: 'Field was created with success!'
+        error:
+          title: 'Failed!'
+          content: 'Field was NOT created!'
+      delete:
+        success:
+          title: 'Deleted!'
+          content: 'Field was deleted with success!'
+        error:
+          title: 'Failed!'
+          content: 'Field was NOT deleted'
+      update:
+        success:
+          title: 'Updated!'
+          content: 'Field was updated with success'
+        error:
+          title: 'Failed!'
+          content: 'Field was NOT updated!'
+    modal:
+      delete:
+        title: 'Warning!'
+        body: 'Are you sure you want to delete this field?'
+    index:
+      sub_header: 'Organize your subject in fields'
+    create: 
+      heading: 'New Field'
+    update:
+      heading: 'Update Field'
+    form:
+      field_name:
+        title: 'Field name:'
+        placeholder: 'Field name here'
+      field_description: 
+        title: 'Field description:'
+        placeholder: 'Field description here'
    questions:
     alerts:
       create:
@@ -184,34 +224,11 @@ en:
         content: 'Role was NOT updated!'
     index:
      heading: 'Roles'
-     sub_heading: 'Create a new role to your Virtual Class!'
+     sub_header: 'Create a new role to your Virtual Class!'
     modal:
      delete:
       title: 'Warning!'
       body: 'Are you sure you want to delete this role?'
-   fields:
-    alerts:
-     create:
-      success:
-       title: 'Created!'
-       content: 'Field was created with success!'
-      error:
-       title: 'Error!'
-       content: 'Field could not be created!'
-     update:
-      success:
-       title: 'Updated!'
-       content: 'Field was updated with success!'
-      error:
-       title: 'Error!'
-       content: 'Field could not be updated!'
-     delete:
-      success:
-       title: 'Deleted!'
-       content: 'Field was deleted with success!'
-      error:
-       title: 'Error!'
-       content: 'Field could not be deleted!'
    users:
     alerts:
      create:
@@ -237,7 +254,7 @@ en:
         content: 'User was NOT updated!'
     index:
      heading: 'Users'
-     sub_heading: 'Create a new user to your Virtual Class!'
+     sub_header: 'Create a new user to your Virtual Class!'
     modal:
      delete:
       title: 'Warning!'
@@ -311,7 +328,7 @@ en:
         content: 'Participant was NOT removed!'
     index:
      heading: 'Courses'
-     sub_heading: 'Create a new course to your Virtual Class!'
+     sub_header: 'Create a new course to your Virtual Class!'
      edit_participants: 'Edit participants'
   models:
    content: 'Content'

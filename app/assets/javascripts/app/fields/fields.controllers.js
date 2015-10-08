@@ -16,29 +16,19 @@
             '$route',
 			'Field',
             'Subject',
-            'Modal',
             'ModalService',
             'RedirectService',
             'MessageService'
         ];
 
-    function FieldsController($location, $routeParams, $route, Field, Subject, Modal, ModalService, RedirectService, MessageService) {
+    function FieldsController($location, $routeParams, $route, Field, Subject, ModalService, RedirectService, MessageService) {
        var vm = this;
        vm.subject_id    = $routeParams.id;
-       vm.confirmDelete = confirmDelete;
        vm.confirmed_delete = confirmed_delete;
        vm.fields        = Field.get({id: vm.subject_id});
        vm.subject       = Subject.get({id: vm.subject_id});
-       
-       function confirmDelete(id) {
-            var modal               = new Modal();
-            modal.title             = "Confirmation";
-            modal.body              = "Are you sure you want to delete?";
-            modal.confirmCallback   = confirmed_delete;
-            modal.pack              = id;
-            ModalService.alert(modal);
-       }
-       
+       vm.delete_modal_id  = "confirmDeleteField";
+              
        function confirmed_delete(id) {
            var field    = new Field();
            field.id     = id;
