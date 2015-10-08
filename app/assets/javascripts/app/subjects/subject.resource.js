@@ -46,6 +46,13 @@
                 params: {
                     id: ''
                 }
+            },
+            fields: {
+                url: 'subjects/fields/:id',
+                method: 'GET',
+                params: {
+                    id: ''
+                }
             }
         });
     }

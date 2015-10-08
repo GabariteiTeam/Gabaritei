@@ -1,0 +1,31 @@
+<div class="row">
+	<div class="page-header">
+		<h1 translate>crud.courses.index.edit_participants</h1>
+	</div>
+</div>
+
+<div ng-repeat="role in Ctrl.roles" class="row panel panel-default">
+	<div class="panel-heading">
+		<h2 class="panel-title">{{ role.name }}</h2>
+	</div>
+	<div class="panel-body">
+		<form class="form-inline" role="form" ng-submit="Ctrl.searchUsers(role)">
+			<div ng-include="'templates/courses/_search_form.html'"></div>
+		</form>
+	</div>
+	<table class="table table-striped participants-table">
+		<tbody>
+			<tr data-ng-repeat="user in Ctrl.course.users_info | filter:{role_name: role.name}">
+				<td>
+					<img ng-src="{{ user.avatar_file_name }}" />
+				</td>
+				<td>{{ user.first_name + ' ' + user.last_name }}</td>
+				<td>{{ user.email }}</td>
+				<td>
+					<a href="#users/{{user.id}}" class="btn btn-sm btn-info" translate>crud.view</a>
+					<button ng-click="Ctrl.removeParticipant(user.id)" class="btn btn-sm btn-danger" translate>crud.remove</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

@@ -3,19 +3,47 @@
 <head>
   <title>Gabaritei</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <%= csrf_meta_tags %>
 </head>
-<body class="container">
-	<%= render 'layouts/navbar'%>		
-	<div class="bs-docs-section clearfix"  >
-		<div class="row" ng-controller="MessagesController" >
-			<div id="messageContainer"></div>
-		</div>
-		<div ng-view>
-			<%= yield %>
-		</div>
-	</div>
+<body>
+	<%= render 'layouts/navbar'%>
+
+	<div id="wrapper" ng-class="{toggled: selected}">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <label style="display:block">
+                        <input type="checkbox" ng-model="selected" style="display:none">
+                        Menu<span class="sub_icon glyphicon glyphicon-menu-hamburger"></span>
+                    </label>
+                </li>
+                <%= render 'layouts/navlist'%>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+        	<!-- class="bs-docs-section" -->
+            <div class="container-fluid clearfix">
+            	<div ng-controller="MessagesController">
+					<div id="messageContainer"></div>
+				</div>
+
+				<div ng-view>
+					<%= yield %>
+				</div>
+
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+
+
 </body>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </html>

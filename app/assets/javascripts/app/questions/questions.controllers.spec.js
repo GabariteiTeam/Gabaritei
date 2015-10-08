@@ -12,14 +12,13 @@ describe('Questions Controller', function(){
     }));
 
     it("should initialize variables", function(){
-      expect(ctrl.deleteQuestion).toBeDefined();
       expect(ctrl.questions).toBeDefined();
     });
 
     it("should destroy a question", function(){
       $httpBackend.expectDELETE("questions/1").respond({});
       spyOn($MessageService, "sendMessage");
-      ctrl.deleteQuestion(1);
+      ctrl.c_delete(1);
       $httpBackend.flush();
       expect($MessageService.sendMessage).toHaveBeenCalled();
     });
@@ -27,7 +26,7 @@ describe('Questions Controller', function(){
     it("should fail to destroy a question", function(){
       $httpBackend.expectDELETE("questions/1").respond(500);
       spyOn($MessageService, "sendMessage");
-      ctrl.deleteQuestion(1);
+      ctrl.c_delete(1);
       $httpBackend.flush();
       expect($MessageService.sendMessage).toHaveBeenCalled();
     });
@@ -60,11 +59,12 @@ describe('Questions Controller', function(){
 
     it('should create a question', function(){
       $httpBackend.flush();
-      $httpBackend.expectPOST("questions").respond({});
+      $httpBackend.expectPOST("questions?subjects%5B%5D=1").respond({});
       spyOn($MessageService, "sendMessage");
       ctrl.subjectInput = [{text: "a"}];
       ctrl.subjects = [{name: "b", id: 2}, {name: "a", id: 1}]
       ctrl.createQuestion();
+
       expect(ctrl.question.subjects).toEqualData([1]);
       $httpBackend.flush();
       expect($MessageService.sendMessage).toHaveBeenCalled();

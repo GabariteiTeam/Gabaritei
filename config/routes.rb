@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 	post 	"/subjects/", 		to: "subjects#create", as: "subjects_new"
 	put 	"/subjects/", 		to: "subjects#update", as: "subjects_update"
 	delete 	"/subjects/:id", 	to: "subjects#destroy", as: "subjects_delete"
+	get 	"/subjects/fields/:id", to: "subjects#fields"
 
 	# END SUBJECTS ROUTES
 
@@ -57,6 +58,16 @@ Rails.application.routes.draw do
 	resources :permissions, only: :index
 
 	# END ROLES AND PERMISSIONS ROUTES
+
+	# COURSES ROUTES
+
+	resources :courses do
+		get :search_users, to: "courses#search_users", on: :member
+		put :add_participants, to: "courses#add_participants", on: :member
+		put "remove_participant/:user_id", to: "courses#remove_participant", on: :member
+	end
+	
+	# COURSES ROUTES
 
 	# TRANSLATIONS ROUTES
 

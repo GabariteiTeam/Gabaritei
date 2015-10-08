@@ -65,7 +65,7 @@ describe('unit: DataImportsController', function() {
         $httpBackend.expectPOST('/data_imports').respond({});
         $httpBackend.flush();
         ctrl.uploadFile();
-        expect($MessageService.sendMessage).toHaveBeenCalledWith("Uploaded!", "File was uploaded with success!", "success");
+        expect($MessageService.sendMessage).toHaveBeenCalledWith('data_import.uploaded.success');
         expect(ctrl.refresh).toHaveBeenCalled();
     });
 
@@ -81,7 +81,7 @@ describe('unit: DataImportsController', function() {
         $httpBackend.flush();
         ctrl.uploadFile();
         expect(ctrl.fileUpload.uploading).toBe(false);
-        expect($MessageService.sendMessage).toHaveBeenCalledWith("Error!", "File could not be uploaded!", "error");
+        expect($MessageService.sendMessage).toHaveBeenCalledWith('data_import.uploaded.error');
     });
 
     it("should import data", function() {
@@ -98,7 +98,7 @@ describe('unit: DataImportsController', function() {
         ctrl.deleteFile(initialDataImports[0].id);
         $httpBackend.expectDELETE('data_imports/' + initialDataImports[0].id + ".json").respond({});
         $httpBackend.flush();
-        expect($MessageService.sendMessage).toHaveBeenCalledWith("Deleted!", "File was deleted with success!", "success");
+        expect($MessageService.sendMessage).toHaveBeenCalledWith('data_import.deleted.success');
         expect(ctrl.refresh).toHaveBeenCalled();
     });
 
@@ -108,7 +108,7 @@ describe('unit: DataImportsController', function() {
         $httpBackend.expectDELETE('data_imports/' + initialDataImports[0].id + ".json").respond(500);
         $httpBackend.expectGET('data_imports.json').respond(initialDataImports);
         $httpBackend.flush();
-        expect($MessageService.sendMessage).toHaveBeenCalledWith("Error!", "File could not be deleted!", "error");
+        expect($MessageService.sendMessage).toHaveBeenCalledWith('data_import.deleted.error');
     });
 
 });

@@ -1,8 +1,9 @@
 [ngf-drop] {
-	color: #BBB;
+	color: #2c3e50;
 	font-size: 20px;
 	text-align: center;
-	border: 3px dashed #BBB;
+	border: 2px dashed #dce4ec;
+	background-color: #F4F6F9;
 	-webkit-transition: 0.1s;
 }
 
@@ -11,6 +12,10 @@
 	border-color: #999;
 	-webkit-transform: scale(1.05);
 	-webkit-transition: 0.1s;
+	-moz-transform: scale(1.05);
+	-moz-transition: 0.1s;
+	-o-transform: scale(1.05);
+	-o-transition: 0.1s;
 }
 
 .avatar[ngf-drop] {
@@ -27,4 +32,78 @@ img.preview-avatar {
 .ai-circled {
 	width: 20px;
 	height: 20px;
+}
+
+.user-cell {
+	margin: 5px 10px 5px 0;
+	padding: 10px;
+	text-align: center;
+	border: 1px solid #DDD;
+}
+
+.user-cell:hover {
+	background-color: #EEE;
+	cursor: pointer;
+}
+
+@-webkit-keyframes shake {
+	0% {transform: rotate(0deg);}
+	25% {transform: rotate(-1deg);}
+	50% {transform: rotate(0deg);}
+	75% {transform: rotate(1deg);}
+	100% {transform: rotate(0deg);}
+}
+
+@-moz-keyframes shake {
+	0% {transform: rotate(0deg);}
+	25% {transform: rotate(-1deg);}
+	50% {transform: rotate(0deg);}
+	75% {transform: rotate(1deg);}
+	100% {transform: rotate(0deg);}
+}
+
+@-o-keyframes shake {
+	0% {transform: rotate(0deg);}
+	25% {transform: rotate(-1deg);}
+	50% {transform: rotate(0deg);}
+	75% {transform: rotate(1deg);}
+	100% {transform: rotate(0deg);}
+}
+
+@keyframes shake {
+	0% {transform: rotate(0deg);}
+	25% {transform: rotate(-1deg);}
+	50% {transform: rotate(0deg);}
+	75% {transform: rotate(1deg);}
+	100% {transform: rotate(0deg);}
+}
+
+.user-cell.selected {
+	font-weight: bold;
+	border-width: 2px;
+	-webkit-animation-name: shake;
+	-webkit-animation-duration: 0.2s;
+	-webkit-animation-iteration-count: infinite;
+	-moz-animation-name: shake;
+	-moz-animation-duration: 0.2s;
+	-moz-animation-iteration-count: infinite;
+	-o-animation-name: shake;
+	-o-animation-duration: 0.2s;
+	-o-animation-iteration-count: infinite;
+	animation-name: shake;
+	animation-duration: 0.2s;
+	animation-iteration-count: infinite;
+}
+
+.search-form input, .search-form button {
+	margin-left: 5px;
+	margin-bottom: 5px;
+}
+
+table.participants-table > tbody > tr > td {
+	vertical-align: middle;
+}
+
+.form-inline input[type="file"] {
+	width: 100%;
 }

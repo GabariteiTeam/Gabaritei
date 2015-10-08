@@ -36,7 +36,6 @@
 //= stub app/questions/questions.controllers.spec
 //= stub app/data_imports/data_imports.controllers.spec
 //= stub app/fields/fields.controllers.spec
-//= stub app/modal/modal.controllers.spec
 //= stub app/roles/roles.controllers.spec
 //= stub app/users/users.controllers.spec
 //= require_tree .

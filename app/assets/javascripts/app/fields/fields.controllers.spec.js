@@ -5,7 +5,7 @@ describe('Fields Controller', function(){
     
     var id = 1;
 
-    beforeEach(inject(function($rootScope, $controller, Field, Subject, MessageService, $routeParams, Modal, ModalService, _$httpBackend_){
+    beforeEach(inject(function($rootScope, $controller, Field, Subject, MessageService, $routeParams, ModalService, _$httpBackend_){
       scope               = $rootScope.$new();
       $Field              = Field;
       $Subject            = Subject;
@@ -27,8 +27,7 @@ describe('Fields Controller', function(){
             $scope: scope, 
             MessageService: $MessageService, 
             Subject: $Subject,
-            ModalService: $ModalService,
-            Modal: Modal
+            ModalService: $ModalService
           });
     }));
 
@@ -36,13 +35,7 @@ describe('Fields Controller', function(){
       expect(ctrl.fields).toBeDefined();
       expect(ctrl.subject).toBeDefined();
     });
-    
-    it("should confirm a deleted", function(){
-      spyOn($ModalService, "alert");
-      ctrl.confirmDelete(1);
-      expect($ModalService.alert).toHaveBeenCalled();
-    });
-    
+        
     it("should destroy a field", function(){
       $httpBackend.expectDELETE("fields/" + id).respond({});
       spyOn($MessageService, "sendMessage");
@@ -65,7 +58,7 @@ describe('Fields Controller', function(){
         $Subject, $httpBackend, $MessageService, 
         $ModalService;
     var subjectList = [{name: "Subject", id: 1}];
-    beforeEach(inject(function($rootScope, $controller, Field, Subject, MessageService, $routeParams, Modal, ModalService, _$httpBackend_){
+    beforeEach(inject(function($rootScope, $controller, Field, Subject, MessageService, $routeParams, ModalService, _$httpBackend_){
       scope                   = $rootScope.$new();
       $Field                  = Field;
       $Subject                = Subject;

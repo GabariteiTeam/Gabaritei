@@ -20,11 +20,10 @@ describe('unit: SubjectsController', function() {
     };
     var expectedTranslation = {};
     beforeEach(inject(function(_$httpBackend_, $rootScope, $controller, _$location_, ModalService) {
-        $httpBackend = _$httpBackend_;
-        $location = _$location_;
-
-        $ModalService = ModalService;
-        scope = $rootScope.$new();
+        $httpBackend    = _$httpBackend_;
+        $location       = _$location_;
+        $ModalService   = ModalService;
+        scope           = $rootScope.$new();
         $httpBackend.expectGET('translations/en.json')
                     .respond(expectedTranslation);
         $httpBackend.expectGET('subjects')
@@ -71,7 +70,7 @@ describe('unit: SubjectsController', function() {
         spyOn($MessageService, "sendMessage");
         ctrl.updateSubject();
         $httpBackend.flush();
-        expect($MessageService.sendMessage).toHaveBeenCalledWith("Updated!", "Subject was updated with success!", "success");
+        expect($MessageService.sendMessage).toHaveBeenCalledWith('subject.updated.success');
 
     });
 
@@ -81,33 +80,25 @@ describe('unit: SubjectsController', function() {
         spyOn($MessageService, "sendMessage");
         ctrl.updateSubject();
         $httpBackend.flush();
-        expect($MessageService.sendMessage).toHaveBeenCalledWith("Fail!", "Subject was NOT updated with success!", "error");
+        expect($MessageService.sendMessage).toHaveBeenCalledWith('subject.updated.error');
     });
 
     it('Should send delete request', function() {
         $httpBackend.flush();
-        $httpBackend.expectGET('subjects/validate/destroy/1').respond({model_bind: true, count: 1});
         $httpBackend.expectDELETE('subjects/1').respond({});
         spyOn($MessageService, "sendMessage");
-        spyOn($ModalService, "customModal");
-        ctrl.deleteSubject(1);
         ctrl.c_delete(1);
         $httpBackend.flush();
-        expect($MessageService.sendMessage).toHaveBeenCalledWith("Deleted!", "Subject was deleted with success!", "success");
-        expect($ModalService.customModal).toHaveBeenCalled();
+        expect($MessageService.sendMessage).toHaveBeenCalledWith('subject.deleted.success');
     });
 
     it('Should send delete request and fail', function() {
         $httpBackend.flush();
-        $httpBackend.expectGET('subjects/validate/destroy/1').respond({model_bind: false, count: 1});
         $httpBackend.expectDELETE('subjects/1').respond(500);
-        spyOn($ModalService, "customModal");
         spyOn($MessageService, "sendMessage");
-        ctrl.deleteSubject(1);
         ctrl.c_delete(1);
         $httpBackend.flush();
-        expect($ModalService.customModal).toHaveBeenCalled();
-        expect($MessageService.sendMessage).toHaveBeenCalledWith("Fail!", "Subject was NOT deleted with success!", "error");
+        expect($MessageService.sendMessage).toHaveBeenCalledWith('subject.deleted.error');
     });
 
     it('Should send create request', function() {
@@ -116,7 +107,6 @@ describe('unit: SubjectsController', function() {
         spyOn($MessageService, "sendMessage");
         ctrl.createSubject();
         $httpBackend.flush();
-        //expect($MessageService.sendMessage).toHaveBeenCalledWith("Created!", "Subject was created with success!", "success");
         expect($MessageService.sendMessage).toHaveBeenCalledWith('subject.created.success');
     });
 
@@ -126,7 +116,7 @@ describe('unit: SubjectsController', function() {
         spyOn($MessageService, "sendMessage");
         ctrl.createSubject(1);
         $httpBackend.flush();
-        expect($MessageService.sendMessage).toHaveBeenCalledWith("Fail!", "Subject was NOT created with success!", "error");
+        expect($MessageService.sendMessage).toHaveBeenCalledWith('subject.created.error');
     });
 
 });

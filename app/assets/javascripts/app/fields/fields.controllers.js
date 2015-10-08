@@ -16,37 +16,27 @@
             '$route',
 			'Field',
             'Subject',
-            'Modal',
             'ModalService',
             'RedirectService',
             'MessageService'
         ];
 
-    function FieldsController($location, $routeParams, $route, Field, Subject, Modal, ModalService, RedirectService, MessageService) {
+    function FieldsController($location, $routeParams, $route, Field, Subject, ModalService, RedirectService, MessageService) {
        var vm = this;
        vm.subject_id    = $routeParams.id;
-       vm.confirmDelete = confirmDelete;
        vm.confirmed_delete = confirmed_delete;
        vm.fields        = Field.get({id: vm.subject_id});
        vm.subject       = Subject.get({id: vm.subject_id});
-       
-       function confirmDelete(id) {
-            var modal               = new Modal();
-            modal.title             = "Confirmation";
-            modal.body              = "Are you sure you want to delete?";
-            modal.confirmCallback   = confirmed_delete;
-            modal.pack              = id;
-            ModalService.alert(modal);
-       }
-       
+       vm.delete_modal_id  = "confirmDeleteField";
+              
        function confirmed_delete(id) {
            var field    = new Field();
            field.id     = id;
            Field.destroy({id:id}, function(data){
-               MessageService.sendMessage("Deleted!", "Field was deleted with success!", "success");
+               MessageService.sendMessage('field.deleted.success');
                RedirectService.redirect("/fields/" + vm.subject_id);
            }, function(err){
-               MessageService.sendMessage("Fail!", "Field was NOT deleted with success!", "error");
+               MessageService.sendMessage('field.deleted.error');
                RedirectService.redirect("/fields/" + vm.subject_id);
            })
        }
@@ -73,10 +63,10 @@
         function createField() {
             vm.field.subject_id = vm.subject_id;
             vm.field.$save({}, function(data){
-                MessageService.sendMessage("Created!", "Field was created with success!", "success");
+                MessageService.sendMessage('field.created.success');
                 RedirectService.redirect("/fields/" + vm.subject_id);
             }, function(err) {
-                MessageService.sendMessage("Fail!", "Field was NOT created with success!", "error");
+                MessageService.sendMessage('field.created.error');
                 RedirectService.redirect("/fields/" + vm.subject_id);
             })
         }
@@ -102,10 +92,10 @@
         
         function updateField() {
             vm.field.$update({}, function(data){
-                MessageService.sendMessage("Edited!", "Field was Edited with success!", "success");
+                MessageService.sendMessage('field.updated.success');
                 RedirectService.redirect("/fields/" + vm.subject_id);
             }, function(err){
-                MessageService.sendMessage("Edited!", "Field was NOT Edited with success!", "error");
+                MessageService.sendMessage('field.updated.error');
                 RedirectService.redirect("/fields/" + vm.subject_id);
             });
         }

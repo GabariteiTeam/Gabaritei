@@ -74,6 +74,12 @@ class SubjectsController < ApplicationController
         end
       end
 
+    def fields
+      set_subject
+      @fields = @subject.fields
+      render :json => @fields
+    end
+
     private
         # Use callbacks to share common setup or constraints between actions.
         def set_subject

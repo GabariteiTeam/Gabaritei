@@ -1,10 +1,12 @@
-<div class="page-header" id="banner">
-	<div class="row">
-		<h1>Upload & Import data</h1>
-	</div>
+<div class="page-header">
+	<h1>Upload & Import data</h1>
 </div>
 
-<div class="row">
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <!-- <h3 class="panel-title">Data Import</h3> -->
+    </div>
+
 	<table class="table table-striped table-bordered">
 		<thead>
 			<tr>
@@ -42,7 +44,7 @@
 	</table>
 </div>
 
-<div class="row" ng-hide="!Ctrl.fileUpload.uploading">
+<div ng-hide="!Ctrl.fileUpload.uploading">
 	<p>Uploading file:</p>
 	<div class="progress" style="height: 25px;">
 		<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="{{ Ctrl.fileUpload.progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ Ctrl.fileUpload.progress }}%">
@@ -51,24 +53,21 @@
 	  </div>
 </div>
 
-<div class="row">
-	<form novalidate>
-		<div class="form-group">
-			<label for="inputDataType">Select data type: </label>
-			<select ng-model="Ctrl.data_import.model" class="form-control" id="inputDataType" ng-options="index as model for (index, model) in Ctrl.models" ng-disabled="Ctrl.fileUpload.uploading">
-			</select>
-		</div>
-		<div class="form-group" ng-hide="Ctrl.data_import.model != '0'">
-			<label for="inputUsersRole">Select users' role: </label>
-			<select ng-model="Ctrl.data_import.role" class="form-control" id="inputUsersRole" ng-options="role.id as role.name for role in Ctrl.user_roles" ng-disabled="Ctrl.fileUpload.uploading">
-			</select>
-		</div>
-		<div class="form-group form-inline">
-			<label for="inputCSVFile">Drag and drop a file below: </label>
-			<div class="well well-lg" ngf-drop ng-model="Ctrl.data_import.file" ngf-drag-over-class="drag-file">{{ Ctrl.data_import.file ? Ctrl.data_import.file.name : "Drop file here" }}</div>
-			<label for="inputCSVFile">Or select file: </label>
-			<input type="file" ngf-select ng-model="Ctrl.data_import.file" class="form-control" id="inputCSVFile" ng-disabled="Ctrl.fileUpload.uploading"/>
-		</div>
-		
+<form novalidate>
+	<div class="form-group">
+		<label for="inputDataType">Select data type: </label>
+		<select ng-model="Ctrl.data_import.model" class="form-control" id="inputDataType" ng-options="index as model for (index, model) in Ctrl.models" ng-disabled="Ctrl.fileUpload.uploading">
+		</select>
+	</div>
+	<div class="form-group" ng-hide="Ctrl.data_import.model != '0'">
+		<label for="inputUsersRole">Select users' role: </label>
+		<select ng-model="Ctrl.data_import.role" class="form-control" id="inputUsersRole" ng-options="role.id as role.name for role in Ctrl.user_roles" ng-disabled="Ctrl.fileUpload.uploading">
+		</select>
+	</div>
+	<div class="form-group form-inline">
+		<label for="inputCSVFile">Drag and drop a file below: </label>
+		<div class="well well-lg" ngf-drop ng-model="Ctrl.data_import.file" ngf-drag-over-class="drag-file">{{ Ctrl.data_import.file ? Ctrl.data_import.file.name : "Drop file here" }}</div>
+		<label for="inputCSVFile">Or select file: </label>
+		<input type="file" ngf-select ng-model="Ctrl.data_import.file" class="form-control" id="inputCSVFile" ng-disabled="Ctrl.fileUpload.uploading"/>
+	</div>
 	</form>
-</div>
