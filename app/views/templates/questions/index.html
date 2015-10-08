@@ -27,13 +27,15 @@
           <td>{{ question.text }}</td>
           <td>{{ question.answer }}</td>
           <td><a href="#questions/update/{{question.id}}" translate>crud.edit</a>
-          <td><a href ng-click="Ctrl.deleteQuestion(question.id)" translate>crud.delete</a>
+          <td>
+         <gab-show-modal-button text="crud.delete" args="question.id" modalid="confirmDeleteQuestion" class="btn btn-danger"/><gab-show-modal-button> 
+          </td>
         </tr>
     </tbody>
   </table>
-    <div gab-confirm-modal modalid="confirmDeleteQuestion" title="crud.questions.modal.delete.title" body="crud.questions.modal.delete.content" callback="c_delete()" args="delete_id"></div>
   <a href="#questions/new" translate>crud.questions.index.add</a>
-
 </div>
+
+<div gab-confirm-modal modalid="confirmDeleteQuestion" title="crud.questions.modal.delete.title" body="crud.questions.modal.delete.body" callback="Ctrl.c_delete(id)"></div>
 
 

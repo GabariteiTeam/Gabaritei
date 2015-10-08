@@ -11,20 +11,12 @@
 
     function QuestionsController($routeParams, MessageService, Question, RedirectService, ModalService) {
         var vm = this;
-        vm.deleteQuestion = deleteQuestion;
         vm.c_delete = c_delete;
         vm.questions = Question.query();
         vm.delete_modal_id = 'confirmDeleteQuestion';
 
 
-        function deleteQuestion(id) {
-            ModalService.registerCallback(c_delete);
-            ModalService.setArgs(id);
-            $("#" + vm.delete_modal_id).modal();
-        }
-
         function c_delete(id) {
-            ModalService.hideModal();
             Question.destroy({
                     id: id
                 }, function() {

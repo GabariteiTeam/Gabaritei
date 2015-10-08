@@ -87,7 +87,6 @@ describe('unit: SubjectsController', function() {
         $httpBackend.flush();
         $httpBackend.expectDELETE('subjects/1').respond({});
         spyOn($MessageService, "sendMessage");
-        ctrl.deleteSubject(1);
         ctrl.c_delete(1);
         $httpBackend.flush();
         expect($MessageService.sendMessage).toHaveBeenCalledWith('subject.deleted.success');
@@ -97,7 +96,6 @@ describe('unit: SubjectsController', function() {
         $httpBackend.flush();
         $httpBackend.expectDELETE('subjects/1').respond(500);
         spyOn($MessageService, "sendMessage");
-        ctrl.deleteSubject(1);
         ctrl.c_delete(1);
         $httpBackend.flush();
         expect($MessageService.sendMessage).toHaveBeenCalledWith('subject.deleted.error');
