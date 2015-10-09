@@ -9,7 +9,8 @@ asset 'bootstrap'
 # Bootswatch
 asset 'bootswatch'
 # Main angular module
-asset 'angular'
+asset 'angular', '1.4.7'
+resolution 'angular', '1.4.7'
 # Needed to ajax routing **using instead of default rails routing file** 
 asset 'angular-route'
 # Proviedes app.factory methods

@@ -82,3 +82,6 @@ gem 'annotate', '~> 2.6.6'
 
 # Pagination
 gem 'clean_pagination'
+
+# Windows compatibility
+gem 'tzinfo-data'
