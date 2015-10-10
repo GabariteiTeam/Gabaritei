@@ -20,16 +20,15 @@
             Upload.upload({
                 url: url,
                 method: method,
-                fields: {
+                data: {
+                    avatar: user.avatar,
                     role_id: user.role_id,
                     first_name: user.first_name,
                     last_name: user.last_name,
                     email: user.email,
                     birthdate: user.birthdate ? user.birthdate : undefined,
                     about: user.about
-                },
-                file: user.avatar,
-                fileFormDataName: 'avatar'
+                }
             })
             .success(function(data) {
                 if (success) success(data);
