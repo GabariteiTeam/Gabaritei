@@ -36,3 +36,15 @@ asset 'bootstrap-toggle'
 asset 'angular-paginate-anything'
 # Activity indicator
 asset 'ngActivityIndicator'
+# Rich text editor
+asset 'textAngular'
+# Dependencie from textAngular
+asset 'angular-sanitize'
+# Dependencie frm textAngular
+asset 'components-font-awesome'
+# Nice auto-add fields for questions
+asset 'angular-autoFields-bootstrap'
+# lodash library
+asset 'ng-lodash'
+# nice toogle switch
+asset 'angular-bootstrap-toggle-switch'

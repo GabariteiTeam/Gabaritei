@@ -28,12 +28,11 @@
         di.prototype.upload = function(success, error) {
             Upload.upload({
                     url: '/data_imports',
-                    fields: {
+                    data: {
+                        data: this.file,
                         model: this.model,
                         role_id: this.model == 0 ? this.role : null
-                    },
-                    file: this.file,
-                    fileFormDataName: 'data'
+                    }
                 })
                 .success(function(data) {
                     if (success) success(data);
