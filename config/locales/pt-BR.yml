@@ -9,6 +9,7 @@ pt-BR:
    roles: 'Papéis'
    users: 'Usuários'
    courses: 'Salas'
+   tests: 'Testes'
   home:
    heading: 'Fácil, rápido e simples!'
   crud:

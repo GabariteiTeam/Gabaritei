@@ -36,6 +36,15 @@ Rails.application.routes.draw do
 	
 	# END FIELDS ROUTES
 
+	# TESTS ROUTES
+
+	get 	"/tests/", 		to: "tests#index", as: "tests_home"
+	get 	"/tests/:id", 	to: "tests#show", as: "read_test"
+	get 	"/tests/validate/destroy/:id", to: "tests#validate_destroy"
+	post 	"/tests/", 		to: "tests#create", as: "tests_new"
+	put 	"/tests/", 		to: "tests#update", as: "tests_update"
+	delete 	"/tests/:id", 	to: "tests#destroy", as: "tests_delete"
+
 	# USERS ROUTES
 
 	resources :users
