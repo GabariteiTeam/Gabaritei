@@ -57,7 +57,7 @@ class Response < ActiveRecord::Base
 	# a multiple choice style.
 	# @return [Array<QuestionChoice>] a list of all question choices of the response.
 	# @see QuestionChoice#responses
-	has_many :question_choices
+	has_many :question_choices, through: :response_choices
 
 	# @!endgroup
 
