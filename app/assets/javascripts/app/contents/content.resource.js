@@ -26,6 +26,7 @@
                 data: {
                     name: content.name,
                     description: content.description,
+                    shareable: content.shareable,
                     medium: content.medium
                 }
             })

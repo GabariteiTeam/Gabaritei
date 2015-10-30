@@ -382,6 +382,7 @@ en:
      file_drag_drop: 'Drag and drop a file below'
      file_select: 'Or select a file'
      reference: 'Resource URL'
+     shareable: 'Shareable'
     index:
      heading: 'Contents'
      sub_header: 'Create a new content to your Virtual Class!'

@@ -42,7 +42,7 @@ class ContentsController < ApplicationController
 	private
 
 		def content_params
-			params.permit(:id, :name, :description)
+			params.permit(:id, :name, :description, :shareable)
 		end
 
 		def medium_params
