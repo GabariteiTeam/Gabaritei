@@ -2,7 +2,7 @@ class ContentsController < ApplicationController
 
     def index
 		@contents = Content.all
-		render json: @contents
+		render json: @contents, methods: [:subject, :field]
 	end
 
 	def create
@@ -31,7 +31,7 @@ class ContentsController < ApplicationController
 
 	def show
 		@content = Content.find(params[:id])
-		render json: @content, methods: [:medium, :attachment_url]
+		render json: @content, methods: [:medium, :attachment_url, :category]
 	end
 
 	def destroy
@@ -42,7 +42,7 @@ class ContentsController < ApplicationController
 	private
 
 		def content_params
-			params.permit(:id, :name, :description, :shareable)
+			params.permit(:id, :name, :description, :shareable, :category_id, :category_type)
 		end
 
 		def medium_params

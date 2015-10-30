@@ -27,6 +27,7 @@
         vm.updateContent = updateContent;
         vm.c_delete = c_delete;
         vm.clearFile = clearFile;
+        vm.retrieveSubject = retrieveSubject;
 
         activate();
 
@@ -41,6 +42,16 @@
                 });
             } else {
                 vm.content = Content.get({id: $routeParams.id}, function() {
+                    Subject.query(function(data) {
+                        vm.subjects = data;
+                        if (vm.content.category_type == "Subject") {
+                            vm.content.subject_id = vm.content.category.id;
+                        } else if (vm.content.category_type == "Field") {
+                            vm.content.subject_id = vm.content.category.subject_id;
+                            vm.content.field_id = vm.content.category.id;
+                        }
+                        retrieveSubject();
+                    });
                     if (!vm.content.medium.is_attachment) {
                         vm.content.medium.reference = $sce.trustAsResourceUrl(vm.content.medium.reference);
                     }
@@ -82,6 +93,10 @@
         function clearFile() {
             vm.content.medium.data = null;
             vm.content.medium.data_file_name = null;
+        }
+
+        function retrieveSubject() {
+            vm.subject = Subject.get({id: vm.content.subject_id});
         }
 
     }

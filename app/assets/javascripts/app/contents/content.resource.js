@@ -27,6 +27,8 @@
                     name: content.name,
                     description: content.description,
                     shareable: content.shareable,
+                    category_id: content.field_id ? content.field_id : content.subject_id,
+                    category_type: content.field_id ? "Field" : "Subject",
                     medium: content.medium
                 }
             })

@@ -11,6 +11,8 @@
     <thead>
       <tr>
         <th translate>crud.name</th>
+        <th translate>models.subject</th>
+        <th translate>models.field</th>
         <th translate>crud.description</th>
         <th translate>crud.options</th>
       </tr>
@@ -18,6 +20,8 @@
     <tbody>
         <tr data-ng-repeat="content in Ctrl.contents">
           <td>{{ content.name }}</td>
+          <td>{{ content.subject }}</td>
+          <td>{{ content.field }}</td>
           <td>{{ content.description }}</td>
           <td>
             <a href="#contents/show/{{content.id}}" class="btn btn-xs btn-default" translate>crud.preview</a>
