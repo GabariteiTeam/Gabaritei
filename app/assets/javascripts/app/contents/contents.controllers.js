@@ -22,10 +22,37 @@
 
     	var vm = this;
 
-    	vm.content = new Content();
-    	vm.content.media = {
-    		is_attachment: 'true'
-    	}
+        vm.createContent = createContent;
+
+        activate();
+
+        function activate() {
+            vm.content = new Content();
+            vm.content.medium = {
+                is_attachment: 'true'
+            }
+            Content.query(function(data) {
+                vm.contents = data;    
+            });
+        }
+
+        function createContent() {
+            if (vm.content.medium.is_attachment == 'true') {
+                vm.content.upload(function(data) {
+                    MessageService.sendMessage('content.created.success');
+                    RedirectService.redirect("/contents");
+                }, function(data) {
+                    MessageService.sendMessage('content.created.error');
+                });
+            } else {
+                vm.content.$save(function(data) {
+                    MessageService.sendMessage('content.created.success');
+                    RedirectService.redirect("/contents");
+                }, function(data) {
+                    MessageService.sendMessage('content.created.error');
+                });
+            }
+        }
 
     }
 

@@ -75,6 +75,12 @@ Rails.application.routes.draw do
 
 	# END TRANSLATIONS ROUTES
 
+	# CONTENT ROUTES
+
+	resources :contents
+
+	# END CONTENT ROUTES
+
 	# TEMPLATES ROUTES
 
 	get "templates/*path", to: "templates#serve"

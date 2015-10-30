@@ -158,7 +158,7 @@ ActiveRecord::Schema.define(version: 20150720123715) do
 
   add_index "lessons", ["course_id"], name: "index_lessons_on_course_id"
 
-  create_table "medias", force: true do |t|
+  create_table "media", force: true do |t|
     t.integer  "owner_id"
     t.string   "owner_type"
     t.datetime "created_at",        null: false
@@ -171,7 +171,7 @@ ActiveRecord::Schema.define(version: 20150720123715) do
     t.datetime "data_updated_at"
   end
 
-  add_index "medias", ["owner_id", "owner_type"], name: "index_medias_on_owner_id_and_owner_type"
+  add_index "media", ["owner_id", "owner_type"], name: "index_media_on_owner_id_and_owner_type"
 
   create_table "permissions", force: true do |t|
     t.datetime "created_at", null: false
@@ -253,9 +253,9 @@ ActiveRecord::Schema.define(version: 20150720123715) do
 
   create_table "response_choices", force: true do |t|
     t.integer  "response_id"
-    t.integer  "question_choices_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.integer  "question_choice_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   add_index "response_choices", ["response_id"], name: "index_response_choices_on_response_id"

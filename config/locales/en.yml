@@ -374,8 +374,12 @@ en:
      type: 'Content type'
      type_file: 'File'
      type_online: 'Online resource'
-     file: 'File'
+     file_drag_drop: 'Drag and drop a file below'
+     file_select: 'Or select a file'
      reference: 'Resource URL'
+    index:
+     heading: 'Contents'
+     sub_header: 'Create a new content to your Virtual Class!'
     create:
       title: 'New Content'
     update:

@@ -243,7 +243,37 @@
                 'title': 'crud.fields.alerts.delete.error.title',
                 'content': 'crud.fields.alerts.delete.error.content',
                 'type': mTypes['error']
-            }               
+            },
+            'content.created.success': {
+                'title': 'crud.contents.alerts.create.success.title',
+                'content': 'crud.contents.alerts.create.success.content',
+                'type': mTypes['success']
+            },
+            'content.created.error': {
+                'title': 'crud.contents.alerts.create.error.title',
+                'content': 'crud.contents.alerts.create.error.content',
+                'type': mTypes['error']
+            },
+            'content.deleted.success': {
+                'title': 'crud.contents.alerts.delete.success.title',
+                'content': 'crud.contents.alerts.delete.success.content',
+                'type': mTypes['success']
+            },
+            'content.deleted.error': {
+                'title': 'crud.contents.alerts.delete.error.title',
+                'content': 'crud.contents.alerts.delete.error.content',
+                'type': mTypes['error']
+            },
+            'content.updated.success': {
+                'title': 'crud.contents.alerts.update.success.title',
+                'content': 'crud.contents.alerts.update.success.content',
+                'type': mTypes['success']
+            },
+            'content.updated.error': {
+                'title': 'crud.contents.alerts.update.error.title',
+                'content': 'crud.contents.alerts.update.error.content',
+                'type': mTypes['error']
+            }             
         };
         var observers = [];
         var message;

@@ -1,5 +1,5 @@
 # A question can be used in a {Test test}, or just be available as an exercise in a {Course course}.
-# It must belong to a category ({Subject subject} or {Field field}). It can contain {Media mediae}.
+# It must belong to a category ({Subject subject} or {Field field}). It can contain {Medium medium}.
 # It can be {Recommendation recommended}, {Rating rated} and {Response answered} by users.
 # If its style is "multiple choice", it contains {QuestionChoice choices} as well.
 #
@@ -87,10 +87,10 @@ class Question < ActiveRecord::Base
 	# @see QuestionChoice#question
 	has_many :question_choices
 
-	# All {Media media} objects possessed by the question.
-	# @return [Array<Media>] a list of all media objects of the question.
-	# @see Media#owner
-	has_many :medias, as: :owner
+	# All {Medium medium} objects possessed by the question.
+	# @return [Array<Medium>] a list of all medium objects of the question.
+	# @see Medium#owner
+	has_many :media, as: :owner
 
 	# All {Rating ratings} of the question.
 	# @return [Array<Rating>] a list of all ratings of the question.

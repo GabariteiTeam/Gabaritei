@@ -13,9 +13,9 @@ class AddModelFields < ActiveRecord::Migration
     add_column :registration_requests, :accepted, :boolean
 
     # Media
-    add_column :medias, :reference, :string
-    add_column :medias, :is_attachment, :boolean
-    add_attachment :medias, :data
+    add_column :media, :reference, :string
+    add_column :media, :is_attachment, :boolean
+    add_attachment :media, :data
 
     # Roles
     add_column :roles, :name, :string
