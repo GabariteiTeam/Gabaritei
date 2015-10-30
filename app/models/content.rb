@@ -90,4 +90,8 @@ class Content < ActiveRecord::Base
 	has_many :course_contents
 	has_many :lesson_contents
 
+	def attachment_url
+		(medium != nil && medium.data != nil) ? medium.data.url : ""
+	end
+
 end

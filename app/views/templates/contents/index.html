@@ -20,8 +20,9 @@
           <td>{{ content.name }}</td>
           <td>{{ content.description }}</td>
           <td>
+            <a href="#contents/show/{{content.id}}" class="btn btn-xs btn-default" translate>crud.preview</a>
             <a href="#contents/update/{{content.id}}" class="btn btn-xs btn-info" translate>crud.edit</a>
-            <gab-show-modal-button text="crud.delete" args="content.id" modalid="confirmDeleteRole" class="btn btn-xs btn-danger"></gab-show-modal-button>
+            <gab-show-modal-button text="crud.delete" args="content.id" modalid="confirmDeleteContent" class="btn btn-xs btn-danger"></gab-show-modal-button>
           </td>
         </tr>
     </tbody>
@@ -30,5 +31,5 @@
 
 <a href="#contents/new" class="btn btn-primary" translate>crud.add</a>
 
-<div gab-confirm-modal modalid="confirmDeleteRole" title="crud.contents.modal.delete.title" body="crud.contents.modal.delete.body" callback="Ctrl.c_delete(id)"></div>
+<div gab-confirm-modal modalid="confirmDeleteContent" title="crud.contents.modal.delete.title" body="crud.contents.modal.delete.body" callback="Ctrl.c_delete(id)"></div>
 

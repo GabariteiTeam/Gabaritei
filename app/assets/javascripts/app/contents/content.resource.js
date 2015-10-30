@@ -7,24 +7,36 @@
     Content.$inject = ['$http', '$resource', 'Upload'];
 
     function Content($http, $resource, Upload) {
-        var di = $resource('contents/:id.json', {id: '@id'});
-        di.prototype.upload = function(success, error) {
+        var ctnt = $resource('contents/:id.json', {id: '@id'});
+        ctnt.prototype.$save = function(success, error) {
+            upload(this, '/contents/', 'POST', success, error);
+        }
+        ctnt.prototype.$update = function (success, error) {
+            upload(this, '/contents/' + this.id, 'PUT', success, error);
+        }
+        function upload(content, url, method, success, error) {
+            if (content.medium.is_attachment == 'true') {
+                content.medium.reference = "";
+            } else {
+                content.medium.data = null;
+            }
             Upload.upload({
-                    url: '/contents',
-                    data: {
-                    	name: this.name,
-                    	description: this.description,
-                        media: this.media
-                    }
-                })
-                .success(function(data) {
-                    if (success) success(data);
-                })
-                .error(function(data) {
-                    if (error) error(data);
-                });
+                url: url,
+                method: method,
+                data: {
+                    name: content.name,
+                    description: content.description,
+                    medium: content.medium
+                }
+            })
+            .success(function(data) {
+                if (success) success(data);
+            })
+            .error(function(data) {
+                if (error) error(data);
+            });
         };
-        return di;
+        return ctnt;
     }
 
 })();

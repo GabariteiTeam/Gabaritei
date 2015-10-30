@@ -16,10 +16,33 @@ class ContentsController < ApplicationController
 		end
 	end
 
+	def update
+		@content = Content.find(params[:id])
+		@medium = @content.medium
+		if (params["medium"]["data"] == "null") 
+			params["medium"]["data"] = nil
+		end
+		if @content.update(content_params) && @medium.update(medium_params)
+	      	render json: {success: true}
+	    else
+	      	render json: @course.errors, status: :unprocessable_entity
+		end
+	end
+
+	def show
+		@content = Content.find(params[:id])
+		render json: @content, methods: [:medium, :attachment_url]
+	end
+
+	def destroy
+		Content.find(params[:id]).destroy
+		render json: {success: true}
+	end
+
 	private
 
 		def content_params
-			params.require(:content).permit(:id, :name, :description)
+			params.permit(:id, :name, :description)
 		end
 
 		def medium_params

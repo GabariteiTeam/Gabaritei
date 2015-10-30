@@ -23,6 +23,11 @@
                 controller: 'ContentsController',
                 controllerAs: 'Ctrl'
             })
+            .when('/contents/show/:id', {
+                templateUrl: 'templates/contents/show.html',
+                controller: 'ContentsController',
+                controllerAs: 'Ctrl'
+            })
     }
 
 })();

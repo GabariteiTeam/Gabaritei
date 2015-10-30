@@ -38,6 +38,7 @@ class Medium < ActiveRecord::Base
 	# 	This attribute references an uploaded file in case the medium is an attachment.
 	# 	@return [File] the medium file.
 	has_attached_file :data
+	do_not_validate_attachment_file_type :data
 
 	# @!group Belongs to
 

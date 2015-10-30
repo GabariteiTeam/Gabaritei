@@ -30,6 +30,7 @@ en:
    roles: 'Roles'
    users: 'Users'
    courses: 'Courses'
+   contents: 'Contents'
   home:
    heading: 'Easy, fast and simple!'
   actions:
@@ -47,10 +48,13 @@ en:
    remove: 'Remove'
    show: 'Show'
    view: 'View'
+   preview: 'Preview'
    save: 'Save'
    edit: 'Edit'
    search: 'Search'
    import: 'Import'
+   clear: 'Clear'
+   drag_file: 'Drag file here'
    options: 'Options'
    subjects:
     alerts:
@@ -337,6 +341,7 @@ en:
     index:
      heading: 'Courses'
      sub_header: 'Create a new course to your Virtual Class!'
+     edit_participants: 'Edit participants'
     participants:
       title: 'Edit participants'
     create:

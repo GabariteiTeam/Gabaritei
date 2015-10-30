@@ -1,0 +1,8 @@
+<div class="page-header">
+	<h1>{{Ctrl.content.name}}</h1>
+</div>
+<p>{{Ctrl.content.description}}</p>
+<br />
+<div class='embed-container'>
+	<iframe src="{{ Ctrl.content.medium.is_attachment == 'true' ? Ctrl.content.attachment_url : Ctrl.content.medium.reference }}" frameborder="0" allowfullscreen></iframe>
+</div>
