@@ -13,6 +13,7 @@
         <th></th>
         <th translate>crud.name</th>
         <th>E-mail</th>
+        <th translate>crud.users.index.table.headers.active</th>
         <th translate>crud.options</th>
       </tr>
     </thead>
@@ -23,6 +24,7 @@
           </td>
           <td>{{ user.first_name + " " + user.last_name }}</td>
           <td>{{ user.email }}</td>
+          <td>{{ user.active }}</td>
           <td>
             <a href="#users/{{user.id}}" class="btn btn-xs btn-default" translate>crud.view</a>
             <a href="#users/update/{{user.id}}" class="btn btn-xs btn-info" translate>crud.edit</a>

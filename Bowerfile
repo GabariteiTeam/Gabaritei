@@ -36,3 +36,5 @@ asset 'bootstrap-toggle'
 asset 'angular-paginate-anything'
 # Activity indicator
 asset 'ngActivityIndicator'
+# Authentication
+asset 'angular-devise', '1.1.0'

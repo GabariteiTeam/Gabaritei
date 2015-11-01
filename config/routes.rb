@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  	devise_for :users
+
 	root "templates#home"
 
 	get "/home", to: "home#index", as: "home"
@@ -38,7 +40,9 @@ Rails.application.routes.draw do
 
 	# USERS ROUTES
 
-	resources :users
+	resources :users do
+		post :verify_permissions, on: :collection
+	end
 
 	# END USERS ROUTES
 
@@ -83,6 +87,7 @@ Rails.application.routes.draw do
 
 	# TEMPLATES ROUTES
 
+	get "templates/login", to: "templates#login"
 	get "templates/*path", to: "templates#serve"
 
 	# END TEMPLATES ROUTES

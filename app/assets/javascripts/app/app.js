@@ -16,6 +16,7 @@ var APP_NAME = 'gabariteiApp';
         .module(APP_NAME, [
             'ngResource',
             'ngRoute',
+            'Devise',
             'ngAnimate',
             'mgcrea.ngStrap',
             'ngFileUpload',

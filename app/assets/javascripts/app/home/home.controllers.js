@@ -13,8 +13,16 @@
         .module(APP_NAME)
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['MessageService', 'ModalService'];
+    HomeController.$inject = ['$scope', 'Auth', 'RedirectService'];
 
-    function HomeController() {}
+    function HomeController($scope, Auth, RedirectService) {
+
+        Auth.currentUser().then(function(user) {
+            
+        }, function(error) {
+            RedirectService.redirect("/users/login");
+        });
+       
+    }
     
 })();

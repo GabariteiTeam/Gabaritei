@@ -4,27 +4,41 @@
 #
 # Table name: users
 #
-#  id                  :integer          not null, primary key
-#  role_id             :integer
-#  created_at          :datetime         not null
-#  updated_at          :datetime         not null
-#  first_name          :string(255)
-#  last_name           :string(255)
-#  email               :string(255)
-#  password            :string(255)
-#  birthdate           :datetime
-#  about               :text
-#  avatar_file_name    :string(255)
-#  avatar_content_type :string(255)
-#  avatar_file_size    :integer
-#  avatar_updated_at   :datetime
+#  id                     :integer          not null, primary key
+#  role_id                :integer
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  first_name             :string(255)
+#  last_name              :string(255)
+#  birthdate              :datetime
+#  about                  :text
+#  avatar_file_name       :string(255)
+#  avatar_content_type    :string(255)
+#  avatar_file_size       :integer
+#  avatar_updated_at      :datetime
+#  email                  :string(255)      default(""), not null
+#  encrypted_password     :string(255)      default(""), not null
+#  reset_password_token   :string(255)
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  sign_in_count          :integer          default(0), not null
+#  current_sign_in_at     :datetime
+#  last_sign_in_at        :datetime
+#  current_sign_in_ip     :string(255)
+#  last_sign_in_ip        :string(255)
 #
 # Indexes
 #
-#  index_users_on_role_id  (role_id)
+#  index_users_on_email                 (email) UNIQUE
+#  index_users_on_reset_password_token  (reset_password_token) UNIQUE
+#  index_users_on_role_id               (role_id)
 #
 
 class User < ActiveRecord::Base
+
+    # Include default devise modules. Others available are:
+    # :confirmable, :lockable, :timeoutable and :omniauthable
+    devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
 
     # @!attribute first_name
     #   First name of the user.
@@ -38,8 +52,8 @@ class User < ActiveRecord::Base
     #   E-mail of the user
     #   @return [String] the e-mail of the user.
     #
-    # @!attribute password
-    #   Hashed password of the user
+    # @!attribute encrypted_password
+    #   Encrypted password of the user
     #   @return [String] the hashed password of the user.
     #  
     # @!attribute birthdate
@@ -81,6 +95,10 @@ class User < ActiveRecord::Base
     # @return [Array<CourseRegistrationRequest>] a list of all requests created by the user.
     # @see CourseRegistrationRequest#requirer
     has_many :course_registration_requests
+
+    # All {Permission permissions} given to the user through their role.
+    # @return [Array<Permission>] a list of all permissions given to the user.
+    has_many :permissions, through: :role
 
     # All {Question questions} created by the user.
     # @return [Array<Question>] a list of all questions created by the user.
@@ -167,6 +185,10 @@ class User < ActiveRecord::Base
 
     def avatar_url_medium
         avatar.url(:medium)
+    end
+
+    def active
+        encrypted_password != nil ? I18n.t('crud.users.index.table.body.active') : I18n.t('crud.users.index.table.body.inactive')
     end
 
     private

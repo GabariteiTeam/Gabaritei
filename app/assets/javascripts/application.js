@@ -14,6 +14,7 @@
 //= require jquery-ujs/src/rails
 //= require bootstrap/dist/js/bootstrap
 //= require angular/angular
+//= require angular-devise/lib/devise
 //= require angular-strap/dist/angular-strap
 //= require angular-strap/dist/angular-strap.tpl
 //= require angular-animate/angular-animate

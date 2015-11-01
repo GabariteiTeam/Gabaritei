@@ -85,3 +85,10 @@ gem 'clean_pagination'
 
 # Windows compatibility
 gem 'tzinfo-data'
+
+# Authentication
+gem 'devise'
+
+source "https://rails-assets.org" do
+  gem "rails-assets-angular-devise"
+end

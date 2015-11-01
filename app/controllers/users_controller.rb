@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 	def index
 		max_per_page = 10
 		paginate User.count, max_per_page do |limit, offset|
-      		render json: User.limit(limit).offset(offset), methods: [:avatar_url_thumb]
+      		render json: User.limit(limit).offset(offset), methods: [:avatar_url_thumb, :active]
     	end
 	end
 
@@ -16,8 +16,11 @@ class UsersController < ApplicationController
 
 	def create
 		@user = User.new(user_params)
-		if @user.save
-	      render json: {success: true}
+		generated_password = Devise.friendly_token.first(8)
+		@user.password = generated_password
+		if @user.save!
+			UserMailer.password_creation(@user, generated_password).deliver
+	    	render json: {success: true}
 	    else
 	      render json: @user.errors, status: :unprocessable_entity
 	    end  
@@ -44,6 +47,22 @@ class UsersController < ApplicationController
 	    else
 	      render :json =>  @user.errors, status: :unprocessable_entity
 	    end
+	end
+
+	def verify_permissions
+		set_user
+		user_permissions = []
+		verified = {}
+		user_permissions = @user.permissions.map { |permission| permission.name }
+		params[:permissions].each do |permission|
+			if user_permissions.include?(permission)
+				verified[permission] = true
+				user_permissions.delete(permission)
+			else
+				verified[permission] = false
+			end
+		end
+		render json: verified
 	end
 
 	private
