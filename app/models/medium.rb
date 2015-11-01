@@ -24,6 +24,16 @@
 
 class Medium < ActiveRecord::Base
 
+	NOT_EMBEDDABLE_TYPES = [
+		'application/pdf',
+		'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+		'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+		'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+		'application/vnd.ms-excel',
+		'application/vnd.ms-powerpoint',
+		'application/msword'
+	]
+
 	# @!attribute reference
 	# 	Reference to an online resource. This attribute is only taken into account
 	# 	if the attribute {Medium#is_attachment is_attachment} is false.
@@ -49,5 +59,22 @@ class Medium < ActiveRecord::Base
 	belongs_to :owner, polymorphic: true
 
 	# @!endgroup
+
+	def embeddable
+		if is_attachment
+			return !NOT_EMBEDDABLE_TYPES.include?(data_content_type)
+		else
+			if !self.reference.nil? && !self.reference.empty?
+				require 'open-uri'
+				type = ""
+				open(self.reference, {ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE}) { |f|
+					type = f.content_type
+				}
+				return type.empty? ? true : !NOT_EMBEDDABLE_TYPES.include?(type)
+			else
+				return true
+			end
+		end
+	end
 
 end

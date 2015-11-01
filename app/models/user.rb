@@ -169,6 +169,7 @@ class User < ActiveRecord::Base
         user.first_name = user_data[:first_name]
         user.last_name = user_data[:last_name]
         user.birthdate = user_data[:birthdate]
+        user.password = "12345678"
     
         # save new user
         user.save!

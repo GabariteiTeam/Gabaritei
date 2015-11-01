@@ -7,6 +7,9 @@ class ContentsController < ApplicationController
 
 	def create
 		@content = Content.new(content_params)
+		if (medium_params[:data] == "null") 
+			params[:medium].delete :data
+		end
 		@medium = Medium.new(medium_params)
 		@content.medium = @medium
 		if @content.save
@@ -19,8 +22,9 @@ class ContentsController < ApplicationController
 	def update
 		@content = Content.find(params[:id])
 		@medium = @content.medium
-		if (params["medium"]["data"] == "null") 
-			params["medium"]["data"] = nil
+		if (medium_params[:data] == "null" || !medium_params[:reference].empty?) 
+			params[:medium].delete :data
+			@medium.data = nil
 		end
 		if @content.update(content_params) && @medium.update(medium_params)
 	      	render json: {success: true}
@@ -31,7 +35,7 @@ class ContentsController < ApplicationController
 
 	def show
 		@content = Content.find(params[:id])
-		render json: @content, methods: [:medium, :attachment_url, :category]
+		render json: @content, methods: [:medium, :attachment_url, :category, :embeddable]
 	end
 
 	def destroy

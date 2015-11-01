@@ -3,6 +3,9 @@
 </div>
 <p>{{Ctrl.content.description}}</p>
 <br />
-<div class='embed-container'>
-	<iframe src="{{ Ctrl.content.medium.is_attachment == 'true' ? Ctrl.content.attachment_url : Ctrl.content.medium.reference }}" frameborder="0" allowfullscreen></iframe>
+<div class='embed-container' ng-hide="!Ctrl.content.embeddable">
+	<iframe src="{{ Ctrl.content.embeddable ? Ctrl.content.medium.source : '' }}" frameborder="0" allowfullscreen></iframe>
+</div>
+<div ng-hide="Ctrl.content.embeddable">
+	<a href="{{ Ctrl.content.medium.source }}">{{ Ctrl.content.medium.is_attachment == 'true' ? "Download" : Ctrl.content.medium.source }}</a>
 </div>

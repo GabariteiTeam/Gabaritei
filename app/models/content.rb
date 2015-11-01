@@ -106,4 +106,12 @@ class Content < ActiveRecord::Base
 		(medium != nil && medium.data != nil) ? medium.data.url : ""
 	end
 
+	def embeddable
+		if medium != nil
+			return medium.embeddable
+		else
+			return true
+		end
+	end
+
 end

@@ -38,7 +38,10 @@
                     is_attachment: 'true'
                 }
                 Content.query(function(data) {
-                    vm.contents = data;    
+                    vm.contents = data; 
+                    Subject.query(function(data) {
+                        vm.subjects = data;
+                    });   
                 });
             } else {
                 vm.content = Content.get({id: $routeParams.id}, function() {
@@ -53,8 +56,8 @@
                         retrieveSubject();
                     });
                     if (!vm.content.medium.is_attachment) {
-                        vm.content.medium.reference = $sce.trustAsResourceUrl(vm.content.medium.reference);
-                    }
+                        vm.content.medium.source = $sce.trustAsResourceUrl(vm.content.medium.reference);
+                    } else vm.content.medium.source = vm.content.attachment_url;
                     vm.content.medium.is_attachment = vm.content.medium.is_attachment.toString();
                 });
             }
