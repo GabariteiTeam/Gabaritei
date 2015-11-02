@@ -192,6 +192,30 @@ class User < ActiveRecord::Base
         encrypted_password != nil ? I18n.t('crud.users.index.table.body.active') : I18n.t('crud.users.index.table.body.inactive')
     end
 
+    def verify_permissions(permission_list)
+        user_permissions = permissions.map { |permission| permission.name }
+        verified = {}
+        permission_list.each do |permission|
+            if user_permissions.include?(permission)
+                verified[permission] = true
+                user_permissions.delete(permission)
+            else
+                verified[permission] = false
+            end
+        end
+        return verified
+    end
+
+    def confirm_permissions(permission_list)
+        user_permissions = permissions.map { |permission| permission.name }
+        permission_list.each do |permission|
+            if !user_permissions.include?(permission)
+                return false 
+            end
+        end
+        return true
+    end
+
     private
 
         def sanitize

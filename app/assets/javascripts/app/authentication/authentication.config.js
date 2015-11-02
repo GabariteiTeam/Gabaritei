@@ -11,10 +11,11 @@
         AuthInterceptProvider.interceptAuth(true);
     }
 
-    function UnauthorizedAccessEvent($rootScope, RedirectService) {
+    function UnauthorizedAccessEvent($rootScope, Auth, RedirectService) {
 
     	$rootScope.$on('devise:unauthorized', function(event, xhr, deferred) {
-            RedirectService.redirect("/users/login");
+            if (Auth.isAuthenticated()) RedirectService.redirect("/home");
+            else RedirectService.redirect("/users/login");
         });
         
     }

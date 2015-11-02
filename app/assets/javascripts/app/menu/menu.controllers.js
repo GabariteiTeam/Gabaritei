@@ -18,12 +18,8 @@
         activate();
 
         function activate() {
-            Auth.currentUser().then(function(user) {
-                PermissionsService.verifyPermissions(user.id, ["permission.manipulate_users"], function(data) {
-                    vm.permissions = data;
-                }, function(error) {
-
-                });
+            PermissionsService.verifyPermissions(["permission.manipulate_users"], function(data) {
+                vm.permissions = data;
             }, function(error) {
 
             });

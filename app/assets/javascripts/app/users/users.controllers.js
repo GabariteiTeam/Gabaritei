@@ -7,81 +7,41 @@
         .controller('UsersController', UsersController)
         .controller('EditUserController', EditUserController);
 
-    UsersController
-        .$inject = [
-            '$routeParams',
-            'User',
-            'Role',
-            'MessageService',
-            'RedirectService',
-            'ModalService'
-        ];
-
-    function UsersController($routeParams, User, Role, MessageService, RedirectService, ModalService) {
+    UsersController.$inject = ['$routeParams', 'usersPrepService', 'User', 'MessageService', 'ModalService'];
+    
+    function UsersController($routeParams, usersPrepService, User, MessageService, ModalService) {
         
         var vm = this;
-        vm.c_delete = c_delete;
-        vm.delete_modal_id  = "confirmDeleteUser";
-        vm.users = [];
-    
-        activate();
 
-        function activate() {
-            if (!($routeParams.id === undefined)) {
-                vm.user = User.get({id: $routeParams.id});
-            } else {
-                User.query(function(data) {
-                    vm.users = data;
-                });                
-            }           
-        }
+        vm.c_delete = c_delete;
+        vm.user = usersPrepService;
+        vm.users = usersPrepService; 
 
         function c_delete(id) {
             User.delete({id: id}, function() {
                 MessageService.sendMessage('user.deleted.success');
-                reloadPage();
+                vm.reload = true;
             },
             function(err) {
                 MessageService.sendMessage('user.deleted.error');
-                reloadPage();
+                vm.reload = true;
             });
-        }
-
-        function reloadPage() {
-            vm.reload = true;
         }
 
     };
 
-    EditUserController.$inject = ['$routeParams', 'User', 'Role', 'MessageService', 'RedirectService'];
+    EditUserController.$inject = ['$routeParams', 'rolesPrepService', 'usersPrepService', 'User', 'MessageService', 'RedirectService'];
 
-    function EditUserController($routeParams, User, Role, MessageService, RedirectService) {
+    function EditUserController($routeParams, rolesPrepService, usersPrepService, User, MessageService, RedirectService) {
 
         var vm = this;
+
         vm.createUser = createUser;
         vm.updateUser = updateUser;
         vm.clearAvatar = clearAvatar;
 
-
-        activate();
-
-        function activate() {
-            Role.query(function(data) {
-                vm.roles = data;
-                if (!($routeParams.id === undefined)) {
-                    vm.user = User.get({
-                        id: $routeParams.id
-                    }, function() {
-                        vm.user.birthdate = new Date(vm.user.birthdate);
-                        if (!vm.user.has_avatar) vm.user.avatar = null;
-                        vm.formerAvatar = vm.user.avatar;
-                    });
-                } else {
-                    vm.user = new User();
-                    vm.user.role_id = vm.roles[0].id
-                }
-            });          
-        }      
+        vm.roles = rolesPrepService;
+        vm.user = usersPrepService;
 
         function createUser() {
             vm.user.$save(function() {
@@ -95,7 +55,6 @@
         }
 
         function updateUser() {
-            if (vm.formerAvatar == vm.user.avatar) vm.user.avatar = "";
             vm.user.$update(function() {
                 MessageService.sendMessage('user.updated.success');
                 RedirectService.redirect("/users");
@@ -108,8 +67,8 @@
 
         function clearAvatar() {
             vm.user.avatar = null;
-            $('#avatar').wrap('<form>').closest('form').get(0).reset();
-            $('#avatar').unwrap();
+            jQuery('#avatar').wrap('<form>').closest('form').get(0).reset();
+            jQuery('#avatar').unwrap();
         }
 
     }

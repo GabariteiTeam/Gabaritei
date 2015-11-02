@@ -10,10 +10,10 @@
 
     function PermissionsService($http, Auth, Permission) {
     	
-    	function verifyPermissions(user_id, permissions, success, error) {
+    	function verifyPermissions(permissions, success, error) {
     		Auth.currentUser().then(function(user) {
     			$http.post('users/verify_permissions', {
-    				id: user_id,
+    				id: user.id,
     				permissions: permissions
     			}).then(function(data) {
     				success(data.data);
@@ -28,6 +28,7 @@
     	return {
     		verifyPermissions: verifyPermissions
     	}
+        
     }
 
 })();

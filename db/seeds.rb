@@ -7,6 +7,10 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # PERMISSIONS
+
+permission_manipulate_courses = Permission.new({name: 'permission.manipulate_courses'})
+permission_manipulate_courses.save!
+
 permission_take_part_in_courses = Permission.new({name: 'permission.take_part_in_courses'})
 permission_take_part_in_courses.save!
 
@@ -18,6 +22,7 @@ permission_manipulate_users.save!
 # Admin
 role_admin = Role.new(name: "Admin")
 role_admin.permissions = [
+	permission_manipulate_courses,
 	permission_take_part_in_courses,
 	permission_manipulate_users
 ]
@@ -46,3 +51,27 @@ user.password = '12345678'
 user.password_confirmation = '12345678'
 user.role = role_admin
 user.save!
+
+if Rails.env == 'development'
+
+	# TEACHER
+	user = User.new
+	user.first_name = 'Teacher'
+	user.last_name = 'Teacher'
+	user.email = 'teacher@gabaritei.com'
+	user.password = '12345678'
+	user.password_confirmation = '12345678'
+	user.role = role_teacher
+	user.save!
+
+	# STUDENT
+	user = User.new
+	user.first_name = 'Student'
+	user.last_name = 'Student'
+	user.email = 'student@gabaritei.com'
+	user.password = '12345678'
+	user.password_confirmation = '12345678'
+	user.role = role_student
+	user.save!
+
+end

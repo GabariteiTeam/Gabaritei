@@ -3,10 +3,14 @@ class UsersController < ApplicationController
 	include CleanPagination
 
 	def index
-		max_per_page = 10
-		paginate User.count, max_per_page do |limit, offset|
-      		render json: User.limit(limit).offset(offset), methods: [:avatar_url_thumb, :active]
-    	end
+		if current_user.confirm_permissions(["permission.manipulate_users"])
+			max_per_page = 10
+			paginate User.count, max_per_page do |limit, offset|
+	      		render json: User.limit(limit).offset(offset), methods: [:avatar_url_thumb, :active]
+	    	end
+	    else
+	    	render json: {error: "Unauthorized access"}, status: 401
+	    end
 	end
 
 	def show
@@ -19,7 +23,7 @@ class UsersController < ApplicationController
 		generated_password = Devise.friendly_token.first(8)
 		@user.password = generated_password
 		if @user.save!
-			UserMailer.password_creation(@user, generated_password).deliver
+			#UserMailer.password_creation(@user, generated_password).deliver
 	    	render json: {success: true}
 	    else
 	      render json: @user.errors, status: :unprocessable_entity
@@ -28,10 +32,9 @@ class UsersController < ApplicationController
 
 	def update
 		set_user
-		if !user_params.has_key?(:avatar)
+		if user_params[:avatar] == "null"
 			@user.avatar = nil
-		elsif !user_params[:avatar]
-			user_params.delete :avatar
+			params.delete :avatar
 		end
 		if @user.update(user_params)
 	      render json: {success: true}
@@ -51,17 +54,7 @@ class UsersController < ApplicationController
 
 	def verify_permissions
 		set_user
-		user_permissions = []
-		verified = {}
-		user_permissions = @user.permissions.map { |permission| permission.name }
-		params[:permissions].each do |permission|
-			if user_permissions.include?(permission)
-				verified[permission] = true
-				user_permissions.delete(permission)
-			else
-				verified[permission] = false
-			end
-		end
+		verified = @user.verify_permissions(params[:permissions])
 		render json: verified
 	end
 
