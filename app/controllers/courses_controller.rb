@@ -61,7 +61,6 @@ class CoursesController < ApplicationController
 		@course = Course.find(params[:id])
 		users = @course.users.to_a
 		users.delete_if {|user| user.id == params[:user_id].to_i}
-		p users
 		@course.users = users
 		if @course.save
 	      	render json: {success: true}

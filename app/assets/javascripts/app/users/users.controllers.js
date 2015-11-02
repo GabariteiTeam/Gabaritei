@@ -7,15 +7,25 @@
         .controller('UsersController', UsersController)
         .controller('EditUserController', EditUserController);
 
-    UsersController.$inject = ['$routeParams', 'usersPrepService', 'User', 'MessageService', 'ModalService'];
+    UsersController.$inject = ['$routeParams', 'User', 'MessageService', 'ModalService'];
     
-    function UsersController($routeParams, usersPrepService, User, MessageService, ModalService) {
+    function UsersController($routeParams, User, MessageService, ModalService) {
         
         var vm = this;
 
         vm.c_delete = c_delete;
-        vm.user = usersPrepService;
-        vm.users = usersPrepService; 
+
+        activate();
+
+        function activate() {
+            if ($routeParams.id) {
+                vm.user = User.get({id: $routeParams.id}, function(user) {
+                    if (user.about == "null") user.about = "";
+                });
+            } else {
+                vm.users = User.query();
+            }
+        }
 
         function c_delete(id) {
             User.delete({id: id}, function() {
@@ -30,9 +40,9 @@
 
     };
 
-    EditUserController.$inject = ['$routeParams', 'rolesPrepService', 'usersPrepService', 'User', 'MessageService', 'RedirectService'];
+    EditUserController.$inject = ['$routeParams', 'User', 'Role', 'MessageService', 'RedirectService'];
 
-    function EditUserController($routeParams, rolesPrepService, usersPrepService, User, MessageService, RedirectService) {
+    function EditUserController($routeParams, User, Role, MessageService, RedirectService) {
 
         var vm = this;
 
@@ -40,8 +50,20 @@
         vm.updateUser = updateUser;
         vm.clearAvatar = clearAvatar;
 
-        vm.roles = rolesPrepService;
-        vm.user = usersPrepService;
+        activate();
+
+        function activate() {
+            if ($routeParams.id) {
+                vm.user = User.get({id: $routeParams.id}, function(user) {
+                    user.birthdate = user.birthdate ? new Date(user.birthdate) : null;
+                    if (user.about = "null") user.about = "";
+                    if (!user.has_avatar) user.avatar = null;
+                });
+            } else {
+                vm.user = new User();
+            }
+            vm.roles = Role.query();
+        }
 
         function createUser() {
             vm.user.$save(function() {
