@@ -17,6 +17,21 @@ permission_take_part_in_courses.save!
 permission_manipulate_users = Permission.new({name: 'permission.manipulate_users'})
 permission_manipulate_users.save!
 
+permission_manipulate_subjects = Permission.new({name: 'permission.manipulate_subjects'})
+permission_manipulate_subjects.save!
+
+permission_manipulate_contents = Permission.new({name: 'permission.manipulate_contents'})
+permission_manipulate_contents.save!
+
+permission_manipulate_roles = Permission.new({name: 'permission.manipulate_roles'})
+permission_manipulate_roles.save!
+
+permission_manipulate_questions = Permission.new({name: 'permission.manipulate_questions'})
+permission_manipulate_questions.save!
+
+permission_import_data = Permission.new({name: 'permission.import_data'})
+permission_import_data.save!
+
 # ROLES
 
 # Admin
@@ -24,7 +39,12 @@ role_admin = Role.new(name: "Admin")
 role_admin.permissions = [
 	permission_manipulate_courses,
 	permission_take_part_in_courses,
-	permission_manipulate_users
+	permission_manipulate_roles,
+	permission_manipulate_users,
+	permission_manipulate_questions,
+	permission_manipulate_subjects,
+	permission_manipulate_contents,
+	permission_import_data
 ]
 role_admin.save!
 
@@ -38,7 +58,9 @@ role_student.save!
 # Teacher
 role_teacher = Role.new(name: "Teacher")
 role_teacher.permissions = [
-	permission_take_part_in_courses
+	permission_take_part_in_courses,
+	permission_manipulate_contents,
+	permission_manipulate_questions
 ]
 role_teacher.save!
 

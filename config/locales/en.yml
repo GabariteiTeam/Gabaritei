@@ -23,6 +23,12 @@ en:
   permission:
    manipulate_users: 'Manipulate users'
    take_part_in_courses: 'Take part in courses'
+   manipulate_roles: 'Manipulate roles'
+   manipulate_questions: 'Manipulate questions'
+   manipulate_subjects: 'Manipulate subjects'
+   manipulate_contents: 'Manipulate contents'
+   manipulate_courses: 'Manipulate courses'
+   import_data: 'Import data'
   authentication:
    email: 'E-mail'
    password: 'Password'

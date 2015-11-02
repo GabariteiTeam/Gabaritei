@@ -13,12 +13,18 @@
         var vm = this;
 
         vm.logout = logout;
-        vm.permissions = [];
-
+     
         activate();
 
         function activate() {
-            PermissionsService.verifyPermissions(["permission.manipulate_users"], function(data) {
+            PermissionsService.verifyPermissions([
+                'permission.manipulate_roles',
+                'permission.manipulate_users',
+                'permission.manipulate_questions',
+                'permission.manipulate_subjects',
+                'permission.manipulate_contents',
+                'permission.import_data'
+            ], function(data) {
                 vm.permissions = data;
             }, function(error) {
 
