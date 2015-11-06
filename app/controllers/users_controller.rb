@@ -24,7 +24,8 @@ class UsersController < ApplicationController
 			generated_password = Devise.friendly_token.first(8)
 			@user.password = generated_password
 			if @user.save!
-				#UserMailer.password_creation(@user, generated_password).deliver
+				mail = UserMailer.password_creation(@user, generated_password)
+				Delayed::Job.enqueue(MailingJob.new(mail))
 		    	render json: {success: true}
 		    else
 		      render json: @user.errors, status: :unprocessable_entity

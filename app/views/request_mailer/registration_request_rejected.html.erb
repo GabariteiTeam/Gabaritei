@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hello, <%= @request.first_name %></h1>
+    <p>
+      Unfortunately, your request of registration at Gabaritei has been rejected.
+    </p>
+    <p>Message from administrator:</p>
+    <p>
+      <em>
+        <%= @request.response %>
+      </em>
+    </p>
+    <p>
+      Best regards,
+    <p>
+    <p>Gabaritei team</p>
+  </body>
+</html>

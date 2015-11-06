@@ -50,6 +50,22 @@ class RegistrationRequest < ActiveRecord::Base
 	#
 	# @!attribute accepted
 	# 	Whether the request has been accepted or refused.
-	# 	@return [String] "true" if the request has been accepted, "false" if refused.	
+	# 	@return [String] "true" if the request has been accepted, "false" if refused.
+
+	def requirer
+		first_name + ' ' + last_name
+	end
+
+	def status
+		if response_date == nil
+			return "crud.requests.index.table.body.status.not_yet_treated"
+		else
+			if accepted
+				return "crud.requests.index.table.body.status.accepted_in"
+			else
+				return "crud.requests.index.table.body.status.rejected_in"
+			end
+		end
+	end
 
 end

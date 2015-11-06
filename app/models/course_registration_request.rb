@@ -51,5 +51,17 @@ class CourseRegistrationRequest < ActiveRecord::Base
 	belongs_to :requirer, class_name: "User"
 
     # @!endgroup
+
+	def status
+		if response_date == nil
+			return "crud.requests.index.table.body.status.not_yet_treated"
+		else
+			if accepted
+				return "crud.requests.index.table.body.status.accepted_in"
+			else
+				return "crud.requests.index.table.body.status.rejected_in"
+			end
+		end
+	end
 	
 end

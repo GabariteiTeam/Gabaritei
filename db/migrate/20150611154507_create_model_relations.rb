@@ -47,7 +47,7 @@ class CreateModelRelations < ActiveRecord::Migration
     end
 
     create_table :fields do |t|
-      t.belongs_to :subject, index: :true, required: true
+      t.belongs_to :subject, index: true, required: true
       t.timestamps null: false
     end
 

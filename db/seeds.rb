@@ -8,6 +8,12 @@
 
 # PERMISSIONS
 
+permission_manage_registration_requests = Permission.new({name: 'permission.manage_registration_requests'})
+permission_manage_registration_requests.save!
+
+permission_manage_course_registration_requests = Permission.new({name: 'permission.manage_course_registration_requests'})
+permission_manage_course_registration_requests.save!
+
 permission_manipulate_courses = Permission.new({name: 'permission.manipulate_courses'})
 permission_manipulate_courses.save!
 
@@ -37,13 +43,15 @@ permission_import_data.save!
 # Admin
 role_admin = Role.new(name: "Admin")
 role_admin.permissions = [
-	permission_manipulate_courses,
 	permission_take_part_in_courses,
+	permission_manipulate_courses,
 	permission_manipulate_roles,
 	permission_manipulate_users,
 	permission_manipulate_questions,
 	permission_manipulate_subjects,
 	permission_manipulate_contents,
+	permission_manage_registration_requests,
+	permission_manage_course_registration_requests,
 	permission_import_data
 ]
 role_admin.save!

@@ -23,6 +23,8 @@
                 'permission.manipulate_questions',
                 'permission.manipulate_subjects',
                 'permission.manipulate_contents',
+                'permission.manage_registration_requests',
+                'permission.manage_course_registration_requests',
                 'permission.import_data'
             ], function(data) {
                 vm.permissions = data;

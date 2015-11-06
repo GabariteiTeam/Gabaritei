@@ -60,4 +60,11 @@ class Test < ActiveRecord::Base
   	has_many :test_questions
 	has_many :test_responses
 
+	def available_questions
+		test_course = course
+		if test_course != nil
+			return test_course.category.questions
+		end
+	end
+
 end

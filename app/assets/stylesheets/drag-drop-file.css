@@ -124,3 +124,7 @@ table.participants-table > tbody > tr > td {
 	height: 100%; 
 }
 
+span.toggle-handle {
+	background-color: #FFF;
+	border-color: #FFF;
+}
