@@ -92,3 +92,7 @@ gem 'devise'
 source "https://rails-assets.org" do
   gem "rails-assets-angular-devise"
 end
+
+# Bootswatch integration (SASS)
+gem 'bootswatch-rails'
+gem 'bootstrap-sass', '~> 3.3.5'
