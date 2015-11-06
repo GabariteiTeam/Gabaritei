@@ -12,6 +12,13 @@
   </div>
 </div>
 <div class="form-group">
+  <label for="course" class="col-sm-2 control-label" translate>crud.tests.form.test_course.title</label>
+  <div class="col-sm-10">
+    <select ng-model="Ctrl.test.course_id" class="form-control" id="course" ng-options="course.id as course.name for course in Ctrl.courses" ng-change="Ctrl.retrieveCourse()"></select>
+  </div>
+</div>
+
+<div class="form-group">
   <div class="col-sm-offset-2 col-sm-10">
     <input type="submit" class="btn btn-primary" value="{{ 'actions.buttons.save' | translate }}"/>
   </div>

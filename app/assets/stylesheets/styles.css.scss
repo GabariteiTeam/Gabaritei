@@ -113,32 +113,26 @@
 
     &:first-child {
         margin-top: 5px;
-
-        a .ico-path .bar {
-            height: 50%;
-        }
     }
 
     &:last-child {
         margin-bottom: 5px;
 
-        a .ico-path .bar {
-            height: 50%;
-            top: 0;
+        a.ico-path .bar {
+            height: 0px;
         }
     }
 
     &.completed {
-        a .ico-path .ico {
+        a.ico-path .ico {
             background-color: #2c3e50;
         }
 
-        a .ico-path .bar {
+        a.ico-path .bar {
             background-color: #2c3e50;
         }
     }
 
-    height: 40px;
     width: 100%;
     position: relative;
     -webkit-transition: all 0.5s ease;
@@ -146,38 +140,60 @@
     -o-transition: all 0.5s ease;
     transition: all 2.5s ease;
 
-    a {
+    a.ico-path {
+        height: 100%;
+        width: 100%;
+        display: inline-block;
+        color: #333;
+
+        &:hover {
+            color: #999;
+            background: rgba(153,153,153,0.2);
+
+            .ico { background-color: #2c3e50; }
+            .bar { background-color: #2c3e50; }
+        }
+
         span {
             padding-left: 40px;
+            padding-right: 10px;
             line-height: 40px;
+
+            float: left;
+            clear: left;
+
+            &:last-child {
+                line-height: 20px;
+                max-height: 80px; /* n x line-height = number of lines in the description */
+                overflow: hidden;
+                width: 100%;
+                display: block;
+                word-wrap: break-word;
+                /*white-space: nowrap;
+                text-overflow: ellipsis;*/ /* adds the ... but one line only */
+            }
         }
 
-        .ico-path {
-            height: 100%;
-            width: 100%;
+        .ico {
+            background-color: #999;
+            width: 20px;
+            height: 20px;
             position: absolute;
+            margin: 10px;
 
-            .ico {
-                background-color: #999;
-                width: 20px;
-                height: 20px;
-                position: absolute;
-                margin: 10px;
-
-                &.round {
-                    border-radius: 50%;
-                }
-            }
-
-            .bar {
-                position: absolute;
-                width: 4px;
-                background-color: #999;
-                height: 100%;
-                margin-left: 18px;
-                bottom: 0;
+            &.round {
+                border-radius: 50%;
             }
         }
+
+        .bar {
+            position: absolute;
+            width: 4px;
+            background-color: #999;
+            height: 100%;
+            margin-left: 18px;
+            top: 10px; /* half of the height of .ico */
+        }
+        
     }
 }
-

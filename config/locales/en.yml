@@ -333,45 +333,68 @@ en:
      edit_participants: 'Edit participants'
    tests:
     alerts:
-      create:
-        success:
-          title: 'Created!'
-          content: 'Test was created with success!'
-        error:
-          title: 'Failed!'
-          content: 'Test was NOT created!'
-      delete:
-        success:
-          title: 'Deleted!'
-          content: 'Test was deleted with success!'
-        error:
-          title: 'Failed!'
-          content: 'Test was NOT deleted'
-      update:
-        success:
-          title: 'Updated!'
-          content: 'Test was updated with success'
-        error:
-          title: 'Failed!'
-          content: 'Test was NOT updated!'
+     create:
+      success:
+       title: 'Created!'
+       content: 'Test was created with success!'
+      error:
+       title: 'Failed!'
+       content: 'Test was NOT created!'
+     update:
+      success:
+       title: 'Updated!'
+       content: 'Test was updated with success'
+      error:
+       title: 'Failed!'
+       content: 'Test was NOT updated!'
+     delete:
+      success:
+       title: 'Deleted!'
+       content: 'Test was deleted with success!'
+      error:
+       title: 'Failed!'
+       content: 'Test was NOT deleted'
+     questions:
+      added:
+       success:
+        title: 'Added!'
+        content: 'Test was deleted with success!'
+       error:
+        title: 'Failed!'
+        content: 'Test was NOT deleted'
+      removed:
+       success:
+        title: 'Removed!'
+        content: 'Test was deleted with success!'
+       error:
+        title: 'Failed!'
+        content: 'Test was NOT deleted'
+    search_questions:
+     title: 'Questions from the Test'
+     label: 'Search through questions'
     modal:
-      delete:
-        title: 'Warning!'
-        body: 'Are you sure you want to delete this test?'
+     delete:
+      title: 'Warning!'
+      body: 'Are you sure you want to delete this test?'
     index:
-      heading: 'Tests'
-      sub_heading: 'Create a new test to your Virtual Class!'
+     heading: 'Tests'
+     sub_header: 'Create a new test to your Virtual Class!'
+     add: 'Add new test'
+     edit_questions: 'Edit Questions'
+     course: 'Course'
     create: 
-      heading: 'New Test'
+     heading: 'New Test'
     update:
-      heading: 'Update Test'
+     heading: 'Update Test'
     form:
-      test_name:
-        title: 'Test name:'
-        placeholder: 'Test name here'
-      test_description: 
-        title: 'Test description:'
-        placeholder: 'Test description here'
+     test_name:
+      title: 'Test name:'
+      placeholder: 'Test name here'
+     test_description: 
+      title: 'Test description:'
+      placeholder: 'Test description here'
+     test_course:
+      title: 'Course'
   models:
    content: 'Content'
    course: 'Course'

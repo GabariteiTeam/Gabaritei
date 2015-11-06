@@ -38,12 +38,11 @@ Rails.application.routes.draw do
 
 	# TESTS ROUTES
 
-	get 	"/tests/", 		to: "tests#index", as: "tests_home"
-	get 	"/tests/:id", 	to: "tests#show", as: "read_test"
-	get 	"/tests/validate/destroy/:id", to: "tests#validate_destroy"
-	post 	"/tests/", 		to: "tests#create", as: "tests_new"
-	put 	"/tests/", 		to: "tests#update", as: "tests_update"
-	delete 	"/tests/:id", 	to: "tests#destroy", as: "tests_delete"
+	resources :tests do
+		get :search_questions, to: "tests#search_questions", on: :member
+		put :add_questions, to: "tests#add_questions", on: :member
+		put "remove_question/:question_id", to: "tests#remove_question", on: :member
+	end
 
 	# USERS ROUTES
 

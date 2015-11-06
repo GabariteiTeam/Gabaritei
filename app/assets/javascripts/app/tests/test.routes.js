@@ -18,6 +18,11 @@
                 controller: 'TestsController',
                 controllerAs: 'Ctrl'
             })
+            .when('/tests/questions/:id', {
+                templateUrl: 'templates/tests/questions.html',
+                controller: 'TestQuestionsController',
+                controllerAs: 'Ctrl'
+            })
             .when('/tests', {
                 templateUrl: 'templates/tests/index.html',
                 controller: 'TestsController',

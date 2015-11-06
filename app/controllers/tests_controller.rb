@@ -4,31 +4,7 @@ class TestsController < ApplicationController
       # GET /tests.json
       def index
         @tests = Test.all
-        render json: @tests
-      end
-
-      # GET /tests/1
-      # GET /tests/1.json
-      def show
-        set_test
-        render :json => { name: @test.name, description: @test.description, id: @test.id}
-      end
-
-      # GET /tests/new
-      def new
-        @test = Test.new
-      end
-
-      # # checks to see related models
-      # def validate_destroy
-      #   set_test
-      #   render :json => { single: true }
-      # end
-
-      # GET /tests/1/edit
-      def edit
-        set_test
-        render :json => { name: @test.name, description: @test.description, id: @test.id}
+        render json: @tests, methods: [:course, :questions]
       end
 
       # POST /tests
@@ -36,10 +12,18 @@ class TestsController < ApplicationController
       def create
         @test = Test.new(test_params)
         if @test.save
-          render :json => {}
+          render :json => {success: true}
         else
           render :json =>  @test.errors, status: :unprocessable_entity
         end
+      end
+
+      # GET /tests/1
+      # GET /tests/1.json
+      def show
+        set_test
+        @available_questions = @test.available_questions
+        render json: @test, methods: [:course, :questions, :available_questions]
       end
 
       # PATCH/PUT /tests/1
@@ -47,24 +31,52 @@ class TestsController < ApplicationController
       def update
         set_test
         if @test.update(test_params)
-          render :json => {}
+          render :json => {success: true}
         else
           render :json =>  @test.errors, status: :unprocessable_entity
         end
+      end
+
+      def search_questions
+        #TODO: redo query
+        @questions = Question.where("text LIKE :search_string OR answer LIKE :search_string", search_string: params[:search_string])
+        render json: @questions
+      end
+
+      def add_questions
+        set_test
+        questions = @test.questions.to_a
+        params[:questions].each do |question|
+          question = Question.find(question[:id])
+          questions.push(question)
+        end
+        @test.questions = questions.uniq
+        if @test.save
+              render json: {success: true}
+          else
+              render json: @test.errors, status: :unprocessable_entity
+          end 
+      end
+
+      def remove_question
+        set_test
+        questions = @test.questions.to_a
+        questions.delete_if {|question| question.id == params[:question_id].to_i}
+        p questions
+        @test.questions = questions
+        if @test.save
+              render json: {success: true}
+          else
+              render json: @test.errors, status: :unprocessable_entity
+          end 
       end
 
       # DELETE /tests/1
       # DELETE /tests/1.json
     def destroy
         set_test
-        # @test.questions.each do |question|
-        #   question.destroy
-        # end
-        # @test.fields.each do |field|
-        #   field.destroy
-        # end
         if @test.destroy
-          render :json => {}
+          render :json => {success: true}
         else
           render :json =>  @test.errors, status: :unprocessable_entity
         end
@@ -78,7 +90,6 @@ class TestsController < ApplicationController
 
         # Never trust parameters from the scary internet, only allow the white list through.
         def test_params
-          #params.require(:test).permit(:name, :professor_id, :department_id, :descricao)
-          params.require(:test).permit(:id, :name, :description, :test)
+          params.require(:test).permit(:id, :name, :description, :test, :course_id)
         end
 end

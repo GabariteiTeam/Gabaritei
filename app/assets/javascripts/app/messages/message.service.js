@@ -18,7 +18,7 @@
                 'title': 'crud.subjects.alerts.create.success.title',
                 'content': 'crud.subjects.alerts.create.success.content',
                 'type': mTypes['success']
-                },
+            },
             'subject.created.error': {
                 'title': 'crud.subjects.alerts.create.error.title',
                 'content': 'crud.subjects.alerts.create.error.content',
@@ -243,7 +243,57 @@
                 'title': 'crud.fields.alerts.delete.error.title',
                 'content': 'crud.fields.alerts.delete.error.content',
                 'type': mTypes['error']
-            }               
+            },
+            'test.created.success': {
+                'title': 'crud.tests.alerts.create.success.title',
+                'content': 'crud.tests.alerts.create.success.content',
+                'type': mTypes['success']
+            },
+            'test.created.error': {
+                'title': 'crud.tests.alerts.create.error.title',
+                'content': 'crud.tests.alerts.create.error.content',
+                'type': mTypes['error']
+            },
+            'test.updated.success': {
+                'title': 'crud.tests.alerts.update.success.title',
+                'content': 'crud.tests.alerts.update.success.content',
+                'type': mTypes['success']
+            },
+            'test.updated.error': {
+                'title': 'crud.tests.alerts.update.error.title',
+                'content': 'crud.tests.alerts.update.error.content',
+                'type': mTypes['error']
+            },
+            'test.deleted.success': {
+                'title': 'crud.tests.alerts.delete.success.title',
+                'content': 'crud.tests.alerts.delete.success.content',
+                'type': mTypes['success']
+            },
+            'test.deleted.error': {
+                'title': 'crud.tests.alerts.delete.error.title',
+                'content': 'crud.tests.alerts.delete.error.content',
+                'type': mTypes['error']
+            },
+            'test.questions.added.success': {
+                'title': 'crud.tests.alerts.questions.added.success.title',
+                'content': 'crud.tests.alerts.questions.added.success.content',
+                'type': mTypes['success']
+            },
+            'test.questions.added.error': {
+                'title': 'crud.tests.alerts.questions.added.error.title',
+                'content': 'crud.tests.alerts.questions.added.error.content',
+                'type': mTypes['error']
+            },
+            'test.questions.removed.success': {
+                'title': 'crud.tests.alerts.questions.remover.success.title',
+                'content': 'crud.tests.alerts.questions.remover.success.content',
+                'type': mTypes['success']
+            },
+            'test.questions.removed.error': {
+                'title': 'crud.tests.alerts.questions.remover.error.title',
+                'content': 'crud.tests.alerts.questions.remover.error.content',
+                'type': mTypes['error']
+            }         
         };
         var observers = [];
         var message;

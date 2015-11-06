@@ -1,5 +1,3 @@
-// Services section
-
 (function() {
 
     angular
@@ -9,43 +7,22 @@
     Test.$inject = ['$resource'];
 
     function Test($resource) {
-        return $resource('tests/:id', {}, {
-            queryNames: {
-                URL: "tests/names", 
-                method: 'GET', 
-                isArray: true
-            },
-            query: {
-                method: 'GET',
-                params: {
-                    id: ''
-                },
-                isArray: true
-            },
-            get: {
-                method: 'GET',
-                params: {
-                    id: ''
-                }
-            },
-            save: {
-                method: 'POST'
-            },
+        return $resource('tests/:id.json', {id: '@id'}, {
             update: {
                 method: 'PUT'
             },
-            destroy: {
-                method: 'DELETE',
-                params: {
-                    id: ''
-                }
-            },
-            validateDestroy: {
-                url: 'tests/validate/destroy/:id',
+            searchQuestions: {
+                url: 'tests/:id/search_questions',
                 method: 'GET',
-                params: {
-                    id: ''
-                }
+                isArray: true
+            },
+            addQuestions: {
+                url: 'tests/:id/add_questions',
+                method: 'PUT'
+            },
+            removeQuestion: {
+                url: 'tests/:id/remove_question/:question_id',
+                method: 'PUT'
             }
         });
     }

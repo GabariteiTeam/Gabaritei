@@ -1,0 +1,43 @@
+<div class="page-header">
+	<h1 translate>crud.tests.index.edit_questions</h1>
+</div>
+
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h2 class="panel-title">{{ Ctrl.test.name }}</h2>
+	</div>
+	<div class="panel-body">
+		<p>{{ Ctrl.test.description }}</p>
+		<p>Number of questions: {{ Ctrl.test.questions.length }}</p>
+	</div>
+</div>
+
+<div class="panel panel-default">
+
+	<div class="panel-body">
+		<form class="form-inline" test="form" ng-submit="Ctrl.searchQuestions()">
+			<div ng-include="'templates/tests/_search_form.html'"></div>
+		</form>
+	</div>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<td>ID</td>
+				<td>Text</td>
+				<td>Answer</td>
+				<td>Options</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr data-ng-repeat="question in Ctrl.test.questions">
+				<td>{{ question.id }}</td>
+				<td>{{ question.text }}</td>
+				<td>{{ question.answer }}</td>
+				<td>
+					<a href="#questions/{{question.id}}" class="btn btn-sm btn-info" translate>crud.view</a>
+					<button ng-click="Ctrl.removeQuestion(question.id)" class="btn btn-sm btn-danger" translate>crud.remove</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
