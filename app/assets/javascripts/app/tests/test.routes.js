@@ -27,6 +27,11 @@
                 templateUrl: 'templates/tests/index.html',
                 controller: 'TestsController',
                 controllerAs: 'Ctrl'
+            })
+            .when('/tests/:id', {
+                templateUrl: 'templates/tests/show.html',
+                controller: 'TestsController',
+                controllerAs: 'Ctrl'
             });
     }
 

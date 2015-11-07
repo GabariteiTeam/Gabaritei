@@ -285,13 +285,13 @@
                 'type': mTypes['error']
             },
             'test.questions.removed.success': {
-                'title': 'crud.tests.alerts.questions.remover.success.title',
-                'content': 'crud.tests.alerts.questions.remover.success.content',
+                'title': 'crud.tests.alerts.questions.removed.success.title',
+                'content': 'crud.tests.alerts.questions.removed.success.content',
                 'type': mTypes['success']
             },
             'test.questions.removed.error': {
-                'title': 'crud.tests.alerts.questions.remover.error.title',
-                'content': 'crud.tests.alerts.questions.remover.error.content',
+                'title': 'crud.tests.alerts.questions.removed.error.title',
+                'content': 'crud.tests.alerts.questions.removed.error.content',
                 'type': mTypes['error']
             }         
         };

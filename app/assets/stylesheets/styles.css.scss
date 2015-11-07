@@ -197,3 +197,32 @@
         
     }
 }
+
+#questions-table {
+    width: 100%;
+    margin-top: 10px;
+
+    tr.question-cell {
+        border-bottom: 1px solid #EEE;
+
+        td {
+            padding: 5px 10px;
+        }
+
+        &:last-child {
+            border-bottom: 0px;
+        }
+
+        &:hover {
+            background: rgba(153,153,153,0.1);
+            cursor: pointer;
+        }
+
+        &.selected {
+            background: rgba(153,153,153,0.2);
+            font-weight: bold;
+            /*border-width: 2px;*/
+        }
+    }
+
+}

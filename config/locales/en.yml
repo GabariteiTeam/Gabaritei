@@ -358,17 +358,17 @@ en:
       added:
        success:
         title: 'Added!'
-        content: 'Test was deleted with success!'
+        content: 'Questions were added with success!'
        error:
         title: 'Failed!'
-        content: 'Test was NOT deleted'
+        content: 'Questions were NOT added'
       removed:
        success:
         title: 'Removed!'
-        content: 'Test was deleted with success!'
+        content: 'Question was removed with success!'
        error:
         title: 'Failed!'
-        content: 'Test was NOT deleted'
+        content: 'Question was NOT removed'
     search_questions:
      title: 'Questions from the Test'
      label: 'Search through questions'

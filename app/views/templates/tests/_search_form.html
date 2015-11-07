@@ -15,15 +15,13 @@
 	</button>
 </div>
 
-<div class="col-sm-12" style="overflow-x: scroll; overflow-y: hidden" ng-hide="!Ctrl.questions.length">
-	<table>
-		<tr>
-			<td data-ng-repeat="question in Ctrl.questions">
-				<div class="user-cell" ng-click="Ctrl.selectQuestion(question)" ng-class="{selected: question.selected}">
-					<span>{{ question.text }}</span>
-					<br />
-					<span>{{ question.answer }}</span>
-				</div>
+<div class="col-sm-12" style="overflow-x: hidden; overflow-y: scroll; max-height:450px" ng-hide="!Ctrl.questions.length">
+	<table id="questions-table" class="table-striped">
+		<tr data-ng-repeat="question in Ctrl.questions" class="question-cell" ng-class="{selected: question.selected}">
+			<td ng-click="Ctrl.selectQuestion(question)">
+				<span>{{ question.text }}</span>
+				<br />
+				<span>{{ question.answer }}</span>
 			</td>
 		<tr>
 	</table>
