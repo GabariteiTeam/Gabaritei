@@ -13,6 +13,8 @@
         var vm = this;
 
         vm.logout = logout;
+        vm.changeMenuDisplay = changeMenuDisplay;
+        vm.collapseMenu = false;
      
         activate();
 
@@ -43,6 +45,10 @@
             }, function(error) {
                 
             });
+        }
+
+        function changeMenuDisplay() {
+            jQuery("#wrapper").toggleClass("toggled", vm.collapseMenu);
         }
 
     }

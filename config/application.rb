@@ -23,6 +23,7 @@ module Gabaritei
     # that are installed into vendor/assets/bower_components
     config.assets.paths << Rails.root.join("vendor","assets","bower_components")
     config.assets.precompile << %r(.*.(?:eot|svg|ttf|woff)$)
+
     # load delayed jobs
     config.autoload_paths += %W(#{config.root}/lib/jobs)
   end
