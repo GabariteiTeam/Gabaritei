@@ -253,9 +253,9 @@ ActiveRecord::Schema.define(version: 20150720123715) do
 
   create_table "response_choices", force: true do |t|
     t.integer  "response_id"
-    t.integer  "question_choices_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.integer  "question_choice_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   add_index "response_choices", ["response_id"], name: "index_response_choices_on_response_id"

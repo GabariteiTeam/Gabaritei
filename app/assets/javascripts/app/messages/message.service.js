@@ -243,7 +243,37 @@
                 'title': 'crud.fields.alerts.delete.error.title',
                 'content': 'crud.fields.alerts.delete.error.content',
                 'type': mTypes['error']
-            }               
+            },
+             'response.created.success': {
+                'title': 'crud.responses.alerts.create.success.title',
+                'content': 'crud.responses.alerts.create.success.content',
+                'type': mTypes['success']
+            },
+            'response.created.error': {
+                'title': 'crud.responses.alerts.create.error.title',
+                'content': 'crud.response.alerts.create.error.content',
+                'type': mTypes['error']
+            },
+            'response.deleted.success': {
+                'title': 'crud.responses.alerts.delete.success.title',
+                'content': 'crud.responses.alerts.delete.success.content',
+                'type': mTypes['success']
+            },
+            'response.deleted.error': {
+                'title': 'crud.responses.alerts.delete.error.title',
+                'content': 'crud.responses.alerts.delete.error.content',
+                'type': mTypes['error']
+            } ,
+            'response.updated.success': {
+                'title': 'crud.responses.alerts.update.success.title',
+                'content': 'crud.responses.alerts.update.success.content',
+                'type': mTypes['success']
+            },
+            'response.updated.error': {
+                'title': 'crud.responses.alerts.update.error.title',
+                'content': 'crud.responses.alerts.update.error.content',
+                'type': mTypes['error']
+            }                             
         };
         var observers = [];
         var message;

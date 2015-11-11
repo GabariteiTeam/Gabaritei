@@ -7,45 +7,66 @@
     </div>
 </div>
 <div class="form-group">
-    <label for="title" class="col-sm-2 control-label" translate>crud.questions.form.style.label</label>
-    <div class="col-sm-10">
-        <select class="form-control" ng-model="Ctrl.question.style">
-            <option translate>crud.questions.form.style.written</option>
-            <option translate>crud.questions.form.style.multiple_choice</option>
-        </select>
-    </div>
-</div>
-<div class="form-group">
     <label for="title" class="col-sm-2 control-label" translate>crud.questions.form.subject.label</label>
     <div class="col-sm-10">
         <tags-input ng-model="Ctrl.subjectInput" class="ti-input-lg" placeholder="{{'crud.questions.form.subject.placeholder' | translate }}">
-            <auto-complete source="Ctrl.subjectsTags"></auto-complete>
-        </tags-input>
-    </div>
+    <auto-complete source="Ctrl.subjectsTags"></auto-complete>
+    </tags-input>
+</div>
 </div>
 <div class="form-group">
-    <label class="col-sm-2 control-label" translate>crud.questions.form.hot.label</label>
-    <div class="col-sm-10">
-      <input ng-model="Ctrl.question.hot" type="checkbox"/>
-    </div>
+<label class="col-sm-2 control-label" translate>crud.questions.form.hot.label</label>
+<div class="col-sm-10">
+     <input toggle-switch type="checkbox" ng-model="Ctrl.question.hot" size="small" on="Yes" off="No">
 </div>
-
+</div>
 <div class="form-group">
-    <label for="year" class="col-sm-2 control-label" translate>crud.questions.form.text.label</label>
-    <div class="col-sm-10">
-        <textarea ng-model="Ctrl.question.text" class="form-control" placeholder="{{ 'crud.questions.form.text.placeholder' | translate}}" />
-    </div>
+<label for="year" class="col-sm-2 control-label" translate>crud.questions.form.text.label</label>
+<div class="col-sm-10">
+            <div text-angular="text-angular" name="rich-response" ng-model="Ctrl.question.text" ta-disabled='disabled' placeholder="{{ 'crud.questions.form.text.placeholder' | translate}}"></div>
 </div>
+</div>
+<div class="form-group">
+<label for="year" class="col-sm-2 control-label" translate>crud.questions.form.source.label</label>
+<div class="col-sm-10">
+    <input type="text" ng-model="Ctrl.question.source" class="form-control" placeholder="{{'crud.questions.form.source.placeholder' | translate }}" />
+</div>
+</div>
+<div class="form-group">
+<label for="title" class="col-sm-2 control-label" translate>crud.questions.form.style.label</label>
+<div class="col-sm-10">
+    <select id="questionStyle" class="form-control" ng-model="Ctrl.question.style">
+        <option value="written" translate>crud.questions.form.style.written </span></option>
+        <option value="choice" translate>crud.questions.form.style.multiple_choice </span></option>
+    </select>
+</div>
+</div>
+<div ng-show="Ctrl.question.style == 'written'">
 <div class="form-group">
     <label for="year" class="col-sm-2 control-label" translate>crud.questions.form.answer.label</label>
     <div class="col-sm-10">
-        <textarea ng-model="Ctrl.question.answer" class="form-control" placeholder="{{ 'crud.questions.form.answer.placeholder' | translate}}" />
+        <div text-angular="text-angular" name="rich-question" ng-model="Ctrl.question.answer" ta-disabled='disabled' placeholder="{{ 'crud.questions.form.answer.placeholder' | translate}}"></div>
     </div>
 </div>
+</div>
+<div ng-show="Ctrl.question.style == 'choice'">
+    <div class="form-group">
+        <label for="title" class="col-sm-2 control-label" translate>crud.questions.form.answer.label</label>
+        <div class="col-sm-10">
+            <select id="questionStyle" class="form-control" ng-model="Ctrl.keyAnswer" >
+                <option ng-repeat="multiple_choice in Ctrl.multiple_choices track by $index" value="{{$index}}"> {{multiple_choice}}</option>
+            </select>
+        </div>
+    </div>
 <div class="form-group">
-    <label for="year" class="col-sm-2 control-label" translate>crud.questions.form.source.label</label>
-    <div class="col-sm-10">
-        <input type="text" ng-model="Ctrl.question.source" class="form-control" placeholder="{{'crud.questions.form.source.placeholder' | translate }}" />
+    <label for="year" class="col-sm-2 control-label" translate>crud.questions.form.alternatives.label</label>
+    <div class="col-sm-8">
+    <auto:fields fields="Ctrl.schema" data="Ctrl.multiple_choices" options="Ctrl.options"></auto:fields>
+</div>
+<div class="col-sm-2">
+    <button type="button" class="btn btn-default" ng-click="Ctrl.addField();"><span class="glyphicon glyphicon-plus" ></button>
+        <button type="button" class="btn btn-default" ng-click="Ctrl.removeField();"><span class="glyphicon glyphicon-minus" ></button>
+        </div>
     </div>
 </div>
 <div class="form-group">

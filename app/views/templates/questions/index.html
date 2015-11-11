@@ -14,8 +14,9 @@
         <th translate>crud.questions.table.headers.id</th>
         <th translate>crud.questions.table.headers.professor</th>
         <th translate>crud.questions.table.headers.source</th>
-        <th translate>crud.questions.table.headers.text</th>
-        <th translate>crud.questions.table.headers.date</th>
+        <th translate>crud.questions.table.headers.text </th>
+        <th translate>crud.questions.table.headers.hot</th>
+        <th translate>crud.questions.table.headers.answer</th>
         <th translate>crud.questions.table.headers.options</th>
       </tr>
     </thead>
@@ -25,10 +26,12 @@
           <td>{{ question.id }}</td>
           <td>{{ question.user_id }}</td>
           <td>{{ question.source }}</td>
-          <td>{{ question.text }}</td>
-          <td>{{ question.answer }}</td>
+          <td>{{ question.text | htmlToPlaintext }}</td>
+          <td><span ng-class="{'glyphicon glyphicon-fire': question.hot}"></span></td>
+          <td>{{ question.answer |  htmlToPlaintext }}</td>
           <td>
             <a href="#questions/update/{{question.id}}" class="btn btn-xs btn-info" translate>crud.edit</a>
+            <a href="#responses/{{question.id}}" class="btn btn-xs btn-default" translate>crud.responses.buttons.view</a>
             <gab-show-modal-button text="crud.delete" args="question.id" modalid="confirmDeleteQuestion" class="btn btn-xs btn-danger"/><gab-show-modal-button>
           </td>
         </tr>
