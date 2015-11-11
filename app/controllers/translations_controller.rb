@@ -3,7 +3,7 @@
 
 class TranslationsController < ApplicationController
   
-  respond_to :json
+  skip_before_action :verify_authentication
 
   def show
     @locale = params[:id].to_sym

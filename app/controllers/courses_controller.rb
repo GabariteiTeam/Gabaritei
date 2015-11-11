@@ -38,7 +38,7 @@ class CoursesController < ApplicationController
 	end
 
 	def search_users
-		@users = User.joins(:courses).where("role_id = :role_id AND (first_name LIKE :search_string OR last_name LIKE :search_string OR email LIKE :search_string) AND NOT EXISTS (SELECT * FROM user_courses WHERE user_courses.user_id = users.id AND user_courses.course_id = :course_id)", {role_id: search_user_params[:role_id], search_string: "%#{search_user_params[:search_string]}%", course_id: search_user_params[:id]})
+		@users = User.includes(:courses).where("users.role_id = :role_id AND (users.first_name LIKE :search_string OR users.last_name LIKE :search_string OR users.email LIKE :search_string) AND NOT EXISTS (SELECT * FROM user_courses WHERE user_courses.user_id = users.id AND user_courses.course_id = :course_id)", {role_id: search_user_params[:role_id], search_string: "%#{search_user_params[:search_string]}%", course_id: search_user_params[:id]})
 		render json: @users, methods: [:avatar_url_thumb]
 	end
 
@@ -61,7 +61,6 @@ class CoursesController < ApplicationController
 		@course = Course.find(params[:id])
 		users = @course.users.to_a
 		users.delete_if {|user| user.id == params[:user_id].to_i}
-		p users
 		@course.users = users
 		if @course.save
 	      	render json: {success: true}

@@ -9,6 +9,7 @@
 
     CoursesController
         .$inject = [
+            '$scope',
             '$location',
             '$routeParams',
             '$route',
@@ -19,7 +20,7 @@
             'ModalService'
         ];
 
-    function CoursesController($location, $routeParams, $route, Course, Subject, MessageService, RedirectService, ModalService) {
+    function CoursesController($scope, $location, $routeParams, $route, Course, Subject, MessageService, RedirectService, ModalService) {
         
         var vm = this;
 
@@ -98,6 +99,10 @@
         function retrieveSubject() {
             vm.subject = Subject.get({id: vm.course.subject_id});
         }
+
+        $scope.$on('devise:unauthorized', function(event, xhr, deferred) {
+            RedirectService.redirect("/users/login");
+        });
 
     };
 

@@ -244,7 +244,67 @@
                 'content': 'crud.fields.alerts.delete.error.content',
                 'type': mTypes['error']
             },
-             'response.created.success': {
+            'content.created.success': {
+                'title': 'crud.contents.alerts.create.success.title',
+                'content': 'crud.contents.alerts.create.success.content',
+                'type': mTypes['success']
+            },
+            'content.created.error': {
+                'title': 'crud.contents.alerts.create.error.title',
+                'content': 'crud.contents.alerts.create.error.content',
+                'type': mTypes['error']
+            },
+            'content.deleted.success': {
+                'title': 'crud.contents.alerts.delete.success.title',
+                'content': 'crud.contents.alerts.delete.success.content',
+                'type': mTypes['success']
+            },
+            'content.deleted.error': {
+                'title': 'crud.contents.alerts.delete.error.title',
+                'content': 'crud.contents.alerts.delete.error.content',
+                'type': mTypes['error']
+            },
+            'content.updated.success': {
+                'title': 'crud.contents.alerts.update.success.title',
+                'content': 'crud.contents.alerts.update.success.content',
+                'type': mTypes['success']
+            },
+            'content.updated.error': {
+                'title': 'crud.contents.alerts.update.error.title',
+                'content': 'crud.contents.alerts.update.error.content',
+                'type': mTypes['error']
+            },
+            'request.created.success': {
+                'title': 'crud.requests.alerts.create.success.title',
+                'content': 'crud.requests.alerts.create.success.content',
+                'type': mTypes['success']
+            },
+            'request.created.error': {
+                'title': 'crud.requests.alerts.create.error.title',
+                'content': 'crud.requests.alerts.create.error.content',
+                'type': mTypes['error']
+            },
+            'request.deleted.success': {
+                'title': 'crud.requests.alerts.delete.success.title',
+                'content': 'crud.requests.alerts.delete.success.content',
+                'type': mTypes['success']
+            },
+            'request.deleted.error': {
+                'title': 'crud.requests.alerts.delete.error.title',
+                'content': 'crud.requests.alerts.delete.error.content',
+                'type': mTypes['error']
+            },
+            'request.assessed.success': {
+                'title': 'crud.requests.alerts.assess.success.title',
+                'content': 'crud.requests.alerts.assess.success.content',
+                'type': mTypes['success']
+            },
+            'request.assessed.error': {
+                'title': 'crud.requests.alerts.assess.error.title',
+                'content': 'crud.requests.alerts.assess.error.content',
+                'type': mTypes['error']
+            },
+            'response.created.success': {
                 'title': 'crud.responses.alerts.create.success.title',
                 'content': 'crud.responses.alerts.create.success.content',
                 'type': mTypes['success']

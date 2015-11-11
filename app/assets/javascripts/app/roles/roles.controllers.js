@@ -6,17 +6,7 @@
         .module(APP_NAME)
         .controller('RolesController', RolesController);
 
-    RolesController
-        .$inject = [
-            '$location',
-            '$routeParams',
-            '$route',
-            'Role',
-            'Permission',
-            'MessageService',
-            'RedirectService',
-            'ModalService'
-        ];
+    RolesController.$inject = ['$location', '$routeParams', '$route', 'Role', 'Permission', 'MessageService', 'RedirectService', 'ModalService'];
 
     function RolesController($location, $routeParams, $route, Role, Permission, MessageService, RedirectService, ModalService) {
         
@@ -25,7 +15,6 @@
         vm.createRole = createRole;
         vm.updateRole = updateRole;
         vm.c_delete = c_delete;
-        vm.delete_modal_id  = "confirmDeleteRole";
 
         vm.roles = [];
         vm.permissions = [];

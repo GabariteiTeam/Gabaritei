@@ -1,0 +1,35 @@
+<div class="form-group">
+  <label for="first_name" class="col-sm-2 control-label" translate>crud.requests.form.first_name</label>
+  <div class="col-sm-10">
+    <input type="text" ng-model="Ctrl.request.requirer.first_name" class="form-control" id="first_name" disabled/>
+  </div>
+</div>
+<div class="form-group">
+  <label for="first_name" class="col-sm-2 control-label" translate>crud.requests.form.last_name</label>
+  <div class="col-sm-10">
+    <input type="text" ng-model="Ctrl.request.requirer.last_name" class="form-control" id="last_name" disabled/>
+  </div>
+</div>
+<div class="form-group">
+  <label for="email" class="col-sm-2 control-label" translate>crud.requests.form.email</label>
+  <div class="col-sm-10">
+    <input type="email" ng-model="Ctrl.request.requirer.email" class="form-control" id="email" disabled/>
+  </div>
+</div>
+<div class="form-group">
+  <label for="course" class="col-sm-2 control-label" translate>crud.requests.form.course</label>
+  <div class="col-sm-10">
+    <input type="email" ng-model="Ctrl.request.course.name" class="form-control" id="course" disabled/>
+  </div>
+</div>
+<div class="form-group">
+  <label for="text" class="col-sm-2 control-label" translate>crud.requests.form.message</label>
+  <div class="col-sm-10">
+    <textarea type="text" ng-model="Ctrl.request.text" class="form-control" id="text" ng-disabled="Ctrl.assessment"></textarea>
+  </div>
+</div>
+<div class="form-group" ng-hide="Ctrl.assessment">
+  <div class="col-sm-offset-2 col-sm-10">
+    <input type="submit" class="btn btn-primary" value="{{'crud.send' | translate}}"/>
+  </div>
+</div>

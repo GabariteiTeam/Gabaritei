@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  	devise_for :users
+
 	root "templates#home"
 
 	get "/home", to: "home#index", as: "home"
@@ -49,7 +51,9 @@ Rails.application.routes.draw do
 
 	# USERS ROUTES
 
-	resources :users
+	resources :users do
+		post :verify_permissions, on: :collection
+	end
 
 	# END USERS ROUTES
 
@@ -86,8 +90,32 @@ Rails.application.routes.draw do
 
 	# END TRANSLATIONS ROUTES
 
+	# CONTENT ROUTES
+
+	resources :contents
+
+	# END CONTENT ROUTES
+
+	# REQUESTS ROUTES
+
+	resources :requests do
+		get "registration", to: "requests#registration_requests", on: :collection
+		post "registration", to: "requests#create_registration_request", on: :collection
+		get "registration", to: "requests#get_registration_request", on: :member
+		put "registration", to: "requests#assess_registration_request", on: :member
+		delete "registration", to: "requests#delete_registration_request", on: :member
+		get "course", to: "requests#course_registration_requests", on: :collection
+		post "course", to: "requests#create_course_registration_request", on: :collection
+		get "course", to: "requests#get_course_registration_request", on: :member
+		put "course", to: "requests#assess_course_registration_request", on: :member
+		delete "course", to: "requests#delete_course_registration_request", on: :member
+	end
+
+	# END REQUESTS ROUTES
+
 	# TEMPLATES ROUTES
 
+	get "templates/login", to: "templates#login"
 	get "templates/*path", to: "templates#serve"
 
 	# END TEMPLATES ROUTES
