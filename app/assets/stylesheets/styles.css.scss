@@ -11,7 +11,7 @@
     }
 
     #page-content-wrapper {
-        margin-top: 20px;
+        padding-bottom: 20px;
     }
 }
 
@@ -28,78 +28,60 @@
     }
 
     #wrapper {
+        padding-top: 10px;
         padding-left: 200px;
 
+        &.toggled {
+            padding-left: 48px; /*--  200px */
+        }
+
         #page-content-wrapper {
-            margin-top: 0px;
             padding: 20px;
-            width: 100%;
         }
 
         #sidebar-wrapper {
             display: block; /* normal aparece! */
             width: 200px;
+            height: 100%;
             z-index: 1000;
             position: fixed;
-            height: 100%;
             margin-left: -200px;
+            padding-bottom: 60px;
             background: #000;
-        }
-    }
+            overflow-x: hidden;
 
-    #wrapper.toggled {
-        padding-left: 48px; /*--  200px */
-    }
+            /* Sidebar Styles */
+            .sidebar-nav {
+                padding: 0;
+                list-style: none;
 
-    /* Sidebar Styles */
+                .sub_icon {
+                    float: right;
+                    line-height: 40px;
+                    padding-right: 16px;
+                }
 
-    .sidebar-nav {
-        padding: 0;
-        list-style: none;
+                li {
+                    text-indent: 15px;
+                    line-height: 40px;
 
-        .sub_icon {
-            float: right;
-            line-height: 40px;
-            padding-right: 16px;
-        }
+                    a {
+                        display: block;
+                        text-decoration: none;
+                        color: rgba(255,255,255,0.5);
 
-        li {
-            text-indent: 15px;
-            line-height: 40px;
-
-            a {
-                display: block;
-                text-decoration: none;
-                color: #999999;
+                        &:hover {
+                            color: #fff;
+                            background: rgba(255,255,255,0.2);
+                        }
+                    }
+                }
             }
 
-            a:hover {
-                text-decoration: none;
-                color: #fff;
-                background: rgba(255,255,255,0.2);
+            .sidebar-nav > .sidebar-brand {
+                font-size: 18px;
+                color: rgba(255,255,255,0.7);
             }
-
-            a:active, a:focus {
-                text-decoration: none;
-            }
-        }
-    }
-
-    .sidebar-nav > .sidebar-brand {
-        font-size: 18px;
-        line-height: 60px;
-
-        .sub_icon {
-            line-height: 60px;
-        }
-
-        a {
-            color: #999999;
-        }
-
-        a:hover {
-            color: #fff;
-            background: none;
         }
     }
 }

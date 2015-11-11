@@ -39,7 +39,7 @@ class TestsController < ApplicationController
 
       def search_questions
         #TODO: redo query
-        @questions = Question.where("text LIKE :search_string OR answer LIKE :search_string OR source LIKE :search_string", search_string: params[:search_string])
+        @questions = Question.where("text LIKE :search_string OR answer LIKE :search_string OR source LIKE :search_string", search_string: "%#{params[:search_string]}%")
         render json: @questions
       end
 

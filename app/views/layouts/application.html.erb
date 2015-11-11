@@ -2,7 +2,7 @@
 <html ng-app="gabariteiApp">
 <head>
   <title>Gabaritei</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <%= csrf_meta_tags %>
 </head>
@@ -22,12 +22,10 @@
                 </li>
                 <%= render 'layouts/navlist'%>
             </ul>
-        </div>
-        <!-- /#sidebar-wrapper -->
+        </div> <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
-        	<!-- class="bs-docs-section" -->
             <div class="container-fluid clearfix">
             	<div ng-controller="MessagesController">
 					<div id="messageContainer"></div>
@@ -38,13 +36,10 @@
 				</div>
 
             </div>
-        </div>
-        <!-- /#page-content-wrapper -->
-    </div>
-    <!-- /#wrapper -->
+        </div> <!-- /#page-content-wrapper -->
+    </div> <!-- /#wrapper -->
 
 
 </body>
-<script>(function () { $("[data-toggle='tooltip']").tooltip(); });</script>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </html>
