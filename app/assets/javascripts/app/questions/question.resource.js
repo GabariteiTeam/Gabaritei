@@ -9,7 +9,7 @@
     Question.$inject = ['$resource'];
 
     function Question($resource) {
-        return $resource('questions/:id', {}, {
+        return $resource('/questions/:id', {}, {
             query: {
                 method: 'GET',
                 params: {
@@ -17,8 +17,9 @@
                 },
                 isArray: true
             },
-            get: {
+            show: {
                 method: 'GET',
+                url: '/questions/:id/show',
                 params: {
                     id: ''
                 }

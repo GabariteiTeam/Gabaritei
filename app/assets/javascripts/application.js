@@ -27,6 +27,13 @@
 //= require ng-tags-input/ng-tags-input
 //= require ngActivityIndicator/ngActivityIndicator
 //= require bootstrap-toggle/js/bootstrap-toggle
+//= require textAngular/dist/textAngular
+//= require textAngular/dist/textAngular-sanitize
+//= require textAngular/dist/textAngularSetup
+//= require textAngular/dist/textAngular-rangy.min
+//= require angular-autoFields-bootstrap/autofields-bootstrap
+//= require angular-autoFields-bootstrap/autofields
+//= require ng-lodash/build/ng-lodash.min.js
 //= require app/app
 //= require_tree ./app
 //= stub app/home/home.controllers.spec

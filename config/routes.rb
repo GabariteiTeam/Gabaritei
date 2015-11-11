@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 	# QUESTIONS ROUTES
 
 	get 	"/questions", 		to: "questions#index"
-	get 	"/questions/:id", 	to: "questions#show"
+	get 	"/questions/:id/show", 	to: "questions#show"
 	put 	"/questions", 		to: "questions#customUpdate"
 	post 	"/questions/", 		to: "questions#create"
 	delete 	"/questions/:id", 	to: "questions#destroy"
@@ -37,6 +37,17 @@ Rails.application.routes.draw do
 	
 	
 	# END FIELDS ROUTES
+
+	# RESPONSE ROUTES
+
+	get		"/responses/:id/show", 	to: "response#show"
+	get		"/responses/:id", 		to: "response#index"
+	put		"/responses/",		to: "response#update"
+	post		"/responses/",		to: "response#create"
+	delete 		"/responses/:id",		to: "response#destroy"
+
+
+	# END RESPONSE ROUTES
 
 	# USERS ROUTES
 
