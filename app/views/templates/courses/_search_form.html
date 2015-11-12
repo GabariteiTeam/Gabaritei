@@ -1,16 +1,27 @@
 <div class="form-group search-form">
-	<label for="name" class="control-label">
+	<input type="text" ng-model="role.searchString" class="form-control" id="name" placeholder="{{ 'courses.search_form.placeholder' | translate }}" />
+	<button type="submit" class="btn btn-primary">
 		<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-		<span translate>crud.courses.search.label</span>
-	</label>
-	<input type="text" ng-model="role.searchString" class="form-control" id="name" placeholder="Search by name or e-mail" />
-	<input type="submit" class="btn btn-info" value="{{'crud.search' | translate}}" />
-	<button type="button" class="btn btn-danger" ng-hide="!role.users.length" ng-click="Ctrl.clearSearch(role)" translate>crud.courses.search.clear</button>
-	<button type="button" class="btn btn-default" ng-hide="!role.users.length" ng-click="Ctrl.selectAllUsers(role, true)" translate>crud.courses.search.select_all</button>
-	<button type="button" class="btn btn-default" ng-hide="!role.users.length" ng-click="Ctrl.selectAllUsers(role, false)" translate>crud.courses.search.deselect_all</button>
-	<button type="button" class="btn btn-success" ng-hide="!role.users.length" ng-click="Ctrl.addSelected(role)">
+	</button>
+	<button type="button" class="btn btn-danger" ng-hide="!role.users.length" ng-click="Ctrl.clearSearch(role)">
+		<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+		&nbsp;
+		<span translate>courses.search_form.clear</span>
+	</button>
+	<button type="button" class="btn btn-default" ng-hide="!role.users.length" ng-click="Ctrl.selectAllUsers(role, true)">
+		<span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+		&nbsp;
+		<span translate>courses.search_form.select_all</span>
+	</button>
+	<button type="button" class="btn btn-default" ng-hide="!role.users.length" ng-click="Ctrl.selectAllUsers(role, false)">
+		<span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+		&nbsp;
+		<span translate>courses.search_form.deselect_all</span>
+	</button>
+	<button type="button" class="btn btn-primary" ng-hide="!role.users.length" ng-click="Ctrl.addSelected(role)">
 		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-		<span translate>crud.courses.search.add_selected</span>
+		&nbsp;
+		<span translate>courses.search_form.add_selected</span>
 	</button>
 </div>
 

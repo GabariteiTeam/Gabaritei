@@ -1,5 +1,5 @@
 <div class="page-header">
-	<h1 translate>crud.courses.participants.title</h1>
+	<h1 translate>courses.participants.title</h1>
 </div>
 
 <div ng-repeat="role in Ctrl.roles" class="panel panel-primary">
@@ -20,8 +20,16 @@
 				<td>{{ user.first_name + ' ' + user.last_name }}</td>
 				<td>{{ user.email }}</td>
 				<td>
-					<a href="#users/{{user.id}}" class="btn btn-sm btn-info" translate>crud.view</a>
-					<button ng-click="Ctrl.removeParticipant(user.id)" class="btn btn-sm btn-danger" translate>crud.remove</button>
+					<a href="#users/{{user.id}}" class="btn btn-sm btn-info">
+						<span class="glyphicon glyphicon-eye-open"></span>
+      					&nbsp;
+						<span translate>courses.actions.view_participant</span>
+					</a>
+					<button ng-click="Ctrl.removeParticipant(user.id)" class="btn btn-sm btn-danger">
+						<span class="glyphicon glyphicon-remove"></span>
+      					&nbsp;
+						<span translate>courses.actions.remove_participant</span>
+					</button>
 				</td>
 			</tr>
 		</tbody>
