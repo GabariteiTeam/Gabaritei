@@ -1,20 +1,24 @@
 <div class="page-header">
-    <h1 translate>crud.contents.index.heading</h1>
-    <p class="lead" translate>crud.contents.index.sub_header</p>
+    <h1 translate>contents.index.heading</h1>
+    <p class="lead" translate>contents.index.sub_heading</p>
 </div>
 
+<a href="#contents/new" class="btn btn-primary crud-add-btn">
+  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+  <span translate>contents.actions.add</span>
+</a>
+
 <div class="panel panel-primary">
-  <div class="panel-heading">
-  </div>
-  
+  <div class="panel-heading"></div>
+  <div class="panel-body"></div>
   <table class="table table-striped table-hover">
     <thead>
       <tr>
-        <th translate>crud.name</th>
-        <th translate>models.subject</th>
-        <th translate>models.field</th>
-        <th translate>crud.description</th>
-        <th translate>crud.options</th>
+        <th translate>contents.index.table.header.name</th>
+        <th translate>contents.index.table.header.subject</th>
+        <th translate>contents.index.table.header.field</th>
+        <th translate>contents.index.table.header.description</th>
+        <th translate>contents.index.table.header.options</th>
       </tr>
     </thead>
     <tbody>
@@ -24,16 +28,21 @@
           <td>{{ content.field }}</td>
           <td>{{ content.description }}</td>
           <td>
-            <a href="#contents/show/{{content.id}}" class="btn btn-xs btn-default" translate>crud.preview</a>
-            <a href="#contents/update/{{content.id}}" class="btn btn-xs btn-info" translate>crud.edit</a>
-            <gab-show-modal-button text="crud.delete" args="content.id" modalid="confirmDeleteContent" class="btn btn-xs btn-danger"></gab-show-modal-button>
+            <a href="#contents/show/{{content.id}}" class="btn btn-xs btn-default">
+              <span class="glyphicon glyphicon-eye-open"></span>
+              &nbsp;
+              <span translate>contents.actions.view</span>
+            </a>
+            <a href="#contents/update/{{content.id}}" class="btn btn-xs btn-info">
+              <span class="glyphicon glyphicon-pencil"></span>
+              &nbsp;
+              <span translate>contents.actions.edit</span>
+            </a>
+            <gab-show-modal-button text="contents.actions.delete" args="content.id" modalid="confirmDeleteContent" class="btn btn-xs btn-danger" icon="glyphicon glyphicon-trash"></gab-show-modal-button>
           </td>
         </tr>
     </tbody>
   </table>
 </div>
 
-<a href="#contents/new" class="btn btn-primary" translate>crud.add</a>
-
-<div gab-confirm-modal modalid="confirmDeleteContent" title="crud.contents.modal.delete.title" body="crud.contents.modal.delete.body" callback="Ctrl.c_delete(id)"></div>
-
+<div gab-confirm-modal modalid="confirmDeleteContent" title="contents.modal.delete.title" body="contents.modal.delete.body" callback="Ctrl.c_delete(id)"></div>

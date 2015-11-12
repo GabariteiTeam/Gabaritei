@@ -1,0 +1,24 @@
+en: 
+  data_import:
+    alerts:
+      upload:
+        success:
+          title: 'Uploaded!'
+          content: 'File was uploaded with success!'
+        error:
+          title: 'Failed!'
+          content: 'File was NOT uploaded!'
+      delete:
+        success:
+          title: 'Deleted!'
+          content: 'File was deleted with success!'
+        error:
+          title: 'Failed!'
+          content: 'File was NOT deleted'
+      update:
+        success:
+          title: 'Updated!'
+          content: 'File was updated with success!'
+        error:
+          title: 'Failed!'
+          content: 'File was NOT updated!'

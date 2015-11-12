@@ -1,0 +1,51 @@
+en:
+  responses:
+    buttons:
+      view: 'View responses'
+    index:
+      heading: 'Question answers'
+      sub_heading: 'The answers for '
+      add: 'Add new answer'
+      table:
+        headers:
+          id: 'id'
+          question: 'Question'
+          owner: 'Owner'
+          text: 'Text'
+    form:
+      question:
+        label: 'Question Text:'
+      response:
+        label: 'Your answer:'
+      alternative:
+        label: 'Alternative'
+      create:
+        title: 'Respond to a question'
+      update:
+        title: 'Update your response'
+    modal:
+      delete:
+        title: 'Confirmation required'
+        body: 'Are you sure you want to delete this answer?'
+    alerts:
+      create:
+        success:
+          title: 'Created!'
+          content: 'Response created with success'
+        error:
+          title: 'Failed!'
+          content: 'Response was not created'
+      delete:
+        success:
+          title: 'Deleted!'
+          content: 'Response deleted with success'
+        error:
+          title: 'Failed!'
+          content: 'Response was not deleted'
+      update:
+        success:
+          title: 'Updated!'
+          content: 'Response was updated!'
+        error: 
+          title: 'Failed!'
+          content: 'Response was not updated'
