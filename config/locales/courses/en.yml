@@ -1,7 +1,31 @@
 en:
   courses:
-    search:
-      label: 'Search user'
+    index:
+      heading: 'Courses'
+      sub_heading: 'Create a new course to your Virtual Class!'
+      table:
+        header:
+          name: "Name"
+          subject: "Subject"
+          field: "Field"
+          description: "Description"
+          options: "Options"
+    participants:
+      title: 'Edit participants'
+    create:
+      title: 'New Course'
+    update:
+      title: 'Edit Course'
+    actions:
+      edit: 'Edit'
+      delete: 'Delete'
+      edit_participants: 'Edit participants'
+      view_participant: 'View'
+      remove_participant: 'Remove'
+    form:
+    search_form:
+      search: 'Search'
+      placeholder: 'Name or e-mail'
       clear: 'Clear search'
       select_all: 'Select all'
       deselect_all: 'Deselect all'
@@ -43,13 +67,3 @@ en:
           error:
             title: 'Failed!'
             content: 'Participant was NOT removed!'
-    index:
-      heading: 'Courses'
-      sub_heading: 'Create a new course to your Virtual Class!'
-      edit_participants: 'Edit participants'
-    participants:
-      title: 'Edit participants'
-    create:
-      title: 'New Course'
-    update:
-      title: 'Edit Course'

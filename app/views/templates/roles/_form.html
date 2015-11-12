@@ -14,7 +14,7 @@
   <label for="permissions" class="col-sm-2 control-label" translate>roles.form.permissions</label>
   <div class="col-sm-offset-2 col-sm-10">
     <label class="checkbox" ng-repeat="permission in Ctrl.permissions">
-      <input toggle-switch type="checkbox" ng-model="permission.allowed" size="small" on="Yes" off="No">
+      <input toggle-switch type="checkbox" ng-model="permission.allowed" size="small" on="{{ 'roles.form.allowed_yes' | translate }}" off="{{ 'roles.form.allowed_no' | translate }}">
       <span style="margin-left: 10px;" translate>{{ permission.name }}</span>
     </label>
   </div>
