@@ -1,0 +1,31 @@
+en:
+  authentication:
+    email: 'E-mail'
+    password: 'Password'
+    login: 'Sign in'
+  permission:
+    contents:
+      globally_manipulate: 
+        title: "Manipulate contents (globally)"
+        help: ""
+      manipulate:
+        title: "Manipulate contents"
+        help: ""
+    courses:
+      globally_manipulate: 
+        title: "Manipulate courses (globally)"
+        help: ""
+      edit_participants: 
+        title: "Edit participants"
+        help: ""
+      take_part:
+        title: "Take part in courses"
+        help: ""
+    users: 'Manipulate users'
+    roles: 'Manipulate roles'
+    questions: 'Manipulate questions'
+    subjects: 'Manipulate subjects'
+    contents: 'Manipulate contents'
+    registration_requests: 'Manage registration requests'
+    course_registration_requests: 'Manage course registration requests'
+    import_data: 'Import data'

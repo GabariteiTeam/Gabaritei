@@ -1,0 +1,71 @@
+en:
+  questions:
+    alerts:
+      create:
+        success:
+          title: 'Created!'
+          content: 'Question was created with success'
+        error:
+          title: 'Failed!'
+          content: 'Question was NOT created!'
+      delete:
+        success:
+          title: 'Deleted!'
+          content: 'Question was deleted with success'
+        error:
+          title: 'Failed'
+          content: 'Question was not deleted!'
+      update:
+        success:
+          title: "Updated!"
+          content: "Question was updated with success"
+        error:
+          title: "Failed!"
+          content: "Question was NOT updated"
+    index:
+      heading: 'Questions'
+      sub_heading: 'Create a new question for your students'
+      add: 'Add new question'
+    create:
+      title: 'New Question'
+    update:
+      title: 'Edit Question'
+    modal:
+      delete:
+        title: 'Warning!'
+        body: 'Are you sure you want to delete this question?'
+    form:
+      professor:
+        label: 'Professor'
+      style:
+        label: 'Style'
+        written: 'Written'
+        multiple_choice: 'Multiple choice'
+      subject:
+        label: 'Subject'
+        placeholder: 'Type a Subject'
+      hot:
+        label: 'Hot'
+      text:
+        label: 'Text'
+        placeholder: 'Enter your question here'
+      answer:
+        label: 'Answer'
+        placeholder: 'Enter the answer of your question here'
+      source:
+        label: 'Source'
+        placeholder: 'Enter the source of your question here'
+      alternatives:
+        placeholder: 'Enter the alternative text'
+        label: 'Alternatives'
+        dropdown: 'Alternative'
+    table:
+      headers:
+        id: 'ID'
+        professor: 'Professor'
+        source: 'Source'
+        text: 'Text'
+        date: 'Date'
+        options: 'Options'
+        answer: 'Answer'
+        hot: 'Hot'

@@ -66,6 +66,14 @@
 	100% {top: 0;}
 }
 
+#logo {
+	width: 100%;
+}
+
+#login-form {
+	margin-top: 30px;
+}
+
 div.form-group.login-field {
 	position: relative;
 }

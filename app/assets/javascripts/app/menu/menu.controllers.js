@@ -33,6 +33,7 @@
             }, function(error) {
 
             });
+
         }
 
         function logout() {
@@ -49,6 +50,11 @@
 
         function changeMenuDisplay() {
             jQuery("#wrapper").toggleClass("toggled", vm.collapseMenu);
+            if (vm.collapseMenu) {
+                jQuery("[data-toggle='menu-tooltip']").tooltip();
+            } else {
+                jQuery("[data-toggle='menu-tooltip']").tooltip('destroy');
+            }
         }
 
     }

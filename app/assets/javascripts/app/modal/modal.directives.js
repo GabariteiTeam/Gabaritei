@@ -11,7 +11,8 @@
 				modalid: "@",
 				args: "=", 
 				class: "@",
-				text: "@"
+				text: "@",
+				icon: "@"
 			},
 			controller:function($scope, ModalService) {
 				$scope.storeAndGo = storeAndGo;
@@ -21,9 +22,10 @@
 			},
 			replace: true,
 			transclude: false,
-			template: '<button type="button" ng-click="storeAndGo()"' +
-					' data-toggle="modal" data-target="#{{modalid}}"' +
-					'class={{class}}> <span translate> {{text}} </span></button>'
+			template: '<button type="button" ng-click="storeAndGo()"'  +
+					' data-toggle="modal" data-target="#{{modalid}}"'  +
+					'class={{class}}> <span class="{{icon}}"></span> {{ icon ? "&nbsp;" : "" }} ' + 
+					'<span translate> {{text}} </span></button>'
 
 		}
 	}

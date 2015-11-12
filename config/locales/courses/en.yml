@@ -1,0 +1,55 @@
+en:
+  courses:
+    search:
+      label: 'Search user'
+      clear: 'Clear search'
+      select_all: 'Select all'
+      deselect_all: 'Deselect all'
+      add_selected: 'Add selected'
+    alerts:
+      create:
+        success:
+          title: 'Created!'
+          content: 'Course was created with success!'
+        error:
+          title: 'Failed!'
+          content: 'Course was NOT created!'
+      delete:
+        success:
+          title: 'Deleted!'
+          content: 'Course was deleted with success!'
+        error:
+          title: 'Failed!'
+          content: 'Course was NOT deleted'
+      update:
+        success:
+          title: 'Updated!'
+          content: 'Course was updated with success!'
+        error:
+          title: 'Failed!'
+          content: 'Course was NOT updated!'
+      participants:
+        add:
+          success:
+            title: 'Added!'
+            content: 'Participants were added with success!'
+          error:
+            title: 'Failed!'
+            content: 'Participants were NOT added!'
+        remove:
+          success:
+            title: 'Removed!'
+            content: 'Participant was removed with success!'
+          error:
+            title: 'Failed!'
+            content: 'Participant was NOT removed!'
+    index:
+      heading: 'Courses'
+      sub_heading: 'Create a new course to your Virtual Class!'
+      edit_participants: 'Edit participants'
+    participants:
+      title: 'Edit participants'
+    create:
+      title: 'New Course'
+    update:
+      title: 'Edit Course'

@@ -1,0 +1,71 @@
+en:
+  contents:
+    index:
+      heading: 'Contents'
+      sub_heading: 'Create a new content to your Virtual Class!'
+      table:
+        header:
+          name: "Name"
+          description: "Description"
+          subject: "Subject"
+          field: "Field"
+          options: "Options"
+        options:
+          edit: "Edit"
+          delete: "Delete"
+    actions:
+      add: 'Add new content'
+      view: 'View'
+      edit: 'Edit'
+      delete: 'Delete'
+      save: 'Save content'
+    create:
+      title: 'New Content'
+    update:
+      title: 'Edit Content'
+    form:
+      name: 
+        label: 'Content name'
+        placeholder: 'Content name'
+      description: 
+        label: 'Content description'
+        placeholder: 'Content description'
+      subject: 'Subject'
+      field: 'Field'
+      type: 'Content type'
+      type_file: 'File'
+      type_online: 'Online resource'
+      file_drag_drop: 'Drag and drop a file below'
+      drag_content: 'Drop a content here'
+      file_select: 'Or select a file'
+      reference: 
+        label: 'Resource URL'
+        placeholder: 'YouTube videos, Google Drive documents, Dropbox files, etc.'
+      clear: 'Clear content'
+      shareable: 'Shareable'
+    modal:
+      delete:
+        title: 'Warning!'
+        body: 'Are you sure you want to delete this content?'
+    alerts:
+      create:
+        success:
+          title: 'Created!'
+          content: 'Content was created with success!'
+        error:
+          title: 'Failed!'
+          content: 'Content was NOT created!'
+      delete:
+        success:
+          title: 'Deleted!'
+          content: 'Content was deleted with success!'
+        error:
+          title: 'Failed!'
+          content: 'Content was NOT deleted'
+      update:
+        success:
+          title: 'Updated!'
+          content: 'Content was updated with success!'
+        error:
+          title: 'Failed!'
+          content: 'Content was NOT updated!'

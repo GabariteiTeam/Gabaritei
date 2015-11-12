@@ -1,19 +1,23 @@
-
 <div class="page-header">
-    <h1 translate>crud.roles.index.heading</h1>
-    <p class="lead" translate>crud.roles.index.sub_header</p>
+    <h1 translate>roles.index.heading</h1>
+    <p class="lead" translate>roles.index.sub_heading</p>
 </div>
+
+<a href="#roles/new" class="btn btn-primary crud-add-btn">
+  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+  <span translate>roles.index.actions.add</span>
+</a>
 
 <div class="panel panel-primary">
   <div class="panel-heading">
   </div>
-  
+  <div class="panel-body"></div>
   <table class="table table-striped table-hover">
     <thead>
       <tr>
-        <th translate>crud.name</th>
-        <th translate>crud.description</th>
-        <th translate>crud.options</th>
+        <th translate>roles.index.table.header.name</th>
+        <th translate>roles.index.table.header.description</th>
+        <th translate>roles.index.table.header.options</th>
       </tr>
     </thead>
     <tbody>
@@ -21,15 +25,18 @@
           <td>{{ role.name }}</td>
           <td>{{ role.description }}</td>
           <td>
-            <a href="#roles/update/{{role.id}}" class="btn btn-xs btn-info" translate>crud.edit</a>
-            <gab-show-modal-button text="crud.delete" args="role.id" modalid="confirmDeleteRole" class="btn btn-xs btn-danger"></gab-show-modal-button>
+            <a href="#roles/update/{{role.id}}" class="btn btn-xs btn-info">
+              <span class="glyphicon glyphicon-pencil"></span>
+              &nbsp;
+              <span translate>roles.index.table.options.edit</span>
+            </a>
+            <gab-show-modal-button text="roles.index.table.options.delete" args="role.id" modalid="confirmDeleteRole" class="btn btn-xs btn-danger" icon="glyphicon glyphicon-trash">
+            </gab-show-modal-button>
           </td>
         </tr>
     </tbody>
   </table>
 </div>
 
-<a href="#roles/new" class="btn btn-primary" translate>crud.add</a>
-
-<div gab-confirm-modal modalid="confirmDeleteRole" title="crud.roles.modal.delete.title" body="crud.roles.modal.delete.body" callback="Ctrl.c_delete(id)"></div>
+<div gab-confirm-modal modalid="confirmDeleteRole" title="roles.modal.delete.title" body="roles.modal.delete.body" callback="Ctrl.c_delete(id)"></div>
 

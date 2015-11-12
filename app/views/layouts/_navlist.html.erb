@@ -1,39 +1,36 @@
-<li ng-hide="!Ctrl.permissions['permission.manipulate_roles']">
+<li ng-hide="!Ctrl.permissions['permission.manipulate_roles']" data-toggle="menu-tooltip" data-placement="right" title="{{ 'menu.roles' | translate }}">
 	<a href="#roles"><span translate>menu.roles</span><span class="sub_icon glyphicon glyphicon-file"></span></a>
 </li>
-<li ng-hide="!Ctrl.permissions['permission.manipulate_users']">
+<li ng-hide="!Ctrl.permissions['permission.manipulate_users']" data-toggle="menu-tooltip" data-placement="right" title="{{ 'menu.users' | translate }}">
 	<a href="#users"><span translate>menu.users</span><span class="sub_icon glyphicon glyphicon-user"></span></a>
 </li>
-<li ng-hide="!Ctrl.permissions['permission.manipulate_questions']">
+<li ng-hide="!Ctrl.permissions['permission.manipulate_questions']" data-toggle="menu-tooltip" data-placement="right" title="{{ 'menu.questions' | translate }}">
 	<a href="#questions"><span translate>menu.questions</span><span class="sub_icon glyphicon glyphicon-question-sign"></span></a>
 </li>
-<li ng-hide="!Ctrl.permissions['permission.manipulate_subjects']">
+<li ng-hide="!Ctrl.permissions['permission.manipulate_subjects']" data-toggle="menu-tooltip" data-placement="right" title="{{ 'menu.subjects' | translate }}">
 	<a href="#subjects"><span translate>menu.subjects</span><span class="sub_icon glyphicon glyphicon-book"></span></a>
 </li>
-<li>
+<li data-toggle="menu-tooltip" data-placement="right" title="{{ 'menu.courses' | translate }}">
 	<a href="#courses"><span translate>menu.courses</span><span class="sub_icon glyphicon glyphicon-book"></span></a>
 </li>
-<li ng-hide="!Ctrl.permissions['permission.manipulate_contents']">
+<li ng-hide="!Ctrl.permissions['permission.manipulate_contents']" data-toggle="menu-tooltip" data-placement="right" title="{{ 'menu.contents' | translate }}">
 	<a href="#contents"><span translate>menu.contents</span><span class="sub_icon glyphicon glyphicon-duplicate"></span></a>
 </li>
-<li ng-hide="!Ctrl.permissions['permission.import_data']">
+<li ng-hide="!Ctrl.permissions['permission.import_data']" data-toggle="menu-tooltip" data-placement="right" title="{{ 'menu.data_import' | translate }}">
 	<a href="#data_imports"><span translate>menu.data_import</span><span class="sub_icon glyphicon glyphicon-cloud-upload"></span></a>
 </li>
-<li ng-hide="!Ctrl.permissions['permission.manage_registration_requests'] && ! Ctrl.permissions['permission.manage_course_registration_requests']">
+<li ng-hide="!Ctrl.permissions['permission.manage_registration_requests'] && ! Ctrl.permissions['permission.manage_course_registration_requests']" data-toggle="menu-tooltip" data-placement="right" title="{{ 'menu.requests' | translate }}">
 	<a href="#requests"><span translate>menu.requests</span><span class="sub_icon glyphicon glyphicon-exclamation-sign"></span></a>
 </li>
-<li>
-    <a href="#"><span translate>Perfil</span><span class="sub_icon glyphicon glyphicon-user"></span></a>
+<li data-toggle="menu-tooltip" data-placement="right" title="{{ 'menu.profile' | translate }}">
+    <a href="#"><span translate>menu.profile</span><span class="sub_icon glyphicon glyphicon-user"></span></a>
 </li>
-<li>
-    <a href="#"><span>Links</span><span class="sub_icon glyphicon glyphicon-link"></span></a>
+<li data-toggle="menu-tooltip" data-placement="right" title="{{ 'menu.settings' | translate }}">
+    <a href="#"><span translate>menu.settings</span><span class="sub_icon glyphicon glyphicon-cog"></span></a>
 </li>
-<li>
-    <a href="#"><span>Settings</span><span class="sub_icon glyphicon glyphicon-cog"></span></a>
+<li data-toggle="menu-tooltip" data-placement="right" title="{{ 'menu.contact' | translate }}">
+    <a href="#"><span translate>menu.contact</span><span class="sub_icon glyphicon glyphicon-earphone"></span></a>
 </li>
-<li>
-    <a href="#"><span>Contact</span><span class="sub_icon glyphicon glyphicon-earphone"></span></a>
-</li>
-<li>
-    <a href="#" ng-click="Ctrl.logout()"><span>Logout</span><span class="sub_icon glyphicon glyphicon-off"></span></a>
+<li data-toggle="menu-tooltip" data-placement="right" title="{{ 'menu.logout' | translate }}">
+    <a href="#" ng-click="Ctrl.logout()"><span translate>menu.logout</span><span class="sub_icon glyphicon glyphicon-off"></span></a>
 </li>
