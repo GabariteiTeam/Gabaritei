@@ -1,0 +1,43 @@
+@media(min-width:992px) {
+
+    table.crud-table {
+        .options-column-3 {
+            min-width: 290px;
+        }
+    }
+
+}
+
+table.crud-table {
+    
+    tbody > tr > td {
+        vertical-align: middle;
+    }
+
+    td.options-cell {
+        text-align: center;
+        a, button {
+            margin-bottom: 5px;
+        }
+    }
+
+    td.avatar-cell {
+        width: 80px;
+        img {
+            width: 75px;
+        }
+    }
+
+    td.course-cell {
+        .course-cell-title {
+            margin-top: 0;
+            font-weight: bold;
+        }
+        .course-cell-description {
+            margin-bottom: 5px;
+            font-style: italic;
+        }
+    }
+
+}
+

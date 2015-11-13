@@ -1,24 +1,53 @@
 en: 
   data_import:
+    index:
+      heading: "Upload & Import data"
+      sub_heading: "Upload CSV, Excel spreadsheets or ODS documents to import data"
+      table:
+        header:
+          type: "Type of data"
+          file: "File"
+          uploaded_at: "Uploaded at"
+          status: "Status"
+        body:
+          status:
+            not_yet_imported: "Not yet imported"
+            currently_being_imported: "Currently being imported"
+            successfully_imported: "Successfully imported"
+            error: "An error occurred, please verify file!"
+    actions:
+      edit: "Edit"
+      update: "Update"
+      cancel: "Cancel"
+      import: "Import"
+      delete: "Delete"
+    form:
+      select_type: "Select data type"
+      select_role: "Select users' role"
+      select_file: "Or select a file"
+      drop_file: "Drag and drop a file here"
+    loading:
+      label: "Uploading file:"
+      complete: "complete"
     alerts:
       upload:
         success:
-          title: 'Uploaded!'
-          content: 'File was uploaded with success!'
+          title: "Uploaded!"
+          content: "File was uploaded with success!"
         error:
-          title: 'Failed!'
-          content: 'File was NOT uploaded!'
+          title: "Failed!"
+          content: "File was NOT uploaded!"
       delete:
         success:
-          title: 'Deleted!'
-          content: 'File was deleted with success!'
+          title: "Deleted!"
+          content: "File was deleted with success!"
         error:
-          title: 'Failed!'
-          content: 'File was NOT deleted'
+          title: "Failed!"
+          content: "File was NOT deleted"
       update:
         success:
-          title: 'Updated!'
-          content: 'File was updated with success!'
+          title: "Updated!"
+          content: "File was updated with success!"
         error:
-          title: 'Failed!'
-          content: 'File was NOT updated!'
+          title: "Failed!"
+          content: "File was NOT updated!"

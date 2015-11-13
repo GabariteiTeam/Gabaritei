@@ -8,12 +8,12 @@
 		&nbsp;
 		<span translate>courses.search_form.clear</span>
 	</button>
-	<button type="button" class="btn btn-default" ng-hide="!role.users.length" ng-click="Ctrl.selectAllUsers(role, true)">
+	<button type="button" class="btn btn-default" ng-hide="!role.users.length || role.countSelectedUsers == role.users.length" ng-click="Ctrl.selectAllUsers(role, true)">
 		<span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
 		&nbsp;
 		<span translate>courses.search_form.select_all</span>
 	</button>
-	<button type="button" class="btn btn-default" ng-hide="!role.users.length" ng-click="Ctrl.selectAllUsers(role, false)">
+	<button type="button" class="btn btn-default" ng-hide="!role.users.length || role.countSelectedUsers == 0" ng-click="Ctrl.selectAllUsers(role, false)">
 		<span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
 		&nbsp;
 		<span translate>courses.search_form.deselect_all</span>
@@ -25,11 +25,11 @@
 	</button>
 </div>
 
-<div class="col-sm-12" style="overflow-x: scroll; overflow-y: hidden" ng-hide="!role.users.length">
+<div class="col-sm-12 search-user-list" ng-hide="!role.users.length">
 	<table>
 		<tr>
 			<td data-ng-repeat="user in role.users">
-				<div class="user-cell" ng-click="Ctrl.selectUser(user)" ng-class="{selected: user.selected}">
+				<div class="user-cell" ng-click="Ctrl.selectUser(role, user)" ng-class="{selected: user.selected}">
 					<img ng-src="{{ user.avatar_url_thumb }}" />
 					<br />
 					<span>{{ user.first_name + " " + user.last_name }}</span>
