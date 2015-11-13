@@ -1,69 +1,75 @@
 en:
   courses:
     index:
-      heading: 'Courses'
-      sub_heading: 'Create a new course to your Virtual Class!'
+      heading: "Courses"
+      sub_heading: "Create a new course to your Virtual Class!"
       table:
-        header:
-          name: "Name"
-          subject: "Subject"
-          field: "Field"
-          description: "Description"
-          options: "Options"
+        body:
+          subject: "Subject:"
     participants:
-      title: 'Edit participants'
+      title: "Edit participants"
     create:
-      title: 'New Course'
+      title: "New Course"
     update:
-      title: 'Edit Course'
+      title: "Edit Course"
     actions:
-      edit: 'Edit'
-      delete: 'Delete'
-      edit_participants: 'Edit participants'
-      view_participant: 'View'
-      remove_participant: 'Remove'
+      add: "Add new course"
+      save: "Save course"
+      edit: "Edit"
+      delete: "Delete"
+      edit_participants: "Edit participants"
+      view_participant: "View"
+      remove_participant: "Remove"
     form:
+      name:
+        label: "Name"
+        placeholder: "Course name"
+      description:
+        label: "Description"
+        placeholder: "Course description"
+      subject: "Subject"
+      field: "Field"
     search_form:
-      search: 'Search'
-      placeholder: 'Name or e-mail'
-      clear: 'Clear search'
-      select_all: 'Select all'
-      deselect_all: 'Deselect all'
-      add_selected: 'Add selected'
+      search: "Search"
+      placeholder: "Name or e-mail"
+      clear: "Clear search"
+      select_all: "Select all"
+      deselect_all: "Deselect all"
+      add_selected: "Add selected"
     alerts:
       create:
         success:
-          title: 'Created!'
-          content: 'Course was created with success!'
+          title: "Created!"
+          content: "Course was created with success!"
         error:
-          title: 'Failed!'
-          content: 'Course was NOT created!'
+          title: "Failed!"
+          content: "Course was NOT created!"
       delete:
         success:
-          title: 'Deleted!'
-          content: 'Course was deleted with success!'
+          title: "Deleted!"
+          content: "Course was deleted with success!"
         error:
-          title: 'Failed!'
-          content: 'Course was NOT deleted'
+          title: "Failed!"
+          content: "Course was NOT deleted"
       update:
         success:
-          title: 'Updated!'
-          content: 'Course was updated with success!'
+          title: "Updated!"
+          content: "Course was updated with success!"
         error:
-          title: 'Failed!'
-          content: 'Course was NOT updated!'
+          title: "Failed!"
+          content: "Course was NOT updated!"
       participants:
         add:
           success:
-            title: 'Added!'
-            content: 'Participants were added with success!'
+            title: "Added!"
+            content: "Participants were added with success!"
           error:
-            title: 'Failed!'
-            content: 'Participants were NOT added!'
+            title: "Failed!"
+            content: "Participants were NOT added!"
         remove:
           success:
-            title: 'Removed!'
-            content: 'Participant was removed with success!'
+            title: "Removed!"
+            content: "Participant was removed with success!"
           error:
-            title: 'Failed!'
-            content: 'Participant was NOT removed!'
+            title: "Failed!"
+            content: "Participant was NOT removed!"

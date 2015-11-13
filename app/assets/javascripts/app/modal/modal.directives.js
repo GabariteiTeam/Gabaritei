@@ -22,10 +22,11 @@
 			},
 			replace: true,
 			transclude: false,
-			template: '<button type="button" ng-click="storeAndGo()"'  +
-					' data-toggle="modal" data-target="#{{modalid}}"'  +
-					'class={{class}}> <span class="{{icon}}"></span> {{ icon ? "&nbsp;" : "" }} ' + 
-					'<span translate> {{text}} </span></button>'
+			template: '<button type="button" ng-click="storeAndGo()"'    +
+					  ' data-toggle="modal" data-target="#{{modalid}}"'  +
+					  ' class={{class}}><span class="{{icon}}"></span>'  +
+					  ' <span class="hidden-xs hidden-sm">&nbsp;</span>' + 
+					  ' <span class="hidden-xs hidden-sm" translate>{{text}}</span></button>'
 
 		}
 	}

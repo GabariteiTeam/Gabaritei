@@ -1,5 +1,8 @@
 <div class="page-header">
-	<h1 translate>courses.update.title</h1>
+	<h1>
+		<span translate>courses.update.title</span>
+		<span> - {{ Ctrl.course.name }}</span>
+	</h1>
 </div>
 <form class="form-horizontal" role="form" ng-submit="Ctrl.updateCourse()">
   <div ng-include="'templates/courses/_form.html'"></div>

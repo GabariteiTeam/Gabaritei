@@ -1,12 +1,15 @@
 <div class="page-header">
-	<h1 translate>courses.participants.title</h1>
+	<h1>
+		<span translate>courses.participants.title</span>
+		<span> – {{ Ctrl.course.name }}</span>
+	</h1>
 </div>
 
 <div ng-repeat="role in Ctrl.roles" class="panel panel-primary">
 	<div class="panel-heading">
 		<h2 class="panel-title">{{ role.name }}</h2>
 	</div>
-	<div class="panel-body">
+	<div class="panel-body" id="search-form-container">
 		<form class="form-inline" role="form" ng-submit="Ctrl.searchUsers(role)">
 			<div ng-include="'templates/courses/_search_form.html'"></div>
 		</form>

@@ -102,9 +102,14 @@
             background: none;
         }
     }
+
 }
 
-
+div.page-header {
+    h1 {
+        font-weight: bold;
+    }
+}
 
 
 /*** CAMINHO ***/
@@ -196,4 +201,44 @@
 a.navbar-brand {
     padding-top: 10px;
     padding-left: 10px;   
+}
+
+#search-form-container {
+    padding: 0;
+
+    form {
+        background-color: #F3F3F3;
+        padding: 10px;
+
+        input, button {
+            margin: 5px 0 5px 5px;
+        }
+
+        .search-user-list {
+            padding-top: 15px;
+            overflow-x: scroll;
+            overflow-y: hidden;
+        }
+    }
+}
+
+.user-cell {
+    
+    margin: 5px 10px 5px 0;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #DDD;
+
+    &:hover {
+        background-color: #EEE;
+        cursor: pointer;
+    }
+
+    &.selected {
+        font-weight: bold;
+        border-width: 2px;
+        border-color: #024;
+        background-color: #DEF;
+    }
+
 }
