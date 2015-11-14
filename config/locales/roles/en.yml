@@ -19,8 +19,12 @@ en:
       add: "Add new role"
       save: "Save role"
     form:
-      name: "Role name"
-      description: "Role description"
+      name: 
+        label: "Name"
+        placeholder: "Role name"
+      description: 
+        label: "Description"
+        placeholder: "Role description"
       permissions: "Permissions"
       allowed_yes: "Yes"
       allowed_no: "No"

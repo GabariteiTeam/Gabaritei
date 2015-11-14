@@ -211,10 +211,10 @@ class DataImport < ActiveRecord::Base
 	# @return [String] the description of the status.
 	def status_text
 		case status
-		when -1 then I18n.t("data_import.index.table.body.status.not_yet_imported")
-		when  0 then I18n.t("data_import.index.table.body.status.currently_being_imported")
-		when  1 then I18n.t("data_import.index.table.body.status.successfully_imported")
-		else         I18n.t("data_import.index.table.body.status.error")
+		when -1 then "data_import.index.table.body.status.not_yet_imported"
+		when  0 then "data_import.index.table.body.status.currently_being_imported"
+		when  1 then "data_import.index.table.body.status.successfully_imported"
+		else         "data_import.index.table.body.status.error"
 		end
 	end
 

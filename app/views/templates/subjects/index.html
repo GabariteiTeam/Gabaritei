@@ -1,19 +1,24 @@
 <div class="page-header">
-  <h1 translate>crud.subjects.index.heading</h1>
-  <p class="lead" translate>crud.subjects.index.sub_heading</p>
+  <h1>
+    <span class="glyphicon glyphicon-book"></span>
+    <span class="page-title" translate>subjects.index.heading</span>
+  </h1>
+  <p class="lead" translate>subjects.index.sub_heading</p>
 </div>
 
-<div class="panel panel-primary">
-  <div class="panel-heading">
-  </div>
+<a href="#subjects/new" class="btn btn-primary crud-add-btn">
+  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+  <span translate>subjects.actions.add</span>
+</a>
 
+<div class="panel panel-primary">
+  <div class="panel-heading"></div>
   <table class="table table-striped table-hover">
     <thead>
       <tr>
-        <th translate>crud.name</th>
-        <th translate>crud.description</th>
-        <th translate>crud.subjects.index.fields</th>
-        <th translate>crud.options</th>
+        <th translate>subjects.index.table.header.name</th>
+        <th translate>subjects.index.table.header.description</th>
+        <th translate>subjects.index.table.header.fields</th>
       </tr>
     </thead>
 
@@ -21,16 +26,21 @@
         <tr data-ng-repeat="subject in Ctrl.subjects">
           <td>{{ subject.name }}</td>
           <td>{{ subject.description }}</td>
-          <td><a href="#fields/{{subject.id}}" translate>crud.subjects.index.view_fields</a></td>
           <td>
-            <a href="#subjects/update/{{subject.id}}" class="btn btn-xs btn-info" translate>crud.edit</a>
-            <gab-show-modal-button text="crud.delete" args="subject.id" modalid="confirmDeleteSubject" class="btn btn-xs btn-danger"/><gab-show-modal-button>
+            <a href="#fields/{{subject.id}}" class="btn btn-xs btn-default">
+              <span class="glyphicon glyphicon-leaf"></span>
+              <span class="hidden-xs hidden-sm">&nbsp;</span>
+              <span class="hidden-xs hidden-sm" translate>subjects.actions.view_fields</span>
+            </a>
+            <a href="#subjects/update/{{subject.id}}" class="btn btn-xs btn-info">
+              <span class="glyphicon glyphicon-pencil"></span>
+              <span class="hidden-xs hidden-sm">&nbsp;</span>
+              <span class="hidden-xs hidden-sm" translate>subjects.actions.edit</span>
+            </a>
+            <gab-show-modal-button text="subjects.actions.delete" args="subject.id" modalid="confirmDeleteSubject" class="btn btn-xs btn-danger" icon="glyphicon glyphicon-trash"></gab-show-modal-button>
           </td>
         </tr>
     </tbody>
   </table>
 </div>
- 
-<a href="#subjects/new" class="btn btn-primary" translate>crud.add</a>
-
-<div gab-confirm-modal modalid="confirmDeleteSubject" title="crud.subjects.modal.delete.title" body="crud.subjects.modal.delete.body" callback="Ctrl.c_delete(id)"></div>
+<div gab-confirm-modal modalid="confirmDeleteSubject" title="subjects.modal.delete.title" body="subjects.modal.delete.body" callback="Ctrl.c_delete(id)"></div>

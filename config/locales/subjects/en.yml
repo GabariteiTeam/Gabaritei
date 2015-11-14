@@ -1,44 +1,53 @@
 en:
   subjects: 
+    index:
+      heading: "Subjects"
+      sub_heading: "Create a new subject to your Virtual Class!"
+      table:
+        header:
+          name: "Name"
+          description: "Description"
+          fields: "Fields"
+    create: 
+      heading: "New Subject"
+    update:
+      heading: "Update Subject"
+    actions:
+      add: "Add new subject"
+      edit: "Edit"
+      delete: "Delete"
+      save: "Save subject" 
+      view_fields: "View Fields"
+    form:
+      name:
+        label: "Subject name:"
+        placeholder: "Subject name here"
+      description: 
+        label: "Subject description:"
+        placeholder: "Subject description here"
+    modal:
+      delete:
+        title: "Warning!"
+        body: "Are you sure you want to delete this subject?"
     alerts:
       create:
         success:
-          title: 'Created!'
-          content: 'Subject was created with success!'
+          title: "Created!"
+          content: "Subject was created with success!"
         error:
-          title: 'Failed!'
-          content: 'Subject was NOT created!'
+          title: "Failed!"
+          content: "Subject was NOT created!"
       delete:
         success:
-          title: 'Deleted!'
-          content: 'Subject was deleted with success!'
+          title: "Deleted!"
+          content: "Subject was deleted with success!"
         error:
-          title: 'Failed!'
-          content: 'Subject was NOT deleted'
+          title: "Failed!"
+          content: "Subject was NOT deleted"
       update:
         success:
-          title: 'Updated!'
-          content: 'Subject was updated with success'
+          title: "Updated!"
+          content: "Subject was updated with success"
         error:
-          title: 'Failed!'
-          content: 'Subject was NOT updated!'
-    modal:
-      delete:
-        title: 'Warning!'
-        body: 'Are you sure you want to delete this subject?'
-    index:
-      heading: 'Subjects'
-      sub_heading: 'Create a new subject to your Virtual Class!'
-      fields: 'Fields'
-      view_fields: 'View Fields'
-    create: 
-      header: 'New Subject'
-    update:
-      heading: 'Update Subject'
-    form:
-      subject_name:
-        title: 'Subject name:'
-        placeholder: 'Subject name here'
-      subject_description: 
-        title: 'Subject description:'
-        placeholder: 'Subject description here'
+          title: "Failed!"
+          content: "Subject was NOT updated!"

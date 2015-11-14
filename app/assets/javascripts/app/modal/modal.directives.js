@@ -30,6 +30,7 @@
 
 		}
 	}
+	
 	function gabConfirmModal() {
 		return {
 			scope: {
