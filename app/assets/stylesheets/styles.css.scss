@@ -108,6 +108,10 @@
 div.page-header {
     h1 {
         font-weight: bold;
+
+        span.page-title {
+            vertical-align: top;
+        }
     }
 }
 

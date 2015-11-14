@@ -1,37 +1,36 @@
 <div class="page-header">
-  <h1 translate>crud.responses.index.header</h1>
-  <p class="lead"><span translate>crud.responses.index.sub_header</span> {{Ctrl.question.question.text | htmlToPlaintext}}</p>
+  <h1 translate>responses.index.heading</h1>
+  <p class="lead"><span translate>responses.index.sub_heading</span> {{Ctrl.question.question.text | htmlToPlaintext}}</p>
 </div>
-
+<a href="#responses/new/{{Ctrl.question_id}}" class="btn btn-primary crud-add-btn">
+  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+  <span translate>responses.actions.add</span>
+</a>
 <div class="panel panel-primary">
-  <div class="panel-heading">
-  </div>
-
+  <div class="panel-heading"></div>
   <table class="table table-striped table-hover ">
     <thead>
       <tr>
-        <th translate>crud.responses.table.headers.id</th>
-        <th translate>crud.responses.table.headers.question</th>
-        <th translate>crud.responses.table.headers.owner</th>
-        <th translate>crud.responses.table.headers.text</th>
+        <th translate>responses.index.table.header.question</th>
+        <th translate>responses.index.table.header.owner</th>
+        <th translate>responses.index.table.header.text</th>
       </tr>
     </thead>
-
-  <tbody>
-        <tr data-ng-repeat="response in Ctrl.responses">
-          <td>{{ response.id }}</td>
-          <td>{{ response.question_id }}</td>
-          <td>{{ response.owner_id }}</td>
-          <td>{{ response.text | htmlToPlaintext }}</td>
-          <td>
-            <a href="#responses/update/{{response.id}}" class="btn btn-xs btn-info" translate>crud.edit</a>
-            <gab-show-modal-button text="crud.delete" args="response.id" modalid="confirmDeleteResponse" class="btn btn-xs btn-danger"/><gab-show-modal-button>
-          </td>
-        </tr>
+    <tbody>
+      <tr data-ng-repeat="response in Ctrl.responses">
+        <td>{{ response.question_id }}</td>
+        <td>{{ response.owner_id }}</td>
+        <td>{{ response.text | htmlToPlaintext }}</td>
+        <td>
+          <a href="#responses/update/{{response.id}}" class="btn btn-xs btn-info">
+            <span class="glyphicon glyphicon-pencil"></span>
+            <span class="hidden-xs hidden-sm">&nbsp;</span>
+            <span class="hidden-xs hidden-sm" translate>responses.actions.edit</span>
+          </a>
+          <gab-show-modal-button text="responses.actions.delete" args="response.id" modalid="confirmDeleteResponse" class="btn btn-xs btn-danger" icon="glyphicon glyphicon-trash"></gab-show-modal-button>
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>
-  
-<a href="#responses/new/{{Ctrl.question_id}}" class="btn btn-primary" translate>crud.responses.index.add</a>
-
-<div gab-confirm-modal modalid="confirmDeleteResponse" title="crud.responses.modal.delete.title" body="crud.responses.modal.delete.body" callback="Ctrl.c_delete(id)"></div>
+<div gab-confirm-modal modalid="confirmDeleteResponse" title="responses.modal.delete.title" body="responses.modal.delete.body" callback="Ctrl.c_delete(id)"></div>

@@ -1,51 +1,34 @@
 en:
   requests:
     index: 
-      heading: 'Requests'
-      sub_heading: 'These are the requests to be accepted or rejected'
-      registration_request: 'Registration requests'
-      course_registration_request: 'Course registration requests'
+      heading: "Requests"
+      sub_heading: "These are the requests to be accepted or rejected"
+      registration_requests: "Registration requests"
+      course_registration_requests: "Course registration requests"
       table:
         headers:
-          requirer: 'Requirer'
-          request_date: 'Request date'
-          email: 'E-mail'
-          status: 'Status'
-          course: 'Course'
+          requirer: "Requirer"
+          request_date: "Request date"
+          email: "E-mail"
+          status: "Status"
+          course: "Course"
         body:
           status:
-            not_yet_treated: 'Not yet treated'
-            accepted_in: 'Accepted in'
-            rejected_in: 'Rejected in'
-          assess: 'Assess'
+            not_yet_treated: "Not yet treated"
+            accepted_in: "Accepted in"
+            rejected_in: "Rejected in"
     create:
-      registration_title: 'Registration Request'
-      course_registration_title: 'Course Registration Request'
-      sub_heading: 'Please fill out this form to request your registration'
+      registration_heading: "Registration Request"
+      registration_sub_heading: "Please fill out this form to request your registration"
+      course_registration_heading: "Course Registration Request"
+      course_registration_sub_heading: "Please fill out this form to request your registration"
     assessment:
-      title: 'Request assessment'
-    alerts:
-      create:
-        success:
-          title: 'Created!'
-          content: 'Request was created with success!'
-        error:
-          title: 'Failed!'
-          content: 'Request was NOT created!'
-      delete:
-        success:
-          title: 'Deleted!'
-          content: 'Request was deleted with success!'
-        error:
-          title: 'Failed!'
-          content: 'Request was NOT deleted'
-      assess:
-        success:
-          title: 'Assessed!'
-          content: 'Request was assessed with success!'
-        error:
-          title: 'Failed!'
-          content: 'Request was NOT updated!'
+      title: "Request assessment"
+    actions:
+      view: "View"
+      send: "Send"
+      assess: "Assess"
+      delete: "Delete"
     form:
       first_name: "First name"
       last_name: "Last name"
@@ -56,8 +39,32 @@ en:
       message: "Message"
       response_message: "Response message"
       response: "Response"
-      accept: "Assessment"
+      assessment: "Assessment"
+      accept: "Accept"
+      reject: "Reject"
     modal:
       delete:
-        title: 'Warning!'
-        body: 'Are you sure you want to delete this request?'
+        title: "Warning!"
+        body: "Are you sure you want to delete this request?"
+    alerts:
+      create:
+        success:
+          title: "Created!"
+          content: "Request was created with success!"
+        error:
+          title: "Failed!"
+          content: "Request was NOT created!"
+      delete:
+        success:
+          title: "Deleted!"
+          content: "Request was deleted with success!"
+        error:
+          title: "Failed!"
+          content: "Request was NOT deleted"
+      assess:
+        success:
+          title: "Assessed!"
+          content: "Request was assessed with success!"
+        error:
+          title: "Failed!"
+          content: "Request was NOT updated!"

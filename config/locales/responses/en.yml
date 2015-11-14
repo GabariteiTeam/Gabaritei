@@ -1,17 +1,22 @@
 en:
   responses:
-    buttons:
-      view: 'View responses'
     index:
       heading: 'Question answers'
       sub_heading: 'The answers for '
-      add: 'Add new answer'
       table:
-        headers:
-          id: 'id'
+        header:
           question: 'Question'
           owner: 'Owner'
           text: 'Text'
+    actions:
+      add: "Add new response"
+      save: "Save response"
+      edit: "Edit"
+      delete: "Delete"
+    create:
+      heading: 'Respond to a question'
+    update:
+      heading: 'Update your response'
     form:
       question:
         label: 'Question Text:'
@@ -19,10 +24,8 @@ en:
         label: 'Your answer:'
       alternative:
         label: 'Alternative'
-      create:
-        title: 'Respond to a question'
-      update:
-        title: 'Update your response'
+        option_yes: 'Yes'
+        option_no: 'No'
     modal:
       delete:
         title: 'Confirmation required'
