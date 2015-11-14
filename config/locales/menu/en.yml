@@ -1,15 +1,15 @@
 en:
   menu:
-    questions: 'Questions'
-    subjects: 'Subjects'
-    data_import: 'Data import'
-    language: 'Language'
-    roles: 'Roles'
-    users: 'Users'
-    courses: 'Courses'
-    contents: 'Contents'
-    requests: 'Requests'
-    profile: 'Profile'
-    contact: 'Contact'
-    settings: 'Settings'
-    logout: 'Logout'
+    questions: "Questions"
+    subjects: "Subjects"
+    data_import: "Data import"
+    language: "Language"
+    roles: "Roles"
+    users: "Users"
+    courses: "Courses"
+    contents: "Contents"
+    requests: "Requests"
+    profile: "Profile"
+    contact: "Contact"
+    settings: "Settings"
+    logout: "Logout"

@@ -23,10 +23,10 @@
           <td>{{ field.name }}</td>
           <td>{{ field.description }}</td>
           <td>
-            <a href="#fields/update/{{field.id}}/{{Ctrl.subject.id}}" class="btn btn-xs btn-primary">
+            <a href="#fields/update/{{field.id}}/{{Ctrl.subject.id}}" class="btn btn-xs btn-info">
               <span class="glyphicon glyphicon-pencil"></span>
-              &nbsp;
-              <span translate>fields.actions.edit</span>
+              <span class="hidden-xs hidden-sm">&nbsp;</span>
+              <span class="hidden-xs hidden-sm" translate>fields.actions.edit</span>
             </a>
             <gab-show-modal-button text="fields.actions.delete" args="field.id" modalid="confirmDeleteField" class="btn btn-xs btn-danger" icon="glyphicon glyphicon-trash"></gab-show-modal-button>
           </td>
