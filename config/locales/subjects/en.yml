@@ -20,11 +20,11 @@ en:
       view_fields: "View Fields"
     form:
       name:
-        label: "Subject name:"
-        placeholder: "Subject name here"
+        label: "Name"
+        placeholder: "Subject name"
       description: 
-        label: "Subject description:"
-        placeholder: "Subject description here"
+        label: "Description"
+        placeholder: "Subject description"
     modal:
       delete:
         title: "Warning!"

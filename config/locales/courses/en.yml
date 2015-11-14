@@ -7,11 +7,11 @@ en:
         body:
           subject: "Subject:"
     participants:
-      title: "Edit participants"
+      heading: "Edit participants"
     create:
-      title: "New Course"
+      heading: "New Course"
     update:
-      title: "Edit Course"
+      heading: "Edit Course"
     actions:
       add: "Add new course"
       save: "Save course"

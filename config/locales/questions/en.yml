@@ -12,9 +12,9 @@ en:
           answer: "Answer"
           hot: "Hot"
     create:
-      title: "New Question"
+      heading: "New Question"
     update:
-      title: "Edit Question"
+      heading: "Edit Question"
     actions:
       add: "Add new question"
       edit: "Edit"

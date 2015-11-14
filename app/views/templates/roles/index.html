@@ -20,7 +20,7 @@
       <tr>
         <th translate>roles.index.table.header.name</th>
         <th translate>roles.index.table.header.description</th>
-        <th translate>roles.index.table.header.options</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -30,10 +30,10 @@
           <td>
             <a href="#roles/update/{{role.id}}" class="btn btn-xs btn-info">
               <span class="glyphicon glyphicon-pencil"></span>
-              &nbsp;
-              <span translate>roles.index.table.options.edit</span>
+              <span class="hidden-xs hidden-sm">&nbsp;</span>
+              <span class="hidden-xs hidden-sm" translate>roles.actions.edit</span>
             </a>
-            <gab-show-modal-button text="roles.index.table.options.delete" args="role.id" modalid="confirmDeleteRole" class="btn btn-xs btn-danger" icon="glyphicon glyphicon-trash">
+            <gab-show-modal-button text="roles.actions.delete" args="role.id" modalid="confirmDeleteRole" class="btn btn-xs btn-danger" icon="glyphicon glyphicon-trash">
             </gab-show-modal-button>
           </td>
         </tr>

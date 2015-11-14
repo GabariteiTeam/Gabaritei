@@ -23,7 +23,7 @@ en:
       course_registration_heading: "Course Registration Request"
       course_registration_sub_heading: "Please fill out this form to request your registration"
     assessment:
-      title: "Request assessment"
+      heading: "Request assessment"
     actions:
       view: "View"
       send: "Send"

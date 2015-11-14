@@ -7,17 +7,15 @@ en:
         header:
           name: "Role name"
           description: "Description"
-          options: "Options"
-        options:
-          edit: "Edit"
-          delete: "Delete"
     create:
-      title: "New Role"
+      heading: "New Role"
     update:
-      title: "Edit Role"
+      heading: "Edit Role"
     actions:
       add: "Add new role"
       save: "Save role"
+      edit: "Edit"
+      delete: "Delete"
     form:
       name: 
         label: "Name"
