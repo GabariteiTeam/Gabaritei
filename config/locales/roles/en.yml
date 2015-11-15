@@ -26,6 +26,15 @@ en:
       permissions: "Permissions"
       allowed_yes: "Yes"
       allowed_no: "No"
+      tag:
+        contents: "Contents"
+        courses: "Courses"
+        import_data: "Import data"
+        questions: "Questions"
+        requests: "Requests"
+        roles: "Roles"
+        subjects_fields: "Subjects and fields"
+        users: "Users"
     modal:
       delete:
         title: "Warning!"
