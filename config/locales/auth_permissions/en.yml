@@ -7,25 +7,45 @@ en:
     contents:
       globally_manipulate: 
         title: "Manipulate contents (globally)"
-        help: ""
+        help: "User can create new contents, and edit or delete any content, regardless of its owner."
       manipulate:
         title: "Manipulate contents"
-        help: ""
+        help: "User can create new contents, and edit or delete the contents belonging to them."
     courses:
-      globally_manipulate: 
-        title: "Manipulate courses (globally)"
-        help: ""
-      edit_participants: 
-        title: "Edit participants"
-        help: ""
+      manipulate: 
+        title: "Manipulate courses"
+        help: "User can create, edit and delete courses. User can also edit the participants of the courses."
       take_part:
         title: "Take part in courses"
-        help: ""
-    users: "Manipulate users"
-    roles: "Manipulate roles"
-    questions: "Manipulate questions"
-    subjects: "Manipulate subjects"
-    contents: "Manipulate contents"
-    registration_requests: "Manage registration requests"
-    course_registration_requests: "Manage course registration requests"
-    import_data: "Import data"
+        help: "User can take part in courses, having access to all of their contents."
+    users:
+      globally_manipulate:
+        title: "Manipulate users"
+        help: "User can register new users, and edit or delete other users."
+    roles:
+      manipulate:
+        title: "Manipulate roles and permissions"
+        help: "User can create, edit and delete roles. User can also define the permissions associated to each role."
+    questions:
+      globally_manipulate:
+        title: "Manipulate questions (globally)"
+        help: "User can create new questions, and edit or delete any question, regardless of its owner."
+      manipulate:
+        title: "Manipulate questions"
+        help: "User can create new questions, and edit or delete the questions belonging to them."
+    subjects_fields: 
+      manipulate:
+        title: "Manipulate subjects and fields"
+        help: "User can create, edit and delete subjects and associated fields."
+    requests:
+      registration:
+        manage:
+          title: "Manage registration requests"
+          help: "User can assess and delete registration requests."
+      course:
+        manage:
+          title: "Manage course registration requests"
+          help: "User can assess and delete course registration requests."
+    import_data:
+      title: "Import data"
+      help: "User can upload files and import data."
