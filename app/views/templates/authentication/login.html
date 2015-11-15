@@ -8,7 +8,16 @@
 		    <input type="password" ng-model="Ctrl.credentials.password" class="form-control" id="description" placeholder="{{ 'authentication.password' | translate }}" ng-change="Ctrl.clearStatus()"/> 
 		</div>
 		<div class="form-group">
-		    <input type="submit" class="btn btn-primary" value="{{'authentication.login' | translate}}"/>
+		    <button type="submit" class="btn btn-primary">
+		    	<span class="glyphicon glyphicon-log-in"></span>
+		    	&nbsp;
+		    	<span translate>authentication.login</span>
+		    </button>
+		    <a href="#requests/registration/new" class="btn btn-default">
+		    	<span class="glyphicon glyphicon-envelope"></span>
+		    	&nbsp;		    	
+		    	<span translate>authentication.request_access</span>
+		    </a>
 		</div>
 	</form>
 </div>
