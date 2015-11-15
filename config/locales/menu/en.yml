@@ -12,4 +12,7 @@ en:
     profile: "Profile"
     contact: "Contact"
     settings: "Settings"
+    login: "Login"
+    request_access: "Request access"
+    forgot_password: "Forgot password"
     logout: "Logout"

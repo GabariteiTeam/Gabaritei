@@ -3,6 +3,8 @@ en:
     email: "E-mail"
     password: "Password"
     login: "Sign in"
+    forgot_password: "Forgot password?"
+    request_access: "Request access"
   permission:
     contents:
       globally_manipulate: 
