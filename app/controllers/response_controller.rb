@@ -4,7 +4,7 @@ class ResponseController < ApplicationController
 		if @responses == nil
 			render :json =>  @responses, status: :unprocessable_entity
 		else
-			render json: @responses
+			render json: @responses, methods: [:owner_name]
 		end
 	end
 
@@ -30,7 +30,7 @@ class ResponseController < ApplicationController
 		@response.question = @question
 		
 		set_choices
-
+		@response.owner = current_user
 		if @response.save
 			render :json => {}
 		else

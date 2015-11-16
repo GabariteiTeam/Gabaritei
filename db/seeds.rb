@@ -15,8 +15,8 @@ p_courses_take_part = Permission.new({name: "permission.courses.take_part"})
 p_courses_take_part.save!
 
 # USERS PERMISSIONS
-p_users_globally_manipulate = Permission.new({name: "permission.users.globally_manipulate"})
-p_users_globally_manipulate.save!
+p_users_manipulate = Permission.new({name: "permission.users.manipulate"})
+p_users_manipulate.save!
 
 # ROLES PERMISSIONS
 p_roles_manipulate = Permission.new({name: "permission.roles.manipulate"})
@@ -52,7 +52,7 @@ role_admin = Role.new(name: "Admin")
 role_admin.permissions = [
 	p_contents_globally_manipulate,
 	p_courses_manipulate,
-	p_users_globally_manipulate,
+	p_users_manipulate,
 	p_roles_manipulate,
 	p_questions_globally_manipulate,
 	p_subjects_fields_manipulate,

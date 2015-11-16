@@ -61,6 +61,10 @@ class Response < ActiveRecord::Base
 
 	# @!endgroup
 
+	def owner_name
+		owner.first_name + ' ' + owner.last_name
+	end
+
 	has_many :response_choices
 	has_one :test_response
 	

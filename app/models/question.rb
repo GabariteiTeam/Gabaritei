@@ -122,6 +122,10 @@ class Question < ActiveRecord::Base
 
 	# @!endgroup
 
+	def owner_name
+		owner.first_name + ' ' + owner.last_name
+	end
+
 	has_many :course_questions
 	has_many :question_categories
 	has_many :test_questions

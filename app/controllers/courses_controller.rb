@@ -1,7 +1,6 @@
 class CoursesController < ApplicationController
   
-    def index
-    	
+    def index    	
 		@courses = Course.all
 		render json: @courses, methods: [:subject, :field]
 	end

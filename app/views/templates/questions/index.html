@@ -26,7 +26,7 @@
     </thead>
     <tbody>
         <tr data-ng-repeat="question in Ctrl.questions">
-          <td>{{ question.user_id }}</td>
+          <td>{{ question.owner_name }}</td>
           <td>{{ question.source }}</td>
           <td>{{ question.text | htmlToPlaintext }}</td>
           <td><span ng-class="{'glyphicon glyphicon-fire': question.hot}"></span></td>
