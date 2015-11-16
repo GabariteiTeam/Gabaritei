@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 		if current_user.confirm_permissions(["permission.manipulate_users"])
 			max_per_page = 10
 			paginate User.count, max_per_page do |limit, offset|
-	      		render json: User.limit(limit).offset(offset), methods: [:avatar_url_thumb, :active]
+	      		render json: User.limit(limit).offset(offset), methods: [:avatar_url_thumb]
 	    	end
 	    else
 	    	render json: {error: "Unauthorized access"}, status: 401

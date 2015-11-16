@@ -6,16 +6,9 @@
         .module(APP_NAME)
         .controller('AuthenticationController', AuthenticationController);
 
-    AuthenticationController
-        .$inject = [
-            '$scope',
-            '$location',
-            '$routeParams',
-            '$route',
-            'Auth'
-        ];
+    AuthenticationController.$inject = ['$scope', '$location', '$routeParams', '$route', '$filter', 'Auth'];
 
-    function AuthenticationController($scope, $location, $routeParams, $route, Auth) {
+    function AuthenticationController($scope, $location, $routeParams, $route, $filter, Auth) {
         
         var vm = this;
 
@@ -46,14 +39,14 @@
                 trigger: 'manual',
                 placement: 'top',
                 content: function() {
-                    if (vm.fields_status.email == 'warning') return "Provide your e-mail";
-                    else if (vm.fields_status.email == 'error') return "E-mail and/or password incorrect!"
+                    if (vm.fields_status.email == 'warning') return $filter('translate')('authentication.email_missing');
+                    else if (vm.fields_status.email == 'error') return $filter('translate')('authentication.incorrect_credentials');
                 }
             });
             jQuery("#login-password").popover({
                 trigger: 'manual',
                 placement: 'bottom',
-                content: "Provide your password"
+                content: $filter('translate')('authentication.password_missing')
             });
         }
 

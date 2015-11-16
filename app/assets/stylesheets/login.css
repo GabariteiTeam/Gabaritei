@@ -99,3 +99,7 @@ div.form-group.login-field.has-warning {
 	animation-name: field_shake_vertical;
 	animation-duration: 0.4s;
 }
+
+p.confirmation-text {
+	font-size: 18px;
+}

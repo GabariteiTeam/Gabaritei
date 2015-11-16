@@ -5,6 +5,9 @@ en:
     login: "Sign in"
     forgot_password: "Forgot password?"
     request_access: "Request access"
+    email_missing: "Provide your e-mail"
+    password_missing: "Provide your password"
+    incorrect_credentials: "Incorrect e-mail and/or password!"
   permission:
     contents:
       globally_manipulate: 

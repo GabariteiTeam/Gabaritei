@@ -188,10 +188,6 @@ class User < ActiveRecord::Base
         avatar.url(:medium)
     end
 
-    def active
-        encrypted_password != nil ? I18n.t('crud.users.index.table.body.active') : I18n.t('crud.users.index.table.body.inactive')
-    end
-
     def verify_permissions(permission_list)
         user_permissions = permissions.map { |permission| permission.name }
         verified = {}
