@@ -24,7 +24,7 @@ en:
         title: "Take part in courses"
         help: "User can take part in courses, having access to all of their contents."
     users:
-      globally_manipulate:
+      manipulate:
         title: "Manipulate users"
         help: "User can register new users, and edit or delete other users."
     roles:

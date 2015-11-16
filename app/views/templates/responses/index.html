@@ -20,7 +20,7 @@
     <tbody>
       <tr data-ng-repeat="response in Ctrl.responses">
         <td>{{ response.question_id }}</td>
-        <td>{{ response.owner_id }}</td>
+        <td>{{ response.owner_name }}</td>
         <td>{{ response.text | htmlToPlaintext }}</td>
         <td>
           <a href="#responses/update/{{response.id}}" class="btn btn-xs btn-info">

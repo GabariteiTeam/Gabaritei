@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
-    render json: Question.all
+    render json: Question.all, methods: [:owner_name]
   end
 
   # GET /questions/1
@@ -66,7 +66,7 @@ class QuestionsController < ApplicationController
       end
     end
 
-
+    @question.owner = current_user
     if @question.save
       render :json => {}
     else
