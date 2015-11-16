@@ -19,10 +19,8 @@
         <div ng-repeat="permission in Ctrl.permissions['contents']">
           <label>
             <input toggle-switch type="checkbox" ng-model="permission.allowed" size="mini" on="{{ 'roles.form.allowed_yes' | translate }}" off="{{ 'roles.form.allowed_no' | translate }}">
-            &nbsp;
-            <span translate>{{ permission.name + '.title' }}</span>
-            &nbsp;
-            <a role="button" tabindex="0" id="{{ 'permission_' + permission.id }}" type="button" class="btn btn-xs btn-default" ng-click="Ctrl.showHelpPopover(permission.id, permission.name)" popover-active="false">
+            <span class="permission-title" translate>{{ permission.name + '.title' }}</span>
+            <a role="button" tabindex="0" id="{{ 'permission_' + permission.id }}" type="button" class="permission-info-btn" ng-click="Ctrl.showHelpPopover(permission.id, permission.name)" popover-active="false">
               <span class="glyphicon glyphicon-info-sign"></span>
             </a>
           </label>
@@ -37,10 +35,8 @@
         <div ng-repeat="permission in Ctrl.permissions['courses']">
           <label>
             <input toggle-switch type="checkbox" ng-model="permission.allowed" size="mini" on="{{ 'roles.form.allowed_yes' | translate }}" off="{{ 'roles.form.allowed_no' | translate }}">
-            &nbsp;
-            <span translate>{{ permission.name + '.title' }}</span>
-            &nbsp;
-            <a role="button" tabindex="0" id="{{ 'permission_' + permission.id }}" type="button" class="btn btn-xs btn-default" ng-click="Ctrl.showHelpPopover(permission.id, permission.name)" popover-active="false">
+            <span class="permission-title" translate>{{ permission.name + '.title' }}</span>
+            <a role="button" class="permission-info-btn" tabindex="0" id="{{ 'permission_' + permission.id }}" ng-click="Ctrl.showHelpPopover(permission.id, permission.name)" popover-active="false">
               <span class="glyphicon glyphicon-info-sign"></span>
             </a>
           </label>
@@ -55,10 +51,8 @@
         <div ng-repeat="permission in Ctrl.permissions['import_data']">
           <label>
             <input toggle-switch type="checkbox" ng-model="permission.allowed" size="mini" on="{{ 'roles.form.allowed_yes' | translate }}" off="{{ 'roles.form.allowed_no' | translate }}">
-            &nbsp;
-            <span translate>{{ permission.name + '.title' }}</span>
-            &nbsp;
-            <a role="button" tabindex="0" id="{{ 'permission_' + permission.id }}" type="button" class="btn btn-xs btn-default" ng-click="Ctrl.showHelpPopover(permission.id, permission.name)" popover-active="false">
+            <span class="permission-title" translate>{{ permission.name + '.title' }}</span>
+            <a role="button" tabindex="0" id="{{ 'permission_' + permission.id }}" type="button" class="permission-info-btn" ng-click="Ctrl.showHelpPopover(permission.id, permission.name)" popover-active="false">
               <span class="glyphicon glyphicon-info-sign"></span>
             </a>
           </label>
@@ -73,10 +67,8 @@
         <div ng-repeat="permission in Ctrl.permissions['questions']">
           <label>
             <input toggle-switch type="checkbox" ng-model="permission.allowed" size="mini" on="{{ 'roles.form.allowed_yes' | translate }}" off="{{ 'roles.form.allowed_no' | translate }}">
-            &nbsp;
-            <span translate>{{ permission.name + '.title' }}</span>
-            &nbsp;
-            <a role="button" tabindex="0" id="{{ 'permission_' + permission.id }}" type="button" class="btn btn-xs btn-default" ng-click="Ctrl.showHelpPopover(permission.id, permission.name)" popover-active="false">
+            <span class="permission-title" translate>{{ permission.name + '.title' }}</span>
+            <a role="button" tabindex="0" id="{{ 'permission_' + permission.id }}" type="button" class="permission-info-btn" ng-click="Ctrl.showHelpPopover(permission.id, permission.name)" popover-active="false">
               <span class="glyphicon glyphicon-info-sign"></span>
             </a>
           </label>
@@ -91,10 +83,8 @@
         <div ng-repeat="permission in Ctrl.permissions['requests']">
           <label>
             <input toggle-switch type="checkbox" ng-model="permission.allowed" size="mini" on="{{ 'roles.form.allowed_yes' | translate }}" off="{{ 'roles.form.allowed_no' | translate }}">
-            &nbsp;
-            <span translate>{{ permission.name + '.title' }}</span>
-            &nbsp;
-            <a role="button" tabindex="0" id="{{ 'permission_' + permission.id }}" type="button" class="btn btn-xs btn-default" ng-click="Ctrl.showHelpPopover(permission.id, permission.name)" popover-active="false">
+            <span class="permission-title" translate>{{ permission.name + '.title' }}</span>
+            <a role="button" tabindex="0" id="{{ 'permission_' + permission.id }}" type="button" class="permission-info-btn" ng-click="Ctrl.showHelpPopover(permission.id, permission.name)" popover-active="false">
               <span class="glyphicon glyphicon-info-sign"></span>
             </a>
           </label>
@@ -109,10 +99,8 @@
         <div ng-repeat="permission in Ctrl.permissions['roles']">
           <label>
             <input toggle-switch type="checkbox" ng-model="permission.allowed" size="mini" on="{{ 'roles.form.allowed_yes' | translate }}" off="{{ 'roles.form.allowed_no' | translate }}">
-            &nbsp;
-            <span translate>{{ permission.name + '.title' }}</span>
-            &nbsp;
-            <a role="button" tabindex="0" id="{{ 'permission_' + permission.id }}" type="button" class="btn btn-xs btn-default" ng-click="Ctrl.showHelpPopover(permission.id, permission.name)" popover-active="false">
+            <span class="permission-title" translate>{{ permission.name + '.title' }}</span>
+            <a role="button" tabindex="0" id="{{ 'permission_' + permission.id }}" type="button" class="permission-info-btn" ng-click="Ctrl.showHelpPopover(permission.id, permission.name)" popover-active="false">
               <span class="glyphicon glyphicon-info-sign"></span>
             </a>
           </label>
@@ -127,10 +115,8 @@
         <div ng-repeat="permission in Ctrl.permissions['subjects_fields']">
           <label>
             <input toggle-switch type="checkbox" ng-model="permission.allowed" size="mini" on="{{ 'roles.form.allowed_yes' | translate }}" off="{{ 'roles.form.allowed_no' | translate }}">
-            &nbsp;
-            <span translate>{{ permission.name + '.title' }}</span>
-            &nbsp;
-            <a role="button" tabindex="0" id="{{ 'permission_' + permission.id }}" type="button" class="btn btn-xs btn-default" ng-click="Ctrl.showHelpPopover(permission.id, permission.name)" popover-active="false">
+            <span class="permission-title" translate>{{ permission.name + '.title' }}</span>
+            <a role="button" tabindex="0" id="{{ 'permission_' + permission.id }}" type="button" class="permission-info-btn" ng-click="Ctrl.showHelpPopover(permission.id, permission.name)" popover-active="false">
               <span class="glyphicon glyphicon-info-sign"></span>
             </a>
           </label>
@@ -145,10 +131,8 @@
         <div ng-repeat="permission in Ctrl.permissions['users']">
           <label>
             <input toggle-switch type="checkbox" ng-model="permission.allowed" size="mini" on="{{ 'roles.form.allowed_yes' | translate }}" off="{{ 'roles.form.allowed_no' | translate }}">
-            &nbsp;
-            <span translate>{{ permission.name + '.title' }}</span>
-            &nbsp;
-            <a role="button" tabindex="0" id="{{ 'permission_' + permission.id }}" type="button" class="btn btn-xs btn-default" ng-click="Ctrl.showHelpPopover(permission.id, permission.name)" popover-active="false">
+            <span class="permission-title" translate>{{ permission.name + '.title' }}</span>
+            <a role="button" tabindex="0" id="{{ 'permission_' + permission.id }}" type="button" class="permission-info-btn" ng-click="Ctrl.showHelpPopover(permission.id, permission.name)" popover-active="false">
               <span class="glyphicon glyphicon-info-sign"></span>
             </a>
           </label>
