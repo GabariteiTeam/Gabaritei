@@ -1,5 +1,7 @@
 class RequestsController < ApplicationController
 
+	skip_before_action :verify_authentication, only: [:create_registration_request, :get_registration_request]
+
 	def registration_requests
 		if current_user.confirm_permissions(["permission.manage_registration_requests"])
 			@requests = RegistrationRequest.all
@@ -21,7 +23,7 @@ class RequestsController < ApplicationController
 	def create_registration_request
 		@request = RegistrationRequest.new(registration_request_params)
 		if @request.save!
-	    	render json: {success: true}
+	    	render json: {success: true, id: @request.id}
 	    else
 	      	render json: @request.errors, status: :unprocessable_entity
 	    end
@@ -33,7 +35,7 @@ class RequestsController < ApplicationController
 		@request.course = Course.find(params[:course][:id])
 		@request.text = params[:text]
 		if @request.save!
-	    	render json: {success: true}
+	    	render json: {success: true, id: @request.id}
 	    else
 	      	render json: @request.errors, status: :unprocessable_entity
 	    end

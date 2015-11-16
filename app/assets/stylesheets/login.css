@@ -66,6 +66,14 @@
 	100% {top: 0;}
 }
 
+#logo {
+	width: 100%;
+}
+
+#login-form {
+	margin-top: 30px;
+}
+
 div.form-group.login-field {
 	position: relative;
 }
@@ -90,4 +98,8 @@ div.form-group.login-field.has-warning {
 	-o-animation-duration: 0.4s;
 	animation-name: field_shake_vertical;
 	animation-duration: 0.4s;
+}
+
+p.confirmation-text {
+	font-size: 18px;
 }

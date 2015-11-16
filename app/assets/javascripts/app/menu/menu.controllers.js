@@ -6,9 +6,9 @@
         .module(APP_NAME)
         .controller('MenuController', MenuController);
 
-    MenuController.$inject = ['$scope', 'Auth', 'RedirectService', 'PermissionsService'];
+    MenuController.$inject = ['$scope', 'Auth', 'RedirectService'];
 
-    function MenuController($scope, Auth, RedirectService, PermissionsService) {
+    function MenuController($scope, Auth, RedirectService) {
 
         var vm = this;
 
@@ -16,25 +16,6 @@
         vm.changeMenuDisplay = changeMenuDisplay;
         vm.collapseMenu = false;
      
-        activate();
-
-        function activate() {
-            PermissionsService.verifyPermissions([
-                'permission.manipulate_roles',
-                'permission.manipulate_users',
-                'permission.manipulate_questions',
-                'permission.manipulate_subjects',
-                'permission.manipulate_contents',
-                'permission.manage_registration_requests',
-                'permission.manage_course_registration_requests',
-                'permission.import_data'
-            ], function(data) {
-                vm.permissions = data;
-            }, function(error) {
-
-            });
-        }
-
         function logout() {
             var config = {
                 headers: { 'X-HTTP-Method-Override': 'DELETE' }
@@ -49,6 +30,11 @@
 
         function changeMenuDisplay() {
             jQuery("#wrapper").toggleClass("toggled", vm.collapseMenu);
+            if (vm.collapseMenu) {
+                jQuery("[data-toggle='menu-tooltip']").tooltip();
+            } else {
+                jQuery("[data-toggle='menu-tooltip']").tooltip('destroy');
+            }
         }
 
     }

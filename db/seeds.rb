@@ -1,76 +1,86 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+#  ---------------------------------------------------------
+#     PERMISSIONS
+#  ---------------------------------------------------------
 
-# PERMISSIONS
+# CONTENTS PERMISSIONS
+p_contents_globally_manipulate = Permission.new({name: "permission.contents.globally_manipulate"})
+p_contents_globally_manipulate.save!
+p_contents_manipulate = Permission.new({name: "permission.contents.manipulate"})
+p_contents_manipulate.save!
 
-permission_manage_registration_requests = Permission.new({name: 'permission.manage_registration_requests'})
-permission_manage_registration_requests.save!
+# COURSES PERMISSIONS
+p_courses_manipulate = Permission.new({name: "permission.courses.manipulate"})
+p_courses_manipulate.save!
+p_courses_take_part = Permission.new({name: "permission.courses.take_part"})
+p_courses_take_part.save!
 
-permission_manage_course_registration_requests = Permission.new({name: 'permission.manage_course_registration_requests'})
-permission_manage_course_registration_requests.save!
+# USERS PERMISSIONS
+p_users_globally_manipulate = Permission.new({name: "permission.users.globally_manipulate"})
+p_users_globally_manipulate.save!
 
-permission_manipulate_courses = Permission.new({name: 'permission.manipulate_courses'})
-permission_manipulate_courses.save!
+# ROLES PERMISSIONS
+p_roles_manipulate = Permission.new({name: "permission.roles.manipulate"})
+p_roles_manipulate.save!
 
-permission_take_part_in_courses = Permission.new({name: 'permission.take_part_in_courses'})
-permission_take_part_in_courses.save!
+# QUESTIONS PERMISSIONS
+p_questions_globally_manipulate = Permission.new({name: "permission.questions.globally_manipulate"})
+p_questions_globally_manipulate.save!
+p_questions_manipulate = Permission.new({name: "permission.questions.manipulate"})
+p_questions_manipulate.save!
 
-permission_manipulate_users = Permission.new({name: 'permission.manipulate_users'})
-permission_manipulate_users.save!
+# SUBJECTS AND FIELDS PERMISSIONS
+p_subjects_fields_manipulate = Permission.new({name: "permission.subjects_fields.manipulate"})
+p_subjects_fields_manipulate.save!
 
-permission_manipulate_subjects = Permission.new({name: 'permission.manipulate_subjects'})
-permission_manipulate_subjects.save!
+# REQUESTS PERMISSIONS
+p_registration_requests_manage = Permission.new({name: "permission.requests.registration.manage"})
+p_registration_requests_manage.save!
+p_course_registration_requests_manage = Permission.new({name: "permission.requests.course.manage"})
+p_course_registration_requests_manage.save!
 
-permission_manipulate_contents = Permission.new({name: 'permission.manipulate_contents'})
-permission_manipulate_contents.save!
+# DATA IMPORT PERMISSIONS
+p_import_data = Permission.new({name: "permission.import_data"})
+p_import_data.save!
 
-permission_manipulate_roles = Permission.new({name: 'permission.manipulate_roles'})
-permission_manipulate_roles.save!
 
-permission_manipulate_questions = Permission.new({name: 'permission.manipulate_questions'})
-permission_manipulate_questions.save!
-
-permission_import_data = Permission.new({name: 'permission.import_data'})
-permission_import_data.save!
-
-# ROLES
+#  ---------------------------------------------------------
+#     STANDARD ROLES
+#  ---------------------------------------------------------
 
 # Admin
 role_admin = Role.new(name: "Admin")
 role_admin.permissions = [
-	permission_take_part_in_courses,
-	permission_manipulate_courses,
-	permission_manipulate_roles,
-	permission_manipulate_users,
-	permission_manipulate_questions,
-	permission_manipulate_subjects,
-	permission_manipulate_contents,
-	permission_manage_registration_requests,
-	permission_manage_course_registration_requests,
-	permission_import_data
+	p_contents_globally_manipulate,
+	p_courses_manipulate,
+	p_users_globally_manipulate,
+	p_roles_manipulate,
+	p_questions_globally_manipulate,
+	p_subjects_fields_manipulate,
+	p_registration_requests_manage,
+	p_course_registration_requests_manage,
+	p_import_data
 ]
 role_admin.save!
 
 # Student
 role_student = Role.new(name: "Student")
 role_student.permissions = [
-	permission_take_part_in_courses
+	p_courses_take_part
 ]
 role_student.save!
 
 # Teacher
 role_teacher = Role.new(name: "Teacher")
 role_teacher.permissions = [
-	permission_take_part_in_courses,
-	permission_manipulate_contents,
-	permission_manipulate_questions
+	p_courses_take_part,
+	p_contents_manipulate,
+	p_questions_manipulate
 ]
 role_teacher.save!
+
+#  ---------------------------------------------------------
+#     STANDARD ADMIN USER
+#  ---------------------------------------------------------
 
 # ADMIN USER
 user = User.new
@@ -81,6 +91,10 @@ user.password = '12345678'
 user.password_confirmation = '12345678'
 user.role = role_admin
 user.save!
+
+#  ---------------------------------------------------------
+#     DEVELOPMENT TEST DATA
+#  ---------------------------------------------------------
 
 if Rails.env == 'development'
 

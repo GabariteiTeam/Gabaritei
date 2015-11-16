@@ -13,6 +13,22 @@
                 controller: 'RequestsController',
                 controllerAs: 'Ctrl'
             })
+            .when('/requests/registration/sent/:id', {
+                templateUrl: 'templates/requests/registration_sent.html',
+                controller: 'ConfirmationRequestsController',
+                controllerAs: 'Ctrl',
+                resolve: {
+                    request: ConfirmationRegistrationRequestPrepService
+                }
+            })
+            .when('/requests/course/sent/:id', {
+                templateUrl: 'templates/requests/course_sent.html',
+                controller: 'ConfirmationRequestsController',
+                controllerAs: 'Ctrl',
+                resolve: {
+                    request: ConfirmationCourseRequestPrepService
+                }
+            })
             .when('/requests/registration/new', {
                 templateUrl: 'templates/requests/registration_new.html',
                 controller: 'ManagementRequestsController',
@@ -59,14 +75,26 @@
         }
     }
 
-    CourseRegistrationRequestPrepService.$inject = ['$route', '$q', 'Auth', 'CourseRegistrationRequest'];
+    ConfirmationRegistrationRequestPrepService.$inject = ['$route', 'RegistrationRequest'];
 
-    function CourseRegistrationRequestPrepService($route, $q, Auth, CourseRegistrationRequest) {
+    function ConfirmationRegistrationRequestPrepService($route, RegistrationRequest) {
+        return RegistrationRequest.get({id: $route.current.params.id});
+    }
+
+    CourseRegistrationRequestPrepService.$inject = ['$route', 'Auth', 'CourseRegistrationRequest'];
+
+    function CourseRegistrationRequestPrepService($route, Auth, CourseRegistrationRequest) {
         if ($route.current.params.id) {
             return CourseRegistrationRequest.get({id: $route.current.params.id});
         } else {
             return Auth.currentUser();
         }
+    }
+
+    ConfirmationCourseRequestPrepService.$inject = ['Auth'];
+
+    function ConfirmationCourseRequestPrepService(Auth) {
+        return Auth.currentUser();
     }
 
 

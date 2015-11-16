@@ -1,6 +1,7 @@
 class ContentsController < ApplicationController
 
     def index
+    	
 		@contents = Content.all
 		render json: @contents, methods: [:subject, :field]
 	end
