@@ -24,11 +24,21 @@ en:
       course_registration_sub_heading: "Please fill out this form to request your registration"
     assessment:
       heading: "Request assessment"
+    confirmation:
+      registration:
+        heading: "Registration Request successfully sent"
+        pgrph1: "Thank you for your request, "
+        pgrph2: "As soon as your request is treated, you will receive a response on the provided e-mail address: "
+      course:
+        heading: "Request successfully sent"
+        pgrph1: "Thank you for your request, "
+        pgrph2: "As soon as your request is treated, you will receive a response on the provided e-mail address: "
     actions:
       view: "View"
       send: "Send"
       assess: "Assess"
       delete: "Delete"
+      go_to_login: "Go back to login page"
     form:
       first_name: "First name"
       last_name: "Last name"

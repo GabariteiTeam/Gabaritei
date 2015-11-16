@@ -65,14 +65,16 @@ role_admin.save!
 # Student
 role_student = Role.new(name: "Student")
 role_student.permissions = [
-
+	p_courses_take_part
 ]
 role_student.save!
 
 # Teacher
 role_teacher = Role.new(name: "Teacher")
 role_teacher.permissions = [
-
+	p_courses_take_part,
+	p_contents_manipulate,
+	p_questions_manipulate
 ]
 role_teacher.save!
 
