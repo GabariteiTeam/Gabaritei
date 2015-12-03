@@ -1,53 +1,61 @@
 <div class="form-group">
-  <label for="role" class="col-sm-2 control-label">Role</label>
+  <label for="role" class="col-sm-2 control-label" translate>users.form.role</label>
   <div class="col-sm-10">
     <select ng-model="Ctrl.user.role_id" class="form-control" id="role" ng-options="role.id as role.name for role in Ctrl.roles"></select>
   </div>
 </div>
 <div class="form-group">
-  <label for="first_name" class="col-sm-2 control-label">First name</label>
+  <label for="first_name" class="col-sm-2 control-label" translate>users.form.first_name.label</label>
   <div class="col-sm-10">
-    <input type="text" ng-model="Ctrl.user.first_name" class="form-control" id="name" placeholder="User's first name here"/>
+    <input type="text" ng-model="Ctrl.user.first_name" class="form-control" id="name" placeholder="{{ 'users.form.first_name.placeholder' | translate }}"/>
   </div>
 </div>
 <div class="form-group">
-  <label for="last_name" class="col-sm-2 control-label">Last name</label>
+  <label for="last_name" class="col-sm-2 control-label" translate>users.form.last_name.label</label>
   <div class="col-sm-10">
-    <input type="text" ng-model="Ctrl.user.last_name" class="form-control" id="name" placeholder="User's last name here"/>
+    <input type="text" ng-model="Ctrl.user.last_name" class="form-control" id="name" placeholder="{{ 'users.form.last_name.placeholder' | translate }}"/>
   </div>
 </div>
 <div class="form-group">
-  <label for="email" class="col-sm-2 control-label">E-mail</label>
+  <label for="email" class="col-sm-2 control-label" translate>users.form.email.label</label>
   <div class="col-sm-10">
-    <input type="email" ng-model="Ctrl.user.email" class="form-control" id="email" placeholder="User's e-mail here"/>
+    <input type="email" ng-model="Ctrl.user.email" class="form-control" id="email" placeholder="{{ 'users.form.email.placeholder' | translate }}"/>
   </div>
 </div>
 <div class="form-group">
-  <label for="birthdate" class="col-sm-2 control-label">Birthdate</label>
+  <label for="birthdate" class="col-sm-2 control-label" translate>users.form.birthdate</label>
   <div class="col-sm-10">
     <input type="date" ng-model="Ctrl.user.birthdate" class="form-control" id="birthdate" placeholder="yyyy-mm-dd"/>
   </div>
 </div>
 <div class="form-group">
-  <label for="about" class="col-sm-2 control-label">About</label>
+  <label for="about" class="col-sm-2 control-label" translate>users.form.about.label</label>
   <div class="col-sm-10">
-    <textarea ng-model="Ctrl.user.about" class="form-control" id="about" placeholder="About…"></textarea>
+    <textarea ng-model="Ctrl.user.about" class="form-control" id="about" placeholder="{{ 'users.form.about.placeholder' | translate }}"></textarea>
   </div>
 </div>
 <div class="form-group">
-  <label for="avatar" class="col-sm-2 control-label">Avatar</label>
+  <label for="avatar" class="col-sm-2 control-label" translate>users.form.avatar</label>
   <div class="col-sm-10">
-    <div class="well well-lg avatar" ngf-drop ng-model="Ctrl.user.avatar" ngf-drag-over-class="drag-file" ng-hide="Ctrl.user.avatar">Drop image here</div>
+    <div class="well well-lg avatar" ngf-drop ng-model="Ctrl.user.avatar" ngf-drag-over-class="drag-file" ng-hide="Ctrl.user.avatar" translate>users.form.drop_avatar</div>
     <img class="preview-avatar" ngf-src="Ctrl.user.avatar" ng-hide="!Ctrl.user.avatar"/>
     <div class="form-inline" ng-hide="Ctrl.user.avatar">
-      <label for="avatar">Or select file: </label>
+      <label for="avatar" translate>users.form.select_avatar</label>
       <input type="file" ngf-select ng-model="Ctrl.user.avatar" class="form-control" id="avatar" />
     </div>
-    <button type="button" class="btn" ng-click="Ctrl.clearAvatar()" ng-hide="!Ctrl.user.avatar">Clear</button>
+    <button type="button" class="btn btn-default" ng-click="Ctrl.clearAvatar()" ng-hide="!Ctrl.user.avatar">
+      <span class="glyphicon glyphicon-erase"></span>
+      &nbsp;
+      <span translate>users.form.clear</span>
+    </button>
   </div>
 </div>
 <div class="form-group">
   <div class="col-sm-offset-2 col-sm-10">
-    <input type="submit" class="btn btn-primary" value="{{'crud.save' | translate}}"/>
+    <button type="submit" class="btn btn-primary">
+      <span class="glyphicon glyphicon-floppy-disk"></span>
+      &nbsp;
+      <span translate>users.actions.save</span>
+    </button>
   </div>
 </div>

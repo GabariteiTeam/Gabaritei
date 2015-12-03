@@ -1,26 +1,152 @@
 <div class="form-group">
-  <label for="name" class="col-sm-2 control-label">Name</label>
+  <label for="name" class="col-sm-2 control-label" translate>roles.form.name.label</label>
   <div class="col-sm-10">
-    <input type="text" ng-model="Ctrl.role.name" class="form-control" id="name" placeholder="Role name here"/>
+    <input type="text" ng-model="Ctrl.role.name" class="form-control" id="name" placeholder="{{ 'roles.form.name.placeholder' | translate }}"/>
   </div>
 </div>
 <div class="form-group">
-  <label for="description" class="col-sm-2 control-label">Role description:</label>
+  <label for="description" class="col-sm-2 control-label" translate>roles.form.description.label</label>
   <div class="col-sm-10">
-    <textarea ng-model="Ctrl.role.description" class="form-control" id="description" placeholder="Describe role here"/>
+    <textarea ng-model="Ctrl.role.description" class="form-control" id="description" placeholder="{{ 'roles.form.description.placeholder' | translate }}"/>
   </div>
 </div>
 <div class="form-group">
-  <label for="permissions" class="col-sm-2 control-label">Permissions:</label>
-  <div class="col-sm-offset-2 col-sm-10">
-    <label class="checkbox" ng-repeat="permission in Ctrl.permissions">
-      <input toggle-switch type="checkbox" ng-model="permission.allowed" size="small" on="Yes" off="No">
-      <span style="margin-left: 10px;" translate>{{ permission.name }}</span>
-    </label>
+  <label for="permissions" class="col-sm-2 control-label" translate>roles.form.permissions</label>
+  <div class="col-sm-10 col-md-10 col-lg-5">
+    <div class="panel panel-primary">
+      <div class="panel-heading" translate>roles.form.tag.contents</div>
+      <div class="panel-body">
+        <div ng-repeat="permission in Ctrl.permissions['contents']">
+          <label>
+            <input toggle-switch type="checkbox" ng-model="permission.allowed" size="mini" on="{{ 'roles.form.allowed_yes' | translate }}" off="{{ 'roles.form.allowed_no' | translate }}">
+            <span class="permission-title" translate>{{ permission.name + '.title' }}</span>
+            <a role="button" tabindex="0" id="{{ 'permission_' + permission.id }}" type="button" class="permission-info-btn" ng-click="Ctrl.showHelpPopover(permission.id, permission.name)" popover-active="false">
+              <span class="glyphicon glyphicon-info-sign"></span>
+            </a>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-offset-2 col-sm-10 col-md-10 col-lg-offset-0 col-lg-5">
+    <div class="panel panel-primary">
+      <div class="panel-heading" translate>roles.form.tag.courses</div>
+      <div class="panel-body">
+        <div ng-repeat="permission in Ctrl.permissions['courses']">
+          <label>
+            <input toggle-switch type="checkbox" ng-model="permission.allowed" size="mini" on="{{ 'roles.form.allowed_yes' | translate }}" off="{{ 'roles.form.allowed_no' | translate }}">
+            <span class="permission-title" translate>{{ permission.name + '.title' }}</span>
+            <a role="button" class="permission-info-btn" tabindex="0" id="{{ 'permission_' + permission.id }}" ng-click="Ctrl.showHelpPopover(permission.id, permission.name)" popover-active="false">
+              <span class="glyphicon glyphicon-info-sign"></span>
+            </a>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-offset-2 col-sm-10 col-md-10 col-lg-5">
+    <div class="panel panel-primary">
+      <div class="panel-heading" translate>roles.form.tag.import_data</div>
+      <div class="panel-body">
+        <div ng-repeat="permission in Ctrl.permissions['import_data']">
+          <label>
+            <input toggle-switch type="checkbox" ng-model="permission.allowed" size="mini" on="{{ 'roles.form.allowed_yes' | translate }}" off="{{ 'roles.form.allowed_no' | translate }}">
+            <span class="permission-title" translate>{{ permission.name + '.title' }}</span>
+            <a role="button" tabindex="0" id="{{ 'permission_' + permission.id }}" type="button" class="permission-info-btn" ng-click="Ctrl.showHelpPopover(permission.id, permission.name)" popover-active="false">
+              <span class="glyphicon glyphicon-info-sign"></span>
+            </a>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-offset-2 col-sm-10 col-md-10 col-lg-offset-0 col-lg-5">
+    <div class="panel panel-primary">
+      <div class="panel-heading" translate>roles.form.tag.questions</div>
+      <div class="panel-body">
+        <div ng-repeat="permission in Ctrl.permissions['questions']">
+          <label>
+            <input toggle-switch type="checkbox" ng-model="permission.allowed" size="mini" on="{{ 'roles.form.allowed_yes' | translate }}" off="{{ 'roles.form.allowed_no' | translate }}">
+            <span class="permission-title" translate>{{ permission.name + '.title' }}</span>
+            <a role="button" tabindex="0" id="{{ 'permission_' + permission.id }}" type="button" class="permission-info-btn" ng-click="Ctrl.showHelpPopover(permission.id, permission.name)" popover-active="false">
+              <span class="glyphicon glyphicon-info-sign"></span>
+            </a>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-offset-2 col-sm-10 col-md-10 col-lg-5">
+    <div class="panel panel-primary">
+      <div class="panel-heading" translate>roles.form.tag.requests</div>
+      <div class="panel-body">
+        <div ng-repeat="permission in Ctrl.permissions['requests']">
+          <label>
+            <input toggle-switch type="checkbox" ng-model="permission.allowed" size="mini" on="{{ 'roles.form.allowed_yes' | translate }}" off="{{ 'roles.form.allowed_no' | translate }}">
+            <span class="permission-title" translate>{{ permission.name + '.title' }}</span>
+            <a role="button" tabindex="0" id="{{ 'permission_' + permission.id }}" type="button" class="permission-info-btn" ng-click="Ctrl.showHelpPopover(permission.id, permission.name)" popover-active="false">
+              <span class="glyphicon glyphicon-info-sign"></span>
+            </a>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-offset-2 col-sm-10 col-md-10 col-lg-offset-0 col-lg-5">
+    <div class="panel panel-primary">
+      <div class="panel-heading" translate>roles.form.tag.roles</div>
+      <div class="panel-body">
+        <div ng-repeat="permission in Ctrl.permissions['roles']">
+          <label>
+            <input toggle-switch type="checkbox" ng-model="permission.allowed" size="mini" on="{{ 'roles.form.allowed_yes' | translate }}" off="{{ 'roles.form.allowed_no' | translate }}">
+            <span class="permission-title" translate>{{ permission.name + '.title' }}</span>
+            <a role="button" tabindex="0" id="{{ 'permission_' + permission.id }}" type="button" class="permission-info-btn" ng-click="Ctrl.showHelpPopover(permission.id, permission.name)" popover-active="false">
+              <span class="glyphicon glyphicon-info-sign"></span>
+            </a>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-offset-2 col-sm-10 col-md-10 col-lg-5">
+    <div class="panel panel-primary">
+      <div class="panel-heading" translate>roles.form.tag.subjects_fields</div>
+      <div class="panel-body">
+        <div ng-repeat="permission in Ctrl.permissions['subjects_fields']">
+          <label>
+            <input toggle-switch type="checkbox" ng-model="permission.allowed" size="mini" on="{{ 'roles.form.allowed_yes' | translate }}" off="{{ 'roles.form.allowed_no' | translate }}">
+            <span class="permission-title" translate>{{ permission.name + '.title' }}</span>
+            <a role="button" tabindex="0" id="{{ 'permission_' + permission.id }}" type="button" class="permission-info-btn" ng-click="Ctrl.showHelpPopover(permission.id, permission.name)" popover-active="false">
+              <span class="glyphicon glyphicon-info-sign"></span>
+            </a>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-offset-2 col-sm-10 col-md-10 col-lg-offset-0 col-lg-5">
+    <div class="panel panel-primary">
+      <div class="panel-heading" translate>roles.form.tag.users</div>
+      <div class="panel-body">
+        <div ng-repeat="permission in Ctrl.permissions['users']">
+          <label>
+            <input toggle-switch type="checkbox" ng-model="permission.allowed" size="mini" on="{{ 'roles.form.allowed_yes' | translate }}" off="{{ 'roles.form.allowed_no' | translate }}">
+            <span class="permission-title" translate>{{ permission.name + '.title' }}</span>
+            <a role="button" tabindex="0" id="{{ 'permission_' + permission.id }}" type="button" class="permission-info-btn" ng-click="Ctrl.showHelpPopover(permission.id, permission.name)" popover-active="false">
+              <span class="glyphicon glyphicon-info-sign"></span>
+            </a>
+          </label>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <div class="form-group">
   <div class="col-sm-offset-2 col-sm-10">
-    <input type="submit" class="btn btn-primary" value="{{'crud.save' | translate}}"/>
+    <button type="submit" class="btn btn-primary">
+      <span class="glyphicon glyphicon-floppy-disk"></span>
+      &nbsp;
+      <span translate>roles.actions.save</span>
+    </button>
   </div>
 </div>

@@ -1,7 +1,6 @@
 class CoursesController < ApplicationController
   
-	# GET /data_import.json
-    def index
+    def index    	
 		@courses = Course.all
 		render json: @courses, methods: [:subject, :field]
 	end

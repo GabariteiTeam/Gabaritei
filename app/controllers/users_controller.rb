@@ -3,10 +3,10 @@ class UsersController < ApplicationController
 	include CleanPagination
 
 	def index
-		if current_user.confirm_permissions(["permission.manipulate_users"])
+		if current_user.confirm_permissions(["permission.users.manipulate"])
 			max_per_page = 10
 			paginate User.count, max_per_page do |limit, offset|
-	      		render json: User.limit(limit).offset(offset), methods: [:avatar_url_thumb, :active]
+	      		render json: User.limit(limit).offset(offset), methods: [:avatar_url_thumb]
 	    	end
 	    else
 	    	render json: {error: "Unauthorized access"}, status: 401
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 	end
 
 	def create
-		if current_user.confirm_permissions(["permission.manipulate_users"])
+		if current_user.confirm_permissions(["permission.users.manipulate"])
 			@user = User.new(user_params)
 			generated_password = Devise.friendly_token.first(8)
 			@user.password = generated_password
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
 
 	def update
 		@user = User.find(params[:id])
-		if @user.id == current_user.id || current_user.confirm_permissions(["permission.manipulate_users"])
+		if @user.id == current_user.id || current_user.confirm_permissions(["permission.users.manipulate"])
 			if user_params[:avatar] == "null"
 				@user.avatar = nil
 				params.delete :avatar
@@ -53,7 +53,7 @@ class UsersController < ApplicationController
 	end
 
 	def destroy
-		if current_user.confirm_permissions(["permission.manipulate_users"])
+		if current_user.confirm_permissions(["permission.users.manipulate"])
 			@user = User.find(params[:id])
 		    if @user.destroy
 		      render :json => {}

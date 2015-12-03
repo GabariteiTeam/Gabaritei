@@ -4,7 +4,7 @@ class RolesController < ApplicationController
   # GET /roles.json
   def index
     if params.has_key?(:take_part_in_courses)
-      @roles = Role.joins(:permissions).where(permissions: { name: 'permission.take_part_in_courses' })
+      @roles = Role.joins(:permissions).where(permissions: { name: 'permission.courses.take_part' })
     else
       @roles = Role.all
     end

@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html ng-app="gabariteiApp">
-<head>
-  <title>Gabaritei</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-    <% if user_signed_in? %>
-    
-	   <%= render 'layouts/navbar'%>
-    	<div id="wrapper">
+    <head>
+        <title>Gabaritei</title>
+        <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <%= csrf_meta_tags %>
+    </head>
+    <body>
+        <% if user_signed_in? %>
+        <%= render 'layouts/navbar'%>
+        <div id="wrapper">
             <!-- Sidebar -->
             <div id="sidebar-wrapper">
                 <ul class="sidebar-nav" ng-controller="MenuController as Ctrl">
@@ -25,33 +23,29 @@
                 </ul>
             </div>
             <!-- /#sidebar-wrapper -->
-
             <!-- Page Content -->
             <div id="page-content-wrapper">
-            	<!-- class="bs-docs-section" -->
+                <!-- class="bs-docs-section" -->
                 <div class="container-fluid clearfix">
-                	<div ng-controller="MessagesController">
-    					<div id="messageContainer"></div>
-    				</div>
-
-    				<div ng-view>
-    					<%= yield %>
-    				</div>
-
+                    <div ng-controller="MessagesController">
+                        <div id="messageContainer"></div>
+                    </div>
+                    <div ng-view>
+                        <%= yield %>
+                    </div>
                 </div>
             </div>
             <!-- /#page-content-wrapper -->
         </div>
         <!-- /#wrapper -->
-    
-    <% else %>
+        <% else %>
+        <%= render 'layouts/login_navbar'%>
         <div class="container-fluid clearfix">
             <div ng-view>
                 <%= yield %>
             </div>
         </div>
-    <% end %>
-
-</body>
-	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+        <% end %>
+    </body>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </html>

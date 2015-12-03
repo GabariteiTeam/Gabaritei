@@ -1,30 +1,34 @@
 <div class="page-header">
-	<h1 translate>crud.requests.assessment.title</h1>
+	<h1 translate>requests.assessment.heading</h1>
 </div>
 
 <form class="form-horizontal" role="form" ng-submit="Ctrl.sendAssessment()">
 	<div ng-include="'templates/requests/_registration_form.html'"></div>
 	<div class="form-group">
-		<label for="text" class="col-sm-2 control-label" translate>crud.requests.form.response_message</label>
+		<label for="text" class="col-sm-2 control-label" translate>requests.form.response_message</label>
 		<div class="col-sm-10">
   		<textarea type="text" ng-model="Ctrl.request.response" class="form-control" id="text" ng-disabled="Ctrl.request.response_date"></textarea>
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="text" class="col-sm-2 control-label" translate>crud.requests.form.accept</label>
+		<label for="text" class="col-sm-2 control-label" translate>requests.form.assessment</label>
 		<div class="col-sm-10">
-      <div ng-hide="Ctrl.request.response_date">
-  		  <input toggle-switch type="checkbox" ng-model="Ctrl.request.accepted" size="small" on="Accept" off="Reject" onstyle="success" offstyle="danger">
-      </div>
-      <label class="control-label" ng-hide="!Ctrl.request.response_date">
-        <span translate>{{ Ctrl.request.status }}</span>
-        <span>{{ Ctrl.request.response_date | date: "dd/MM/yyyy HH:mm:ss" }}</span>
-      </label>
+	      	<div ng-hide="Ctrl.request.response_date">
+	  		  	<input toggle-switch type="checkbox" ng-model="Ctrl.request.accepted" size="small" on="{{ 'requests.form.accept' | translate }}" off="{{ 'requests.form.reject' | translate }}" onstyle="success" offstyle="danger">
+	      	</div>
+	      	<label class="control-label" ng-hide="!Ctrl.request.response_date">
+	        	<span translate>{{ Ctrl.request.status }}</span>
+	        	<span>{{ Ctrl.request.response_date | date: "dd/MM/yyyy HH:mm:ss" }}</span>
+	      	</label>
 		</div>
 	</div>
 	<div class="form-group" ng-hide="Ctrl.request.response_date">
-  	<div class="col-sm-offset-2 col-sm-10">
-    	<input type="submit" class="btn btn-primary" value="{{'crud.send' | translate}}"/>
-  	</div>
+	  	<div class="col-sm-offset-2 col-sm-10">
+		    <button type="submit" class="btn btn-primary">
+		      	<span class="glyphicon glyphicon-certificate"></span>
+		      	&nbsp;
+		      	<span translate>requests.actions.assess</span>
+		    </button>
+	  	</div>
 	</div>
 </form>

@@ -11,7 +11,8 @@
 				modalid: "@",
 				args: "=", 
 				class: "@",
-				text: "@"
+				text: "@",
+				icon: "@"
 			},
 			controller:function($scope, ModalService) {
 				$scope.storeAndGo = storeAndGo;
@@ -21,12 +22,15 @@
 			},
 			replace: true,
 			transclude: false,
-			template: '<button type="button" ng-click="storeAndGo()"' +
-					' data-toggle="modal" data-target="#{{modalid}}"' +
-					'class={{class}}> <span translate> {{text}} </span></button>'
+			template: '<button type="button" ng-click="storeAndGo()"'    +
+					  ' data-toggle="modal" data-target="#{{modalid}}"'  +
+					  ' class={{class}}><span class="{{icon}}"></span>'  +
+					  ' <span class="hidden-xs hidden-sm">&nbsp;</span>' + 
+					  ' <span class="hidden-xs hidden-sm" translate>{{text}}</span></button>'
 
 		}
 	}
+	
 	function gabConfirmModal() {
 		return {
 			scope: {

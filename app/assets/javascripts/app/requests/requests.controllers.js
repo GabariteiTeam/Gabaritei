@@ -5,7 +5,8 @@
     angular
         .module(APP_NAME)
         .controller('RequestsController', RequestsController)
-        .controller('ManagementRequestsController', ManagementRequestsController);
+        .controller('ManagementRequestsController', ManagementRequestsController)
+        .controller('ConfirmationRequestsController', ConfirmationRequestsController);
 
     RequestsController.$inject = ['$location', '$routeParams', '$route', 'RegistrationRequest', 'CourseRegistrationRequest', 'MessageService', 'RedirectService', 'ModalService'];
 
@@ -57,11 +58,14 @@
                 vm.request = request;
                 vm.assessment = true;
             } else {
-                if (request instanceof RegistrationRequest) vm.request = request;
-                else {
+                if (request instanceof RegistrationRequest) {
+                    vm.request = request;
+                    vm.requestType = "registration";
+                } else {
                     vm.request = new CourseRegistrationRequest();
                     vm.request.requirer = request;
                     vm.assessment = false;
+                    vm.requestType = "course";
                     vm.request.course = Course.get({id: $routeParams.course_id});
                 }
             }
@@ -70,7 +74,7 @@
         function sendRequest() {
             vm.request.$save(function(data) {
                 MessageService.sendMessage('request.created.success');
-                RedirectService.redirect("/requests");
+                RedirectService.redirect("/requests/" + vm.requestType + "/sent/" + data.id);
             }, function(error) {
                 MessageService.sendMessage('request.created.error');
             });
@@ -85,6 +89,13 @@
             });
         }
 
+    }
+
+    ConfirmationRequestsController.$inject = ['request'];
+
+    function ConfirmationRequestsController(request) {
+        var vm = this;
+        vm.request = request;
     }
     
 })();
