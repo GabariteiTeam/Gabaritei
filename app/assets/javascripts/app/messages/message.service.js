@@ -134,6 +134,16 @@
                 'content': 'users.alerts.update.error.content',
                 'type': mTypes['error']
             },
+            'user.changed_password.success' : {
+                'title': 'users.alerts.change_password.success.title',
+                'content': 'users.alerts.change_password.success.content',
+                'type': mTypes['success']
+            },
+            'user.changed_password.error' : {
+                'title': 'users.alerts.change_password.error.title',
+                'content': 'users.alerts.change_password.error.content',
+                'type': mTypes['error']
+            },
             'data_import.uploaded.success': {
                 'title': 'data_import.alerts.upload.success.title',
                 'content': 'data_import.alerts.upload.success.content',

@@ -27,6 +27,11 @@
                 templateUrl: 'templates/users/show.html',
                 controller: 'UsersController',
                 controllerAs: 'Ctrl'
+            })
+            .when('/users/change_password/:id', {
+                templateUrl: 'templates/users/change_password.html',
+                controller: 'UsersController',
+                controllerAs: 'Ctrl'
             });
     }
 

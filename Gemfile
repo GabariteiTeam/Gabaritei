@@ -1,15 +1,10 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.7'
 
-# Heroku
-gem 'rails_12factor', group: :production
-
 # Use MySQL Or Postgre as the database for Active Record
-#gem 'mysql2', '~> 0.3.18', group: :production
-gem 'pg', group: :production
+gem 'mysql2', '~> 0.3.18', group: :production
 
 # Use SQLite for the development databas
 gem 'sqlite3', group: :development
@@ -18,8 +13,6 @@ gem 'sqlite3', group: :development
 gem 'sass-rails', '5.0.3' #, '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-# Use CoffeeScript for .js.coffee assets and views
-#gem 'coffee-rails', '~> 4.0.0'
 
 gem 'rake'
 
@@ -50,15 +43,6 @@ gem 'simplecov'
 # Angularjs and other stuff for us
 gem 'bower-rails', '~> 0.10.0'
 gem "non-stupid-digest-assets"
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
 
 # Use debugger
 gem 'byebug', group: [:development, :test]

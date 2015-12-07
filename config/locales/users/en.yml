@@ -17,6 +17,7 @@ en:
       view: "View"
       edit: "Edit"
       delete: "Delete"
+      change_password: "Change password"
     form:
       role: "Role"
       first_name: 
@@ -29,6 +30,10 @@ en:
         label: "E-mail"
         placeholder: "E-mail (example@example.com)"
       birthdate: "Birthdate"
+      password:
+        current: "Current password"
+        new: "New password"
+        confirm: "Confirm password"
       about: 
         label: "About…"
         placeholder: "Academic and/or professional works, skills, hobbies…"
@@ -62,3 +67,10 @@ en:
         error:
           title: "Failed!"
           content: "User was NOT updated!"
+      change_password:
+        success:
+          title: "Password changed!"
+          content: "Password was successfully changed!"
+        error:
+          title: "Failed!"
+          content: "Password could not be changed!"       

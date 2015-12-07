@@ -53,6 +53,7 @@ Rails.application.routes.draw do
 
 	resources :users do
 		post :verify_permissions, on: :collection
+		post :change_password, on: :member
 	end
 
 	# END USERS ROUTES
