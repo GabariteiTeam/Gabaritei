@@ -30,6 +30,7 @@
     "test": "node node_modules/karma/bin/karma start test-angular/karma.conf.js",
     "test-single-run": "node node_modules/karma/bin/karma start test-angular/karma.conf.js  --single-run",
     "preupdate-webdriver": "npm install",
-    "update-webdriver": "webdriver-manager update"
+    "update-webdriver": "webdriver-manager update",
+    "postinstall": "./node_modules/bower/bin/bower install"
   }
 }
