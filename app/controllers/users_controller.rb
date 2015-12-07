@@ -71,10 +71,24 @@ class UsersController < ApplicationController
 		render json: verified
 	end
 
+	def change_password
+		@user = User.find(current_user.id)
+		if @user.update_with_password(password_params)
+			sign_in @user, bypass: true
+			render json: {success: true}
+		else
+			render json: @user.errors, status: :unprocessable_entity
+		end
+	end
+
 	private
 
 		def user_params
 			params.permit(:id, :first_name, :last_name, :email, :birthdate, :avatar, :about, :role_id)
+		end
+
+		def password_params
+			params.permit(:current_password, :password, :password_confirmation)
 		end
 
 end
