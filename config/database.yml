@@ -2,14 +2,23 @@
 
 # Default database settings (applicable to all environments)
 default: &default
-  adapter: mysql2
-  encoding: utf8
+  # adapter: mysql2
+  # encoding: utf8
+  # pool: 5
+  # username: root
+  # password:
+  # socket: /tmp/mysql.sock
+  # # socket: /var/run/mysqld/mysqld.sock
+  # timeout: 5000
+  adapter: postgresql
+  encoding: unicode
+  prepared_statements: false
+  host: ec2-54-197-241-24.compute-1.amazonaws.com
+  database: dcdkv2gpecshln
+  port: 5432
+  username: ikylvhqyroibvo
+  password: QuaU9-zyMG3DGy28V5bksNgVl1
   pool: 5
-  username: root
-  password:
-  socket: /tmp/mysql.sock
-  # socket: /var/run/mysqld/mysqld.sock
-  timeout: 5000
 
 # Development database settings
 # Using SQLite for convenience purposes
