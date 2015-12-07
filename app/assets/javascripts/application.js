@@ -26,7 +26,7 @@
 //= require ng-file-upload/ng-file-upload
 //= require ng-tags-input/ng-tags-input.min
 //= require ngActivityIndicator/ngActivityIndicator
-//= require bootstrap-toggle/js/bootstrap-toggle
+//= require bootstrap-toggle/js/bootstrap-toggle.min
 //= require textAngular/dist/textAngular
 //= require textAngular/dist/textAngular-sanitize
 //= require textAngular/dist/textAngularSetup
