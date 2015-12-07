@@ -1,3 +1,5 @@
+if Rails.env == 'development'
+
 # ROLES
 
 role_student = Role.second
@@ -68,3 +70,5 @@ course.users = []
 course.users.concat(User.where(role_id: role_teacher.id)[5])     # Jeffrey Sullivan
 course.users.concat(User.where(role_id: role_student.id)[0..19]) # Students from 0 to \9
 course.save!
+
+end

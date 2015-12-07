@@ -7,8 +7,8 @@ gem 'rails', '4.1.7'
 # Heroku
 gem 'rails_12factor', group: :production
 
-# Use MySQL as the database for Active Record
-#gem 'mysql2'
+# Use MySQL Or Postgre as the database for Active Record
+#gem 'mysql2', '~> 0.3.18', group: :production
 gem 'pg', group: :production
 
 # Use SQLite for the development databas
