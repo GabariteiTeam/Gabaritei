@@ -215,7 +215,7 @@ DEPENDENCIES
   annotate (~> 2.6.6)
   bootstrap-sass (~> 3.3.5)
   bootswatch-rails
-  bower-rails
+  bower-rails (~> 0.10.0)
   byebug
   capybara
   clean_pagination

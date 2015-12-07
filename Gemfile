@@ -49,7 +49,7 @@ gem 'simplecov'
 # Creazy Bower stuff...
 # Bower will take care to install
 # Angularjs and other stuff for us
-gem 'bower-rails'
+gem 'bower-rails', '~> 0.10.0'
 gem "non-stupid-digest-assets"
 
 # Use ActiveModel has_secure_password
