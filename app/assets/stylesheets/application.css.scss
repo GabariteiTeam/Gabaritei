@@ -20,10 +20,10 @@
 
  @import "bootswatch/flatly/_bootswatch";
  @import "ng-tags-input/ng-tags-input.min";
- @import "ng-tags-input/ng-tags-input.bootstrap.min";
- @import "angular-motion/dist/angular-motion.min";
+ //@import "ng-tags-input/ng-tags-input.bootstrap.min.css";
+ @import "angular-motion/dist/angular-motion";
  @import "bootstrap-toggle/css/bootstrap-toggle.min";
- @import "ngActivityIndicator/css/ngActivityIndicator.min";
+ @import "ngActivityIndicator/css/ngActivityIndicator";
  @import "components-font-awesome/scss/font-awesome";
  @import "textAngular/dist/textAngular";
  @import "custom-angular-text";
