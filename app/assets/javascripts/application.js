@@ -24,7 +24,7 @@
 //= require angular-translate-loader-static-files/angular-translate-loader-static-files
 //= require angular-paginate-anything/dist/paginate-anything-tpls
 //= require ng-file-upload/ng-file-upload
-//= require ng-tags-input/ng-tags-input
+//= require ng-tags-input/ng-tags-input.min
 //= require ngActivityIndicator/ngActivityIndicator
 //= require bootstrap-toggle/js/bootstrap-toggle
 //= require textAngular/dist/textAngular
