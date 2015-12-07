@@ -9,15 +9,17 @@ gem 'rails_12factor', group: :production
 
 # Use MySQL as the database for Active Record
 #gem 'mysql2'
-gem 'pg'
+gem 'pg', group: :production
+
 # Use SQLite for the development databas
-#gem 'sqlite3'
+gem 'sqlite3', group: :development
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '5.0.3' #, '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+#gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+#gem 'coffee-rails', '~> 4.0.0'
 
 gem 'rake'
 
@@ -34,10 +36,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
-gem 'simple_form'
-
-#debbug gem
-#gem 'byebug'
+#gem 'simple_form'
 
 #Selenium like testing!
 gem 'capybara'

@@ -30,6 +30,7 @@
 //= require textAngular/dist/textAngular
 //= require textAngular/dist/textAngular-sanitize
 //= require textAngular/dist/textAngularSetup
+//= require textAngular-rangy.min
 //= require angular-autoFields-bootstrap/autofields-bootstrap.min
 //= require angular-autoFields-bootstrap/autofields.min
 //= require ng-lodash/build/ng-lodash
