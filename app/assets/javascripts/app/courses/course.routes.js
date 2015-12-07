@@ -28,6 +28,11 @@
                 controller: 'CoursesController',
                 controllerAs: 'Ctrl'
             })
+            .when('/courses/:id', {
+                templateUrl: 'templates/courses/show.html',
+                controller: 'CoursesController',
+                controllerAs: 'Ctrl'
+            });
     }
 
 })();

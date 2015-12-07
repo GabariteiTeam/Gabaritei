@@ -1,0 +1,80 @@
+en:
+  requests:
+    index: 
+      heading: "Requests"
+      sub_heading: "These are the requests to be accepted or rejected"
+      registration_requests: "Registration requests"
+      course_registration_requests: "Course registration requests"
+      table:
+        headers:
+          requirer: "Requirer"
+          request_date: "Request date"
+          email: "E-mail"
+          status: "Status"
+          course: "Course"
+        body:
+          status:
+            not_yet_treated: "Not yet treated"
+            accepted_in: "Accepted in"
+            rejected_in: "Rejected in"
+    create:
+      registration_heading: "Registration Request"
+      registration_sub_heading: "Please fill out this form to request your registration"
+      course_registration_heading: "Course Registration Request"
+      course_registration_sub_heading: "Please fill out this form to request your registration"
+    assessment:
+      heading: "Request assessment"
+    confirmation:
+      registration:
+        heading: "Registration Request successfully sent"
+        pgrph1: "Thank you for your request, "
+        pgrph2: "As soon as your request is treated, you will receive a response on the provided e-mail address: "
+      course:
+        heading: "Request successfully sent"
+        pgrph1: "Thank you for your request, "
+        pgrph2: "As soon as your request is treated, you will receive a response on the provided e-mail address: "
+    actions:
+      view: "View"
+      send: "Send"
+      assess: "Assess"
+      delete: "Delete"
+      go_to_login: "Go back to login page"
+    form:
+      first_name: "First name"
+      last_name: "Last name"
+      requirer: "Requirer"
+      course: "Course"
+      email: "E-mail"
+      birthdate: "Birthdate"
+      message: "Message"
+      response_message: "Response message"
+      response: "Response"
+      assessment: "Assessment"
+      accept: "Accept"
+      reject: "Reject"
+    modal:
+      delete:
+        title: "Warning!"
+        body: "Are you sure you want to delete this request?"
+    alerts:
+      create:
+        success:
+          title: "Created!"
+          content: "Request was created with success!"
+        error:
+          title: "Failed!"
+          content: "Request was NOT created!"
+      delete:
+        success:
+          title: "Deleted!"
+          content: "Request was deleted with success!"
+        error:
+          title: "Failed!"
+          content: "Request was NOT deleted"
+      assess:
+        success:
+          title: "Assessed!"
+          content: "Request was assessed with success!"
+        error:
+          title: "Failed!"
+          content: "Request was NOT updated!"

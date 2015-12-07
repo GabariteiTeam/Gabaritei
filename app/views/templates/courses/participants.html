@@ -1,14 +1,15 @@
-<div class="row">
-	<div class="page-header">
-		<h1 translate>crud.courses.index.edit_participants</h1>
-	</div>
+<div class="page-header">
+	<h1>
+		<span translate>courses.participants.heading</span>
+		<span> – {{ Ctrl.course.name }}</span>
+	</h1>
 </div>
 
-<div ng-repeat="role in Ctrl.roles" class="row panel panel-default">
+<div ng-repeat="role in Ctrl.roles" class="panel panel-primary">
 	<div class="panel-heading">
 		<h2 class="panel-title">{{ role.name }}</h2>
 	</div>
-	<div class="panel-body">
+	<div class="panel-body" id="search-form-container">
 		<form class="form-inline" role="form" ng-submit="Ctrl.searchUsers(role)">
 			<div ng-include="'templates/courses/_search_form.html'"></div>
 		</form>
@@ -22,8 +23,16 @@
 				<td>{{ user.first_name + ' ' + user.last_name }}</td>
 				<td>{{ user.email }}</td>
 				<td>
-					<a href="#users/{{user.id}}" class="btn btn-sm btn-info" translate>crud.view</a>
-					<button ng-click="Ctrl.removeParticipant(user.id)" class="btn btn-sm btn-danger" translate>crud.remove</button>
+					<a href="#users/{{user.id}}" class="btn btn-sm btn-info">
+						<span class="glyphicon glyphicon-eye-open"></span>
+      					&nbsp;
+						<span translate>courses.actions.view_participant</span>
+					</a>
+					<button ng-click="Ctrl.removeParticipant(user.id)" class="btn btn-sm btn-danger">
+						<span class="glyphicon glyphicon-remove"></span>
+      					&nbsp;
+						<span translate>courses.actions.remove_participant</span>
+					</button>
 				</td>
 			</tr>
 		</tbody>

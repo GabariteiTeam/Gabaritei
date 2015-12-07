@@ -25,7 +25,7 @@ class CreateModelRelations < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    create_table :medias do |t|
+    create_table :media do |t|
       t.references :owner, polymorphic: true, index: true, required: true
       t.timestamps null: false
     end
@@ -47,7 +47,7 @@ class CreateModelRelations < ActiveRecord::Migration
     end
 
     create_table :fields do |t|
-      t.belongs_to :subject, index: :true, required: true
+      t.belongs_to :subject, index: true, required: true
       t.timestamps null: false
     end
 
@@ -116,7 +116,7 @@ class CreateModelRelations < ActiveRecord::Migration
 
     create_table :response_choices do |t|
       t.belongs_to :response, index: true, required: true
-      t.belongs_to :question_choices, required: true
+      t.belongs_to :question_choice, required: true
       t.timestamps null: false
     end
     

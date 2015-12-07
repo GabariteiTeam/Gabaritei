@@ -103,6 +103,7 @@ class DataImport < ActiveRecord::Base
 	# @return [void]
   	def import_users
 		read_header = false
+		last_id = User.last.id
 		ActiveRecord::Base.transaction do
 			@dataset.each(first_name: 'first_name', last_name: 'last_name', email: 'email', birthdate: 'birthdate') do |hash|
 				if read_header
@@ -110,6 +111,13 @@ class DataImport < ActiveRecord::Base
 				else
 					read_header = true
 				end
+			end
+		end
+		User.find_each(start: last_id + 1) do |user|
+			generated_password = Devise.friendly_token.first(8)
+			user.password = generated_password
+			if user.save!
+				#UserMailer.password_creation(user, generated_password).deliver
 			end
 		end
   	end
@@ -203,10 +211,10 @@ class DataImport < ActiveRecord::Base
 	# @return [String] the description of the status.
 	def status_text
 		case status
-		when -1 then "Not yet imported"
-		when  0 then "Currently being imported"
-		when  1 then "Successfully imported"
-		else         "An error occurred! Please verify file"
+		when -1 then "data_import.index.table.body.status.not_yet_imported"
+		when  0 then "data_import.index.table.body.status.currently_being_imported"
+		when  1 then "data_import.index.table.body.status.successfully_imported"
+		else         "data_import.index.table.body.status.error"
 		end
 	end
 

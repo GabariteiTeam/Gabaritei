@@ -14,6 +14,7 @@
 //= require jquery-ujs/src/rails
 //= require bootstrap/dist/js/bootstrap
 //= require angular/angular
+//= require angular-devise/lib/devise
 //= require angular-strap/dist/angular-strap
 //= require angular-strap/dist/angular-strap.tpl
 //= require angular-animate/angular-animate
@@ -26,6 +27,13 @@
 //= require ng-tags-input/ng-tags-input
 //= require ngActivityIndicator/ngActivityIndicator
 //= require bootstrap-toggle/js/bootstrap-toggle
+//= require textAngular/dist/textAngular
+//= require textAngular/dist/textAngular-sanitize
+//= require textAngular/dist/textAngularSetup
+//= require textAngular/dist/textAngular-rangy.min
+//= require angular-autoFields-bootstrap/autofields-bootstrap
+//= require angular-autoFields-bootstrap/autofields
+//= require ng-lodash/build/ng-lodash.min.js
 //= require app/app
 //= require_tree ./app
 //= stub app/home/home.controllers.spec

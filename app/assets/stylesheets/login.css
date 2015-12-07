@@ -1,0 +1,105 @@
+@-webkit-keyframes field_shake_horizontal {
+	0% {left: 0;}
+	20% {left: -15px;}
+	40% {left: 10px;}
+	60% {left: -5px;}
+	80% {left: 5px;}
+	100% {left: 0;}
+}
+
+@-moz-keyframes field_shake_horizontal {
+	0% {left: 0;}
+	20% {left: -15px;}
+	40% {left: 10px;}
+	60% {left: -5px;}
+	80% {left: 5px;}
+	100% {left: 0;}
+}
+
+@-o-keyframes field_shake_horizontal {
+	0% {left: 0;}
+	20% {left: -15px;}
+	40% {left: 10px;}
+	60% {left: -5px;}
+	80% {left: 5px;}
+	100% {left: 0;}
+}
+
+@keyframes field_shake_horizontal {
+	0% {left: 0;}
+	20% {left: -15px;}
+	40% {left: 10px;}
+	60% {left: -5px;}
+	80% {left: 5px;}
+	100% {left: 0;}
+}
+
+@-webkit-keyframes field_shake_vertical {
+	0% {top: 0;}
+	25% {top: -15px;}
+	50% {top: 0px;}
+	75% {top: -6px;}
+	100% {top: 0;}
+}
+
+@-moz-keyframes field_shake_vertical {
+	0% {top: 0;}
+	25% {top: -15px;}
+	50% {top: 0px;}
+	75% {top: -6px;}
+	100% {top: 0;}
+}
+
+@-o-keyframes field_shake_vertical {
+	0% {top: 0;}
+	25% {top: -15px;}
+	50% {top: 0px;}
+	75% {top: -6px;}
+	100% {top: 0;}
+}
+
+@keyframes field_shake_vertical {
+	0% {top: 0;}
+	25% {top: -15px;}
+	50% {top: 0px;}
+	75% {top: -6px;}
+	100% {top: 0;}
+}
+
+#logo {
+	width: 100%;
+}
+
+#login-form {
+	margin-top: 30px;
+}
+
+div.form-group.login-field {
+	position: relative;
+}
+
+div.form-group.login-field.has-error {
+	-webkit-animation-name: field_shake_horizontal;
+	-webkit-animation-duration: 0.4s;
+	-moz-animation-name: field_shake_horizontal;
+	-moz-animation-duration: 0.4s;
+	-o-animation-name: field_shake_horizontal;
+	-o-animation-duration: 0.4s;
+	animation-name: field_shake_horizontal;
+	animation-duration: 0.4s;
+}
+
+div.form-group.login-field.has-warning {
+	-webkit-animation-name: field_shake_vertical;
+	-webkit-animation-duration: 0.4s;
+	-moz-animation-name: field_shake_vertical;
+	-moz-animation-duration: 0.4s;
+	-o-animation-name: field_shake_vertical;
+	-o-animation-duration: 0.4s;
+	animation-name: field_shake_vertical;
+	animation-duration: 0.4s;
+}
+
+p.confirmation-text {
+	font-size: 18px;
+}

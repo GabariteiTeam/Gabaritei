@@ -27,7 +27,7 @@
                 templateUrl: 'templates/users/show.html',
                 controller: 'UsersController',
                 controllerAs: 'Ctrl'
-            })
+            });
     }
 
 })();

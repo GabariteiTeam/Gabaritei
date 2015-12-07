@@ -1,33 +1,81 @@
-<li>
-	<a href="#roles"><span translate>menu.roles</span><span class="sub_icon glyphicon glyphicon-file"></span></a>
+<% @permissions = current_user.verify_permissions([
+   		'permission.roles.manipulate',
+   		'permission.users.manipulate',
+   		'permission.questions.globally_manipulate',
+   		'permission.questions.manipulate',
+   		'permission.subjects_fields.manipulate',
+   		'permission.courses.manipulate',
+   		'permission.courses.take_part',
+   		'permission.contents.globally_manipulate',
+   		'permission.contents.manipulate',
+   		'permission.import_data',
+   		'permission.requests.registration.manage',
+   		'permission.requests.course.manage'
+   ]) %>
+
+<% if @permissions['permission.roles.manipulate'] %>
+<li data-toggle="menu-tooltip" data-placement="right" title="{{ 'menu.roles' | translate }}">
+	<a href="#roles"><span translate>menu.roles</span><span class="sub_icon glyphicon glyphicon-knight"></span></a>
 </li>
-<li>
+<% end %>
+
+<% if @permissions['permission.users.manipulate'] %>
+<li data-toggle="menu-tooltip" data-placement="right" title="{{ 'menu.users' | translate }}">
 	<a href="#users"><span translate>menu.users</span><span class="sub_icon glyphicon glyphicon-user"></span></a>
 </li>
-<li>
+<% end %>
+
+<% if @permissions['permission.questions.globally_manipulate'] || @permissions['permission.questions.manipulate'] %>
+<li data-toggle="menu-tooltip" data-placement="right" title="{{ 'menu.questions' | translate }}">
 	<a href="#questions"><span translate>menu.questions</span><span class="sub_icon glyphicon glyphicon-question-sign"></span></a>
 </li>
-<li>
+<% end %>
+
+<% if @permissions['permission.subjects_fields.manipulate'] %>
+<li data-toggle="menu-tooltip" data-placement="right" title="{{ 'menu.subjects' | translate }}">
 	<a href="#subjects"><span translate>menu.subjects</span><span class="sub_icon glyphicon glyphicon-book"></span></a>
 </li>
-<li>
-	<a href="#courses"><span translate>menu.courses</span><span class="sub_icon glyphicon glyphicon-folder-open"></span></a>
+<% end %>
+
+<% if @permissions['permission.courses.manipulate'] || @permissions['permission.courses.take_part'] %>
+<li data-toggle="menu-tooltip" data-placement="right" title="{{ 'menu.courses' | translate }}">
+	<a href="#courses"><span translate>menu.courses</span><span class="sub_icon glyphicon glyphicon-education"></span></a>
 </li>
-<li>
-	<a href="#tests"><span translate>menu.tests</span><span class="sub_icon glyphicon glyphicon-education"></span></a>
+<% end %>
+
+<% if @permissions['permission.contents.globally_manipulate'] || @permissions['permission.contents.manipulate'] %>
+<li data-toggle="menu-tooltip" data-placement="right" title="{{ 'menu.contents' | translate }}">
+	<a href="#contents"><span translate>menu.contents</span><span class="sub_icon glyphicon glyphicon-duplicate"></span></a>
 </li>
-<li>
+<% end %>
+
+<% if @permissions['permission.import_data'] %>
+<li data-toggle="menu-tooltip" data-placement="right" title="{{ 'menu.data_import' | translate }}">
 	<a href="#data_imports"><span translate>menu.data_import</span><span class="sub_icon glyphicon glyphicon-cloud-upload"></span></a>
 </li>
-<li>
-    <a href="#"><span translate>Perfil</span><span class="sub_icon glyphicon glyphicon-user"></span></a>
+<% end %>
+
+<% if @permissions['permission.requests.registration.manage'] || @permissions['permission.requests.course.manage'] %>
+<li data-toggle="menu-tooltip" data-placement="right" title="{{ 'menu.requests' | translate }}">
+	<a href="#requests"><span translate>menu.requests</span><span class="sub_icon glyphicon glyphicon-exclamation-sign"></span></a>
 </li>
+<% end %>
+
 <li>
-    <a href="#"><span>Links</span><span class="sub_icon glyphicon glyphicon-link"></span></a>
+  <a href="#tests"><span translate>menu.tests</span><span class="sub_icon glyphicon glyphicon-education"></span></a>
 </li>
-<li>
-    <a href="#"><span>Settings</span><span class="sub_icon glyphicon glyphicon-cog"></span></a>
+
+<li data-toggle="menu-tooltip" data-placement="right" title="{{ 'menu.profile' | translate }}">
+    <a href="#"><span translate>menu.profile</span><span class="sub_icon glyphicon glyphicon-user"></span></a>
 </li>
-<li>
-    <a href="#"><span>Contact</span><span class="sub_icon glyphicon glyphicon-earphone"></span></a>
+
+<li data-toggle="menu-tooltip" data-placement="right" title="{{ 'menu.settings' | translate }}">
+    <a href="#"><span translate>menu.settings</span><span class="sub_icon glyphicon glyphicon-cog"></span></a>
+</li>
+
+<li data-toggle="menu-tooltip" data-placement="right" title="{{ 'menu.contact' | translate }}">
+    <a href="#"><span translate>menu.contact</span><span class="sub_icon glyphicon glyphicon-earphone"></span></a>
+</li>
+<li data-toggle="menu-tooltip" data-placement="right" title="{{ 'menu.logout' | translate }}">
+    <a href="#" ng-click="Ctrl.logout()"><span translate>menu.logout</span><span class="sub_icon glyphicon glyphicon-off"></span></a>
 </li>

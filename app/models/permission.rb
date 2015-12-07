@@ -27,4 +27,8 @@ class Permission < ActiveRecord::Base
 	# @!endgroup
 	has_many :role_permissions
 
+	def tag
+		name.split(".", 3)[1]
+	end
+
 end

@@ -1,5 +1,5 @@
 # Contents can be created by {User users} (for example, teachers) as additional resources to their
-# {Course courses} and/or {Lesson lessons}. By being associated with a {Media media} object, a content can have a wide variety of formats, 
+# {Course courses} and/or {Lesson lessons}. By being associated with a {Medium medium} object, a content can have a wide variety of formats, 
 # like PDFs, images, MS Office documents, or even online resources, like YouTube videos.
 # They must be associated to a {Subject subject} or a {Field field}, and they can be recommended to one user by
 # another user.
@@ -61,10 +61,10 @@ class Content < ActiveRecord::Base
 
 	# @!group Has one
 
-	# The {Media media} keeps a file or a reference to an online resource.
-	# @return [Media] media object containing a file or a reference to an online resource.
-	# @see Media#owner
-	has_one :media, as: :owner
+	# The {Medium medium} keeps a file or a reference to an online resource.
+	# @return [Medium] medium object containing a file or a reference to an online resource.
+	# @see Medium#owner
+	has_one :medium, as: :owner
 
 	# @!endgroup
 
@@ -89,5 +89,29 @@ class Content < ActiveRecord::Base
 
 	has_many :course_contents
 	has_many :lesson_contents
+
+	def subject
+        if category != nil
+            category.is_a?(Subject) ? category.name : category.subject.name
+        end
+    end
+
+    def field
+        if category != nil
+            category.is_a?(Field) ? category.name : nil
+        end
+    end
+
+	def attachment_url
+		(medium != nil && medium.data != nil) ? medium.data.url : ""
+	end
+
+	def embeddable
+		if medium != nil
+			return medium.embeddable
+		else
+			return true
+		end
+	end
 
 end
