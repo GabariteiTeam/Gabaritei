@@ -30,9 +30,9 @@
 //= require textAngular/dist/textAngular
 //= require textAngular/dist/textAngular-sanitize
 //= require textAngular/dist/textAngularSetup
-//= require angular-autoFields-bootstrap/autofields-bootstrap
-//= require angular-autoFields-bootstrap/autofields
-//= require ng-lodash/build/ng-lodash.min.js
+//= require angular-autoFields-bootstrap/autofields-bootstrap.min
+//= require angular-autoFields-bootstrap/autofields.min
+//= require ng-lodash/build/ng-lodash
 //= require app/app
 //= require_tree ./app
 //= stub app/home/home.controllers.spec
