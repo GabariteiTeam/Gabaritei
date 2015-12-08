@@ -21,8 +21,14 @@ en:
       index: "Requests"
       assess_registration_request: "Assess registration request"
       assess_course_registration_request: "Assess course registration request"
+    roles:
+      index: "Roles"
+      new: "New role"
+      update: "Update role"
     subjects:
       index: "Subjects"
+      new: "New subject"
+      update: "Update subject"
       fields:
         index: "View fields"
         new: "New field"
