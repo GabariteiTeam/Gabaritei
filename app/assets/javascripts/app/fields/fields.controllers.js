@@ -58,6 +58,7 @@
         var vm          = this;
         vm.field        = new Field();
         vm.subject_id   = $routeParams.subject_id;
+        vm.subject      = Subject.get({id: vm.subject_id});
         vm.createField  = createField;
         
         function createField() {
@@ -87,6 +88,7 @@
      function FieldsUpdateController($location, $routeParams, $route, Field, Subject, MessageService, RedirectService) {
         var vm          = this;
         vm.subject_id   = $routeParams.subject_id;
+        vm.subject      = Subject.get({id: vm.subject_id});
         vm.field        = Field.query({id: $routeParams.id});
         vm.updateField  = updateField;
         

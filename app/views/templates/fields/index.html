@@ -1,5 +1,15 @@
+<ol class="breadcrumb">
+  <li><a href="/#home" translate>breadcrumbs.home</a></li>
+  <li><a href="/#subjects" translate>breadcrumbs.subjects.index</a></li>
+  <li class="active" translate>breadcrumbs.subjects.fields.index</li>
+</ol>
+
 <div class="page-header">
-  <h1>{{ ('fields.index.fields_of' | translate) + Ctrl.subject.name }}</h1>
+  <h1>
+    <span class="glyphicon glyphicon-leaf"></span>
+    &nbsp;
+    <span>{{ ('fields.index.fields_of' | translate) + Ctrl.subject.name }}</span>
+  </h1>
   <p class="lead" translate>fields.index.sub_heading</p>
 </div>
 

@@ -12,6 +12,21 @@ en:
       show: "View course"
       update: "Update course"
       edit_participants: "Edit course participants"
+    data_import: "Data import"
+    questions:
+      index: "Questions"
+      new: "New question"
+      update: "Update question"
+    requests:
+      index: "Requests"
+      assess_registration_request: "Assess registration request"
+      assess_course_registration_request: "Assess course registration request"
+    subjects:
+      index: "Subjects"
+      fields:
+        index: "View fields"
+        new: "New field"
+        update: "Update field"
     users: 
       index: "Users"
       change_password: "Change password"
