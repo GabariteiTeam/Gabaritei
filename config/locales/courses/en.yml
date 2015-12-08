@@ -6,8 +6,9 @@ en:
       table:
         body:
           subject: "Subject:"
+          field: "Field:"
     participants:
-      heading: "Edit participants"
+      heading: "Edit participants of "
     create:
       heading: "New Course"
     update:

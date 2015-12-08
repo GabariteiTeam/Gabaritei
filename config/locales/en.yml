@@ -1,1 +1,45 @@
 en:
+  breadcrumbs:
+    home: "Home"
+    contents:
+      index: "Contents"
+      new: "New content"
+      show: "View content"
+      update: "Update content"
+    courses:
+      index: "Courses"
+      new: "New course"
+      show: "View course"
+      update: "Update course"
+      edit_participants: "Edit course participants"
+    data_import: "Data import"
+    questions:
+      index: "Questions"
+      new: "New question"
+      update: "Update question"
+    requests:
+      index: "Requests"
+      assess_registration_request: "Assess registration request"
+      assess_course_registration_request: "Assess course registration request"
+    roles:
+      index: "Roles"
+      new: "New role"
+      update: "Update role"
+    subjects:
+      index: "Subjects"
+      new: "New subject"
+      update: "Update subject"
+      fields:
+        index: "View fields"
+        new: "New field"
+        update: "Update field"
+    users: 
+      index: "Users"
+      change_password: "Change password"
+      new: "New user"
+      update: "Update user"
+      show: "Show user"
+      profile: "Profile"
+      profile_update: "Update profile"
+
+

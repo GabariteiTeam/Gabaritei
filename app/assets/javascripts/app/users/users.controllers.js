@@ -55,9 +55,9 @@
 
     };
 
-    EditUserController.$inject = ['$routeParams', 'User', 'Role', 'MessageService', 'RedirectService'];
+    EditUserController.$inject = ['$routeParams', 'Auth', 'User', 'Role', 'MessageService', 'RedirectService'];
 
-    function EditUserController($routeParams, User, Role, MessageService, RedirectService) {
+    function EditUserController($routeParams, Auth, User, Role, MessageService, RedirectService) {
 
         var vm = this;
 
@@ -73,6 +73,11 @@
                     user.birthdate = user.birthdate ? new Date(user.birthdate) : null;
                     if (user.about = "null") user.about = "";
                     if (!user.has_avatar) user.avatar = null;
+                    Auth.currentUser().then(function(current_user) {
+                        vm.user_self = (user.id == current_user.id);
+                    }, function(error) {
+                        vm.user_self = false;
+                    });
                 });
             } else {
                 vm.user = new User();

@@ -17,7 +17,8 @@ seeds_files = [
 	"users_teachers_seeds",
 	"users_students_seeds",
 	"subjects_fields_seeds",
-	"courses_seeds"
+	"courses_seeds",
+	"requests_seeds"
 ]
 
 seeds_files.each do |f|
