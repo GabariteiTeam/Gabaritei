@@ -1,1 +1,24 @@
 en:
+  breadcrumbs:
+    home: "Home"
+    contents:
+      index: "Contents"
+      new: "New content"
+      show: "View content"
+      update: "Update content"
+    courses:
+      index: "Courses"
+      new: "New course"
+      show: "View course"
+      update: "Update course"
+      edit_participants: "Edit course participants"
+    users: 
+      index: "Users"
+      change_password: "Change password"
+      new: "New user"
+      update: "Update user"
+      show: "Show user"
+      profile: "Profile"
+      profile_update: "Update profile"
+
+

@@ -1,3 +1,10 @@
+<ol class="breadcrumb">
+  <li><a href="/#home" translate>breadcrumbs.home</a></li>
+  <li ng-hide="Ctrl.user_self"><a href="/#users" translate>breadcrumbs.users.index</a></li>
+  <li ng-show="Ctrl.user_self" class="active" translate>breadcrumbs.users.profile</li>
+  <li class="active" ng-hide="Ctrl.user_self" translate>breadcrumbs.users.show</li>
+</ol>
+
 <div class="page-header">
 	<img ng-src="{{ Ctrl.user.avatar_url_medium }}" />
 	<h1>
