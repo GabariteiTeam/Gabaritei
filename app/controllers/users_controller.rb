@@ -81,6 +81,25 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def settings
+		user = User.find(params[:id])
+		render json: user.setting, methods: [:preferred_language_key]
+	end
+
+	def save_settings
+		if params[:user_id] == current_user.id
+			user_setting = User.find(params[:user_id]).setting
+			user_setting.preferred_language = Setting.getLanguageIndex(params[:settings][:preferred_language])
+			if user_setting.save!
+				render json: {success: true}
+			else
+				render json: @user.errors, status: :unprocessable_entity
+			end			
+		else
+			render json: {error: "Unauthorized access"}, status: 401
+		end
+	end
+
 	private
 
 		def user_params

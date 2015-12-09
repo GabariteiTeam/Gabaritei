@@ -99,6 +99,9 @@ class AddModelFields < ActiveRecord::Migration
     add_column :lessons, :title, :string
     add_column :lessons, :description, :text
 
+    # Setting
+    add_column :settings, :preferred_language, :integer
+
   end
   
 end

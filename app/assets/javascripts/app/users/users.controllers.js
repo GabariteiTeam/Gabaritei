@@ -5,7 +5,8 @@
     angular
         .module(APP_NAME)
         .controller('UsersController', UsersController)
-        .controller('EditUserController', EditUserController);
+        .controller('EditUserController', EditUserController)
+        .controller('SettingsController', SettingsController);
 
     UsersController.$inject = ['$routeParams', 'Auth', 'User', 'MessageService', 'RedirectService', 'ModalService'];
     
@@ -111,6 +112,39 @@
             vm.user.avatar = null;
             jQuery('#avatar').wrap('<form>').closest('form').get(0).reset();
             jQuery('#avatar').unwrap();
+        }
+
+    }
+
+    SettingsController.$inject = ['$routeParams', '$translate', 'User', 'MessageService'];
+
+    function SettingsController($routeParams, $translate, User, MessageService) {
+
+        var vm = this;
+
+        vm.saveSettings = saveSettings;
+
+        vm.languages = {
+            "en": "English",
+            "pt-BR": "Português"
+        };
+
+        vm.user = User.get({id: $routeParams.id}, function() {
+            vm.user.$settings(function(settings) {
+                vm.settings = settings;
+                vm.preferredLanguage = settings.preferred_language_key;
+            });
+        });
+
+        function saveSettings() {
+            vm.user.settings = {
+                preferred_language: vm.preferredLanguage
+            };
+            vm.user.$saveSettings(function(success) {
+                MessageService.sendMessage('user.settings_saved.success');
+            }, function(error) {
+                MessageService.sendMessage('user.settings_saved.error');
+            });
         }
 
     }

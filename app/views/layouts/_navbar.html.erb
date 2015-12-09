@@ -10,12 +10,21 @@
 				<span class="icon-bar"></span>
 			</button>
 		</div>
-		<div class="navbar-collapse collapse" id="navbar-main">
-			<ul class="nav navbar-nav" ng-controller="MenuController as Ctrl">
+		<div class="navbar-collapse collapse" id="navbar-main" ng-controller="MenuController as Ctrl">
+			<ul class="nav navbar-nav">
 				<%= render 'layouts/navlist' %>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown" ng-controller="TranslationsController as Ctrl">
+				<li class="hidden-xs hidden-sm" ng-show="Ctrl.user">
+					<p class="navbar-text" style="color: white">{{ ('menu.hello' | translate) + Ctrl.user.first_name + "!" }}</p>
+				</li>
+				<li>
+					<a href="#" ng-click="Ctrl.logout()">
+						<span class="sub_icon glyphicon glyphicon-off"></span>
+						<span translate>menu.logout</span>
+					</a>
+				</li>
+				<!--li class="dropdown" ng-controller="TranslationsController as Ctrl">
 		          	<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 		          		<span translate>menu.language</span>
 		     			<span class="caret"></span>
@@ -28,9 +37,8 @@
 			            	</a>
 			            </li>
 			        </ul>
-		        </li>
+		        </li-->
 			</ul>
-
 		</div>
 	</div>
 </div>

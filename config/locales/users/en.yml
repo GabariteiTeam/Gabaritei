@@ -11,6 +11,12 @@ en:
       heading: "New User"
     update:
       heading: "Edit User"
+    profile_update:
+      heading: "Update profile"
+    settings:
+      heading: "Settings"
+      preferred_language: "Preferred language"
+      save: "Save settings"
     actions:
       add: "Register new user"
       save: "Save user"
@@ -73,4 +79,11 @@ en:
           content: "Password was successfully changed!"
         error:
           title: "Failed!"
-          content: "Password could not be changed!"       
+          content: "Password could not be changed!" 
+      settings_save:
+        success:
+          title: "Saved!"
+          content: "Settings were saved with success!"
+        error:
+          title: "Failed!"
+          content: "Settings could not be saved!" 
