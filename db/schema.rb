@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150720123715) do
+ActiveRecord::Schema.define(version: 20151031121535) do
 
   create_table "category_difficulties", force: true do |t|
     t.integer  "user_id"
@@ -158,7 +158,7 @@ ActiveRecord::Schema.define(version: 20150720123715) do
 
   add_index "lessons", ["course_id"], name: "index_lessons_on_course_id"
 
-  create_table "medias", force: true do |t|
+  create_table "media", force: true do |t|
     t.integer  "owner_id"
     t.string   "owner_type"
     t.datetime "created_at",        null: false
@@ -171,7 +171,7 @@ ActiveRecord::Schema.define(version: 20150720123715) do
     t.datetime "data_updated_at"
   end
 
-  add_index "medias", ["owner_id", "owner_type"], name: "index_medias_on_owner_id_and_owner_type"
+  add_index "media", ["owner_id", "owner_type"], name: "index_media_on_owner_id_and_owner_type"
 
   create_table "permissions", force: true do |t|
     t.datetime "created_at", null: false
@@ -253,9 +253,9 @@ ActiveRecord::Schema.define(version: 20150720123715) do
 
   create_table "response_choices", force: true do |t|
     t.integer  "response_id"
-    t.integer  "question_choices_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.integer  "question_choice_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   add_index "response_choices", ["response_id"], name: "index_response_choices_on_response_id"
@@ -342,20 +342,30 @@ ActiveRecord::Schema.define(version: 20150720123715) do
 
   create_table "users", force: true do |t|
     t.integer  "role_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "email"
-    t.string   "password"
     t.datetime "birthdate"
     t.text     "about"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
 
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   add_index "users", ["role_id"], name: "index_users_on_role_id"
 
 end

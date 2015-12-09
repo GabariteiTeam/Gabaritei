@@ -1,0 +1,18 @@
+en:
+  menu:
+    questions: "Questions"
+    subjects: "Subjects"
+    data_import: "Data import"
+    language: "Language"
+    roles: "Roles"
+    users: "Users"
+    courses: "Courses"
+    contents: "Contents"
+    requests: "Requests"
+    profile: "Profile"
+    contact: "Contact"
+    settings: "Settings"
+    login: "Login"
+    request_access: "Request access"
+    forgot_password: "Forgot password"
+    logout: "Logout"

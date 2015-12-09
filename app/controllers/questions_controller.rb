@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
-    render json: Question.all
+    render json: Question.all, methods: [:owner_name]
   end
 
   # GET /questions/1
@@ -15,7 +15,15 @@ class QuestionsController < ApplicationController
       j_subject = {:id => subject.id, :name => subject.name}
       subjects.append(j_subject)
     end
-    render :json => {:question => @question, :subjects => subjects}
+    j_question_choices = []
+    if @question.style == Question::STYLE_CHOICE
+      @question.question_choices.each do |choice|
+        j_question_choices.push(choice)
+      end
+    end
+
+
+    render :json => {:question => @question, :subjects => subjects, :choices => j_question_choices }
   end
 
   # GET /questions/new
@@ -34,17 +42,31 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     
-    # validation of subjects as arrau (avoid crashes)
-    if not params["subjects"].nil?
-      if params["subjects"].class == Array
-        params["subjects"].each do |id|
+    # if question is alternativce
+    if @question.style == Question::STYLE_CHOICE
+      # register each response
+      if not params[:choices].nil?
+        params[:choices].each do |choice|
+          q_choice = QuestionChoice.new
+          q_choice.text = choice
+          q_choice.save
+          @question.question_choices.push q_choice
+        end
+      end
+    end
+
+
+    # validation of subjects as array (avoid crashes)
+    if not params[:subjects].nil?
+      if params[:subjects].class == Array
+        params[:subjects].each do |id|
           subject = Subject.find(id)
           @question.subjects.push(subject)
         end
       end
     end
 
-
+    @question.owner = current_user
     if @question.save
       render :json => {}
     else
@@ -78,6 +100,7 @@ class QuestionsController < ApplicationController
 
   def customUpdate
     @question = Question.find(question_params["id"])
+    set_choices
     if set_subjects
       if @question.update(question_params)
         render :json => {}
@@ -130,6 +153,26 @@ class QuestionsController < ApplicationController
       end
     end
 
+    def set_choices
+      # erase all responses
+      @question.question_choices.each do |choice|
+        choice.destroy
+      end
+      # create each answer
+      if not params[:choices].nil?
+        params[:choices].each do |choice|
+          q_choice = QuestionChoice.new
+          q_choice.text = choice
+          q_choice.save
+          if q_choice == @question.answer
+            q_choice.correct = true
+          end
+          @question.question_choices.push q_choice
+        end
+      end
+    end
+
+
 
     # Use callbacks to share common setup or constraints between actions.
     def set_question
@@ -138,6 +181,6 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:id, :text, :style, :answer, :source, :hot, :subjects)
+      params.require(:question).permit(:id, :text, :style, :answer, :source, :hot, :subjects, :choices)
     end
 end

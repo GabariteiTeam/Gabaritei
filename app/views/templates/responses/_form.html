@@ -1,0 +1,34 @@
+<div class="form-group">
+    <label for="title" class="col-sm-2 control-label" translate>responses.form.question.label</label>
+    <div class="col-sm-10">
+    <div text-angular="text-angular" name="rich-question" ng-model="Ctrl.question.text" ta-disabled='true' ta-toolbar="[]"></div>
+    </div>
+</div>
+<div ng-show="Ctrl.question.style == 'written'">
+    <div class="form-group">
+        <label for="title" class="col-sm-2 control-label" translate>responses.form.response.label</label>
+        <div class="col-sm-10">
+            <div text-angular="text-angular" name="rich-response" ng-model="Ctrl.response.text" ta-disabled='disabled'></div>
+        </div>
+    </div>
+</div>
+<div ng-show="Ctrl.question.style == 'choice'">
+    <div class="form-group"  data-ng-repeat="choice in Ctrl.choices track by $index">
+        <label for="title" class="col-sm-2 control-label">{{"responses.form.alternative.label" | translate}} {{$index}}</label>
+        <div class="col-sm-8">
+            <span>{{choice.text}}</span>
+        </div>
+        <div class="col-sm-2">
+            <input toggle-switch type="checkbox" size="small" on-label="{{ 'responses.form.alternative.option_yes' | translate }}" off-label="{{ 'responses.form.alternative.option_no' | translate }}" ng-model="Ctrl.keys[$index]"/>
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-primary">
+            <span class="glyphicon glyphicon-floppy-disk"></span>
+            &nbsp;
+            <span translate>responses.actions.save</span>
+        </button>
+    </div>
+</div>

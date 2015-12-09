@@ -6,29 +6,28 @@
         .module(APP_NAME)
         .controller('RolesController', RolesController);
 
-    RolesController
-        .$inject = [
-            '$location',
-            '$routeParams',
-            '$route',
-            'Role',
-            'Permission',
-            'MessageService',
-            'RedirectService',
-            'ModalService'
-        ];
+    RolesController.$inject = ['$location', '$routeParams', '$route', '$filter', 'Role', 'Permission', 'MessageService', 'RedirectService', 'ModalService'];
 
-    function RolesController($location, $routeParams, $route, Role, Permission, MessageService, RedirectService, ModalService) {
+    function RolesController($location, $routeParams, $route, $filter, Role, Permission, MessageService, RedirectService, ModalService) {
         
         var vm = this;
 
         vm.createRole = createRole;
         vm.updateRole = updateRole;
         vm.c_delete = c_delete;
-        vm.delete_modal_id  = "confirmDeleteRole";
+        vm.showHelpPopover = showHelpPopover;
 
         vm.roles = [];
-        vm.permissions = [];
+        vm.permissions = {
+            "contents": [],
+            "courses": [],
+            "users": [],
+            "roles": [],
+            "questions": [],
+            "subjects_fields": [],
+            "requests": [],
+            "import_data": []
+        };
 
         activate();
 
@@ -38,11 +37,12 @@
                     id: $routeParams.id
                 }, function() {
                     Permission.query(function(data) {
-                        vm.permissions = data;
-                        for (var i = 0; i < vm.permissions.length; i++) {
-                            vm.permissions[i].allowed = vm.role.permissions.some(function(element) {
-                                return element.id == vm.permissions[i].id
+                        for (var i = 0; i < data.length; i++) {
+                            var p = data[i];
+                            p.allowed = vm.role.permissions.some(function(element) {
+                                return element.id == p.id
                             });
+                            vm.permissions[data[i].tag].push(p);
                         }
                     }); 
                 });
@@ -51,8 +51,11 @@
                 Role.query(function(data) {
                     vm.roles = data;
                     Permission.query(function(data) {
-                        vm.permissions = data;
-                        for (var i = 0; i < vm.permissions.length; i++) vm.permissions[i].allowed = false;
+                        for (var i = 0; i < data.length; i++) {
+                            var p = data[i];
+                            p.allowed = false;
+                            vm.permissions[data[i].tag].push(p);
+                        }
                     });
                 });
             }       
@@ -98,6 +101,20 @@
                 MessageService.sendMessage('role.deleted.error');
                 RedirectService.redirect("/roles");
             });
+        }
+
+        function showHelpPopover(permission_id, permission_name) {
+            var btn = jQuery("#permission_" + permission_id);
+            if (btn.attr("popover-active") == "false") {
+                btn.attr("popover-active", "true");
+                btn.popover({
+                    placement: 'top',
+                    title: $filter('translate')(permission_name + '.title'),
+                    content: $filter('translate')(permission_name + '.help'),
+                    trigger: 'focus'
+                });
+                btn.popover('show');
+            }
         }
 
     };

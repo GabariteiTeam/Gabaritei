@@ -10,12 +10,15 @@
 
     function User($resource, Upload) {
         var u = $resource('users/:id.json', {id: '@id'});
+
         u.prototype.$save = function(success, error) {
             upload(this, 'users/', 'POST', success, error);
         }
-        u.prototype.$update = function (success, error) {
+
+        u.prototype.$update = function(success, error) {
             upload(this, 'users/' + this.id, 'PUT', success, error);
         }
+
         function upload(user, url, method, success, error) {
             Upload.upload({
                 url: url,

@@ -34,76 +34,31 @@ img.preview-avatar {
 	height: 20px;
 }
 
-.user-cell {
-	margin: 5px 10px 5px 0;
-	padding: 10px;
-	text-align: center;
-	border: 1px solid #DDD;
-}
-
-.user-cell:hover {
-	background-color: #EEE;
-	cursor: pointer;
-}
-
-@-webkit-keyframes shake {
-	0% {transform: rotate(0deg);}
-	25% {transform: rotate(-1deg);}
-	50% {transform: rotate(0deg);}
-	75% {transform: rotate(1deg);}
-	100% {transform: rotate(0deg);}
-}
-
-@-moz-keyframes shake {
-	0% {transform: rotate(0deg);}
-	25% {transform: rotate(-1deg);}
-	50% {transform: rotate(0deg);}
-	75% {transform: rotate(1deg);}
-	100% {transform: rotate(0deg);}
-}
-
-@-o-keyframes shake {
-	0% {transform: rotate(0deg);}
-	25% {transform: rotate(-1deg);}
-	50% {transform: rotate(0deg);}
-	75% {transform: rotate(1deg);}
-	100% {transform: rotate(0deg);}
-}
-
-@keyframes shake {
-	0% {transform: rotate(0deg);}
-	25% {transform: rotate(-1deg);}
-	50% {transform: rotate(0deg);}
-	75% {transform: rotate(1deg);}
-	100% {transform: rotate(0deg);}
-}
-
-.user-cell.selected {
-	font-weight: bold;
-	border-width: 2px;
-	-webkit-animation-name: shake;
-	-webkit-animation-duration: 0.2s;
-	-webkit-animation-iteration-count: infinite;
-	-moz-animation-name: shake;
-	-moz-animation-duration: 0.2s;
-	-moz-animation-iteration-count: infinite;
-	-o-animation-name: shake;
-	-o-animation-duration: 0.2s;
-	-o-animation-iteration-count: infinite;
-	animation-name: shake;
-	animation-duration: 0.2s;
-	animation-iteration-count: infinite;
-}
-
-.search-form input, .search-form button {
-	margin-left: 5px;
-	margin-bottom: 5px;
-}
-
 table.participants-table > tbody > tr > td {
 	vertical-align: middle;
 }
 
 .form-inline input[type="file"] {
 	width: 100%;
+}
+
+.embed-container { 
+	position: relative; 
+	padding-bottom: 56.25%; 
+	height: 0; 
+	overflow: hidden; 
+	max-width: 100%; 
+} 
+
+.embed-container iframe, .embed-container object, .embed-container embed { 
+	position: absolute; 
+	top: 0; 
+	left: 0; 
+	width: 100%; 
+	height: 100%; 
+}
+
+span.toggle-handle {
+	background-color: #FFF;
+	border-color: #FFF;
 }

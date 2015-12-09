@@ -9,6 +9,7 @@
 
     CoursesController
         .$inject = [
+            '$scope',
             '$location',
             '$routeParams',
             '$route',
@@ -19,7 +20,7 @@
             'ModalService'
         ];
 
-    function CoursesController($location, $routeParams, $route, Course, Subject, MessageService, RedirectService, ModalService) {
+    function CoursesController($scope, $location, $routeParams, $route, Course, Subject, MessageService, RedirectService, ModalService) {
         
         var vm = this;
 
@@ -99,6 +100,10 @@
             vm.subject = Subject.get({id: vm.course.subject_id});
         }
 
+        $scope.$on('devise:unauthorized', function(event, xhr, deferred) {
+            RedirectService.redirect("/users/login");
+        });
+
     };
 
     CourseParticipantsController
@@ -143,19 +148,23 @@
         function searchUsers(role) {
             Course.searchUsers({id: vm.course.id, role_id: role.id, search_string: role.searchString}, function(data) {
                 role.users = data;
+                role.countSelectedUsers = 0;
             });
         }
 
         function clearSearch(role) {
             role.searchString = "";
             role.users = [];
+            role.countSelectedUsers = 0;
         }
 
-        function selectUser(user) {
+        function selectUser(role, user) {
             user.selected = !user.selected;
+            role.countSelectedUsers = user.selected ? role.countSelectedUsers + 1 : role.countSelectedUsers - 1;
         }
 
         function selectAllUsers(role, selection) {
+            role.countSelectedUsers = selection ? role.users.length : 0;
             for (var i = 0; i < role.users.length; i++) role.users[i].selected = selection;
         }
 

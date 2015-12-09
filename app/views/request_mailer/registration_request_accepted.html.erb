@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hello, <%= @request.first_name %></h1>
+    <p>
+      Your request of registration at Gabaritei has been approved, and you have been successfully registered in our site!
+    </p>
+    <p>
+      Your credentials are: <br/>
+      Login: <%= @request.email %><br />
+      Password: <%= @password %>
+    </p>
+    <p>
+      As soon as you log in, you'll be able to change your password.
+    </p>
+    <p>
+      Best regards,
+    <p>
+    <p>Gabaritei team</p>
+  </body>
+</html>

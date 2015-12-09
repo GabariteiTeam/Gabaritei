@@ -57,6 +57,7 @@ class TestsController < ApplicationController
 
       def has_question
         questions = @test.available_questions
+        
       end
 
       def add_questions

@@ -1,15 +1,25 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+# coding: utf-8
 
-# ROLES
-Role.new(name: "Admin").save!
-Role.new(name: "Student").save!
-Role.new(name: "Teacher").save!
+Permission.destroy_all
+Role.destroy_all
+User.destroy_all
+Subject.destroy_all
+Field.destroy_all
+Course.destroy_all
+Question.destroy_all
+Response.destroy_all
+Test.destroy_all
+Rating.destroy_all
 
-# PERMISSIONS
-Permission.new({name: 'permission.take_part_in_courses'}).save!
+seeds_files = [
+	"permissions_roles_seeds",
+	"users_admin_seeds",
+	"users_teachers_seeds",
+	"users_students_seeds",
+	"subjects_fields_seeds",
+	"courses_seeds"
+]
+
+seeds_files.each do |f|
+	require File.dirname(__FILE__) + "/seeds/#{f}.rb"
+end

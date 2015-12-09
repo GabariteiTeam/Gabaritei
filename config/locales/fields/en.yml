@@ -1,0 +1,51 @@
+en:
+  fields:
+    index:
+      fields_of: "Fields of "  
+      sub_heading: "Organize your subject in fields"
+      table:
+        header:
+          name: "Name"
+          description: "Description"
+    create: 
+      heading: "New Field"
+    update:
+      heading: "Update Field"
+    actions:
+      add: "Add new field"
+      save: "Save field"
+      edit: "Edit"
+      delete: "Delete"
+    form:
+      name:
+        label: "Field name:"
+        placeholder: "Field name here"
+      description: 
+        label: "Field description:"
+        placeholder: "Field description here"
+    modal:
+      delete:
+        title: "Warning!"
+        body: "Are you sure you want to delete this field?"
+    alerts:
+      create:
+        success:
+          title: "Created!"
+          content: "Field was created with success!"
+        error:
+          title: "Failed!"
+          content: "Field was NOT created!"
+      delete:
+        success:
+          title: "Deleted!"
+          content: "Field was deleted with success!"
+        error:
+          title: "Failed!"
+          content: "Field was NOT deleted"
+      update:
+        success:
+          title: "Updated!"
+          content: "Field was updated with success"
+        error:
+          title: "Failed!"
+          content: "Field was NOT updated!"

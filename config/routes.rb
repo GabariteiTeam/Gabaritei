@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  	devise_for :users
+
 	root "templates#home"
 
 	get "/home", to: "home#index", as: "home"
@@ -19,7 +21,7 @@ Rails.application.routes.draw do
 	# QUESTIONS ROUTES
 
 	get 	"/questions", 		to: "questions#index"
-	get 	"/questions/:id", 	to: "questions#show"
+	get 	"/questions/:id/show", 	to: "questions#show"
 	put 	"/questions", 		to: "questions#customUpdate"
 	post 	"/questions/", 		to: "questions#create"
 	delete 	"/questions/:id", 	to: "questions#destroy"
@@ -43,10 +45,22 @@ Rails.application.routes.draw do
 		put :add_questions, to: "tests#add_questions", on: :member
 		put "remove_question/:question_id", to: "tests#remove_question", on: :member
 	end
+	# RESPONSE ROUTES
+
+	get		"/responses/:id/show", 	to: "response#show"
+	get		"/responses/:id", 		to: "response#index"
+	put		"/responses/",		to: "response#update"
+	post		"/responses/",		to: "response#create"
+	delete 		"/responses/:id",		to: "response#destroy"
+
+
+	# END RESPONSE ROUTES
 
 	# USERS ROUTES
 
-	resources :users
+	resources :users do
+		post :verify_permissions, on: :collection
+	end
 
 	# END USERS ROUTES
 
@@ -83,8 +97,32 @@ Rails.application.routes.draw do
 
 	# END TRANSLATIONS ROUTES
 
+	# CONTENT ROUTES
+
+	resources :contents
+
+	# END CONTENT ROUTES
+
+	# REQUESTS ROUTES
+
+	resources :requests do
+		get "registration", to: "requests#registration_requests", on: :collection
+		post "registration", to: "requests#create_registration_request", on: :collection
+		get "registration", to: "requests#get_registration_request", on: :member
+		put "registration", to: "requests#assess_registration_request", on: :member
+		delete "registration", to: "requests#delete_registration_request", on: :member
+		get "course", to: "requests#course_registration_requests", on: :collection
+		post "course", to: "requests#create_course_registration_request", on: :collection
+		get "course", to: "requests#get_course_registration_request", on: :member
+		put "course", to: "requests#assess_course_registration_request", on: :member
+		delete "course", to: "requests#delete_course_registration_request", on: :member
+	end
+
+	# END REQUESTS ROUTES
+
 	# TEMPLATES ROUTES
 
+	get "templates/login", to: "templates#login"
 	get "templates/*path", to: "templates#serve"
 
 	# END TEMPLATES ROUTES

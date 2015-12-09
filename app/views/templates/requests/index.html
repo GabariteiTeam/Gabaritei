@@ -1,0 +1,93 @@
+<div class="page-header">
+    <h1>
+      <span class="glyphicon glyphicon-exclamation-sign"></span>
+      <span class="page-title" translate>requests.index.heading</span>
+    </h1>
+    <p class="lead" translate>requests.index.sub_heading</p>
+</div>
+<div class="panel panel-primary">
+  <div class="panel-heading" translate>
+    requests.index.registration_requests
+  </div>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th translate>requests.index.table.headers.requirer</th>
+        <th translate>requests.index.table.headers.email</th>
+        <th translate>requests.index.table.headers.request_date</th>
+        <th translate>requests.index.table.headers.status</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody >
+      <tr data-ng-repeat="request in Ctrl.registration_requests">
+        <td>{{ request.requirer }}</td>
+        <td>{{ request.email }}</td>
+        <td>{{ request.created_at | date: "dd/MM/yyyy" }}</td>
+        <td>
+          <span translate>{{ request.status }}</span>
+          <span>{{ request.response_date | date: "dd/MM/yyyy HH:mm:ss" }}</span>
+        </td>
+        <td>
+          <a ng-hide="request.response_date" href="#requests/registration/{{request.id}}" class="btn btn-xs btn-default">
+              <span class="glyphicon glyphicon-certificate"></span>
+              <span class="hidden-xs hidden-sm">&nbsp;</span>
+              <span class="hidden-xs hidden-sm" translate>requests.actions.assess</span>            
+          </a>
+          <a ng-hide="!request.response_date" href="#requests/registration/{{request.id}}" class="btn btn-xs btn-default">
+              <span class="glyphicon glyphicon-eye-open"></span>
+              <span class="hidden-xs hidden-sm">&nbsp;</span>
+              <span class="hidden-xs hidden-sm" translate>requests.actions.view</span>            
+          </a>
+          <gab-show-modal-button text="requests.actions.delete" args="request.id" modalid="confirmDeleteRegistrationRequest" class="btn btn-xs btn-danger" icon="glyphicon glyphicon-trash"></gab-show-modal-button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="panel panel-primary">
+  <div class="panel-heading" translate>
+    requests.index.course_registration_requests
+  </div>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th translate>requests.index.table.headers.requirer</th>
+        <th translate>requests.index.table.headers.email</th>
+        <th translate>requests.index.table.headers.course</th>
+        <th translate>requests.index.table.headers.request_date</th>
+        <th translate>requests.index.table.headers.status</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody >
+        <tr data-ng-repeat="request in Ctrl.course_registration_requests">
+          <td>{{ request.requirer.first_name + ' ' + request.requirer.last_name }}</td>
+          <td>{{ request.requirer.email }}</td>
+          <td>{{ request.course.name }}</td>
+          <td>{{ request.created_at | date: "dd/MM/yyyy" }}</td>
+          <td>
+            <span translate>{{ request.status }}</span>
+            <span>{{ request.response_date | date: "dd/MM/yyyy HH:mm:ss" }}</span>
+          </td>
+          <td>
+            <a ng-hide="request.response_date" href="#requests/course/{{request.id}}" class="btn btn-xs btn-default">
+              <span class="glyphicon glyphicon-certificate"></span>
+              <span class="hidden-xs hidden-sm">&nbsp;</span>
+              <span class="hidden-xs hidden-sm" translate>requests.actions.assess</span> 
+            </a>
+            <a ng-show="request.response_date" href="#requests/course/{{request.id}}" class="btn btn-xs btn-default">
+              <span class="glyphicon glyphicon-eye-open"></span>
+              <span class="hidden-xs hidden-sm">&nbsp;</span>
+              <span class="hidden-xs hidden-sm" translate>requests.actions.view</span>             
+            </a>
+            <gab-show-modal-button text="requests.actions.delete" args="request.id" modalid="confirmDeleteCourseRegistrationRequest" class="btn btn-xs btn-danger" icon="glyphicon glyphicon-trash"></gab-show-modal-button>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+
+<div gab-confirm-modal modalid="confirmDeleteRegistrationRequest" title="requests.modal.delete.title" body="requests.modal.delete.body" callback="Ctrl.deleteRegistrationRequest(id)"></div>
+
+<div gab-confirm-modal modalid="confirmDeleteCourseRegistrationRequest" title="requests.modal.delete.title" body="requests.modal.delete.body" callback="Ctrl.deleteCourseRegistrationRequest(id)"></div>

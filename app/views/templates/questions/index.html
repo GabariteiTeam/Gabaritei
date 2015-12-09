@@ -1,41 +1,52 @@
 <div class="page-header">
-  <h1 translate>crud.questions.index.header</h1>
-  <p class="lead" translate>crud.questions.index.sub_header</p>
+  <h1>
+    <span class="glyphicon glyphicon-question-sign"></span>
+    <span class="page-title" translate>questions.index.heading</span>
+  </h1>
+  <p class="lead" translate>questions.index.sub_heading</p>
 </div>
 
-<div class="panel panel-primary">
-  <div class="panel-heading">
-    <!-- <h3 class="panel-title">Questions</h3> -->
-  </div>
+<a href="#questions/new" class="btn btn-primary crud-add-btn">
+  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+  <span translate>questions.actions.add</span>
+</a>
 
-  <table class="table table-striped table-hover ">
+<div class="panel panel-primary">
+  <div class="panel-heading"></div>
+  <table class="table table-striped table-hover crud-table">
     <thead>
       <tr>
-        <th translate>crud.questions.table.headers.id</th>
-        <th translate>crud.questions.table.headers.professor</th>
-        <th translate>crud.questions.table.headers.source</th>
-        <th translate>crud.questions.table.headers.text</th>
-        <th translate>crud.questions.table.headers.date</th>
-        <th translate>crud.questions.table.headers.options</th>
+        <th translate>questions.index.table.headers.owner</th>
+        <th translate>questions.index.table.headers.source</th>
+        <th translate>questions.index.table.headers.text </th>
+        <th translate>questions.index.table.headers.hot</th>
+        <th translate>questions.index.table.headers.answer</th>
+        <th></th>
       </tr>
     </thead>
-
-  <tbody>
+    <tbody>
         <tr data-ng-repeat="question in Ctrl.questions">
-          <td>{{ question.id }}</td>
-          <td>{{ question.user_id }}</td>
+          <td>{{ question.owner_name }}</td>
           <td>{{ question.source }}</td>
-          <td>{{ question.text }}</td>
-          <td>{{ question.answer }}</td>
-          <td>
-            <a href="#questions/update/{{question.id}}" class="btn btn-xs btn-info" translate>crud.edit</a>
-            <gab-show-modal-button text="crud.delete" args="question.id" modalid="confirmDeleteQuestion" class="btn btn-xs btn-danger"/><gab-show-modal-button>
+          <td>{{ question.text | htmlToPlaintext }}</td>
+          <td><span ng-class="{'glyphicon glyphicon-fire': question.hot}"></span></td>
+          <td>{{ question.answer |  htmlToPlaintext }}</td>
+          <td class="options-cell options-column-3">
+            <a href="#questions/update/{{question.id}}" class="btn btn-xs btn-info">
+              <span class="glyphicon glyphicon-pencil"></span>
+              <span class="hidden-xs hidden-sm">&nbsp;</span>
+              <span class="hidden-xs hidden-sm" translate>questions.actions.edit</span>
+            </a>
+            <a href="#responses/{{question.id}}" class="btn btn-xs btn-default">
+              <span class="glyphicon glyphicon-edit"></span>
+              <span class="hidden-xs hidden-sm">&nbsp;</span>
+              <span class="hidden-xs hidden-sm" translate>questions.actions.view_responses</span>
+            </a>
+            <gab-show-modal-button text="questions.actions.delete" args="question.id" modalid="confirmDeleteQuestion" class="btn btn-xs btn-danger" icon="glyphicon glyphicon-trash"></gab-show-modal-button>
           </td>
         </tr>
     </tbody>
   </table>
 </div>
-  
-<a href="#questions/new" class="btn btn-primary" translate>crud.questions.index.add</a>
 
-<div gab-confirm-modal modalid="confirmDeleteQuestion" title="crud.questions.modal.delete.title" body="crud.questions.modal.delete.body" callback="Ctrl.c_delete(id)"></div>
+<div gab-confirm-modal modalid="confirmDeleteQuestion" title="questions.modal.delete.title" body="questions.modal.delete.body" callback="Ctrl.c_delete(id)"></div>
