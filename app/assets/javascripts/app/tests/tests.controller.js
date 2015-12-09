@@ -110,7 +110,8 @@
             'ModalService'
         ];
 
-    function TestQuestionsController($location, $routeParams, $route, Test, Course, Question, MessageService, RedirectService, ModalService) {
+    function TestQuestionsController($location, $routeParams, $route, Test, 
+                        Course, Question, MessageService, RedirectService, ModalService) {
         
         var vm = this;
 
@@ -146,7 +147,9 @@
         }
 
         function selectAllQuestions(selection) {
-            for (var i = 0; i < vm.questions.length; i++) vm.questions[i].selected = selection;
+            for (var i = 0; i < vm.questions.length; i++) {
+                vm.questions[i].selected = selection;
+            }
         }
 
         function addSelected() {

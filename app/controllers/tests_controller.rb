@@ -1,5 +1,5 @@
 class TestsController < ApplicationController
-
+      before_action :set_test, only: [:search_questions, :add_questions, :has_question]
       # GET /tests
       # GET /tests.json
       def index
@@ -38,9 +38,25 @@ class TestsController < ApplicationController
       end
 
       def search_questions
-        #TODO: redo query
-        @questions = Question.where("text LIKE :search_string OR answer LIKE :search_string OR source LIKE :search_string", search_string: "%#{params[:search_string]}%")
-        render json: @questions
+        questions = @test.available_questions
+        search_string = params[:search_string]
+        if search_string != ""
+            @filtered_questions = Array.new
+            questions.each do |question|
+                if question.text.include?(search_string)
+                    @filtered_questions.push question
+                end
+            end
+        else
+            @filtered_questions = questions
+        end
+
+
+        render json: @filtered_questions
+      end
+
+      def has_question
+        questions = @test.available_questions
       end
 
       def add_questions
@@ -59,7 +75,6 @@ class TestsController < ApplicationController
       end
 
       def remove_question
-        set_test
         questions = @test.questions.to_a
         questions.delete_if {|question| question.id == params[:question_id].to_i}
         p questions
