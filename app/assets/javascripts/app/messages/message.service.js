@@ -293,7 +293,7 @@
                 'title': 'crud.tests.alerts.questions.removed.error.title',
                 'content': 'crud.tests.alerts.questions.removed.error.content',
                 'type': mTypes['error']
-            }         
+            },         
             'content.created.success': {
                 'title': 'contents.alerts.create.success.title',
                 'content': 'contents.alerts.create.success.content',

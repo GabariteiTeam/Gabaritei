@@ -28,7 +28,6 @@
     }
 
     #wrapper {
-        padding-top: 10px;
         padding-left: 200px;
 
         &.toggled {
@@ -81,28 +80,24 @@
             .sidebar-nav > .sidebar-brand {
                 font-size: 18px;
                 color: rgba(255,255,255,0.7);
+
+                line-height: 60px;
+
+                .sub_icon {
+                    line-height: 60px;
+                }
+
+                a {
+                    color: #999999;
+                }
+
+                a:hover {
+                    color: #fff;
+                    background: none;
+                }
             }
         }
     }
-
-    .sidebar-nav > .sidebar-brand {
-        font-size: 18px;
-        line-height: 60px;
-
-        .sub_icon {
-            line-height: 60px;
-        }
-
-        a {
-            color: #999999;
-        }
-
-        a:hover {
-            color: #fff;
-            background: none;
-        }
-    }
-
 }
 
 div.page-header {
@@ -169,7 +164,11 @@ div.page-header {
             line-height: 40px;
 
             float: left;
-            clear: left;
+
+            &.added-date {
+                font-size: 11px;
+                float: right;
+            }
 
             &:last-child {
                 line-height: 20px;
@@ -203,11 +202,9 @@ div.page-header {
             margin-left: 18px;
             top: 10px; /* half of the height of .ico */
         }
-        
     }
 }
 
-<<<<<<< HEAD:app/assets/stylesheets/styles.css.scss
 #questions-table {
     width: 100%;
     margin-top: 10px;
@@ -234,8 +231,8 @@ div.page-header {
             /*border-width: 2px;*/
         }
     }
+}
 
-=======
 .right {
     float: right;
 }
@@ -244,11 +241,11 @@ div.page-header {
     float: left;
 }
 
-.checkbox {
+/*.checkbox {
     label {
 
     }
-}
+}*/
 
 .crud-add-btn {
     margin-bottom: 20px;
@@ -307,5 +304,4 @@ a.permission-info-btn {
 
 span.permission-title {
     padding: 0 3px;
->>>>>>> b801a4fad37ff3a686d3933385f2cd0d03750dfb:app/assets/stylesheets/styles.scss
 }
