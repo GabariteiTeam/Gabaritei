@@ -10,6 +10,8 @@ Question.destroy_all
 Response.destroy_all
 Test.destroy_all
 Rating.destroy_all
+RegistrationRequest.destroy_all
+CourseRegistrationRequest.destroy_all
 
 seeds_files = [
 	"permissions_roles_seeds",

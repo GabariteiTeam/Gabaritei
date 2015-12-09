@@ -2,8 +2,8 @@ if Rails.env == 'development'
 
 # ROLES
 
-role_student = Role.second
-role_teacher = Role.third
+role_student = Role.all.second
+role_teacher = Role.all.third
 
 
 # COURSES

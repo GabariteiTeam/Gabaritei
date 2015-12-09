@@ -24,7 +24,7 @@ if Rails.env == 'development'
 	request.text = "Gostaria de ser inscrito no sistema Gabaritei."
 	request.save!
 
-	students = User.where(role_id: Role.second.id)
+	students = User.where(role_id: Role.all.second.id)
 	courses = Course.all
 
 	request = CourseRegistrationRequest.new

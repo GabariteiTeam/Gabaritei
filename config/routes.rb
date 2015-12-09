@@ -42,9 +42,9 @@ Rails.application.routes.draw do
 
 	get		"/responses/:id/show", 	to: "response#show"
 	get		"/responses/:id", 		to: "response#index"
-	put		"/responses/",		to: "response#update"
-	post		"/responses/",		to: "response#create"
-	delete 		"/responses/:id",		to: "response#destroy"
+	put		"/responses/",			to: "response#update"
+	post	"/responses/",			to: "response#create"
+	delete 	"/responses/:id",		to: "response#destroy"
 
 
 	# END RESPONSE ROUTES
@@ -54,6 +54,8 @@ Rails.application.routes.draw do
 	resources :users do
 		post :verify_permissions, on: :collection
 		post :change_password, on: :member
+		get :settings, on: :member
+		post :settings, to: "users#save_settings", on: :member
 	end
 
 	# END USERS ROUTES

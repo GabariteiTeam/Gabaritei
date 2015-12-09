@@ -16,3 +16,4 @@ en:
     request_access: "Request access"
     forgot_password: "Forgot password"
     logout: "Logout"
+    hello: "Hello, "

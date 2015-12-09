@@ -161,6 +161,11 @@ class CreateModelRelations < ActiveRecord::Migration
       t.timestamps null: false
     end
 
+    create_table :settings do |t|
+      t.belongs_to :user, index: true, required: true
+      t.timestamps null: false
+    end
+
   end
   
 end

@@ -13,6 +13,14 @@
             changePassword: {
                 url: 'users/:id/change_password',
                 method: 'POST'
+            },
+            settings: {
+                url: 'users/:id/settings',
+                method: 'GET'
+            },
+            saveSettings: {
+                url: 'users/:id/settings',
+                method: 'POST'
             }
         });
 

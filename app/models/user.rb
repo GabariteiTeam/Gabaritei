@@ -78,6 +78,8 @@ class User < ActiveRecord::Base
     belongs_to :role
 
     # @!endgroup
+
+    has_one :setting
     
     # @!group Has many
     

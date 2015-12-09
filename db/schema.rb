@@ -288,6 +288,15 @@ ActiveRecord::Schema.define(version: 20151031121535) do
     t.text     "description"
   end
 
+  create_table "settings", force: true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "preferred_language"
+  end
+
+  add_index "settings", ["user_id"], name: "index_settings_on_user_id"
+
   create_table "subjects", force: true do |t|
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
