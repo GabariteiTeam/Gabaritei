@@ -1,0 +1,293 @@
+<br/>
+<a name="course"></a>
+
+<ol class="breadcrumb">
+  <li><a href="#">Home</a></li>
+  <li><a href="#">{{ Ctrl.course.category.name }}</a></li>
+  <li class="active">{{ Ctrl.course.name }}</li>
+</ol>
+
+<div class="page-header">
+  <h1>{{ Ctrl.course.name }}</h1>
+  <span>{{ Ctrl.course.description }}</span>
+</div>
+
+<div class="well">
+  <div class="col-md-3">
+    <img style="width:100%; max-width: 200px; margin-botton: 10px;" src="assets/missing_course_avatar.png" />
+  </div>
+  <br />
+  <div class="col-md-9">
+    <dl class="dl-horizontal">
+      <dt translate>courses.index.table.body.subject</dt>
+      <dd>{{ Ctrl.course.category.name }}</dd>
+      <dt translate>courses.index.table.body.professor</dt>
+      <dd>Nome_Professor</dd>
+    </dl>
+    <a href="#" class="btn btn-warning">
+      <span class="glyphicon glyphicon-folder-open"></span>
+      <span class="hidden-xs hidden-sm">&nbsp;</span>
+      <span class="hidden-xs hidden-sm" translate>courses.actions.new_class</span>
+    </a>
+    <a href="#courses/participants/{{Ctrl.course.id}}" class="btn btn-default">
+      <span class="glyphicon glyphicon-user"></span>
+      <span class="hidden-xs hidden-sm">&nbsp;</span>
+      <span class="hidden-xs hidden-sm" translate>courses.actions.edit_participants</span>
+    </a>
+    <a href="#courses/update/{{Ctrl.course.id}}" class="btn btn-info">
+      <span class="glyphicon glyphicon-pencil"></span>
+      <span class="hidden-xs hidden-sm">&nbsp;</span>
+      <span class="hidden-xs hidden-sm" translate>courses.actions.edit</span>
+    </a>
+    <gab-show-modal-button text="courses.actions.delete" args="Ctrl.course.id" modalid="confirmDeleteCourse" class="btn btn-danger" icon="glyphicon glyphicon-trash"></gab-show-modal-button>
+  </div>
+  <div class="clearfix"></div>
+</div>
+
+<div class="row">
+  <div class="col-xm-12 col-md-6">
+    <div class="panel panel-primary">
+
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          Aula 4
+         <span class="label label-warning">New content!</span></h3>
+      </div>
+
+      <div>
+        <div class="path-s">
+          <a href="#" class="ico-path">
+            <div class="bar"></div>
+            <div class="ico round"></div>
+            <span class="glyphicon glyphicon-duplicate"></span>
+            <span class="title">Conteudo 1</span>
+            <span class="added-date">adicionado em 17/jan</span>
+            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in nisi tristique nisi aliquam cursus ut et orci. Nullam velit purus, volutpat et iaculis vitae, rhoncus quis mauris. Pellentesque non tincidunt metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in nisi tristique nisi aliquam cursus ut et orci. Nullam velit purus, volutpat et iaculis vitae, rhoncus quis maurfffffffffis. Pellentesque non tincidunt metus. Pellentesque non tincidunt metus. Pellentesque non tincidunt metus. Pellentesque non tincidunt metus.</span>
+          </a>
+          <div class="clearfix"></div>
+        </div>
+
+        <div class="path-s">
+          <a href="#" class="ico-path">
+            <div class="bar"></div>
+            <div class="ico"></div>
+            <span class="glyphicon glyphicon-question-sign"></span>
+            <span class="title">Exercicio 1</span>
+            <span class="added-date">adicionado em 17/jan</span>
+            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+          </a>
+        <div class="clearfix"></div>
+        </div>
+
+        <div class="path-s">
+          <a href="#" class="ico-path">
+            <div class="bar"></div>
+            <div class="ico round"></div>
+            <span class="glyphicon glyphicon-duplicate"></span>
+            <span class="title">Conteudo 2</span>
+            <span class="added-date">adicionado em 17/jan</span>
+            <span></span>
+          </a>
+        <div class="clearfix"></div>
+        </div>
+
+        <div class="path-s">
+          <a href="#" class="ico-path">
+            <div class="bar"></div>
+            <div class="ico"></div>
+            <span class="glyphicon glyphicon-certificate"></span>
+            <span class="title">Exame 1 </span>
+            <span class="added-date">adicionado em 17/jan</span>
+            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in nisi tristique nisi aliquam cursus ut et orci.</span>
+          </a>
+        <div class="clearfix"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col-xm-12 col-md-6">
+    <div class="panel panel-primary">
+
+      <div class="panel-heading">
+        <h3 class="panel-title">Aula 3</h3>
+      </div>
+
+      <div>
+        <div class="path-s completed">
+          <a href="#" class="ico-path">
+            <div class="bar"></div>
+            <div class="ico round"></div>
+            <span class="glyphicon glyphicon-duplicate"></span>
+            <span class="title">Conteudo 1</span>
+            <span class="added-date">adicionado em 17/jan</span>
+            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in nisi tristique nisi aliquam cursus ut et orci.</span>
+          </a>
+        <div class="clearfix"></div>
+        </div>
+
+        <div class="path-s completed">
+          <a href="#" class="ico-path">
+            <div class="bar"></div>
+            <div class="ico round"></div>
+            <span class="glyphicon glyphicon-duplicate"></span>
+            <span class="title">Conteudo 2</span>
+            <span class="added-date">adicionado em 17/jan</span>
+            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in nisi tristique nisi aliquam cursus ut et orci.</span>
+          </a>
+        <div class="clearfix"></div>
+        </div>
+
+        <div class="path-s">
+          <a href="#" class="ico-path">
+            <div class="bar"></div>
+            <div class="ico"></div>
+            <span class="glyphicon glyphicon-question-sign"></span>
+            <span class="title">Exercicio 1 </span>
+            <span class="added-date">adicionado em 17/jan</span>
+            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in nisi tristique nisi aliquam cursus ut et orci.</span>
+          </a>
+        <div class="clearfix"></div>
+        </div>
+
+        <div class="path-s">
+          <a href="#" class="ico-path">
+            <div class="bar"></div>
+            <div class="ico"></div>
+            <span class="glyphicon glyphicon-certificate"></span>
+            <span class="title">Exame 1 </span>
+            <span class="added-date">adicionado em 17/jan</span>
+            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in nisi tristique nisi aliquam cursus ut et orci.</span>
+          </a>
+        <div class="clearfix"></div>
+        </div>
+
+        <div class="path-s">
+          <a href="#" class="ico-path">
+            <div class="bar"></div>
+            <div class="ico"></div>
+            <span class="glyphicon glyphicon-question-sign"></span>
+            <span class="title">Exercicio 2</span>
+            <span class="added-date">adicionado em 17/jan</span>
+            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in nisi tristique nisi aliquam cursus ut et orci.</span>
+          </a>
+        <div class="clearfix"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col-xm-12 col-md-6">
+    <div class="panel panel-primary">
+
+      <div class="panel-heading">
+        <h3 class="panel-title">Aula 2</h3>
+      </div>
+
+      <div>
+        <div class="path-s completed">
+          <a href="#" class="ico-path">
+            <div class="bar"></div>
+            <div class="ico round"></div>
+            <span class="glyphicon glyphicon-duplicate"></span>
+            <span class="title">Conteudo 1</span>
+            <span class="added-date">adicionado em 17/jan</span>
+            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in nisi tristique nisi aliquam cursus ut et orci. Nullam velit purus, volutpat et iaculis vitae, rhoncus quis mauris. Pellentesque non tincidunt metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in nisi tristique nisi aliquam cursus ut et orci. Nullam velit purus, volutpat et iaculis vitae, rhoncus quis mauris. Pellentesque non tincidunt metus.</span>
+          </a>
+          <div class="clearfix"></div>
+        </div>
+
+        <div class="path-s completed">
+          <a href="#" class="ico-path">
+            <div class="bar"></div>
+            <div class="ico"></div>
+            <span class="glyphicon glyphicon-question-sign"></span>
+            <span class="title">Exercicio 1</span>
+            <span class="added-date">adicionado em 17/jan</span>
+            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in nisi tristique nisi aliquam cursus ut et orci.</span>
+          </a>
+        <div class="clearfix"></div>
+        </div>
+
+        <div class="path-s completed">
+          <a href="#" class="ico-path">
+            <div class="bar"></div>
+            <div class="ico round"></div>
+            <span class="glyphicon glyphicon-duplicate"></span>
+            <span class="title">Conteudo 2</span>
+            <span class="added-date">adicionado em 17/jan</span>
+            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in nisi tristique nisi aliquam cursus ut et orci.</span>
+          </a>
+        <div class="clearfix"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col-xm-12 col-md-6">
+    <div class="panel panel-primary">
+
+      <div class="panel-heading">
+        <h3 class="panel-title">Aula 1</h3>
+      </div>
+
+      <div>
+        <div class="path-s completed">
+          <a href="#" class="ico-path">
+            <div class="bar"></div>
+            <div class="ico round"></div>
+            <span class="glyphicon glyphicon-duplicate"></span>
+            <span class="title">Conteudo 1</span>
+            <span class="added-date">adicionado em 17/jan</span>
+            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in nisi tristique nisi aliquam cursus ut et orci.</span>
+          </a>
+        <div class="clearfix"></div>
+        </div>
+
+        <div class="path-s completed">
+          <a href="#" class="ico-path">
+            <div class="bar"></div>
+            <div class="ico round"></div>
+            <span class="glyphicon glyphicon-duplicate"></span>
+            <span class="title">Conteudo 2</span>
+            <span class="added-date">adicionado em 17/jan</span>
+            <span>Mini descricao??? Mini descricao??? Mini descricao??? Mini descricao??? Mini descricao?? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in nisi tristique nisi aliquam cursus ut et orci. Nu</span>
+          </a>
+        <div class="clearfix"></div>
+        </div>
+
+        <div class="path-s completed">
+          <a href="#" class="ico-path">
+            <div class="bar"></div>
+            <div class="ico"></div>
+            <span class="glyphicon glyphicon-question-sign"></span>
+            <span class="title">Exercicio 1 </span>
+            <span class="added-date">adicionado em 17/jan</span>
+            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in nisi tristique nisi aliquam cursus ut et orci.</span>
+          </a>
+        <div class="clearfix"></div>
+        </div>
+
+        <div class="path-s completed">
+          <a href="#" class="ico-path">
+            <div class="bar"></div>
+            <div class="ico"></div>
+            <span class="glyphicon glyphicon-question-sign"></span>
+            <span class="title">Exercicio 2</span>
+            <span class="added-date">adicionado em 17/jan</span>
+            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in nisi tristique nisi aliquam cursus ut et orci.</span>
+          </a>
+        <div class="clearfix"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+
+<div gab-confirm-modal modalid="confirmDeleteCourse" title="courses.modal.delete.title" body="courses.modal.delete.body" callback="Ctrl.c_delete(id)"></div>

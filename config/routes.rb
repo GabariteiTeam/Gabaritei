@@ -38,6 +38,17 @@ Rails.application.routes.draw do
 	
 	# END FIELDS ROUTES
 
+	# TESTS ROUTES
+
+	resources :tests do
+		get :search_questions, to: "tests#search_questions", on: :member
+		put :add_questions, to: "tests#add_questions", on: :member
+		put "remove_question/:question_id", to: "tests#remove_question", on: :member
+	end
+	
+	
+	# END TESTS ROUTES
+
 	# RESPONSE ROUTES
 
 	get		"/responses/:id/show", 	to: "response#show"

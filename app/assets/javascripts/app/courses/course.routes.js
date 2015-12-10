@@ -42,6 +42,11 @@
                 templateUrl: 'templates/recommendations/recommend.html',
                 controller: 'RecommendationsController',
                 controllerAs: 'Ctrl'
+            })
+            .when('/courses/:id', {
+                templateUrl: 'templates/courses/show.html',
+                controller: 'CoursesController',
+                controllerAs: 'Ctrl'
             });
     }
 
