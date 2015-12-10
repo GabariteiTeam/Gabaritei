@@ -13,6 +13,7 @@ en:
       heading: "Edit User"
     profile_update:
       heading: "Update profile"
+      save: "Save profile"
     settings:
       heading: "Settings"
       preferred_language: "Preferred language"

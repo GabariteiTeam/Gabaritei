@@ -33,7 +33,9 @@ class Lesson < ActiveRecord::Base
     # @return [Array<Content>] all associated contents of the lesson.
     # @see Content#lessons
     has_many :contents, through: :lesson_contents
+    has_many :questions, through: :lesson_questions
 
     has_many :lesson_contents
+    has_many :lesson_questions
 
 end
