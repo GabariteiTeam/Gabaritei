@@ -205,7 +205,7 @@ ActiveRecord::Schema.define(version: 20151031121535) do
 
   add_index "questions", ["owner_id"], name: "index_questions_on_owner_id"
 
-  create_table "ratings", id: false, force: true do |t|
+  create_table "ratings", force: true do |t|
     t.integer  "owner_id"
     t.integer  "question_id"
     t.datetime "created_at",  null: false

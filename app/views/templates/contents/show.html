@@ -10,17 +10,18 @@
 	<p class="lead">{{ Ctrl.content.description }}</p>
 </div>
 
-<a ng-hide="Ctrl.content.embeddable || Ctrl.content.medium.is_attachment != 'true'" href="{{ Ctrl.content.medium.source }}" class="btn btn-primary">
-  <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
-  &nbsp;
-  <span translate>contents.actions.download</span>
-</a>
-
-<a ng-show="Ctrl.course_id" href="/#courses/{{ Ctrl.course_id }}/content/{{ Ctrl.content.id }}/recommend" class="btn btn-info">
-  <span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span>
-  &nbsp;
-  <span translate>contents.actions.recommend</span>
-</a>
+<p>
+  <a ng-hide="Ctrl.content.embeddable || Ctrl.content.medium.is_attachment != 'true'" href="{{ Ctrl.content.medium.source }}" class="btn btn-primary">
+    <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
+    &nbsp;
+    <span translate>contents.actions.download</span>
+  </a>
+  <a ng-show="Ctrl.course_id" href="/#courses/{{ Ctrl.course_id }}/content/{{ Ctrl.content.id }}/recommend" class="btn btn-info">
+    <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
+    &nbsp;
+    <span translate>contents.actions.recommend</span>
+  </a>
+</p>
 
 <div ng-hide="Ctrl.content.embeddable || Ctrl.content.medium.is_attachment == 'true'">
 	<br />
@@ -29,7 +30,6 @@
 		{{ Ctrl.content.medium.source }}
 	</a>
 </div>
-
 
 <div class='embed-container' ng-hide="!Ctrl.content.embeddable">
 	<iframe src="{{ Ctrl.content.embeddable ? Ctrl.content.medium.source : '' }}" frameborder="0" allowfullscreen></iframe>

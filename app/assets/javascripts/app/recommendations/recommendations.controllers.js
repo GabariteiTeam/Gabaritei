@@ -6,9 +6,9 @@
         .module(APP_NAME)
         .controller('RecommendationsController', RecommendationsController);
 
-    RecommendationsController.$inject = ['$routeParams', 'Recommendation', 'Course', 'Content', 'Question', 'MessageService'];
+    RecommendationsController.$inject = ['$routeParams', 'Recommendation', 'Course', 'Content', 'Question', 'RedirectService', 'MessageService'];
 
-    function RecommendationsController($routeParams, Recommendation, Course, Content, Question, MessageService) {
+    function RecommendationsController($routeParams, Recommendation, Course, Content, Question, RedirectService, MessageService) {
 
     	var vm = this;
 
@@ -45,6 +45,7 @@
     	function createRecommendation() {
     		Recommendation.recommend({course_id: vm.course.id, resource: vm.resource, targets: vm.to_whom, type: $routeParams.resource}, function(success) {
     			MessageService.sendMessage('recommendation.created.success');
+                RedirectService.redirect('/courses/' + vm.course.id + '/' + $routeParams.resource + '/' + vm.resource.id);
     		}, function(error) {
     			MessageService.sendMessage('recommendation.created.error');
     		});

@@ -55,3 +55,5 @@ Gemfile.lock
 #Visual Studio Code
 /typings/
 
+
+.byebug_history

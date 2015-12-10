@@ -4,6 +4,7 @@
 #
 # Table name: ratings
 #
+#  id          :integer          not null, primary key
 #  owner_id    :integer
 #  question_id :integer
 #  created_at  :datetime         not null

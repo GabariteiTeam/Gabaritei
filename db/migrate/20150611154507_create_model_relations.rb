@@ -90,7 +90,7 @@ class CreateModelRelations < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    create_table :ratings, id: false do |t|
+    create_table :ratings do |t|
       t.belongs_to :owner, index: true, required: true
       t.belongs_to :question, index: true, required: true
       t.timestamps null: false
