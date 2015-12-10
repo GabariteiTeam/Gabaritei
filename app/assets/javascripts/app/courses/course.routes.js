@@ -28,6 +28,16 @@
                 controller: 'CoursesController',
                 controllerAs: 'Ctrl'
             })
+            .when('/courses/:course_id/content/:id', {
+                templateUrl: 'templates/contents/show.html',
+                controller: 'ContentsController',
+                controllerAs: 'Ctrl'
+            })
+            .when('/courses/:course_id/question/:question_id', {
+                templateUrl: 'templates/responses/new.html',
+                controller: 'CreateResponsesController',
+                controllerAs: 'Ctrl'
+            })
             .when('/courses/:course_id/:resource/:id/recommend', {
                 templateUrl: 'templates/recommendations/recommend.html',
                 controller: 'RecommendationsController',

@@ -25,6 +25,10 @@ en:
       index: "Requests"
       assess_registration_request: "Assess registration request"
       assess_course_registration_request: "Assess course registration request"
+    responses:
+      index: "Responses"
+      new: "New response"
+      update: "Update response"
     roles:
       index: "Roles"
       new: "New role"

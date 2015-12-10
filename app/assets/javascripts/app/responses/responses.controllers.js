@@ -34,6 +34,7 @@
 	function CreateResponsesController($routeParams, RedirectService, MessageService, Response, Question, lodash) {
 		var vm		   		= this;
 		vm.question_id 		= $routeParams.question_id;
+		vm.course_id        = $routeParams.course_id;
 		Question.show({id: vm.question_id}, function(data){
 							vm.choices = data.choices;
 							vm.keys = lodash.fill(Array(vm.choices.length), false);

@@ -21,6 +21,7 @@
         activate();
 
         function activate() {
+            vm.course_id = $routeParams.course_id;
             if ($routeParams.id === undefined) {
                 vm.content = new Content();
                 vm.content.medium = {

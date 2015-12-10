@@ -32,7 +32,6 @@
 	    		Question.show({id: $routeParams.id}, function(question) {
 	    			vm.question = question.question;
 					vm.question_text = vm.question.text;
-					console.log(vm.question);
 					vm.category = question.category_list;
 					vm.resource = vm.question;
 				});

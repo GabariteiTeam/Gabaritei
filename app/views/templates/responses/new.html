@@ -1,3 +1,11 @@
+<ol class="breadcrumb">
+  <li><a href="/#home" translate>breadcrumbs.home</a></li>
+  <li ng-show="Ctrl.course_id"><a href="/#courses/{{ Ctrl.course_id }}" translate>breadcrumbs.courses.show</a></li>
+  <li ng-hide="Ctrl.course_id"><a href="/#questions" translate>breadcrumbs.questions.index</a></li>
+  <li ng-hide="Ctrl.course_id"><a href="/#responses/{{ Ctrl.question_id }}" translate>breadcrumbs.responses.index</a></li>
+  <li class="active" translate>breadcrumbs.responses.new</li>
+</ol>
+
 <div class="page-header">
 	<h1 translate>responses.create.heading</h1>
 </div>
