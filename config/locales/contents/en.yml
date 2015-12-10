@@ -15,10 +15,14 @@ en:
       edit: "Edit"
       delete: "Delete"
       save: "Save content"
+      recommend: "Recommend this content"
+      download: "Download this content"
     create:
       heading: "New Content"
     update:
       heading: "Edit Content"
+    show:
+      link: "Link to the content: "
     form:
       name: 
         label: "Content name"
