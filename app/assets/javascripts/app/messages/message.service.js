@@ -154,6 +154,11 @@
                 'content': 'users.alerts.settings_save.error.content',
                 'type': mTypes['error']
             },
+            'user.forgot_password.error' : {
+                'title': 'users.alerts.forgot_password.error.title',
+                'content': 'users.alerts.forgot_password.error.content',
+                'type': mTypes['error']
+            },
             'data_import.uploaded.success': {
                 'title': 'data_import.alerts.upload.success.title',
                 'content': 'data_import.alerts.upload.success.content',

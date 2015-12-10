@@ -3,7 +3,16 @@ en:
     email: "E-mail"
     password: "Password"
     login: "Sign in"
-    forgot_password: "Forgot password?"
+    forgot_password: 
+      heading: "I forgot my password!"
+      sub_heading: "That's ok, we can send you a new one!"
+      enter_email: "Your e-mail"
+      request_new_password: "Request new password"
+      invalid_email: "We couldn't find this e-mail, please verify!"
+    password_sent:
+      heading: "New password sent!"
+      sub_heading: "You will shortly receive an e-mail with your new password. Please, request a new one with you don't receive it."
+      go_to_login: "Go back to login page"
     request_access: "Request access"
     email_missing: "Provide your e-mail"
     password_missing: "Provide your password"

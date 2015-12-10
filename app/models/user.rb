@@ -214,6 +214,12 @@ class User < ActiveRecord::Base
         return true
     end
 
+    def reset_password
+        generated_password = Devise.friendly_token.first(8)
+        self.password = generated_password
+        return self.save! ? generated_password : nil
+    end
+
     private
 
         def sanitize

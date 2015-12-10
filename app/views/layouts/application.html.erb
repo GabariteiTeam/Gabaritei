@@ -40,9 +40,14 @@
         <!-- /#wrapper -->
         <% else %>
         <%= render 'layouts/login_navbar'%>
-        <div class="container-fluid clearfix">
-            <div ng-view>
-                <%= yield %>
+        <div id="page-content-wrapper">
+            <div class="container-fluid clearfix">
+                <div ng-controller="MessagesController">
+                    <div id="messageContainer"></div>
+                </div>
+                <div ng-view>
+                    <%= yield %>
+                </div>
             </div>
         </div>
         <% end %>

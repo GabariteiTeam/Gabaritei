@@ -14,6 +14,10 @@
                 url: 'users/:id/change_password',
                 method: 'POST'
             },
+            reset_password: {
+                url: 'users/reset_password',
+                method: 'POST'
+            },
             settings: {
                 url: 'users/:id/settings',
                 method: 'GET'

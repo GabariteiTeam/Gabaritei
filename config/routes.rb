@@ -54,6 +54,7 @@ Rails.application.routes.draw do
 	resources :users do
 		post :verify_permissions, on: :collection
 		post :change_password, on: :member
+		post :reset_password, on: :collection
 		get :settings, on: :member
 		post :settings, to: "users#save_settings", on: :member
 	end

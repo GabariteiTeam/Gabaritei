@@ -80,11 +80,15 @@ en:
           content: "Password was successfully changed!"
         error:
           title: "Failed!"
-          content: "Password could not be changed!" 
+          content: "Password could not be changed!"
+      forgot_password:
+        error:
+          title: "Failed!"
+          content: "An error occurred! Please try again later."       
       settings_save:
         success:
           title: "Saved!"
           content: "Settings were saved with success!"
         error:
           title: "Failed!"
-          content: "Settings could not be saved!" 
+          content: "Settings could not be saved!"

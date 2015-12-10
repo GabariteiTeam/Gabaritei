@@ -2,6 +2,8 @@ class UsersController < ApplicationController
 
 	include CleanPagination
 
+	skip_before_action :verify_authentication, only: [:reset_password]
+
 	def index
 		if current_user.confirm_permissions(["permission.users.manipulate"])
 			max_per_page = 10
@@ -97,6 +99,23 @@ class UsersController < ApplicationController
 			end			
 		else
 			render json: {error: "Unauthorized access"}, status: 401
+		end
+	end
+
+	def reset_password
+		user = User.where(email: params[:email])
+		if user.length > 0
+			user = user[0]
+			password = user.reset_password
+			if password
+				mail = UserMailer.forgot_password(user, password)
+				Delayed::Job.enqueue(MailingJob.new(mail))
+				render json: {success: true}
+			else
+				render json: {error: "Error in generating new password!"}, status: 500
+			end
+		else
+			render json: {error: "E-mail not valid!"}, status: :unprocessable_entity
 		end
 	end
 
