@@ -284,6 +284,11 @@
                 'content': 'crud.tests.alerts.questions.added.error.content',
                 'type': mTypes['error']
             },
+            'test.questions.added.error.duplicate': {
+                'title': 'tests.alerts.questions.added.error.duplicate.title',
+                'content': 'tests.alerts.questions.added.error.duplicate.content',
+                'type': mTypes['error']
+            },
             'test.questions.removed.success': {
                 'title': 'crud.tests.alerts.questions.removed.success.title',
                 'content': 'crud.tests.alerts.questions.removed.success.content',

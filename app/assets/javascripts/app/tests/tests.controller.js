@@ -5,7 +5,8 @@
     angular
         .module(APP_NAME)
         .controller('TestsController', TestsController)
-        .controller('TestQuestionsController', TestQuestionsController);
+        .controller('TestQuestionsController', TestQuestionsController)
+        .controller('TestsStartController', TestsStartController);
 
     TestsController
         .$inject = [
@@ -132,9 +133,7 @@
         }
 
         function searchQuestions() {
-            Test.searchQuestions({id: vm.test.id, search_string: vm.searchString}, function(data) {
-                vm.questions = data;
-            }); 
+            vm.questions = Test.searchQuestions({id: vm.test.id, search_string: vm.searchString}); 
         }
 
         function clearSearch() {
@@ -153,15 +152,33 @@
         }
 
         function addSelected() {
-            var newQuestions = vm.questions.filter(function(value) {
-                return value.selected;
-            });
-            Test.addQuestions({id: vm.test.id}, {questions: newQuestions}, function(data) {
-                MessageService.sendMessage('test.questions.added.success');
-                initialize();
-            }, function(data) {
-                MessageService.sendMessage('test.questions.added.error');
-            });
+            var questionsFiltered = [];
+            // check to see if questions are allready added
+            if(vm.test.questions.length > 0) {
+                for(var i = 0; i < vm.questions.length; i++) {
+                    for(var j = 0; j < vm.test.questions.length; j++) {
+                        if(vm.test.questions[j].id == vm.questions[i].id) {
+                            MessageService.sendMessage('test.questions.added.error.duplicate');
+                        }
+                        else {
+                            questionsFiltered.push(vm.questions[i]);
+                        }
+                        vm.questions[i].selected = false;
+                    }
+                }
+            } else {
+                questionsFiltered = vm.questions;
+            }
+            
+            // only do the request if questions are not added!
+            if(questionsFiltered.length > 0) {
+                Test.addQuestions({id: vm.test.id}, {questions: vm.questions}, function(data) {
+                    MessageService.sendMessage('test.questions.added.success');
+                    initialize();
+                }, function(data) {
+                    MessageService.sendMessage('test.questions.added.error');
+                });
+            }
         }
 
         function removeQuestion(question_id) {
@@ -172,7 +189,80 @@
                 MessageService.sendMessage('test.questions.removed.error');
             });
         }
+    }
 
+    TestsStartController.$inject = ['$timeout', '$routeParams', 'Test', 'Question', 'Response', '$scope', 'lodash']
+    function TestsStartController($timeout, $routeParams, Test, Question, Response, $scope,lodash) {
+        var vm = this;
+        vm.responses = [];
+        vm.next_question = next_question;
+        vm.response = new Response();
+
+        // yes, this could be a directive..
+        // could be... :)
+        vm.tickInterval = 1000;
+        vm.clock = 0;
+        vm.counter = 0;
+        var tick = function() {
+            vm.counter = vm.counter + 1;
+            formatTime();
+            $timeout(tick, vm.tickInterval); 
+        }
+        function formatTime() {
+            if(vm.counter < 60) {
+                vm.clock = vm.counter + " seconds";
+            }
+            if(vm.counter > 60) {
+                var time = Math.floor(vm.counter / 60);
+                vm.clock = time + " minute(s)";
+            }
+        }
+        //end of directive ;)
+
+        // Start the timer
+        $timeout(tick, vm.tickInterval);
+
+        function intialize() {
+            Test.get({id: $routeParams.id}, function(data) { 
+                vm.test = data;
+                vm.question_tracker = 0;
+                vm.question = vm.test.questions[vm.question_tracker];
+                set_current(vm.question.id);
+            });
+        } 
+
+        function set_current(question_id) {
+            Question.show({id: question_id}, function(data){
+                vm.choices = data.choices;
+                if(vm.responses[vm.question_tracker] === undefined) {
+                    vm.keys = lodash.fill(Array(vm.choices.length), false);
+                } else {
+                    vm.keys = m.responses[vm.question_tracker].keys;
+                }
+            });
+        }
+
+        function next_question(next) {
+            vm.responses[vm.question_tracker] = {
+                keys: vm.keys,
+                question_id: vm.question.id,
+                response: vm.response.text
+            }
+            if(vm.question_tracker != vm.test.questions.length) {
+                vm.question_tracker = vm.question_tracker + next;
+                vm.question = vm.test.questions[vm.question_tracker];
+                set_current(vm.question.id);
+                if(vm.responses[vm.question_tracker] === undefined) {
+                    vm.response = new Response();
+                } else {
+                    vm.response.text = vm.responses[vm.question_tracker].response;
+                }
+            }
+            if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {
+                $scope.$apply();
+            }
+        }
+        intialize();
     }
 
 })();

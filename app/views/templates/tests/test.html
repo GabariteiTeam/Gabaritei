@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="col-md-2">
+        <button type="submit" class="btn btn-primary">
+            <i class="fa fa-clock-o"></i>
+            &nbsp;
+            <span>{{Ctrl.clock}}</span>
+        </button>
+    </div>
+
+    <div class="col-md-6 col-md-offset-2">
+        <h4> {{"tests.test.current" | translate}} {{Ctrl.question_tracker}}</h4>
+    </div>
+
+    <div class="col-md-2">
+        <div class="btn-group btn-group-justified">
+          <a class="btn btn-default" ng-click="Ctrl.next_question(-1)">Previous</a>
+          <a class="btn btn-info" ng-click="Ctrl.next_question(1)">Next</a>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="container">
+        <div class="form-group">
+            <label for="title" class="col-sm-2 control-label" translate>responses.form.question.label</label>
+            <div class="col-sm-10">
+            <div text-angular="text-angular" name="rich-question" ng-model="Ctrl.question.text" ta-disabled='true' ta-toolbar="[]"></div>
+            </div>
+        </div>
+        <div ng-show="Ctrl.question.style == 'written'">
+            <div class="form-group">
+                <label for="title" class="col-sm-2 control-label" translate>responses.form.response.label</label>
+                <div class="col-sm-10">
+                    <div text-angular="text-angular" name="rich-response" ng-model="Ctrl.response.text" ta-disabled='disabled'></div>
+                </div>
+            </div>
+        </div>
+        <div ng-show="Ctrl.question.style == 'choice'">
+            <div class="form-group"  data-ng-repeat="choice in Ctrl.choices track by $index">
+                <label for="title" class="col-sm-2 control-label">{{"responses.form.alternative.label" | translate}} {{$index}}</label>
+                <div class="col-sm-8">
+                    <span>{{choice.text}}</span>
+                </div>
+                <div class="col-sm-2">
+                    <input toggle-switch type="checkbox" size="small" on-label="{{ 'responses.form.alternative.option_yes' | translate }}" off-label="{{ 'responses.form.alternative.option_no' | translate }}" ng-model="Ctrl.keys[$index]"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

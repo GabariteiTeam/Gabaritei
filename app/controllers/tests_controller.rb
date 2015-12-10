@@ -1,5 +1,5 @@
 class TestsController < ApplicationController
-      before_action :set_test, only: [:search_questions, :add_questions, :has_question]
+      before_action :set_test, only: [:search_questions, :add_questions, :has_question, :remove_question]
       # GET /tests
       # GET /tests.json
       def index
@@ -40,28 +40,24 @@ class TestsController < ApplicationController
       def search_questions
         questions = @test.available_questions
         search_string = params[:search_string]
-        if search_string != ""
+        # using raw filtering
+        # could be better, in a next work :)
+        if !search_string.nil?
             @filtered_questions = Array.new
             questions.each do |question|
-                if question.text.include?(search_string)
-                    @filtered_questions.push question
+                if !question.nil?
+                  if question.text.include?(search_string)
+                      @filtered_questions.push question
+                  end
                 end
             end
         else
             @filtered_questions = questions
         end
-
-
         render json: @filtered_questions
       end
 
-      def has_question
-        questions = @test.available_questions
-        
-      end
-
       def add_questions
-        set_test
         questions = @test.questions.to_a
         params[:questions].each do |question|
           question = Question.find(question[:id])

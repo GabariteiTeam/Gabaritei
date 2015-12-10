@@ -1,0 +1,17 @@
+en: 
+  tests:
+    alerts:
+        questions:
+            added:
+                error:
+                    duplicate:
+                        title: "Error!"
+                        content: "Question already added!"
+    index:
+        buttons:
+            start_test: "Start test!"
+    test:
+        current: "Current Question: "
+        buttons:
+            next: "Next"
+            previous: "Previous"
