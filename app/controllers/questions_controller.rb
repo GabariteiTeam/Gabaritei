@@ -23,7 +23,7 @@ class QuestionsController < ApplicationController
     end
 
 
-    render :json => {:question => @question, :subjects => subjects, :choices => j_question_choices }
+    render :json => {:question => @question, :subjects => subjects, :choices => j_question_choices, :category_list => @question.category_list }
   end
 
   # GET /questions/new

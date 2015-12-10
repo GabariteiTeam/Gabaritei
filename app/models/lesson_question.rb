@@ -4,23 +4,23 @@
 #
 # == Schema Information
 #
-# Table name: course_questions
+# Table name: lesson_questions
 #
 #  id          :integer          not null, primary key
 #  question_id :integer
-#  course_id   :integer
+#  lesson_id   :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
 # Indexes
 #
-#  index_course_questions_on_course_id    (course_id)
-#  index_course_questions_on_question_id  (question_id)
+#  index_lesson_questions_on_lesson_id    (lesson_id)
+#  index_lesson_questions_on_question_id  (question_id)
 #
 
-class CourseQuestion < ActiveRecord::Base
+class LessonQuestion < ActiveRecord::Base
   
-	belongs_to :course
+	belongs_to :lesson
 	belongs_to :question
   
 end

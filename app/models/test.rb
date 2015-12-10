@@ -63,7 +63,11 @@ class Test < ActiveRecord::Base
 	def available_questions
 		test_course = course
 		if test_course != nil
-			return test_course.category.questions
+			if test_course.category.is_a?(Field)
+				return test_course.category.subject.questions
+			else
+				return test_course.category.questions
+			end
 		end
 	end
 

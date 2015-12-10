@@ -75,11 +75,6 @@ class Content < ActiveRecord::Base
 	# @see Recommendation#resource
 	has_many :recommendations, as: :resource
 
-	# List of all {Course courses} that have access to the content.
-	# @return [Array<Course>] all courses that have access to the content.
-	# @see Course#contents
-	has_many :courses, through: :course_contents
-
 	# List of all {Lesson lessons} that have access to the content.
 	# @return [Array<Lesson>] all lessons that have access to the content.
 	# @see Lesson#contents

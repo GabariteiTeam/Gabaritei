@@ -17,6 +17,7 @@
 #  source     :string(255)
 #  date       :datetime
 #  style      :string(255)
+#  tags       :string(255)
 #
 # Indexes
 #
@@ -67,10 +68,10 @@ class Question < ActiveRecord::Base
 
 	# @!group Has many
 
-	# All {Course courses} that have access to the question.
-	# @return [Array<Course>] a list of all courses that have access to the question.
-	# @see Course#questions
-	has_many :courses, through: :course_questions
+	# All {Lesson lessons} that have access to the question.
+	# @return [Array<Lesson>] a list of all lessons that have access to the question.
+	# @see Lesson#questions
+	has_many :lessons, through: :lesson_questions
 	
 	# All {Subject subjects} to which the question belongs.
 	# @return [Array<Subject>] a list of all subjects to which the question belongs.
@@ -120,13 +121,21 @@ class Question < ActiveRecord::Base
 		subjects + fields
 	end
 
+	def category_list
+		list = ""
+		categories.each do |c|
+			list = list + c.name + "; "
+		end
+		list.chop.chop
+	end
+
 	# @!endgroup
 
 	def owner_name
 		owner.first_name + ' ' + owner.last_name
 	end
 
-	has_many :course_questions
+	has_many :lesson_questions
 	has_many :question_categories
 	has_many :test_questions
 	

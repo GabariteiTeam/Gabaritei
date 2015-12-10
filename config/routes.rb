@@ -99,6 +99,15 @@ Rails.application.routes.draw do
 
 	# END CONTENT ROUTES
 
+	# RECOMMENDATIONS ROUTES
+
+	resources :recommendations do
+		get :search_users, to: "recommendations#search_users", on: :collection
+		post :recommend, on: :collection
+	end
+
+	# END RECOMMENDATION ROUTES
+
 	# REQUESTS ROUTES
 
 	resources :requests do

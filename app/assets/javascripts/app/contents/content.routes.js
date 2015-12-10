@@ -28,6 +28,11 @@
                 controller: 'ContentsController',
                 controllerAs: 'Ctrl'
             })
+            .when('/:resource/recommend/:id', {
+                templateUrl: 'templates/recommendations/recommend.html',
+                controller: 'RecommendationsController',
+                controllerAs: 'Ctrl'
+            });
     }
 
 })();

@@ -353,7 +353,17 @@
                 'title': 'responses.alerts.update.error.title',
                 'content': 'responses.alerts.update.error.content',
                 'type': mTypes['error']
-            }                             
+            },
+            'recommendation.created.success': {
+                'title': 'recommendations.alerts.create.success.title',
+                'content': 'recommendations.alerts.create.success.content',
+                'type': mTypes['success']
+            },
+            'recommendation.created.error': {
+                'title': 'recommendations.alerts.create.error.title',
+                'content': 'recommendations.alerts.create.error.content',
+                'type': mTypes['error']
+            }                          
         };
         var observers = [];
         var message;

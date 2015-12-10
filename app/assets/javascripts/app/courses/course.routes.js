@@ -28,6 +28,11 @@
                 controller: 'CoursesController',
                 controllerAs: 'Ctrl'
             })
+            .when('/courses/:course_id/:resource/:id/recommend', {
+                templateUrl: 'templates/recommendations/recommend.html',
+                controller: 'RecommendationsController',
+                controllerAs: 'Ctrl'
+            });
     }
 
 })();

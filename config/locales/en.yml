@@ -12,11 +12,15 @@ en:
       show: "View course"
       update: "Update course"
       edit_participants: "Edit course participants"
+      content: "View content"
+      question: "View exercise"
     data_import: "Data import"
     questions:
       index: "Questions"
       new: "New question"
       update: "Update question"
+    recommendations:
+      new: "Make a recommendation"
     requests:
       index: "Requests"
       assess_registration_request: "Assess registration request"

@@ -27,6 +27,8 @@ class Lesson < ActiveRecord::Base
 	# 	Description of the lesson.
 	# 	@return [String] the description of the lesson.
 
+	belongs_to :course
+
 	# List of all associated {Content contents} of the lesson.
     # @return [Array<Content>] all associated contents of the lesson.
     # @see Content#lessons
