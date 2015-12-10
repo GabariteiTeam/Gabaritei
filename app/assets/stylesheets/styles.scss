@@ -112,16 +112,9 @@ div.page-header {
 
 
 /*** CAMINHO ***/
-
 .path-s {
 
-    &:first-child {
-        margin-top: 5px;
-    }
-
     &:last-child {
-        margin-bottom: 5px;
-
         a.ico-path .bar {
             height: 0px;
         }
@@ -170,6 +163,10 @@ div.page-header {
                 float: right;
             }
 
+            &.title {
+                padding-left: 0;
+            }
+
             &:last-child {
                 line-height: 20px;
                 max-height: 80px; /* n x line-height = number of lines in the description */
@@ -203,6 +200,13 @@ div.page-header {
             top: 10px; /* half of the height of .ico */
         }
     }
+}
+
+.accordion-info {
+    background-color: #f3f3f3;
+    margin-top: -15px;
+    padding: 15px;
+    border-bottom: 1px #EFEFEF solid;
 }
 
 #questions-table {
