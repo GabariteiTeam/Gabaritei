@@ -25,6 +25,7 @@ en:
       save: "Save course"
       edit: "Edit"
       delete: "Delete"
+      view: "View"
       edit_participants: "Edit participants"
       view_participant: "View"
       remove_participant: "Remove"
