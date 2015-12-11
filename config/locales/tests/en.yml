@@ -7,11 +7,27 @@ en:
                     duplicate:
                         title: "Error!"
                         content: "Question already added!"
+        submitted:
+            success:
+                title: "Submitted!"
+                content: "Test was submitted with success!"
+            error:
+                title: "Error!"
+                content: "Test was NOT submitted!"
     index:
         buttons:
             start_test: "Start test!"
+            view_response: "View Response"
     test:
         current: "Current Question: "
         buttons:
             next: "Next"
             previous: "Previous"
+            summary: "View Test Summary"
+            submit: "Submit"
+        summary:
+            question: "Q#"
+            key: "Response"
+    responses:
+        heading: "My Exam Response"
+        sub_header: ""

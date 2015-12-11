@@ -289,6 +289,16 @@
                 'content': 'tests.alerts.questions.added.error.duplicate.content',
                 'type': mTypes['error']
             },
+            'test.submitted.success': {
+                'title': 'tests.alerts.submitted.success.title',
+                'content': 'tests.alerts.submitted.success.content',
+                'type': mTypes['success']
+            },
+            'test.submitted.error': {
+                'title': 'tests.alerts.submitted.error.title',
+                'content': 'tests.alerts.submitted.error.content',
+                'type': mTypes['error']
+            },
             'test.questions.removed.success': {
                 'title': 'crud.tests.alerts.questions.removed.success.title',
                 'content': 'crud.tests.alerts.questions.removed.success.content',

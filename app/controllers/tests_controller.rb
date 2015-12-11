@@ -1,5 +1,5 @@
 class TestsController < ApplicationController
-      before_action :set_test, only: [:search_questions, :add_questions, :has_question, :remove_question]
+      before_action :set_test, only: [:search_questions, :add_questions, :has_question, :remove_question, :submit_responses, :get_summary]
       # GET /tests
       # GET /tests.json
       def index
@@ -37,6 +37,9 @@ class TestsController < ApplicationController
         end
       end
 
+      
+
+
       def search_questions
         questions = @test.available_questions
         search_string = params[:search_string]
@@ -71,6 +74,57 @@ class TestsController < ApplicationController
           end 
       end
 
+      def submit_responses
+        old_responses = @test.responses.where(:owner == current_user)
+        if old_responses.size > 0
+          old_responses.delete_all
+        end
+
+        params[:summary].each do |summary|
+          response = Response.new
+          question = Question.find(summary[:question_id])
+          response.owner = current_user
+          response.text = summary[:response]
+          response.question = question
+          set_choices summary[:keys], response, question
+          response.save
+          @test.responses.push(response)
+          puts "new!"
+        end
+
+        if @test.save
+            render json: {success: true}
+        else
+            render json: @test.errors, status: :unprocessable_entity
+        end 
+      end
+
+      def get_summary
+        responses = @test.responses.where(:owner == current_user).all
+        summary = []
+        responses.each do |response|
+          partial_response = {}
+          partial_response[:question_id] = response.question.id
+          partial_response[:response] = response.text
+          if response.question.style == Question::STYLE_CHOICE
+            splitted = response.text.split(', ')
+            keys = Array.new
+            for i in 1..(splitted.length + 1)
+              if splitted.include? "#{i}"
+                keys.push true
+              else
+                keys.push false
+              end
+            end
+          end
+          partial_response[:keys] = keys
+          partial_response[:style] = response.question.style
+          summary.push(partial_response)
+        end
+        render :json => {summary: summary}
+      end
+
+
       def remove_question
         questions = @test.questions.to_a
         questions.delete_if {|question| question.id == params[:question_id].to_i}
@@ -78,9 +132,9 @@ class TestsController < ApplicationController
         @test.questions = questions
         if @test.save
               render json: {success: true}
-          else
+        else
               render json: @test.errors, status: :unprocessable_entity
-          end 
+        end 
       end
 
       # DELETE /tests/1
@@ -103,5 +157,20 @@ class TestsController < ApplicationController
         # Never trust parameters from the scary internet, only allow the white list through.
         def test_params
           params.require(:test).permit(:id, :name, :description, :test, :course_id)
+        end
+
+        def set_choices alternative, response, question
+          alternatives = ""
+          if not alternative.nil?
+            i = 0
+            question.question_choices.each do |choice|
+              if alternative[i] == "true" || alternative[i]
+                response.question_choices.push choice
+                alternatives = alternatives + "#{i + 1}, "
+              end
+              i = i + 1
+            end
+            response.text = alternatives.sub(/, $/, '')
+          end
         end
 end

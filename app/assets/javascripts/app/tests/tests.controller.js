@@ -6,7 +6,8 @@
         .module(APP_NAME)
         .controller('TestsController', TestsController)
         .controller('TestQuestionsController', TestQuestionsController)
-        .controller('TestsStartController', TestsStartController);
+        .controller('TestsStartController', TestsStartController)
+        .controller('TestsResponsesController', TestsResponsesController);
 
     TestsController
         .$inject = [
@@ -191,13 +192,19 @@
         }
     }
 
-    TestsStartController.$inject = ['$timeout', '$routeParams', 'Test', 'Question', 'Response', '$scope', 'lodash']
-    function TestsStartController($timeout, $routeParams, Test, Question, Response, $scope,lodash) {
+    TestsStartController.$inject = ['$timeout', '$routeParams', 'Test', 'Question', 'Response', 
+                                     '$scope', 'lodash', 'MessageService', 'RedirectService']
+    function TestsStartController($timeout, $routeParams, Test, Question, Response, $scope, lodash, 
+                                    MessageService, RedirectService) {
         var vm = this;
         vm.responses = [];
         vm.next_question = next_question;
         vm.response = new Response();
-
+        vm.last_question = false;
+        vm.prepare_summary = prepare_summary;
+        vm.display_summary = false;
+        vm.first_question = true;
+        vm.submit_test = submit_test;
         // yes, this could be a directive..
         // could be... :)
         vm.tickInterval = 1000;
@@ -227,6 +234,8 @@
                 vm.test = data;
                 vm.question_tracker = 0;
                 vm.question = vm.test.questions[vm.question_tracker];
+                if(vm.test.questions.length == 1)
+                    vm.last_question = true;
                 set_current(vm.question.id);
             });
         } 
@@ -237,32 +246,93 @@
                 if(vm.responses[vm.question_tracker] === undefined) {
                     vm.keys = lodash.fill(Array(vm.choices.length), false);
                 } else {
-                    vm.keys = m.responses[vm.question_tracker].keys;
+                    vm.keys = vm.responses[vm.question_tracker].keys;
                 }
             });
         }
 
         function next_question(next) {
-            vm.responses[vm.question_tracker] = {
-                keys: vm.keys,
-                question_id: vm.question.id,
-                response: vm.response.text
+            if(vm.question_tracker < vm.test.questions.length) {
+                vm.responses[vm.question_tracker] = {
+                    keys: vm.keys,
+                    question_id: vm.question.id,
+                    response: vm.response.text
+                }
             }
-            if(vm.question_tracker != vm.test.questions.length) {
-                vm.question_tracker = vm.question_tracker + next;
+            vm.question_tracker = vm.question_tracker + next;
+            if(vm.question_tracker == 0) {
+                vm.first_question = true;
+            } else if (vm.question_tracker < 0) {
+                vm.question_tracker = vm.question_tracker + 1;
+                vm.first_question = true;
+                return;
+            }else {
+                vm.first_question = false;
+            }
+            // avoid overflow and weird javascript errors
+            if(vm.question_tracker != vm.test.questions.length && vm.question_tracker >= 0) {
                 vm.question = vm.test.questions[vm.question_tracker];
-                set_current(vm.question.id);
+                set_current(vm.test.questions[vm.question_tracker].id);
                 if(vm.responses[vm.question_tracker] === undefined) {
                     vm.response = new Response();
                 } else {
                     vm.response.text = vm.responses[vm.question_tracker].response;
                 }
             }
-            if ($scope.$root.$$phase != '$apply' && $scope.$root.$$phase != '$digest') {
-                $scope.$apply();
+            if(vm.question_tracker == (vm.test.questions.length - 1)) {
+                vm.last_question = true;
+                vm.display_summary = false;
+            } else if(vm.question_tracker == vm.test.questions.length) {
+                    vm.prepare_summary();
+                    vm.last_question = false;
+            } else {
+                vm.last_question = false;
             }
+           
         }
+        function prepare_summary() {
+            vm.summary = [];
+            for(var i = 0; i < vm.test.questions.length; i++) {
+                if(vm.responses[i] !== undefined) {
+                    var s_response = vm.responses[i];
+                    vm.summary.push({
+                        keys: s_response.keys,
+                        style: vm.test.questions[i].style,
+                        response: s_response.response,
+                        question_id: vm.test.questions[i].id
+                    });
+                } else {
+                    vm.summary.push({
+                        is_response: false
+                    });
+                }
+            }
+            vm.display_summary = true;
+        }
+
+        function submit_test() {
+            Test.submitResponses({id: vm.test.id, summary: vm.summary}, 
+                function(data){
+                     MessageService.sendMessage('test.submitted.success');
+                     RedirectService.redirect("/tests/");
+                },
+                function(err) {
+                    MessageService.sendMessage('test.submitted.error');
+                     RedirectService.redirect("/tests/");
+                }
+            );
+
+        }
+
         intialize();
     }
 
+    TestsResponsesController.$inject = ['Test', '$routeParams'];
+
+    function TestsResponsesController(Test, $routeParams) {
+        var vm = this;
+        Test.getSummary({id: $routeParams.id}, function(data){
+            vm.summary  = data.summary;
+        });
+    }
 })();
