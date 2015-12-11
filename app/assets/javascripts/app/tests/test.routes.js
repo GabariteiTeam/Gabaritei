@@ -32,6 +32,16 @@
                 templateUrl: 'templates/tests/show.html',
                 controller: 'TestsController',
                 controllerAs: 'Ctrl'
+            })
+            .when("/tests/:id/start/", {
+                templateUrl: 'templates/tests/test.html',
+                controller: 'TestsStartController',
+                controllerAs: 'Ctrl'
+            })
+            .when("/tests/:id/response", {
+                templateUrl: 'templates/tests/response.html',
+                controller: 'TestsResponsesController',
+                controllerAs: 'Ctrl'
             });
     }
 

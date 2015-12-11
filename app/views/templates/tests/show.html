@@ -36,9 +36,9 @@
 
 
 <div class="well">
-	<a href="#tests/questions/{{ Ctrl.test.id }}" class="btn btn-default" translate>crud.tests.index.edit_questions</a>
-	<a href="#tests/update/{{ Ctrl.test.id }}" class="btn btn-info" translate>crud.edit</a>
-	<gab-show-modal-button text="crud.delete" args="Ctrl.test.id" modalid="confirmDeleteTest" class="btn btn-danger"/><gab-show-modal-button>
+	<a href="#tests/questions/{{ Ctrl.test.id }}" class="btn btn-default" translate>tests.actions.edit_questions</a>
+	<a href="#tests/update/{{ Ctrl.test.id }}" class="btn btn-info" translate>tests.actions.edit</a>
+	<gab-show-modal-button text="tests.actions.delete" args="Ctrl.test.id" modalid="confirmDeleteTest" class="btn btn-danger"/><gab-show-modal-button>
 </div>
 
 <div gab-confirm-modal modalid="confirmDeleteTest" title="crud.tests.modal.delete.title" body="crud.tests.modal.delete.body" callback="Ctrl.c_delete(id)"></div>

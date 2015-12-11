@@ -1,0 +1,67 @@
+pt-BR:
+  contents:
+    index:
+      heading: "Conteúdos"
+      sub_heading: "Crie um novo conteúdo para a sua Sala Virtual!"
+      table:
+        header:
+          name: "Nome"
+          description: "Descrição"
+          subject: "Matéria"
+          field: "Área"
+    actions:
+      add: "Adicionar novo conteúdo"
+      view: "Ver"
+      edit: "Editar"
+      delete: "Remover"
+      save: "Salvar conteúdo"
+    create:
+      heading: "Novo conteúdo"
+    update:
+      heading: "Editar conteúdo"
+    form:
+      name: 
+        label: "Nome"
+        placeholder: "Nome do conteúdo"
+      description: 
+        label: "Descrição"
+        placeholder: "Descrição do conteúdo"
+      subject: "Matéria"
+      field: "Área"
+      type: "Tipo de conteúdo"
+      type_file: "Arquivo"
+      type_online: "Recurso online"
+      file_drag_drop: "Arraste e solte o arquivo abaixo"
+      drag_content: "Solte o conteúdo aqui"
+      file_select: "Ou selecione um arquivo"
+      reference: 
+        label: "URL do recurso"
+        placeholder: "Vídeos do YouTube, documentos do Google Drive, arquivos do Dropbox, etc."
+      clear: "Limpar conteúdo"
+      shareable: "Compartilhável"
+    modal:
+      delete:
+        title: "Aviso!"
+        body: "Tem certeza que deseja remover esse conteúdo?"
+    alerts:
+      create:
+        success:
+          title: "Criado!"
+          content: "Conteúdo foi criado com sucesso!"
+        error:
+          title: "Erro!"
+          content: "Conteúdo NÃO foi criado!"
+      delete:
+        success:
+          title: "Removido!"
+          content: "Conteúdo foi removido com sucesso!"
+        error:
+          title: "Erro!"
+          content: "Conteúdo NÃO foi removido!"
+      update:
+        success:
+          title: "Atualizado!"
+          content: "Conteúdo foi atualizado com sucesso!"
+        error:
+          title: "Erro!"
+          content: "Conteúdo NÃO foi atualizado!"

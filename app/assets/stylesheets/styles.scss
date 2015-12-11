@@ -309,3 +309,13 @@ a.permission-info-btn {
 span.permission-title {
     padding: 0 3px;
 }
+
+.form-auto-fields {
+    div.text {
+        margin-top: 5px;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+}

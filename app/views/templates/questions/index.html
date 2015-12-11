@@ -38,15 +38,15 @@
           <td><span ng-class="{'glyphicon glyphicon-fire': question.hot}"></span></td>
           <td>{{ question.answer |  htmlToPlaintext }}</td>
           <td class="options-cell options-column-3">
+            <a href="#responses/{{question.id}}" class="btn btn-xs btn-default">
+              <span class="glyphicon glyphicon-eye-open"></span>
+              <span class="hidden-xs hidden-sm">&nbsp;</span>
+              <span class="hidden-xs hidden-sm" translate>questions.actions.view_responses</span>
+            </a>
             <a href="#questions/update/{{question.id}}" class="btn btn-xs btn-info">
               <span class="glyphicon glyphicon-pencil"></span>
               <span class="hidden-xs hidden-sm">&nbsp;</span>
               <span class="hidden-xs hidden-sm" translate>questions.actions.edit</span>
-            </a>
-            <a href="#responses/{{question.id}}" class="btn btn-xs btn-default">
-              <span class="glyphicon glyphicon-edit"></span>
-              <span class="hidden-xs hidden-sm">&nbsp;</span>
-              <span class="hidden-xs hidden-sm" translate>questions.actions.view_responses</span>
             </a>
             <gab-show-modal-button text="questions.actions.delete" args="question.id" modalid="confirmDeleteQuestion" class="btn btn-xs btn-danger" icon="glyphicon glyphicon-trash"></gab-show-modal-button>
           </td>

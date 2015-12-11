@@ -1,0 +1,51 @@
+pt-BR:
+  fields:
+    index:
+      fields_of: "Áreas de "  
+      sub_heading: "Organize suas matérias em áreas"
+      table:
+        header:
+          name: "Nome"
+          description: "Descrição"
+    create: 
+      heading: "Nova área"
+    update:
+      heading: "Atualize a área"
+    actions:
+      add: "Adicionar nova área"
+      save: "Salvar área"
+      edit: "Editar"
+      delete: "Remover"
+    form:
+      name:
+        label: "Nome da área:"
+        placeholder: "Nome da área"
+      description: 
+        label: "Descrição da área:"
+        placeholder: "Descrição da área"
+    modal:
+      delete:
+        title: "Aviso!"
+        body: "Tem certeza que deseja remover essa área?"
+    alerts:
+      create:
+        success:
+          title: "Criada!"
+          content: "Área foi criada com sucesso!"
+        error:
+          title: "Erro!"
+          content: "Área NÃO foi criada!"
+      delete:
+        success:
+          title: "Removida!"
+          content: "Área foi removida com sucesso!"
+        error:
+          title: "Erro!"
+          content: "Área NÃO foi removida!"
+      update:
+        success:
+          title: "Atualizada!"
+          content: "Área foi atualizada com sucesso!"
+        error:
+          title: "Erro!"
+          content: "Área NÃO foi atualizada!"

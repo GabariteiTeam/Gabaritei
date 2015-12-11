@@ -1,0 +1,63 @@
+pt-BR:
+  roles:
+    index:
+      heading: "Papéis"
+      sub_heading: "Crie um novo papel para a sua Sala Virtual!"
+      table:
+        header:
+          name: "Nome do papel"
+          description: "Descrição"
+    create:
+      heading: "Novo papel"
+    update:
+      heading: "Editar papel"
+    actions:
+      add: "Adicionar novo papel"
+      save: "Salvar papel"
+      edit: "Editar"
+      delete: "Remover"
+    form:
+      name: 
+        label: "Nome"
+        placeholder: "Nome do papel"
+      description: 
+        label: "Descrição"
+        placeholder: "Descrição do papel"
+      permissions: "Permissões"
+      allowed_yes: "Sim"
+      allowed_no: "Não"
+      tag:
+        contents: "Conteúdos"
+        courses: "Cursos"
+        import_data: "Importar dados"
+        questions: "Questões"
+        requests: "Requerimentos"
+        roles: "Papéis"
+        subjects_fields: "Matérias e áreas"
+        users: "Usuários"
+    modal:
+      delete:
+        title: "Aviso!"
+        body: "Tem certeza que deseja remover esse papel?"
+    alerts:
+      create:
+        success:
+          title: "Criado!"
+          content: "Papel foi criado com sucesso!"
+        error:
+          title: "Erro!"
+          content: "Papel NÃO foi criado!"
+      delete:
+        success:
+          title: "Removido!"
+          content: "Papel foi removido com sucesso!"
+        error:
+          title: "Erro!"
+          content: "Papel NÃO foi removido!"
+      update:
+        success:
+          title: "Atualizado!"
+          content: "Papel foi atualizado com sucesso!"
+        error:
+          title: "Erro!"
+          content: "Papel NÃO foi atualizado!"
