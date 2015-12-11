@@ -1,29 +1,81 @@
-en: 
-  tests:
-    alerts:
-        questions:
-          added:
-            error:
-              duplicate:
-                title: "Error!"
-                content: "Question already added!"
-        submitted:
-            success:
-                title: "Submitted!"
-                content: "Test was submitted with success!"
-            error:
-                title: "Error!"
-                content: "Test was NOT submitted!"
+en:
+  tests: 
     index:
-        buttons:
-            start_test: "Start test!"
-            view_response: "View Response"
+      heading: "Exams"
+      sub_heading: "Create a new exam to your Virtual Class!"
+      table:
+        header:
+          name: "Name"
+          description: "Description"
+          course: "Course"
+    create: 
+      heading: "New exam"
+    update:
+      heading: "Update exam"
+    actions:
+      add: "Add new exam"
+      edit: "Edit"
+      delete: "Delete"
+      view: "View"
+      save: "Save exam" 
+      view_responses: "View responses"
+      edit_questions: "Edit questions"
+      start_exam: "Start exam!"
+    form:
+      name:
+        label: "Name"
+        placeholder: "Exam name"
+      description: 
+        label: "Description"
+        placeholder: "Exam description"
+      course: 
+        label: "Course"
+        placeholder: "Exam course"
+    modal:
+      delete:
+        title: "Warning!"
+        body: "Are you sure you want to delete this exam?"
+    alerts:
+      create:
+        success:
+          title: "Created!"
+          content: "Exam was created with success!"
+        error:
+          title: "Failed!"
+          content: "Exam was NOT created!"
+      delete:
+        success:
+          title: "Deleted!"
+          content: "Exam was deleted with success!"
+        error:
+          title: "Failed!"
+          content: "Exam was NOT deleted"
+      update:
+        success:
+          title: "Updated!"
+          content: "Exam was updated with success"
+        error:
+          title: "Failed!"
+          content: "Exam was NOT updated!"
+      questions:
+        added:
+          error:
+            duplicate:
+              title: "Error!"
+              content: "Question already added!"
+      submitted:
+        success:
+          title: "Submitted!"
+          content: "Exam was submitted with success"
+        error:
+          title: "Failed!"
+          content: "Exam was NOT submitted!"
     test:
-      current: "Current Question: "
+      current: "Current question: "
       buttons:
         next: "Next"
         previous: "Previous"
-        summary: "View Test Summary"
+        summary: "View exam summary"
         submit: "Submit"
       summary:
         question: "Q#"

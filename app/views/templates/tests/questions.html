@@ -1,5 +1,5 @@
 <div class="page-header">
-	<h1 translate>crud.tests.index.edit_questions</h1>
+	<h1 translate>tests.index.edit_questions</h1>
 </div>
 
 <div class="panel panel-primary">
@@ -35,8 +35,8 @@
 				<td>{{ question.answer | htmlToPlaintext  }}</td>
 				<td>
 
-					<a href="#/questions/update/{{question.id}}" class="btn btn-sm btn-info" translate>crud.view</a>
-					<button ng-click="Ctrl.removeQuestion(question.id)" class="btn btn-sm btn-danger" translate>crud.remove</button>
+					<a href="#/questions/update/{{question.id}}" class="btn btn-sm btn-info" translate>tests.actions.view</a>
+					<button ng-click="Ctrl.removeQuestion(question.id)" class="btn btn-sm btn-danger" translate>tests.actions.remove</button>
 				</td>
 			</tr>
 		</tbody>
