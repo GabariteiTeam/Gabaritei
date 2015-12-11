@@ -129,12 +129,16 @@
             "pt-BR": "Português"
         };
 
-        vm.user = User.get({id: $routeParams.id}, function() {
-            vm.user.$settings(function(settings) {
-                vm.settings = settings;
-                vm.preferredLanguage = settings.preferred_language_key;
+        activate();
+
+        function activate() {
+            vm.user = User.get({id: $routeParams.id}, function() {
+                vm.user.$settings(function(settings) {
+                    vm.settings = settings;
+                    vm.preferredLanguage = settings.preferred_language_key;
+                });
             });
-        });
+        }
 
         function saveSettings() {
             vm.user.settings = {
@@ -142,6 +146,8 @@
             };
             vm.user.$saveSettings(function(success) {
                 MessageService.sendMessage('user.settings_saved.success');
+                $translate.use(vm.preferredLanguage);
+                activate();
             }, function(error) {
                 MessageService.sendMessage('user.settings_saved.error');
             });

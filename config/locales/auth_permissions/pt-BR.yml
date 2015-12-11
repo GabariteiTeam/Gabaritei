@@ -3,7 +3,12 @@ pt-BR:
     email: "E-mail"
     password: "Senha"
     login: "Acessar conta"
-    forgot_password: "Esqueceu a senha?"
+    forgot_password: 
+      heading: "Esqueceu a senha?"
+      sub_heading: "Sem problemas, podemos mandar uma nova!"
+      enter_email: "Seu e-mail"
+      request_new_password: "Pedir nova senha"
+      invalid_email: "Não pudemos encontrar este e-mail, por favor verifique!"
     request_access: "Requerir acesso"
     email_missing: "Digite seu e-mail"
     password_missing: "Digite sua senha"

@@ -12,14 +12,22 @@ pt-BR:
       heading: "Novo curso"
     update:
       heading: "Edit curso"
+    show:
+      category: "Categoria:"
+      responsible_teachers: "Professores responsáveis:"
+      updated_at: "Atualizado em "
+      exercise: "Exercício "
     actions:
       add: "Adicionar novo curso"
       save: "Salvar curso"
       edit: "Editar"
       delete: "Remover"
+      view: "Ver"
       edit_participants: "Editar participantes"
       view_participant: "Ver"
       remove_participant: "Remover"
+      new_lesson: "Criar nova aula"
+      save_lesson: "Salvar aula"
     form:
       name:
         label: "Nome"

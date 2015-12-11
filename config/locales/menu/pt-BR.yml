@@ -17,3 +17,4 @@ pt-BR:
     request_access: "Requerir acesso"
     forgot_password: "Esqueci minha senha"
     logout: "Sair da conta"
+    hello: "Olá, "

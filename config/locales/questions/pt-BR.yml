@@ -21,6 +21,7 @@ pt-BR:
       save: "Salvar questão"
       view_responses: "Ver respostas"
       delete: "Remover"
+      recommend: "Recomendar este exercício"
     modal:
       delete:
         title: "Aviso!"
@@ -50,6 +51,14 @@ pt-BR:
         placeholder: "Texto da alternativa"
         label: "Alternativas"
         dropdown: "Alternativa"
+      rating: 
+        label: "Dificuldade?"
+        level_0: "Sem avaliação"
+        level_1: "Muito fácil!"
+        level_2: "Fácil"
+        level_3: "Normal"
+        level_4: "Difícil"
+        level_5: "Muito difícil!"
     alerts:
       create:
         success:
