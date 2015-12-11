@@ -46,6 +46,8 @@ Rails.application.routes.draw do
 		put "remove_question/:question_id", to: "tests#remove_question", on: :member
 	end
 	
+	post "tests/:id/submit/responses",		 to: "tests#submit_responses"
+	get "tests/:id/summary",		 to: "tests#get_summary"
 	
 	# END TESTS ROUTES
 

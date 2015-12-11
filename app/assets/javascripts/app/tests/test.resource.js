@@ -23,6 +23,14 @@
             removeQuestion: {
                 url: 'tests/:id/remove_question/:question_id',
                 method: 'PUT'
+            },
+            submitResponses: {
+                method: 'POST', 
+                url: 'tests/:id/submit/responses' 
+            },
+            getSummary: {
+                method: 'GET',
+                url: 'tests/:id/summary'
             }
         });
     }

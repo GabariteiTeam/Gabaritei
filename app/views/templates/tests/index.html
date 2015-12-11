@@ -24,6 +24,8 @@
           <td>{{ test.description }}</td>
           <td>{{ test.course.name }}</td>
           <td>
+            <a href="#tests/{{test.id}}/start" class="btn btn-xs btn-default" translate>tests.index.buttons.start_test</a>
+            <a href="#tests/{{test.id}}/response" class="btn btn-xs btn-default" translate>tests.index.buttons.view_response</a>
             <a href="#tests/questions/{{test.id}}" class="btn btn-xs btn-default" translate>crud.tests.index.edit_questions</a>
             <a href="#tests/{{test.id}}" class="btn btn-xs btn-default" translate>crud.view</a>
             <a href="#tests/update/{{test.id}}" class="btn btn-xs btn-info" translate>crud.edit</a>
@@ -37,4 +39,3 @@
 <a href="#tests/new" class="btn btn-primary" translate>crud.tests.index.add</a>
 
 <div gab-confirm-modal modalid="confirmDeleteTest" title="crud.tests.modal.delete.title" body="crud.tests.modal.delete.body" callback="Ctrl.c_delete(id)"></div>
-

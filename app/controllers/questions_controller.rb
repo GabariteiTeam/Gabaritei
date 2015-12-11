@@ -112,7 +112,6 @@ class QuestionsController < ApplicationController
     end
   end
 
-
   def getQuestionsSubject
     response = Array.new
     if not params.has_key?("id")
