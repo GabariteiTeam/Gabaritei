@@ -1,5 +1,8 @@
 <div class="page-header">
-	<h1 translate>tests.index.edit_questions</h1>
+	<h1>
+		<span translate>tests.questions.heading</span>
+		<span> – {{ Ctrl.test.name }}</span>
+	</h1>
 </div>
 
 <div class="panel panel-primary">
@@ -13,12 +16,12 @@
 </div>
 
 <div class="panel panel-default">
-
-	<div class="panel-body">
-		<form class="form-inline" test="form" ng-submit="Ctrl.searchQuestions()">
+	<div class="panel-body" id="search-form-container">
+		<form class="form-inline" role="form" ng-submit="Ctrl.searchQuestions()">
 			<div ng-include="'templates/tests/_search_form.html'"></div>
 		</form>
 	</div>
+
 	<table class="table table-striped">
 		<thead>
 			<tr>
