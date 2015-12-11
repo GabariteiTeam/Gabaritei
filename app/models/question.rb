@@ -26,6 +26,9 @@
 
 class Question < ActiveRecord::Base
 
+	include ActionView::Helpers::TextHelper
+	include ActionView::Helpers::SanitizeHelper
+
 	# These are the available questions styles.
 	STYLES = [
 		STYLE_WRITTEN = 'written', 
@@ -133,6 +136,10 @@ class Question < ActiveRecord::Base
 
 	def owner_name
 		owner.first_name + ' ' + owner.last_name
+	end
+
+	def description
+		strip_tags(truncate(text, length: 100, escape: false))
 	end
 
 	has_many :lesson_questions

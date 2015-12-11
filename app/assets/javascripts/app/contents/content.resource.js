@@ -7,7 +7,13 @@
     Content.$inject = ['$http', '$resource', 'Upload'];
 
     function Content($http, $resource, Upload) {
-        var ctnt = $resource('contents/:id.json', {id: '@id'});
+        var ctnt = $resource('contents/:id.json', {id: '@id'}, {
+            contentsForLesson: {
+                url: 'contents/contents_for_lesson',
+                method: 'GET',
+                isArray: true 
+            }
+        });
         ctnt.prototype.$save = function(success, error) {
             upload(this, '/contents/', 'POST', success, error);
         }

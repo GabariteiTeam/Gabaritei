@@ -1,0 +1,79 @@
+<br class="hidden-sm hidden-md hidden-lg" />
+
+<ol class="breadcrumb">
+  <li><a href="#">Home</a></li>
+  <li class="active">{{ Ctrl.course.name }}</li>
+</ol>
+
+<div class="page-header">
+  <h1>{{ Ctrl.course.name }}</h1>
+  <p class="lead">{{ Ctrl.course.description }}</p>
+</div>
+
+<div class="well">
+  <div class="col-md-3">
+    <img style="width:100%; max-width: 200px; margin-botton: 10px;" src="assets/missing_course_avatar.png" />
+  </div>
+  <br />
+  <div class="col-md-9">
+    <dl class="course-header">
+      <dt translate>courses.show.category</dt>
+      <dd>{{ Ctrl.course_category }}</dd>
+      <br />
+      <dt translate>courses.show.responsible_teachers</dt>
+      <dd ng-repeat="teacher in Ctrl.course.teachers">
+        {{ teacher.first_name + " " + teacher.last_name }}
+      </dd>
+    </dl>
+    <a href="#courses/{{ Ctrl.course.id }}/new_lesson" class="btn btn-warning">
+      <span class="glyphicon glyphicon-folder-open"></span>
+      <span class="hidden-xs hidden-sm">&nbsp;</span>
+      <span class="hidden-xs hidden-sm" translate>courses.actions.new_lesson</span>
+    </a>
+    <a href="#courses/participants/{{Ctrl.course.id}}" class="btn btn-default">
+      <span class="glyphicon glyphicon-user"></span>
+      <span class="hidden-xs hidden-sm">&nbsp;</span>
+      <span class="hidden-xs hidden-sm" translate>courses.actions.edit_participants</span>
+    </a>
+    <a href="#courses/update/{{Ctrl.course.id}}" class="btn btn-info">
+      <span class="glyphicon glyphicon-pencil"></span>
+      <span class="hidden-xs hidden-sm">&nbsp;</span>
+      <span class="hidden-xs hidden-sm" translate>courses.actions.edit</span>
+    </a>
+    <gab-show-modal-button text="courses.actions.delete" args="Ctrl.course.id" modalid="confirmDeleteCourse" class="btn btn-danger" icon="glyphicon glyphicon-trash"></gab-show-modal-button>
+  </div>
+  <div class="clearfix"></div>
+</div>
+
+<div class="row">
+  <div class="col-xm-12 col-md-6" ng-repeat="lesson in Ctrl.course.lessons">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          {{ lesson.title }}
+        </h3>
+      </div>
+      <div class="panel-body">
+        <p>{{ lesson.description }}</p>
+      </div>
+      <div>
+        <div class="path-s" ng-repeat="item in lesson.timeline">
+          <a href="#courses/{{ Ctrl.course.id + '/' + item.type + '/' + item.id }}" class="ico-path">
+            <div class="bar"></div>
+            <div class="ico" ng-class="{'round': item.type == 'content'}"></div>
+            <span ng-show="item.type == 'content'" class="glyphicon glyphicon-duplicate"></span>
+            <span ng-show="item.type == 'content'" class="title">{{ item.title }}</span>
+            <span ng-show="item.type == 'question'" class="glyphicon glyphicon-question-sign"></span>
+            <span ng-show="item.type == 'question'" class="title">{{ ('courses.show.exercise' | translate) + item.title }}</span>
+            <span class="added-date">{{ ('courses.show.updated_at' | translate) + item.updated_at_string }}</span>
+            <span>{{ item.description }}</span>
+          </a>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div gab-confirm-modal modalid="confirmDeleteCourse" title="courses.modal.delete.title" body="courses.modal.delete.body" callback="Ctrl.c_delete(id)"></div>
