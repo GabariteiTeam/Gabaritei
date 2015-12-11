@@ -47,3 +47,35 @@ tags-input.ti-input-lg {
 		}
 	}
 }
+
+.user_tag_left {
+	float: left;
+	img {
+		width: 24px;
+	}
+}
+
+.user_tag_right {
+	float: left;
+	span {
+		margin-left: 5px;
+	}
+}
+
+.search_user_template_left_panel {
+	float: left;
+	img {
+		width: 50px;
+		vertical-align: middle;
+	}
+}
+
+.search_user_template_right_panel {
+	float: left;
+	padding-left: 10px;
+	span:last-child {
+		display: block;
+		margin-top: 5px;
+		font-style: italic;
+	}
+}

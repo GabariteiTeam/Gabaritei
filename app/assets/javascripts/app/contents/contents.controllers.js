@@ -6,18 +6,7 @@
         .module(APP_NAME)
         .controller('ContentsController', ContentsController);
 
- 	ContentsController
-        .$inject = [
-            '$location',
-            '$routeParams',
-            '$route',
-            '$sce',
-            'Content',
-            'Subject',
-            'MessageService',
-            'RedirectService',
-            'ModalService'
-        ];
+ 	ContentsController.$inject = ['$location', '$routeParams', '$route', '$sce', 'Content', 'Subject', 'MessageService', 'RedirectService', 'ModalService'];
 
     function ContentsController($location, $routeParams, $route, $sce, Content, Subject, MessageService, RedirectService, ModalService) {
 
@@ -32,6 +21,7 @@
         activate();
 
         function activate() {
+            vm.course_id = $routeParams.course_id;
             if ($routeParams.id === undefined) {
                 vm.content = new Content();
                 vm.content.medium = {

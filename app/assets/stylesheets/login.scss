@@ -75,31 +75,41 @@
 }
 
 div.form-group.login-field {
+
 	position: relative;
-}
 
-div.form-group.login-field.has-error {
-	-webkit-animation-name: field_shake_horizontal;
-	-webkit-animation-duration: 0.4s;
-	-moz-animation-name: field_shake_horizontal;
-	-moz-animation-duration: 0.4s;
-	-o-animation-name: field_shake_horizontal;
-	-o-animation-duration: 0.4s;
-	animation-name: field_shake_horizontal;
-	animation-duration: 0.4s;
-}
+	.has-error {
+		-webkit-animation-name: field_shake_horizontal;
+		-webkit-animation-duration: 0.4s;
+		-moz-animation-name: field_shake_horizontal;
+		-moz-animation-duration: 0.4s;
+		-o-animation-name: field_shake_horizontal;
+		-o-animation-duration: 0.4s;
+		animation-name: field_shake_horizontal;
+		animation-duration: 0.4s;
+	}
 
-div.form-group.login-field.has-warning {
-	-webkit-animation-name: field_shake_vertical;
-	-webkit-animation-duration: 0.4s;
-	-moz-animation-name: field_shake_vertical;
-	-moz-animation-duration: 0.4s;
-	-o-animation-name: field_shake_vertical;
-	-o-animation-duration: 0.4s;
-	animation-name: field_shake_vertical;
-	animation-duration: 0.4s;
+	.has-warning {
+		-webkit-animation-name: field_shake_vertical;
+		-webkit-animation-duration: 0.4s;
+		-moz-animation-name: field_shake_vertical;
+		-moz-animation-duration: 0.4s;
+		-o-animation-name: field_shake_vertical;
+		-o-animation-duration: 0.4s;
+		animation-name: field_shake_vertical;
+		animation-duration: 0.4s;
+	}
+
 }
 
 p.confirmation-text {
 	font-size: 18px;
+}
+
+#login-actions {
+	text-align: center;
+
+	a, button {
+		margin-top: 5px;
+	}
 }

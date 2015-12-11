@@ -12,6 +12,7 @@
 #  source     :string(255)
 #  date       :datetime
 #  style      :string(255)
+#  tags       :string(255)
 #
 # Indexes
 #

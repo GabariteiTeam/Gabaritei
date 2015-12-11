@@ -1,0 +1,54 @@
+pt-BR:
+  responses:
+    index:
+      heading: "Respostas de questões"
+      sub_heading: "As respostas para "
+      table:
+        header:
+          question: "Questão"
+          owner: "Criador"
+          text: "Texto"
+    create:
+      heading: "Nova questão"
+    update:
+      heading: "Editar questão"
+    actions:
+      add: "Adicionar nova questão"
+      save: "Salvar questão"
+      edit: "Editar"
+      delete: "Remover"
+    form:
+      question:
+        label: "Texto da questão:"
+      response:
+        label: "Sua resposta:"
+      alternative:
+        label: "Alternativa"
+        option_yes: "Sim"
+        option_no: "Não"
+    modal:
+      delete:
+        title: "Aviso!"
+        body: "Tem certeza que deseja remover essa resposta?"
+    alerts:
+      create:
+        success:
+          title: "Criada!"
+          content: "Resposta foi criada com sucesso!"
+        error:
+          title: "Erro!"
+          content: "Resposta NÃO foi criada!"
+      delete:
+        success:
+          title: "Removida!"
+          content: "Resposta foi removida com sucesso!"
+        error:
+          title: "Erro!"
+          content: "Resposta NÃO foi removida!"
+      update:
+        success:
+          title: "Atualizada!"
+          content: "Resposta foi atualizada com sucesso!"
+        error:
+          title: "Erro!"
+          content: "Resposta NÃO foi atualizada!"

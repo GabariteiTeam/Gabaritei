@@ -23,6 +23,13 @@
         </div>
     </div>
 </div>
+<div class="form-group" ng-show="Ctrl.course_id">
+    <div class="col-sm-offset-2 col-sm-10">
+        <label for="rating" translate>questions.form.rating.label</label>
+        <star-rating ng-model="Ctrl.rating" max="5" on-rating-select="Ctrl.setRating(rating)"></star-rating>
+        <span>&nbsp;{{ Ctrl.rating_description }}</span>
+    </div>
+</div>
 <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
         <button type="submit" class="btn btn-primary">
@@ -30,5 +37,10 @@
             &nbsp;
             <span translate>responses.actions.save</span>
         </button>
+        <a ng-show="Ctrl.course_id" href="/#courses/{{ Ctrl.course_id }}/question/{{ Ctrl.question.id }}/recommend" class="btn btn-info">
+            <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
+            &nbsp;
+            <span translate>questions.actions.recommend</span>
+        </a>
     </div>
 </div>

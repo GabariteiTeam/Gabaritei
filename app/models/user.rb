@@ -78,6 +78,8 @@ class User < ActiveRecord::Base
     belongs_to :role
 
     # @!endgroup
+
+    has_one :setting
     
     # @!group Has many
     
@@ -210,6 +212,12 @@ class User < ActiveRecord::Base
             end
         end
         return true
+    end
+
+    def reset_password
+        generated_password = Devise.friendly_token.first(8)
+        self.password = generated_password
+        return self.save! ? generated_password : nil
     end
 
     private

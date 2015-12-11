@@ -4,7 +4,8 @@
 
     angular
         .module(APP_NAME)
-        .controller('AuthenticationController', AuthenticationController);
+        .controller('AuthenticationController', AuthenticationController)
+        .controller('ForgotPasswordController', ForgotPasswordController);
 
     AuthenticationController.$inject = ['$scope', '$location', '$routeParams', '$route', '$filter', 'Auth'];
 
@@ -82,5 +83,52 @@
         });
 
     }
+
+
+    ForgotPasswordController.$inject = ['$scope', '$location', '$routeParams', '$route', '$filter', 'User', 'RedirectService', 'MessageService'];
+
+    function ForgotPasswordController($scope, $location, $routeParams, $route, $filter, User, RedirectService, MessageService) {
+
+        var vm = this;
+
+        vm.resetPassword = resetPassword;
+        vm.clearStatus = clearStatus;
+
+        activate();
+
+        function activate() {
+            jQuery("#forgot-password-email").popover({
+                trigger: 'manual',
+                placement: 'bottom',
+                content: function() {
+                    return $filter('translate')('authentication.forgot_password.invalid_email');
+                }
+            });
+        }
+
+        function resetPassword() {
+            if (vm.email) {
+                User.reset_password({email: vm.email}, function(success) {
+                    RedirectService.redirect("/password_sent");
+                }, function(error) {
+                    if (error.status == 422) {
+                        vm.email_status = 'error';
+                        jQuery("#forgot-password-email").popover('show');
+                    } else {
+                        MessageService.sendMessage('user.forgot_password.error');
+                    }
+                });
+            }
+        }
+
+        function clearStatus() {
+            if (vm.email_status != "") {
+                vm.email_status = "";
+                jQuery("#forgot-password-email").popover('hide');
+            }
+        }
+
+    }
+
 
 })();

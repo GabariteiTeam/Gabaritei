@@ -10,6 +10,8 @@ Question.destroy_all
 Response.destroy_all
 Test.destroy_all
 Rating.destroy_all
+RegistrationRequest.destroy_all
+CourseRegistrationRequest.destroy_all
 
 seeds_files = [
 	"permissions_roles_seeds",
@@ -17,7 +19,8 @@ seeds_files = [
 	"users_teachers_seeds",
 	"users_students_seeds",
 	"subjects_fields_seeds",
-	"courses_seeds"
+	"courses_seeds",
+	"requests_seeds"
 ]
 
 seeds_files.each do |f|

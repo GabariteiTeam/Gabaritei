@@ -50,6 +50,7 @@ class AddModelFields < ActiveRecord::Migration
     add_column :questions, :source, :string
     add_column :questions, :date, :datetime
     add_column :questions, :style, :string
+    add_column :questions, :tags, :string
 
     # Question choice
     add_column :question_choices, :text, :string
@@ -98,6 +99,9 @@ class AddModelFields < ActiveRecord::Migration
     # Lesson
     add_column :lessons, :title, :string
     add_column :lessons, :description, :text
+
+    # Setting
+    add_column :settings, :preferred_language, :integer
 
   end
   

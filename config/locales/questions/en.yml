@@ -2,7 +2,7 @@ en:
   questions:
     index:
       heading: "Questions"
-      sub_heading: "Create a new question for your students"
+      sub_heading: "Create a new question for your students!"
       table:
         headers:
           owner: "Owner"
@@ -21,6 +21,7 @@ en:
       save: "Save question"
       view_responses: "View responses"
       delete: "Delete"
+      recommend: "Recommend this exercise"
     modal:
       delete:
         title: "Warning!"
@@ -50,25 +51,33 @@ en:
         placeholder: "Enter the alternative text"
         label: "Alternatives"
         dropdown: "Alternative"
+      rating: 
+        label: "How difficult was this exercise?"
+        level_0: "Not evaluated"
+        level_1: "Really easy!"
+        level_2: "Easy"
+        level_3: "Normal"
+        level_4: "Hard"
+        level_5: "Really hard!"
     alerts:
       create:
         success:
           title: "Created!"
-          content: "Question was created with success"
+          content: "Question was created with success!"
         error:
           title: "Failed!"
           content: "Question was NOT created!"
       delete:
         success:
           title: "Deleted!"
-          content: "Question was deleted with success"
+          content: "Question was deleted with success!"
         error:
           title: "Failed"
           content: "Question was not deleted!"
       update:
         success:
           title: "Updated!"
-          content: "Question was updated with success"
+          content: "Question was updated with success!"
         error:
           title: "Failed!"
-          content: "Question was NOT updated"
+          content: "Question was NOT updated!"

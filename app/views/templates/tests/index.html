@@ -1,0 +1,66 @@
+<div class="page-header">
+  <h1>
+    <span class="glyphicon glyphicon-certificate"></span>
+    <span class="page-title" translate>tests.index.heading</span>
+  </h1>
+  <p class="lead" translate>tests.index.sub_heading</p>
+</div>
+
+<a href="#tests/new" class="btn btn-primary crud-add-btn">
+  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+  <span translate>tests.actions.add</span>
+</a>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  </div>
+
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th translate>tests.index.table.header.name</th>
+        <th translate>tests.index.table.header.description</th>
+        <th translate>tests.index.table.header.course</th>
+      </tr>
+    </thead>
+
+    <tbody>
+        <tr data-ng-repeat="test in Ctrl.tests">
+          <td>{{ test.name }}</td>
+          <td>{{ test.description }}</td>
+          <td>{{ test.course.name }}</td>
+          <td>
+            <a href="#tests/{{test.id}}/start" class="btn btn-xs btn-warning">
+              <span class="glyphicon glyphicon-certificate"></span>
+              <span class="hidden-xs hidden-sm">&nbsp;</span>
+              <span class="hidden-xs hidden-sm" translate>tests.actions.start_exam</span>
+            </a>
+            <a href="#tests/{{test.id}}" class="btn btn-xs btn-default">
+              <span class="glyphicon glyphicon-eye-open"></span>
+              <span class="hidden-xs hidden-sm">&nbsp;</span>
+              <span class="hidden-xs hidden-sm" translate>tests.actions.view</span>
+            </a>
+            <a href="#tests/{{test.id}}/response" class="btn btn-xs btn-default">
+              <span class="glyphicon glyphicon-eye-open"></span>
+              <span class="hidden-xs hidden-sm">&nbsp;</span>
+              <span class="hidden-xs hidden-sm" translate>tests.actions.view_responses</span>
+            </a>
+            <a href="#tests/questions/{{test.id}}" class="btn btn-xs btn-info">
+              <span class="glyphicon glyphicon-question-sign"></span>
+              <span class="hidden-xs hidden-sm">&nbsp;</span>
+              <span class="hidden-xs hidden-sm" translate>tests.actions.edit_questions</span>
+            </a>
+            
+            <a href="#tests/update/{{test.id}}" class="btn btn-xs btn-info">
+              <span class="glyphicon glyphicon-pencil"></span>
+              <span class="hidden-xs hidden-sm">&nbsp;</span>
+              <span class="hidden-xs hidden-sm" translate>tests.actions.edit</span>
+            </a>
+            <gab-show-modal-button text="tests.actions.delete" args="test.id" modalid="confirmDeleteTest" class="btn btn-xs btn-danger" icon="glyphicon glyphicon-trash"/><gab-show-modal-button>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+ 
+<div gab-confirm-modal modalid="confirmDeleteTest" title="crud.tests.modal.delete.title" body="crud.tests.modal.delete.body" callback="Ctrl.c_delete(id)"></div>

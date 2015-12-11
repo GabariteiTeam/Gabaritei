@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 	put 	"/questions", 		to: "questions#customUpdate"
 	post 	"/questions/", 		to: "questions#create"
 	delete 	"/questions/:id", 	to: "questions#destroy"
+	get 	"/questions/questions_for_lesson",  to: "questions#questions_for_lesson"
 
 	# END QUESTIONS ROUTES
 	
@@ -38,13 +39,26 @@ Rails.application.routes.draw do
 	
 	# END FIELDS ROUTES
 
+	# TESTS ROUTES
+
+	resources :tests do
+		get :search_questions, to: "tests#search_questions", on: :member
+		put :add_questions, to: "tests#add_questions", on: :member
+		put "remove_question/:question_id", to: "tests#remove_question", on: :member
+	end
+	
+	post "tests/:id/submit/responses",		 to: "tests#submit_responses"
+	get "tests/:id/summary",		 to: "tests#get_summary"
+	
+	# END TESTS ROUTES
+
 	# RESPONSE ROUTES
 
 	get		"/responses/:id/show", 	to: "response#show"
 	get		"/responses/:id", 		to: "response#index"
-	put		"/responses/",		to: "response#update"
-	post		"/responses/",		to: "response#create"
-	delete 		"/responses/:id",		to: "response#destroy"
+	put		"/responses/",			to: "response#update"
+	post	"/responses/",			to: "response#create"
+	delete 	"/responses/:id",		to: "response#destroy"
 
 
 	# END RESPONSE ROUTES
@@ -53,6 +67,10 @@ Rails.application.routes.draw do
 
 	resources :users do
 		post :verify_permissions, on: :collection
+		post :change_password, on: :member
+		post :reset_password, on: :collection
+		get :settings, on: :member
+		post :settings, to: "users#save_settings", on: :member
 	end
 
 	# END USERS ROUTES
@@ -80,6 +98,8 @@ Rails.application.routes.draw do
 		get :search_users, to: "courses#search_users", on: :member
 		put :add_participants, to: "courses#add_participants", on: :member
 		put "remove_participant/:user_id", to: "courses#remove_participant", on: :member
+		get :show_everything, to: "courses#show_everything", on: :member
+		post :add_lesson, on: :member
 	end
 	
 	# COURSES ROUTES
@@ -92,9 +112,20 @@ Rails.application.routes.draw do
 
 	# CONTENT ROUTES
 
-	resources :contents
+	resources :contents do
+		get :contents_for_lesson, on: :collection 
+	end
 
 	# END CONTENT ROUTES
+
+	# RECOMMENDATIONS ROUTES
+
+	resources :recommendations do
+		get :search_users, to: "recommendations#search_users", on: :collection
+		post :recommend, on: :collection
+	end
+
+	# END RECOMMENDATION ROUTES
 
 	# REQUESTS ROUTES
 
@@ -112,6 +143,12 @@ Rails.application.routes.draw do
 	end
 
 	# END REQUESTS ROUTES
+
+	# RATINGS ROUTES
+
+	resources :ratings
+
+	# END RATINGS ROUTES
 
 	# TEMPLATES ROUTES
 

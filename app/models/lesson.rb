@@ -27,11 +27,43 @@ class Lesson < ActiveRecord::Base
 	# 	Description of the lesson.
 	# 	@return [String] the description of the lesson.
 
+	belongs_to :course
+
 	# List of all associated {Content contents} of the lesson.
     # @return [Array<Content>] all associated contents of the lesson.
     # @see Content#lessons
     has_many :contents, through: :lesson_contents
+    has_many :questions, through: :lesson_questions
 
     has_many :lesson_contents
+    has_many :lesson_questions, -> { order "updated_at ASC" }
+
+    def timeline
+    	lcontents = lesson_contents
+    	lquestions = lesson_questions
+    	ltimeline = []
+    	lquestions.each_with_index do |lquestion, i|
+    		ltimeline.push({
+    			type: "question",
+    			id: lquestion.question.id,
+    			title: (i + 1).to_s,
+    			description: lquestion.question.description,
+    			updated_at: lquestion.updated_at,
+    			updated_at_string: lquestion.updated_at.strftime("%d/%m/%Y %H:%M")
+    		})
+    	end
+    	lcontents.each do |lcontent|
+    		ltimeline.push({
+    			type: "content",
+    			id: lcontent.content.id,
+    			title: lcontent.content.name,
+    			description: lcontent.content.description,
+    			updated_at: lcontent.updated_at,
+    			updated_at_string: lcontent.updated_at.strftime("%d/%m/%Y %H:%M")
+    		})
+    	end
+    	ltimeline.sort! { |x, y| y[:updated_at] <=> x[:updated_at] }
+    	return ltimeline
+    end
 
 end

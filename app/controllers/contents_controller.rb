@@ -44,6 +44,16 @@ class ContentsController < ApplicationController
 		render json: {success: true}
 	end
 
+	def contents_for_lesson
+		contents = Content.all.as_json
+		if params.has_key?(:lesson_id)
+			contents.each do |content|
+				content.merge!({in_lesson: LessonContent.exists?(lesson_id: params[:lesson_id], content_id: content[:id])})
+			end
+		end
+		render json: contents
+	end
+
 	private
 
 		def content_params

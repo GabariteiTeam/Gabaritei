@@ -32,6 +32,21 @@ class ResponseController < ApplicationController
 		set_choices
 		@response.owner = current_user
 		if @response.save
+			begin
+				if (params[:rating].to_i > 0)
+					rating = Rating.where(owner_id: current_user.id, question_id: params[:question_id])
+					if rating.length == 0
+						rating = Rating.new
+						rating.owner = current_user
+						rating.question = @question
+					else
+						rating = rating[0]
+					end
+					rating.value = params[:rating].to_i
+					rating.save!
+				end
+			rescue
+			end
 			render :json => {}
 		else
 			render :json =>  @response.errors, status: :unprocessable_entity

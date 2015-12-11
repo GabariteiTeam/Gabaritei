@@ -1,7 +1,13 @@
+<ol class="breadcrumb">
+  <li><a href="/#home" translate>breadcrumbs.home</a></li>
+  <li><a href="/#users" translate>breadcrumbs.users.index</a></li>
+  <li class="active" translate>breadcrumbs.users.new</li>
+</ol>
+
 <div class="page-header">
 	<h1 translate>users.create.heading</h1>
 </div>
 
 <form class="form-horizontal" role="form" ng-submit="Ctrl.createUser()">
-  <div ng-include="'templates/users/_form.html'"></div>
+  	<div ng-include="'templates/users/_form.html'"></div>
 </form>

@@ -2,7 +2,7 @@
 <html ng-app="gabariteiApp">
     <head>
         <title>Gabaritei</title>
-        <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+        <%= stylesheet_link_tag 'application', media: 'all' %>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <%= csrf_meta_tags %>
     </head>
@@ -34,18 +34,21 @@
                         <%= yield %>
                     </div>
                 </div>
-            </div>
-            <!-- /#page-content-wrapper -->
-        </div>
-        <!-- /#wrapper -->
+            </div> <!-- /#page-content-wrapper -->
+        </div> <!-- /#wrapper -->
         <% else %>
         <%= render 'layouts/login_navbar'%>
-        <div class="container-fluid clearfix">
-            <div ng-view>
-                <%= yield %>
+        <div id="page-content-wrapper">
+            <div class="container-fluid clearfix">
+                <div ng-controller="MessagesController">
+                    <div id="messageContainer"></div>
+                </div>
+                <div ng-view>
+                    <%= yield %>
+                </div>
             </div>
         </div>
         <% end %>
     </body>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application' %>
 </html>

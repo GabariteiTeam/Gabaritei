@@ -21,9 +21,7 @@ class QuestionsController < ApplicationController
         j_question_choices.push(choice)
       end
     end
-
-
-    render :json => {:question => @question, :subjects => subjects, :choices => j_question_choices }
+    render :json => {:question => @question, :subjects => subjects, :choices => j_question_choices, :category_list => @question.category_list}
   end
 
   # GET /questions/new
@@ -112,7 +110,6 @@ class QuestionsController < ApplicationController
     end
   end
 
-
   def getQuestionsSubject
     response = Array.new
     if not params.has_key?("id")
@@ -136,6 +133,16 @@ class QuestionsController < ApplicationController
     response.push subjects
 
     render json: response
+  end
+
+  def questions_for_lesson
+    questions = Question.all.as_json(methods: [:description])
+    if params.has_key?(:lesson_id)
+      questions.each do |question| 
+          question.merge!({in_lesson: LessonQuestion.exists?(lesson_id: params[:lesson_id], question_id: question[:id])})
+      end
+    end
+    render json: questions
   end
 
 

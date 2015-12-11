@@ -1,5 +1,12 @@
+<ol class="breadcrumb">
+  	<li><a href="/#home" translate>breadcrumbs.home</a></li>
+  	<li><a href="/#subjects" translate>breadcrumbs.subjects.index</a></li>
+  	<li><a href="/#fields/{{ Ctrl.subject.id }}" translate>breadcrumbs.subjects.fields.index</a></li>
+  	<li class="active" translate>breadcrumbs.subjects.fields.new</li>
+</ol>
+
 <div class="page-header">
-	<h1 translate>fields.create.heading</h1>
+  	<h1>{{ ('fields.create.heading' | translate) + Ctrl.subject.name }}</h1>
 </div>
 
 <form class="form-horizontal" role="form" ng-submit="Ctrl.createField()">

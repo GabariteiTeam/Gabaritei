@@ -6,18 +6,21 @@
 #
 # Table name: lesson_contents
 #
-#  id          :integer          not null, primary key
-#  lesson_id   :integer
-#  contents_id :integer
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id         :integer          not null, primary key
+#  lesson_id  :integer
+#  content_id :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 # Indexes
 #
-#  index_lesson_contents_on_contents_id  (contents_id)
-#  index_lesson_contents_on_lesson_id    (lesson_id)
+#  index_lesson_contents_on_content_id  (content_id)
+#  index_lesson_contents_on_lesson_id   (lesson_id)
 #
 
 class LessonContent < ActiveRecord::Base
+
+	belongs_to :lesson
+	belongs_to :content
 
 end

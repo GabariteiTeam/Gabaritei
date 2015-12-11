@@ -46,7 +46,7 @@ class Course < ActiveRecord::Base
     # List of all accessible {Content contents} of the course.
     # @return [Array<Content>] all accessible contents of the course.
     # @see Content#courses
-    has_many :contents, through: :course_contents
+    has_many :contents, through: :lessons
 
     # List of all {CourseNews news} related to the course.
     # @return [Array<CourseNews>] all course news.
@@ -56,7 +56,7 @@ class Course < ActiveRecord::Base
     # List of all accessible {Question questions} of the course.
     # @return [Array<Question>] all accessible questions of the course.
     # @see Question#courses
-    has_many :questions, through: :questions
+    has_many :questions, through: :lessons
     
     # List of all {CourseRegistrationRequest registration requests} for the course.
     # @return [Array<CourseRegistrationRequest>] all registration requests for the course.
@@ -73,11 +73,12 @@ class Course < ActiveRecord::Base
     # @see User#courses
     has_many :users, through: :user_courses
 
+    has_many :lessons
+
     # @!endgroup
 
     has_many :user_courses
-    has_many :course_questions
-    has_many :course_contents
+
 
     def subject
         if category != nil
@@ -91,9 +92,26 @@ class Course < ActiveRecord::Base
         end
     end
 
+    def teachers
+        # TODO: use permissions instead of roles
+        return User.where("role_id = :role_id AND EXISTS (SELECT * FROM user_courses WHERE user_courses.user_id = users.id AND user_courses.course_id = :course_id)", {role_id: Role.third.id, course_id: id})
+    end
+
     def users_info
         users.joins(:role).select("id", "first_name", "last_name", "email", "avatar_file_name", "roles.name AS role_name").each do |u|
             u.avatar_file_name = u.avatar_url_thumb
+        end
+    end
+
+    def verify_resource(resource)
+        if resource != nil
+            if resource.is_a?(Content)
+                lesson_contents = LessonContent.includes(:lesson).where(content_id: resource.id, lessons: {course_id: id})
+                return lesson_contents.length > 0
+            else resource.is_a?(Question)
+                lesson_questions = LessonQuestion.includes(:lesson).where(question_id: resource.id, lessons: {course_id: id})
+                return lesson_questions.length > 0
+            end
         end
     end
 

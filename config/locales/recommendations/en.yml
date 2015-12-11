@@ -1,0 +1,23 @@
+en:
+  recommendations:
+    heading: "Make a recommendation"
+    form:
+      course: "Course"
+      content: "Content"
+      content_description: "Description"
+      content_owner: "Content owner"
+      question: "Question"
+      category: "Category"
+      to_whom:
+        label: "To whom?"
+        placeholder: "Add users"
+    actions:
+      recommend: "Recommend"
+    alerts:
+      create:
+        success:
+          title: "Recommended!"
+          content: "Recommendation was successfully made!"
+        error:
+          title: "Failed!"
+          content: "Recommendation could not be made!"

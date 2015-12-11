@@ -1,0 +1,83 @@
+pt-BR:
+  courses:
+    index:
+      heading: "Cursos"
+      sub_heading: "Crie um novo curso para a sua Sala Virtual!"
+      table:
+        body:
+          subject: "Matéria:"
+    participants:
+      heading: "Editar participantes"
+    create:
+      heading: "Novo curso"
+    update:
+      heading: "Edit curso"
+    show:
+      category: "Categoria:"
+      responsible_teachers: "Professores responsáveis:"
+      updated_at: "Atualizado em "
+      exercise: "Exercício "
+    actions:
+      add: "Adicionar novo curso"
+      save: "Salvar curso"
+      edit: "Editar"
+      delete: "Remover"
+      view: "Ver"
+      edit_participants: "Editar participantes"
+      view_participant: "Ver"
+      remove_participant: "Remover"
+      new_lesson: "Criar nova aula"
+      save_lesson: "Salvar aula"
+    form:
+      name:
+        label: "Nome"
+        placeholder: "Nome do curso"
+      description:
+        label: "Descrição"
+        placeholder: "Descrição do curso"
+      subject: "Matéria"
+      field: "Área"
+    search_form:
+      search: "Busca"
+      placeholder: "Nome ou e-mail"
+      clear: "Limpar busca"
+      select_all: "Selecionar todos"
+      deselect_all: "Deselecionar todos"
+      add_selected: "Adicionar selecionados"
+    alerts:
+      create:
+        success:
+          title: "Criado!"
+          content: "Curso foi criado com sucesso!"
+        error:
+          title: "Erro!"
+          content: "Curso NÃO foi criado!"
+      delete:
+        success:
+          title: "Removido!"
+          content: "Curso foi removido com sucesso!"
+        error:
+          title: "Erro!"
+          content: "Curso NÃO foi removido"
+      update:
+        success:
+          title: "Atualizado!"
+          content: "Curso foi atualizado com sucesso!"
+        error:
+          title: "Erro!"
+          content: "Curso NÃO foi atualizado!"
+      participants:
+        add:
+          success:
+            title: "Adicionado!"
+            content: "Participantes foram adicionados com sucesso!"
+          error:
+            title: "Erro!"
+            content: "Participantes NÃO foram adicionados!"
+        remove:
+          success:
+            title: "Removido!"
+            content: "Participante foi removido com sucesso!"
+          error:
+            title: "Erro!"
+            content: "Participante foi NÃO removido!"
