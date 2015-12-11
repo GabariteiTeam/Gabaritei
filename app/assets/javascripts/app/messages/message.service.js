@@ -239,6 +239,16 @@
                 'content': 'courses.alerts.participants.remove.error.content',
                 'type': mTypes['error']
             },
+            'course.lessons.added.success': {
+                'title': 'courses.alerts.lessons.add.success.title',
+                'content': 'courses.alerts.lessons.add.success.content',
+                'type': mTypes['success']                
+            },
+            'course.lessons.added.error': {
+                'title': 'courses.alerts.lessons.add.error.title',
+                'content': 'courses.alerts.lessons.add.error.content',
+                'type': mTypes['error']                
+            },
             'field.created.success': {
                 'title': 'fields.alerts.create.success.title',
                 'content': 'fields.alerts.create.success.content',

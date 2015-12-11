@@ -25,6 +25,10 @@
             showEverything: {
                 url: 'courses/:id/show_everything',
                 method: 'GET'
+            },
+            addLesson: {
+                url: 'courses/:id/add_lesson',
+                method: 'POST'
             }
         });
     }

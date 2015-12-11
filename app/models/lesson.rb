@@ -19,9 +19,6 @@
 
 class Lesson < ActiveRecord::Base
 
-	include ActionView::Helpers::TextHelper
-	include ActionView::Helpers::SanitizeHelper
-
 	# @!attribute title
 	# 	Title of the lesson.
 	# 	@return [String] the name of the lesson.
@@ -50,7 +47,7 @@ class Lesson < ActiveRecord::Base
     			type: "question",
     			id: lquestion.question.id,
     			title: (i + 1).to_s,
-    			description: strip_tags(truncate(lquestion.question.text, length: 50, escape: false)),
+    			description: lquestion.question.description,
     			updated_at: lquestion.updated_at,
     			updated_at_string: lquestion.updated_at.strftime("%d/%m/%Y %H:%M")
     		})

@@ -136,6 +136,16 @@ class QuestionsController < ApplicationController
     render json: response
   end
 
+  def questions_for_lesson
+    questions = Question.all.as_json(methods: [:description])
+    if params.has_key?(:lesson_id)
+      questions.each do |question| 
+          question.merge!({in_lesson: LessonQuestion.exists?(lesson_id: params[:lesson_id], question_id: question[:id])})
+      end
+    end
+    render json: questions
+  end
+
 
   private
     # Helper to update subjects

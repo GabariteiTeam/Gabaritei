@@ -6,7 +6,8 @@
         .module(APP_NAME)
         .controller('CoursesController', CoursesController)
         .controller('CourseParticipantsController', CourseParticipantsController)
-        .controller('CourseShowController', CourseShowController);
+        .controller('CourseShowController', CourseShowController)
+        .controller('NewLessonController', NewLessonController);
 
     CoursesController.$inject = ['$scope', '$location', '$routeParams', '$route', 'Course', 'Subject', 'MessageService', 'RedirectService', 'ModalService'];
 
@@ -182,6 +183,54 @@
             Course.showEverything({id: $routeParams.id}, function(course) {
                 vm.course = course;
                 vm.course_category = course.category_type == "Field" ? course.field + " (" + course.subject + ")" : course.subject
+            });
+        }
+    }
+
+    NewLessonController.$inject = ['$routeParams', 'Course', 'Content', 'Question', 'MessageService', 'RedirectService'];
+
+    function NewLessonController($routeParams, Course, Content, Question, MessageService, RedirectService) {
+
+        var vm = this;
+
+        vm.createLesson = createLesson;
+
+        activate();
+
+        function activate() {
+            vm.lesson = {
+                name: "",
+                description: "",
+                contents: [],
+                questions: []
+            };
+            vm.course = Course.get({id: $routeParams.id});
+            Content.contentsForLesson(function(contents) {
+                vm.contents = contents;
+            });
+            Question.questionsForLesson(function(questions) {
+                vm.questions = questions;
+            });
+        }
+
+        function createLesson() {
+            for (var i = 0; i < vm.contents.length; i++) {
+                if (vm.contents[i].in_lesson == true) {
+                    vm.lesson.contents.push(vm.contents[i].id);
+                }
+            }
+            for (var i = 0; i < vm.questions.length; i++) {
+                if (vm.questions[i].in_lesson == true) {
+                    vm.lesson.questions.push(vm.questions[i].id);
+                }
+            }
+            Course.addLesson({id: vm.course.id, lesson: vm.lesson}, function(success) {
+                MessageService.sendMessage('course.lessons.added.success');
+                RedirectService.redirect("/courses/" + vm.course.id);
+            }, function(error) {
+                MessageService.sendMessage('course.lessons.added.error');
+                vm.lesson.contents = [];
+                vm.lesson.questions = [];
             });
         }
     }

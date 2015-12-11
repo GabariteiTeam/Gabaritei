@@ -73,6 +73,31 @@ class CoursesController < ApplicationController
 		render json: course, include: {lessons: {methods: [:timeline]}}, methods: [:subject, :field, :course_news, :tests, :teachers]
 	end
 
+	def add_lesson
+		course = Course.find(params[:id])
+		lesson = Lesson.new
+		lesson.course = course
+		lesson.title = params[:lesson][:name]
+		lesson.description = params[:lesson][:description]
+		if params[:lesson][:contents] != nil
+			params[:lesson][:contents].each do |content_id|
+				content = Content.find(content_id)
+				lesson.contents.push(content)
+			end
+		end
+		if params[:lesson][:questions] != nil
+			params[:lesson][:questions].each do |question_id|
+				question = Question.find(question_id)
+				lesson.questions.push(question)
+			end
+		end
+		if lesson.save!
+			render json: {success: true}
+		else
+			render json: lesson.errors, status: :unprocessable_entity
+		end
+	end
+
 	private 
 
 	    def course_params

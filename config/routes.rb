@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 	put 	"/questions", 		to: "questions#customUpdate"
 	post 	"/questions/", 		to: "questions#create"
 	delete 	"/questions/:id", 	to: "questions#destroy"
+	get 	"/questions/questions_for_lesson",  to: "questions#questions_for_lesson"
 
 	# END QUESTIONS ROUTES
 	
@@ -96,6 +97,7 @@ Rails.application.routes.draw do
 		put :add_participants, to: "courses#add_participants", on: :member
 		put "remove_participant/:user_id", to: "courses#remove_participant", on: :member
 		get :show_everything, to: "courses#show_everything", on: :member
+		post :add_lesson, on: :member
 	end
 	
 	# COURSES ROUTES
@@ -108,7 +110,9 @@ Rails.application.routes.draw do
 
 	# CONTENT ROUTES
 
-	resources :contents
+	resources :contents do
+		get :contents_for_lesson, on: :collection 
+	end
 
 	# END CONTENT ROUTES
 
