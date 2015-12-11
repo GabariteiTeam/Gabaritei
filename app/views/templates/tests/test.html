@@ -1,0 +1,85 @@
+<div class="row">
+    <div class="col-md-2">
+        <button type="submit" class="btn btn-primary">
+        <i class="fa fa-clock-o"></i>
+        &nbsp;
+        <span>{{Ctrl.clock}}</span>
+        </button>
+    </div>
+    <div class="col-md-10">
+        <h4> {{"tests.test.current" | translate}} {{Ctrl.question_tracker + 1}}</h4>
+    </div>
+</div>
+<br>
+<div class="row" ng-show="!Ctrl.display_summary">
+    <div class="form-group">
+        <label for="title" class="col-sm-2 control-label" translate>responses.form.question.label</label>
+        <div class="col-sm-10">
+            <div text-angular="text-angular" name="rich-question" ng-model="Ctrl.question.text" ta-disabled='true' ta-toolbar="[]"></div>
+        </div>
+    </div>
+    <div ng-show="Ctrl.question.style == 'written'">
+        <div class="form-group">
+            <label for="title" class="col-sm-2 control-label" translate>responses.form.response.label</label>
+            <div class="col-sm-10">
+                <div text-angular="text-angular" name="rich-response" ng-model="Ctrl.response.text" ta-disabled='disabled'></div>
+            </div>
+        </div>
+    </div>
+    <div ng-show="Ctrl.question.style == 'choice'">
+        <div class="form-group"  data-ng-repeat="choice in Ctrl.choices track by $index">
+            <label for="title" class="col-sm-2 control-label">{{"responses.form.alternative.label" | translate}} {{$index}}</label>
+            <div class="col-sm-8">
+                <span>{{choice.text}}</span>
+            </div>
+            <div class="col-sm-2">
+                <input toggle-switch type="checkbox" size="small" on-label="{{ 'responses.form.alternative.option_yes' | translate }}"
+                off-label="{{ 'responses.form.alternative.option_no' | translate }}" ng-model="Ctrl.keys[$index]"/>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="panel panel-primary" ng-show="Ctrl.display_summary">
+  <table class="table table-striped table-hover" >
+    <thead>
+      <tr>
+        <th translate>tests.test.summary.question</th>
+        <th translate>tests.test.summary.key</th>
+      </tr>
+    </thead>
+
+    <tbody>
+        <tr data-ng-repeat="response in Ctrl.summary track by $index">
+            <td>
+                {{$index}}
+            </td>
+          <td ng-if="Ctrl.test.questions[$index].style == 'choice'">
+            <span ng-repeat="choice in response.keys track by $index">
+                <i ng-if="choice" class="fa fa-check-circle-o"></i>
+                <i ng-if="!choice" class="fa fa-times-circle-o fa-4"></i>
+            </span> 
+          </td>
+          <td ng-if="Ctrl.test.questions[$index].style == 'written'">
+            {{response.response | htmlToPlaintext}}
+          </td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+
+<br>
+<div class="row">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+        <div class="btn-group btn-group-justified">
+            <a class="btn btn-default" ng-click="Ctrl.next_question(-1)" ng-disabled="Ctrl.first_question" translate>tests.test.buttons.previous</a>
+            <a class="btn btn-primary" ng-click="Ctrl.next_question(1)" ng-show="!Ctrl.last_question && !Ctrl.display_summary" translate>tests.test.buttons.next</a>
+            <a class="btn btn-primary" ng-click="Ctrl.next_question(1)" ng-show="Ctrl.last_question" translate>tests.test.buttons.summary</a>
+            <a class="btn btn-primary" ng-click="Ctrl.submit_test()" ng-show="Ctrl.display_summary" translate>tests.test.buttons.submit</a>
+        </div>
+    </div>
+    <div class="col-md-4">
+    </div>
+</div>

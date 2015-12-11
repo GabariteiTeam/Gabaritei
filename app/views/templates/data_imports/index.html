@@ -39,11 +39,11 @@
 					<span style="{{ data_import.status == 2 ? 'color: red' : ''}}" translate>{{ data_import.status_text }}</span>
 				</td>
 				<td>
-					<button type="button" class="btn btn-xs btn-primary" ng-disabled="{{ data_import.status != -1 }}" ng-click="Ctrl.editFile(data_import)" ng-hide="data_import.edit" translate>data_import.actions.edit</button>
-					<button type="button" class="btn btn-xs btn-primary" ng-disabled="{{ data_import.status != -1 }}" ng-click="Ctrl.updateFile(data_import)" ng-hide="!data_import.edit" translate>data_import.actions.update</button>
-					<button type="button" class="btn btn-xs btn-danger" ng-disabled="{{ data_import.status != -1 }}" ng-click="Ctrl.cancelFileUpdate(data_import)" ng-hide="!data_import.edit" translate>data_import.actions.cancel</button>
-					<button type="button" class="btn btn-xs btn-primary" ng-disabled="{{ data_import.status != -1 }}" ng-click="Ctrl.importData(data_import.id)" ng-hide="data_import.edit" translate>data_import.actions.import</button>
-					<button type="button" class="btn btn-xs btn-danger" ng-disabled="{{ data_import.status == 0 }}" ng-click="Ctrl.deleteFile(data_import.id)" ng-hide="data_import.edit" translate>data_import.actions.delete</button>
+					<button type="button" class="btn btn-xs btn-info" ng-disabled="{{ data_import.status != -1 }}" ng-click="Ctrl.editFile(data_import)" ng-hide="data_import.edit"><span class="glyphicon glyphicon-pencil"></span><span class="hidden-xs hidden-sm">&nbsp;</span><span class="hidden-xs hidden-sm" translate>data_import.actions.edit</span></button>
+					<button type="button" class="btn btn-xs btn-primary" ng-disabled="{{ data_import.status != -1 }}" ng-click="Ctrl.updateFile(data_import)" ng-hide="!data_import.edit"><span class="glyphicon glyphicon-floppy-disk"></span><span class="hidden-xs hidden-sm">&nbsp;</span><span class="hidden-xs hidden-sm" translate>data_import.actions.update</span></button>
+					<button type="button" class="btn btn-xs btn-danger" ng-disabled="{{ data_import.status != -1 }}" ng-click="Ctrl.cancelFileUpdate(data_import)" ng-hide="!data_import.edit"><span class="glyphicon glyphicon-remove"></span><span class="hidden-xs hidden-sm">&nbsp;</span><span class="hidden-xs hidden-sm" translate>data_import.actions.cancel</span></button>
+					<button type="button" class="btn btn-xs btn-primary" ng-disabled="{{ data_import.status != -1 }}" ng-click="Ctrl.importData(data_import.id)" ng-hide="data_import.edit"><span class="glyphicon glyphicon-arrow-up"></span><span class="hidden-xs hidden-sm">&nbsp;</span><span class="hidden-xs hidden-sm" translate>data_import.actions.import</span></button>
+					<button type="button" class="btn btn-xs btn-danger" ng-disabled="{{ data_import.status == 0 }}" ng-click="Ctrl.deleteFile(data_import.id)" ng-hide="data_import.edit"><span class="glyphicon glyphicon-trash"></span><span class="hidden-xs hidden-sm">&nbsp;</span><span class="hidden-xs hidden-sm" translate>data_import.actions.delete</span></button>
 				</td>
 			</tr>
 		</tbody>
