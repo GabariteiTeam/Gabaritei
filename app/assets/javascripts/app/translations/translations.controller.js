@@ -21,8 +21,7 @@
         vm.currentLanguage = currentLanguage;
         vm.languages = {
             'en': 'English',
-            'pt-BR': 'Português',
-            'fr': 'Français'
+            'pt-BR': 'Português'
         };
 
         function changeLanguage(language_key) {

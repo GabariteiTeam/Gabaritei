@@ -11,12 +11,20 @@ pt-BR:
       heading: "Novo usuário"
     update:
       heading: "Editar usuário"
+    profile_update:
+      heading: "Atualizar perfil"
+      save: "Salvar perfil"
+    settings:
+      heading: "Configurações"
+      preferred_language: "Idioma"
+      save: "Salvar configurações"
     actions:
       add: "Registrar novo usuário"
       save: "Salvar usuário"
       view: "Ver"
       edit: "Editar"
       delete: "Remover"
+      change_password: "Mudar senha"
     form:
       role: "Papel"
       first_name: 

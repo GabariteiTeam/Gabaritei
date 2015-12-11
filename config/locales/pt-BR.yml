@@ -1,1 +1,52 @@
 pt-BR:
+  breadcrumbs:
+    home: "Home"
+    contents:
+      index: "Conteúdos"
+      new: "New conteúdo"
+      show: "Ver conteúdo"
+      update: "Editar conteúdo"
+    courses:
+      index: "Cursos"
+      new: "Novo curso"
+      show: "Ver curso"
+      update: "Editar curso"
+      edit_participants: "Editar participantes"
+      content: "Ver conteúdo"
+      question: "Ver exercício"
+    data_import: "Importar dados"
+    questions:
+      index: "Questões"
+      new: "Nova questão"
+      update: "Editar questão"
+    recommendations:
+      new: "Fazer recomendação"
+    requests:
+      index: "Requerimentos"
+      assess_registration_request: "Avaliar requerimento de acesso"
+      assess_course_registration_request: "Avaliar requerimento de inscrição em curso"
+    responses:
+      index: "Respostas"
+      new: "Nova resposta"
+      update: "Editar resposta"
+    roles:
+      index: "Papéis"
+      new: "Novo papel"
+      update: "Editar papel"
+    subjects:
+      index: "Matérias"
+      new: "Nova matéria"
+      update: "Editar matéria"
+      fields:
+        index: "Ver áreas"
+        new: "Nova área"
+        update: "Editar área"
+    users: 
+      index: "Usuários"
+      change_password: "Mudar senha"
+      new: "Novo usuário"
+      update: "Editar usuário"
+      show: "Ver usuário"
+      profile: "Perfil"
+      profile_update: "Atualizar perfil"
+      settings: "Configurações"
