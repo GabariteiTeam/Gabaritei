@@ -1,0 +1,64 @@
+pt-BR: 
+  users:
+    index:
+      heading: "Usuários"
+      sub_heading: "Crie um novo usuário para a sua Sala Virtual!"
+      table:
+        header:
+          name: "Nome"
+          email: "E-mail"
+    create:
+      heading: "Novo usuário"
+    update:
+      heading: "Editar usuário"
+    actions:
+      add: "Registrar novo usuário"
+      save: "Salvar usuário"
+      view: "Ver"
+      edit: "Editar"
+      delete: "Remover"
+    form:
+      role: "Papel"
+      first_name: 
+        label: "Nome"
+        placeholder: "Nome do usuário"
+      last_name: 
+        label: "Sobrenome"
+        placeholder: "Sobrenome do usuário"
+      email: 
+        label: "E-mail"
+        placeholder: "E-mail (examplo@examplo.com)"
+      birthdate: "Data de nascimento"
+      about: 
+        label: "Sobre você"
+        placeholder: "Trabalhos acadêmicos e/ou profissionais, habilidades, hobbies…"
+      avatar: "Avatar"
+      drop_avatar: "Solte o arquivo da imagem aqui"
+      select_avatar: "Ou selecione o arquivo"
+      clear: "Limpar"
+    modal:
+      delete:
+        title: "Aviso!"
+        body: "Tem certeza que deseja remover esse usuário?"
+    alerts:
+      create:
+        success:
+          title: "Criado!"
+          content: "Usuário foi criado com sucesso!"
+        error:
+          title: "Erro!"
+          content: "Usuário NÃO foi criado!"
+      delete:
+        success:
+          title: "Removido!"
+          content: "Usuário foi removido com sucesso!"
+        error:
+          title: "Erro!"
+          content: "Usuário NÃO foi removido!"
+      update:
+        success:
+          title: "Atualizado!"
+          content: "Usuário foi atualizado com sucesso!"
+        error:
+          title: "Erro!"
+          content: "Usuário NÃO foi atualizado!"

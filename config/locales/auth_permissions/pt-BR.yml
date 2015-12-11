@@ -1,0 +1,56 @@
+pt-BR:
+  authentication:
+    email: "E-mail"
+    password: "Senha"
+    login: "Acessar conta"
+    forgot_password: "Esqueceu a senha?"
+    request_access: "Requerir acesso"
+    email_missing: "Digite seu e-mail"
+    password_missing: "Digite sua senha"
+    incorrect_credentials: "E-mail e/ou senha incorretos!"
+  permission:
+    contents:
+      globally_manipulate: 
+        title: "Manipular conteúdos (globalmente)"
+        help: "Usuário pode criar novos conteúdos, e editar ou remover qualquer conteúdo, independente do seu dono."
+      manipulate:
+        title: "Manipular conteúdos"
+        help: "Usuário pode criar novos conteúdos, e editar ou remover os conteúdos pertencentes a ele."
+    courses:
+      manipulate: 
+        title: "Manipular cursos"
+        help: "Usuário pode criar, editar e remover cursos. Usuário também pode editar os participantes dos cursos."
+      take_part:
+        title: "Participar em cursos"
+        help: "Usuário pode participar em cursos, tendo acesso à todo o seu conteúdo."
+    users:
+      manipulate:
+        title: "Manipular usuários"
+        help: "Usuário pode registrar novos usuários, e editar ou remover outros usuários."
+    roles:
+      manipulate:
+        title: "Manipular papéis e permissões"
+        help: "Usuário pode criar, editar e remover papéis. Usuário também pode definir as permissões associadas a cada papel."
+    questions:
+      globally_manipulate:
+        title: "Manipular questões (globalmente)"
+        help: "Usuário pode criar novas questões, e editar ou remover qualquer questão, independente do seu dono."
+      manipulate:
+        title: "Manipular questões"
+        help: "Usuário pode criar novas questões, e editar ou remover as questões pertencentes a ele."
+    subjects_fields: 
+      manipulate:
+        title: "Manipular matérias e áreas"
+        help: "Usuário pode criar, editar e remover matérias e suas áreas associadas."
+    requests:
+      registration:
+        manage:
+          title: "Administrar requerimentos de acesso"
+          help: "Usuário pode avaliar e remover requerimentos de acesso."
+      course:
+        manage:
+          title: "Administrar requerimentos de inscrição em cursos"
+          help: "Usuário pode avaliar e remover requerimentos de inscrição em cursos."
+    import_data:
+      title: "Importar dados"
+      help: "Usuário podear carregar arquivos e importar dados."

@@ -1,0 +1,80 @@
+pt-BR:
+  requests:
+    index: 
+      heading: "Requerimentos"
+      sub_heading: "Requerimentos a serem avaliados"
+      registration_requests: "Requerimentos de acesso"
+      course_registration_requests: "Requerimentos de inscrição em cursos"
+      table:
+        headers:
+          requirer: "Requerente"
+          request_date: "Data do requerimento"
+          email: "E-mail"
+          status: "Status"
+          course: "Curso"
+        body:
+          status:
+            not_yet_treated: "Ainda não tratado"
+            accepted_in: "Aceito em"
+            rejected_in: "Rejeitado em"
+    create:
+      registration_heading: "Requerimento de acesso"
+      registration_sub_heading: "Por favor, preencha esse formulário para requerir o seu acesso"
+      course_registration_heading: "Requerimento de inscrição em curso"
+      course_registration_sub_heading: "Por favor, preencha esse formulário para requerir a sua inscrição"
+    assessment:
+      heading: "Avaliação de requerimento"
+    confirmation:
+      registration:
+        heading: "Requerimento de acesso enviado com sucesso"
+        pgrph1: "Obrigado pelo seu requerimento, "
+        pgrph2: "Assim que o seu requerimento for avaliado, você receberá a resposta no seguinte e-mail cadastrado: "
+      course:
+        heading: "Requerimento enviado com sucesso"
+        pgrph1: "Obrigado pelo seu requerimento, "
+        pgrph2: "Assim que o seu requerimento for avaliado, você receberá a resposta no seguinte e-mail cadastrado: "
+    actions:
+      view: "Ver"
+      send: "Enviar"
+      assess: "Avaliar"
+      delete: "Remover"
+      go_to_login: "Voltar para a página de acesso à conta"
+    form:
+      first_name: "Nome"
+      last_name: "Sobrenome"
+      requirer: "Requerente"
+      course: "Curso"
+      email: "E-mail"
+      birthdate: "Data de nascimento"
+      message: "Mensagem"
+      response_message: "Mensagem de resposta"
+      response: "Resposta"
+      assessment: "Avaliação"
+      accept: "Aceitar"
+      reject: "Rejeitar"
+    modal:
+      delete:
+        title: "Aviso!"
+        body: "Tem certeza que deseja remover esse requerimento?"
+    alerts:
+      create:
+        success:
+          title: "Criado!"
+          content: "Requerimento foi criado com sucesso!"
+        error:
+          title: "Erro!"
+          content: "Requerimento NÃO foi criado!"
+      delete:
+        success:
+          title: "Removido!"
+          content: "Requerimento foi removido com sucesso!"
+        error:
+          title: "Erro!"
+          content: "Requerimento NÃO foi removido!"
+      assess:
+        success:
+          title: "Avaliado!"
+          content: "Requerimento foi avaliado com sucesso!"
+        error:
+          title: "Erro!"
+          content: "Requerimento NÃO foi avaliado!"

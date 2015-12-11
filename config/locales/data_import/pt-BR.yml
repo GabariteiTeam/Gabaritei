@@ -1,0 +1,53 @@
+pt-BR: 
+  data_import:
+    index:
+      heading: "Carregar & Importar dados"
+      sub_heading: "Carregue CSV, planilhas de Excel ou documentos ODS para importar dados"
+      table:
+        header:
+          type: "Tipo de dados"
+          file: "Arquivo"
+          uploaded_at: "Subido em"
+          status: "Status"
+        body:
+          status:
+            not_yet_imported: "Ainda não foi importado"
+            currently_being_imported: "Importando..."
+            successfully_imported: "Importado com sucesso"
+            error: "Um erro ocorreu, por favor, verifique o arquivo!"
+    actions:
+      edit: "Editar"
+      update: "Atualizar"
+      cancel: "Cancelar"
+      import: "Importar"
+      delete: "Remover"
+    form:
+      select_type: "Selecionar o tipo de dados"
+      select_role: "Selecionar o papel dos usuários"
+      select_file: "Ou selecione um arquivo"
+      drop_file: "Arraste e solte um arquivo aqui"
+    loading:
+      label: "Importando o arquivo:"
+      complete: "completo"
+    alerts:
+      upload:
+        success:
+          title: "Upload completo!"
+          content: "Arquivo foi carregado com sucesso!"
+        error:
+          title: "Erro!"
+          content: "Arquivo NÃO foi carregado!"
+      delete:
+        success:
+          title: "Removido!"
+          content: "Arquivo foi removido com sucesso!"
+        error:
+          title: "Erro!"
+          content: "Arquivo NÃO foi removido"
+      update:
+        success:
+          title: "Atualizado!"
+          content: "Arquivo foi atualizado com sucesso!"
+        error:
+          title: "Erro!"
+          content: "Arquivo NÃO foi atualizado!"

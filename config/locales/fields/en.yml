@@ -41,11 +41,11 @@ en:
           content: "Field was deleted with success!"
         error:
           title: "Failed!"
-          content: "Field was NOT deleted"
+          content: "Field was NOT deleted!"
       update:
         success:
           title: "Updated!"
-          content: "Field was updated with success"
+          content: "Field was updated with success!"
         error:
           title: "Failed!"
           content: "Field was NOT updated!"
