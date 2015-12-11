@@ -13,6 +13,13 @@ en:
       heading: "New Course"
     update:
       heading: "Edit Course"
+    show:
+      category: "Category:"
+      responsible_teachers: "Responsible teachers:"
+      updated_at: "Updated at "
+      exercise: "Exercise "
+    new_lesson:
+      heading: "New lesson for "
     actions:
       add: "Add new course"
       save: "Save course"
@@ -21,6 +28,8 @@ en:
       edit_participants: "Edit participants"
       view_participant: "View"
       remove_participant: "Remove"
+      new_lesson: "Create new lesson"
+      save_lesson: "Save lesson"
     form:
       name:
         label: "Name"
@@ -37,6 +46,13 @@ en:
       select_all: "Select all"
       deselect_all: "Deselect all"
       add_selected: "Add selected"
+    lesson_form:
+      name:
+        label: "Name"
+        placeholder: "Lesson name"
+      description:
+        label: "Description"
+        placeholder: "Lesson description"
     alerts:
       create:
         success:

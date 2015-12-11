@@ -95,6 +95,7 @@ Rails.application.routes.draw do
 		get :search_users, to: "courses#search_users", on: :member
 		put :add_participants, to: "courses#add_participants", on: :member
 		put "remove_participant/:user_id", to: "courses#remove_participant", on: :member
+		get :show_everything, to: "courses#show_everything", on: :member
 	end
 	
 	# COURSES ROUTES

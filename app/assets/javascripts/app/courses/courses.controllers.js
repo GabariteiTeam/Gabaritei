@@ -5,20 +5,10 @@
     angular
         .module(APP_NAME)
         .controller('CoursesController', CoursesController)
-        .controller('CourseParticipantsController', CourseParticipantsController);
+        .controller('CourseParticipantsController', CourseParticipantsController)
+        .controller('CourseShowController', CourseShowController);
 
-    CoursesController
-        .$inject = [
-            '$scope',
-            '$location',
-            '$routeParams',
-            '$route',
-            'Course',
-            'Subject',
-            'MessageService',
-            'RedirectService',
-            'ModalService'
-        ];
+    CoursesController.$inject = ['$scope', '$location', '$routeParams', '$route', 'Course', 'Subject', 'MessageService', 'RedirectService', 'ModalService'];
 
     function CoursesController($scope, $location, $routeParams, $route, Course, Subject, MessageService, RedirectService, ModalService) {
         
@@ -106,18 +96,7 @@
 
     };
 
-    CourseParticipantsController
-        .$inject = [
-            '$location',
-            '$routeParams',
-            '$route',
-            'Course',
-            'User',
-            'Role',
-            'MessageService',
-            'RedirectService',
-            'ModalService'
-        ];
+    CourseParticipantsController.$inject = ['$location', '$routeParams', '$route', 'Course', 'User', 'Role', 'MessageService', 'RedirectService', 'ModalService'];
 
     function CourseParticipantsController($location, $routeParams, $route, Course, User, Role, MessageService, RedirectService, ModalService) {
         
@@ -189,6 +168,22 @@
             });
         }
 
+    }
+
+    CourseShowController.$inject = ['$routeParams', 'Course'];
+
+    function CourseShowController($routeParams, Course) {
+
+        var vm = this;
+
+        activate();
+
+        function activate() {
+            Course.showEverything({id: $routeParams.id}, function(course) {
+                vm.course = course;
+                vm.course_category = course.category_type == "Field" ? course.field + " (" + course.subject + ")" : course.subject
+            });
+        }
     }
 
 })();

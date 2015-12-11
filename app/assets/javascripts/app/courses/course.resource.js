@@ -21,6 +21,10 @@
             removeParticipant: {
                 url: 'courses/:id/remove_participant/:user_id',
                 method: 'PUT'
+            },
+            showEverything: {
+                url: 'courses/:id/show_everything',
+                method: 'GET'
             }
         });
     }

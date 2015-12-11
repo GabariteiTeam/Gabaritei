@@ -68,6 +68,11 @@ class CoursesController < ApplicationController
 	    end 
 	end
 
+	def show_everything
+		course = Course.find(params[:id])
+		render json: course, include: {lessons: {methods: [:timeline]}}, methods: [:subject, :field, :course_news, :tests, :teachers]
+	end
+
 	private 
 
 	    def course_params

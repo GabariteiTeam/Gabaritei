@@ -45,7 +45,12 @@
             })
             .when('/courses/:id', {
                 templateUrl: 'templates/courses/show.html',
-                controller: 'CoursesController',
+                controller: 'CourseShowController',
+                controllerAs: 'Ctrl'
+            })
+            .when('/courses/:id/new_lesson', {
+                templateUrl: 'templates/courses/new_lesson.html',
+                controller: 'CourseShowController',
                 controllerAs: 'Ctrl'
             });
     }

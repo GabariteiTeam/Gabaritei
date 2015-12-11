@@ -19,6 +19,9 @@
 
 class Lesson < ActiveRecord::Base
 
+	include ActionView::Helpers::TextHelper
+	include ActionView::Helpers::SanitizeHelper
+
 	# @!attribute title
 	# 	Title of the lesson.
 	# 	@return [String] the name of the lesson.
@@ -36,6 +39,34 @@ class Lesson < ActiveRecord::Base
     has_many :questions, through: :lesson_questions
 
     has_many :lesson_contents
-    has_many :lesson_questions
+    has_many :lesson_questions, -> { order "updated_at ASC" }
+
+    def timeline
+    	lcontents = lesson_contents
+    	lquestions = lesson_questions
+    	ltimeline = []
+    	lquestions.each_with_index do |lquestion, i|
+    		ltimeline.push({
+    			type: "question",
+    			id: lquestion.question.id,
+    			title: (i + 1).to_s,
+    			description: strip_tags(truncate(lquestion.question.text, length: 50, escape: false)),
+    			updated_at: lquestion.updated_at,
+    			updated_at_string: lquestion.updated_at.strftime("%d/%m/%Y %H:%M")
+    		})
+    	end
+    	lcontents.each do |lcontent|
+    		ltimeline.push({
+    			type: "content",
+    			id: lcontent.content.id,
+    			title: lcontent.content.name,
+    			description: lcontent.content.description,
+    			updated_at: lcontent.updated_at,
+    			updated_at_string: lcontent.updated_at.strftime("%d/%m/%Y %H:%M")
+    		})
+    	end
+    	ltimeline.sort! { |x, y| y[:updated_at] <=> x[:updated_at] }
+    	return ltimeline
+    end
 
 end
