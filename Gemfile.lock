@@ -213,7 +213,7 @@ DEPENDENCIES
   jquery-rails
   non-stupid-digest-assets
   paperclip!
-  pg
+  pg (= 0.18.4)
   rails (= 4.1.7)
   rails-assets-angular-devise!
   rake
