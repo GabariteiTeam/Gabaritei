@@ -30,19 +30,19 @@
               <dt translate>home.courses.responsible_teachers</dt>
               <dd ng-repeat="teacher in course.teachers">{{ teacher.first_name + ' ' + teacher.last_name }}</dd>
             </dl>
-            <a href="#courses/1" class="btn btn-xs btn-default">
+            <a href="#courses/{{ course.id }}" class="btn btn-xs btn-default">
               <span class="glyphicon glyphicon-eye-open"></span>
               <span class="hidden-xs hidden-sm">&nbsp;</span>
               <span class="hidden-xs hidden-sm" translate>courses.actions.view</span>
             </a>
 
-            <a href="#" class="btn btn-xs btn-warning">
+            <a href="#courses/{{ course.id }}/new_lesson" class="btn btn-xs btn-warning">
               <span class="glyphicon glyphicon-folder-open"></span>
               <span class="hidden-xs hidden-sm">&nbsp;</span>
               <span class="hidden-xs hidden-sm" translate>courses.actions.new_lesson</span>
             </a>
 
-            <a href="#" class="btn btn-xs btn-info">
+            <a href="#courses/update/{{ course.id }}" class="btn btn-xs btn-info">
               <span class="glyphicon glyphicon-pencil"></span>
               <span class="hidden-xs hidden-sm">&nbsp;</span>
               <span class="hidden-xs hidden-sm" translate>courses.actions.edit</span>
