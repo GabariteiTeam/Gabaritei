@@ -4,12 +4,13 @@ class RecommendationsController < ApplicationController
 		users = Recommendation.get_course_students(current_user.id, params[:course_id], params[:query])
 		user_list = []
 		users.each do |u|
-			user_list.push({
-				"id": u.id,
-				"name": u.first_name + " " + u.last_name,
-				"email": u.email,
-				"avatar_url": u.avatar_url_thumb
-			})
+			info = {
+				"id" => u.id,
+				"name" => u.first_name + " " + u.last_name,
+				"email" => u.email,
+				"avatar_url" => u.avatar_url_thumb
+			}
+			user_list.push(info)
 		end
 		render json: user_list
 	end
