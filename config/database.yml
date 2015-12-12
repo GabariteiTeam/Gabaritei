@@ -36,11 +36,11 @@ production:
   # database: gabaritei_production
   adapter: postgresql
   encoding: utf8
-  host: ec2-54-197-241-24.compute-1.amazonaws.com
-  username: ikylvhqyroibvo
-  password: QuaU9-zyMG3DGy28V5bksNgVl1
+  host: ec2-54-225-192-128.compute-1.amazonaws.com
+  username: qospvqwwxfirhd
+  password: X90_zvyILEh7nouP0DSFoaEo-T
   port: 5432
-  database: dcdkv2gpecshln
+  database: dbrg0dcf9j056n
   pool: 5
   timeout: 5000
 
