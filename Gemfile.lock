@@ -126,6 +126,11 @@ GEM
     rails-assets-angular (1.4.8)
     rails-assets-angular-devise (1.1.0)
       rails-assets-angular (>= 1.2.0, < 2)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.4)
+    rails_stdout_logging (0.0.4)
     railties (4.1.7)
       actionpack (= 4.1.7)
       activesupport (= 4.1.7)
@@ -216,6 +221,7 @@ DEPENDENCIES
   pg (= 0.18.4)
   rails (= 4.1.7)
   rails-assets-angular-devise!
+  rails_12factor
   rake
   rmagick
   roo
