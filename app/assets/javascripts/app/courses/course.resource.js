@@ -4,10 +4,10 @@
         .module(APP_NAME)
         .factory('Course', Course);
 
-    Course.$inject = ['$resource'];
+    Course.$inject = ['$resource', 'Upload'];
 
-    function Course($resource) {
-        return $resource('courses/:id.json', {id: '@id'}, {
+    function Course($resource, Upload) {
+        var c = $resource('courses/:id.json', {id: '@id'}, {
         	update: { method: 'PUT' },
         	searchUsers: {
         		url: 'courses/:id/search_users',
@@ -31,6 +31,36 @@
                 method: 'POST'
             }
         });
+
+        c.prototype.$save = function(success, error) {
+            upload(this, 'courses/', 'POST', success, error);
+        }
+
+        c.prototype.$update = function(success, error) {
+            upload(this, 'courses/' + this.id, 'PUT', success, error);
+        }
+
+        function upload(course, url, method, success, error) {
+            Upload.upload({
+                url: url,
+                method: method,
+                data: {
+                    avatar: course.avatar,
+                    category_id: course.field_id ? course.field_id : course.subject_id,
+                    category_type: course.field_id ? "Field" : "Subject",
+                    name: course.name,
+                    description: course.description,
+                }
+            })
+            .success(function(data) {
+                if (success) success(data);
+            })
+            .error(function(data) {
+                if (error) error(data);
+            });
+        }
+
+        return c;
     }
 
 })();

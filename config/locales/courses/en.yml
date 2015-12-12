@@ -40,6 +40,10 @@ en:
         placeholder: "Course description"
       subject: "Subject"
       field: "Field"
+      avatar: "Avatar"
+      drop_avatar: "Drop image file here"
+      select_avatar: "Or select image file"
+      clear: "Clear"
     search_form:
       search: "Search"
       placeholder: "Name or e-mail"

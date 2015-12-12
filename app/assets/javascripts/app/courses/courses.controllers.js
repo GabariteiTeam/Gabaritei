@@ -19,6 +19,7 @@
         vm.updateCourse = updateCourse;
         vm.c_delete = c_delete;
         vm.retrieveSubject = retrieveSubject;
+        vm.clearAvatar = clearAvatar;
         vm.delete_modal_id  = "confirmDeleteCourse";
 
         vm.courses = [];
@@ -32,6 +33,7 @@
                 vm.course = Course.get({
                     id: $routeParams.id
                 }, function() {
+                    if (!vm.course.has_avatar) vm.course.avatar = null;
                     Subject.query(function(data) {
                         vm.subjects = data;
                         if (vm.course.category_type == "Subject") {
@@ -89,6 +91,12 @@
 
         function retrieveSubject() {
             vm.subject = Subject.get({id: vm.course.subject_id});
+        }
+
+        function clearAvatar() {
+            vm.course.avatar = null;
+            jQuery('#avatar').wrap('<form>').closest('form').get(0).reset();
+            jQuery('#avatar').unwrap();
         }
 
         $scope.$on('devise:unauthorized', function(event, xhr, deferred) {

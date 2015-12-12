@@ -2,13 +2,12 @@ class CoursesController < ApplicationController
   
     def index    	
 		@courses = Course.all
-		render json: @courses, methods: [:subject, :field]
+		render json: @courses, methods: [:subject, :field, :avatar_url_thumb]
 	end
 
 	# File upload
 	def create
 		@course = Course.new(course_params)
-		@course.category = category_params.has_key?(:field_id) && category_params[:field_id] != nil ? Field.find(category_params[:field_id]) : Subject.find(category_params[:subject_id])
 		if @course.save
 	      	render json: {success: true}
 	    else
@@ -18,12 +17,15 @@ class CoursesController < ApplicationController
 
 	def show
     	@course = Course.find(params[:id])
-    	render json: @course, methods: [:category, :users_info]
+    	render json: @course, methods: [:category, :users_info, :has_avatar, :avatar, :avatar_url_medium]
   	end
 
 	def update
 		@course = Course.find(course_params[:id])
-		@course.category = category_params.has_key?(:field_id) && category_params[:field_id] != nil ? Field.find(category_params[:field_id]) : Subject.find(category_params[:subject_id])
+		if course_params[:avatar] == "null"
+			@course.avatar = nil
+			params.delete :avatar
+		end
 		if @course.update(course_params)
 	      	render json: {success: true}
 	    else
@@ -70,7 +72,7 @@ class CoursesController < ApplicationController
 
 	def show_everything
 		course = Course.find(params[:id])
-		render json: course, include: {lessons: {methods: [:timeline]}}, methods: [:subject, :field, :course_news, :tests, :teachers]
+		render json: course, include: {lessons: {methods: [:timeline]}}, methods: [:subject, :field, :course_news, :tests, :teachers, :avatar_url_medium]
 	end
 
 	def add_lesson
@@ -101,11 +103,7 @@ class CoursesController < ApplicationController
 	private 
 
 	    def course_params
-	    	params.require(:course).permit(:id, :name, :description)
-	    end
-
-	    def category_params
-	    	params.permit(:subject_id, :field_id)
+	    	params.permit(:id, :name, :description, :category_id, :category_type, :avatar)
 	    end
 
 	    def search_user_params

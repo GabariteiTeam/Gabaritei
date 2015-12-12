@@ -37,6 +37,10 @@ pt-BR:
         placeholder: "Descrição do curso"
       subject: "Matéria"
       field: "Área"
+      avatar: "Avatar"
+      drop_avatar: "Solte o arquivo da imagem aqui"
+      select_avatar: "Ou selecione o arquivo"
+      clear: "Limpar"
     search_form:
       search: "Busca"
       placeholder: "Nome ou e-mail"

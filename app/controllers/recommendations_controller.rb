@@ -5,10 +5,10 @@ class RecommendationsController < ApplicationController
 		user_list = []
 		users.each do |u|
 			user_list.push({
-				"id": u.id,
-				"name": u.first_name + " " + u.last_name,
-				"email": u.email,
-				"avatar_url": u.avatar_url_thumb
+				"id" => u.id,
+				"name" => u.first_name + " " + u.last_name,
+				"email" => u.email,
+				"avatar_url" => u.avatar_url_thumb
 			})
 		end
 		render json: user_list

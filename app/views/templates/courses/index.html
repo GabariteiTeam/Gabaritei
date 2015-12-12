@@ -24,7 +24,7 @@
     <tbody>
         <tr data-ng-repeat="course in Ctrl.courses">
           <td class="avatar-cell">
-            <img  src="assets/missing_course_avatar.png" />
+            <img ng-src="{{ course.avatar_url_thumb }}" />
           </td>
           <td class="course-cell" style="display: block">
             <h4 class="course-cell-title">{{ course.name }}</h4>

@@ -70,10 +70,14 @@ ActiveRecord::Schema.define(version: 20151031121535) do
   create_table "courses", force: true do |t|
     t.integer  "category_id"
     t.string   "category_type"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.string   "name"
     t.text     "description"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "courses", ["category_id", "category_type"], name: "index_courses_on_category_id_and_category_type"

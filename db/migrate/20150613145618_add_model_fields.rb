@@ -42,6 +42,7 @@ class AddModelFields < ActiveRecord::Migration
     # Courses
     add_column :courses, :name, :string
     add_column :courses, :description, :text
+    add_attachment :courses, :avatar
 
     # Questions
     add_column :questions, :text, :text

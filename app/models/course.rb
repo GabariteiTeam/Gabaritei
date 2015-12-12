@@ -8,13 +8,17 @@
 #
 # Table name: courses
 #
-#  id            :integer          not null, primary key
-#  category_id   :integer
-#  category_type :string(255)
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
-#  name          :string(255)
-#  description   :text
+#  id                  :integer          not null, primary key
+#  category_id         :integer
+#  category_type       :string(255)
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  name                :string(255)
+#  description         :text
+#  avatar_file_name    :string(255)
+#  avatar_content_type :string(255)
+#  avatar_file_size    :integer
+#  avatar_updated_at   :datetime
 #
 # Indexes
 #
@@ -77,6 +81,9 @@ class Course < ActiveRecord::Base
 
     # @!endgroup
 
+    has_attached_file :avatar, styles: { medium: "200x200>", thumb: "75x75>" }, default_url: "/images/missing_course_avatar/:style.png"
+    validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+
     has_many :user_courses
 
 
@@ -101,6 +108,18 @@ class Course < ActiveRecord::Base
         users.joins(:role).select("id", "first_name", "last_name", "email", "avatar_file_name", "roles.name AS role_name").each do |u|
             u.avatar_file_name = u.avatar_url_thumb
         end
+    end
+
+    def has_avatar
+        avatar_file_name ? true : false
+    end
+
+    def avatar_url_thumb
+        avatar.url(:thumb)
+    end
+
+    def avatar_url_medium
+        avatar.url(:medium)
     end
 
     def verify_resource(resource)
