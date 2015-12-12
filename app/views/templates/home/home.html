@@ -2,26 +2,33 @@
   <li class="active" translate>breadcrumbs.home</li>
 </ol>
 
-<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="false">
+<div class="page-header">
+  <h1>
+    <span class="glyphicon glyphicon-education"></span>
+    &nbsp;
+    <span class="page-title" translate>home.my_courses</span>
+  </h1>
+</div>
 
-  <div class="panel panel-primary">
-    <div class="panel-heading" role="tab" id="headingOne">
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-primary" ng-repeat="course in Ctrl.courses">
+    <div class="panel-heading" role="tab" id="heading_{{ course.id }}">
       <h4 class="panel-title">
-        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-          Course #1
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_{{ course.id }}" aria-expanded="false" aria-controls="collapse_{{ course.id }}" onclick="return false;">
+          {{ course.name }}
         </a>
       </h4>
     </div> <!-- panel-heading -->
 
-    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+    <div id="collapse_{{ course.id }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_{{ course.id }}">
       <div class="panel-body">
         <div class="row">
           <div class="accordion-info">
             <dl class="dl-horizontal">
-              <dt translate>courses.index.table.body.subject</dt>
-              <dd>Nome_Materia</dd>
-              <dt translate>courses.index.table.body.professor</dt>
-              <dd>Nome_Professor</dd>
+              <dt translate>home.courses.category</dt>
+              <dd>{{ course.category_description }}</dd>
+              <dt translate>home.courses.responsible_teachers</dt>
+              <dd ng-repeat="teacher in course.teachers">{{ teacher.first_name + ' ' + teacher.last_name }}</dd>
             </dl>
             <a href="#courses/1" class="btn btn-xs btn-default">
               <span class="glyphicon glyphicon-eye-open"></span>
@@ -32,7 +39,7 @@
             <a href="#" class="btn btn-xs btn-warning">
               <span class="glyphicon glyphicon-folder-open"></span>
               <span class="hidden-xs hidden-sm">&nbsp;</span>
-              <span class="hidden-xs hidden-sm" translate>courses.actions.new_class</span>
+              <span class="hidden-xs hidden-sm" translate>courses.actions.new_lesson</span>
             </a>
 
             <a href="#" class="btn btn-xs btn-info">
@@ -43,117 +50,14 @@
           </div> <!-- accordion-info -->
 
           <div class="path-wrapper">
-            <div class="path-s">
-              <a href="#" class="ico-path">
+            <div class="path-s completed" ng-repeat="lesson in course.lessons">
+              <a href="#courses/{{ course.id }}" class="ico-path">
                 <div class="bar"></div>
                 <div class="ico round"></div>
                 <span class="glyphicon glyphicon-folder-open"></span>
-                <span class="title">Aula 3</span>
-                <span class="added-date">adicionado em 17/jan</span>
-                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in nisi tristique nisi aliquam cursus ut et orci. Nullam velit purus, volutpat et iaculis vitae, rhoncus quis mauris. Pellentesque non tincidunt metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in nisi tristique nisi aliquam cursus ut et orci. Nullam velit purus, volutpat et iaculis vitae, rhoncus quis maurfffffffffis. Pellentesque non tincidunt metus. Pellentesque non tincidunt metus. Pellentesque non tincidunt metus. Pellentesque non tincidunt metus.</span>
-              </a>
-              <div class="clearfix"></div>
-            </div>
-
-            <div class="path-s completed">
-              <a href="#" class="ico-path">
-                <div class="bar"></div>
-                <div class="ico round"></div>
-                <span class="glyphicon glyphicon-folder-open"></span>
-                <span class="title">Aula 2</span>
-                <span class="added-date">adicionado em 10/jan</span>
-                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-              </a>
-              <div class="clearfix"></div>
-            </div>
-
-            <div class="path-s completed">
-              <a href="#" class="ico-path">
-                <div class="bar"></div>
-                <div class="ico round"></div>
-                <span class="glyphicon glyphicon-folder-open"></span>
-                <span class="title">Aula 1</span>
-                <span class="added-date">adicionado em 3/jan</span>
-                <span></span>
-              </a>
-              <div class="clearfix"></div>
-            </div>
-          </div> <!-- path wrapper -->
-        </div> <!-- row -->
-      </div> <!-- panel-body -->
-    </div> <!-- collapseX -->
-  </div> <!-- panel -->
-
-  <div class="panel panel-primary">
-    <div class="panel-heading" role="tab" id="headingTwo">
-      <h4 class="panel-title">
-        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Course #2
-        </a>
-      </h4>
-    </div>
-    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-      <div class="panel-body">
-        <div class="row">
-          <div class="accordion-info">
-            <dl class="dl-horizontal">
-              <dt translate>courses.index.table.body.subject</dt>
-              <dd>Nome_Materia</dd>
-              <dt translate>courses.index.table.body.professor</dt>
-              <dd>Nome_Professor</dd>
-            </dl>
-            <a href="#courses/1" class="btn btn-xs btn-default">
-              <span class="glyphicon glyphicon-eye-open"></span>
-              <span class="hidden-xs hidden-sm">&nbsp;</span>
-              <span class="hidden-xs hidden-sm" translate>courses.actions.view</span>
-            </a>
-
-            <a href="#" class="btn btn-xs btn-warning">
-              <span class="glyphicon glyphicon-folder-open"></span>
-              <span class="hidden-xs hidden-sm">&nbsp;</span>
-              <span class="hidden-xs hidden-sm" translate>courses.actions.new_class</span>
-            </a>
-
-            <a href="#" class="btn btn-xs btn-info">
-              <span class="glyphicon glyphicon-pencil"></span>
-              <span class="hidden-xs hidden-sm">&nbsp;</span>
-              <span class="hidden-xs hidden-sm" translate>courses.actions.edit</span>
-            </a>
-          </div> <!-- accordion-info -->
-
-          <div class="path-wrapper">
-            <div class="path-s">
-              <a href="#" class="ico-path">
-                <div class="bar"></div>
-                <div class="ico round"></div>
-                <span class="glyphicon glyphicon-folder-open"></span>
-                <span class="title">Aula 3</span>
-                <span class="added-date">adicionado em 17/jan</span>
-                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in nisi tristique nisi aliquam cursus ut et orci. Nullam velit purus, volutpat et iaculis vitae, rhoncus quis mauris. Pellentesque non tincidunt metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in nisi tristique nisi aliquam cursus ut et orci. Nullam velit purus, volutpat et iaculis vitae, rhoncus quis maurfffffffffis. Pellentesque non tincidunt metus. Pellentesque non tincidunt metus. Pellentesque non tincidunt metus. Pellentesque non tincidunt metus.</span>
-              </a>
-              <div class="clearfix"></div>
-            </div>
-
-            <div class="path-s completed">
-              <a href="#" class="ico-path">
-                <div class="bar"></div>
-                <div class="ico round"></div>
-                <span class="glyphicon glyphicon-folder-open"></span>
-                <span class="title">Aula 2</span>
-                <span class="added-date">adicionado em 10/jan</span>
-                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-              </a>
-              <div class="clearfix"></div>
-            </div>
-
-            <div class="path-s completed">
-              <a href="#" class="ico-path">
-                <div class="bar"></div>
-                <div class="ico round"></div>
-                <span class="glyphicon glyphicon-folder-open"></span>
-                <span class="title">Aula 1</span>
-                <span class="added-date">adicionado em 3/jan</span>
-                <span></span>
+                <span class="title">{{ lesson.title }}</span>
+                <span class="added-date">{{ ('home.courses.updated_at' | translate) + lesson.updated_at_string }}</span>
+                <span>{{ lesson.description }}</span>
               </a>
               <div class="clearfix"></div>
             </div>

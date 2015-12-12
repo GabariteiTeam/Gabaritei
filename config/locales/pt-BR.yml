@@ -25,6 +25,7 @@ pt-BR:
       index: "Requerimentos"
       assess_registration_request: "Avaliar requerimento de acesso"
       assess_course_registration_request: "Avaliar requerimento de inscrição em curso"
+      request_course_registration: "Requerir inscrição"
     responses:
       index: "Respostas"
       new: "Nova resposta"

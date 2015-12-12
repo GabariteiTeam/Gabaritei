@@ -1,3 +1,7 @@
 en: 
   home:
-    heading: 'Easy, fast and simple!'
+    my_courses: "My courses"
+    courses:
+      category: "Category:"
+      responsible_teachers: "Responsible teachers:"
+      updated_at: "Updated at "

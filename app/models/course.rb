@@ -77,7 +77,7 @@ class Course < ActiveRecord::Base
     # @see User#courses
     has_many :users, through: :user_courses
 
-    has_many :lessons
+    has_many :lessons, -> { order 'updated_at DESC' }
 
     # @!endgroup
 
@@ -96,6 +96,12 @@ class Course < ActiveRecord::Base
     def field
         if category != nil
             category.is_a?(Field) ? category.name : nil
+        end
+    end
+
+    def category_description
+        if category != nil
+            category.is_a?(Field) ? category.name + " (" + category.subject.name + ")" : category.name
         end
     end
 

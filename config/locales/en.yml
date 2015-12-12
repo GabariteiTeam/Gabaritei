@@ -25,6 +25,7 @@ en:
       index: "Requests"
       assess_registration_request: "Assess registration request"
       assess_course_registration_request: "Assess course registration request"
+      request_course_registration: "Request registration"
     responses:
       index: "Responses"
       new: "New response"

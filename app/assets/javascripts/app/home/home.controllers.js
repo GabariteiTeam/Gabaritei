@@ -13,15 +13,21 @@
         .module(APP_NAME)
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$scope', 'Auth', 'RedirectService'];
+    HomeController.$inject = ['$scope', 'HomeDataSource', 'Auth', 'RedirectService'];
 
-    function HomeController($scope, Auth, RedirectService) {
+    function HomeController($scope, HomeDataSource, Auth, RedirectService) {
 
-        Auth.currentUser().then(function(user) {
-            
-        }, function(error) {
-            RedirectService.redirect("/users/login");
-        });
+        var vm = this;
+
+        activate();
+
+        function activate() {
+            HomeDataSource.getHomeInfo().then(function(data) {
+                vm.courses = data.courses;
+            }, function(error) {
+
+            });
+        }
        
     }
     

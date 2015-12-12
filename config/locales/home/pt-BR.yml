@@ -1,3 +1,7 @@
-pt-BR: 
+pt-BR:
   home:
-    heading: 'Fácil, rápido e simples!'
+    my_courses: "Meus cursos"
+    courses:
+      category: "Categoria:"
+      responsible_teachers: "Professores responsáveis:"
+      updated_at: "Atualizado em "

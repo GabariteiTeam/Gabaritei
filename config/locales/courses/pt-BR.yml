@@ -23,11 +23,16 @@ pt-BR:
       edit: "Editar"
       delete: "Remover"
       view: "Ver"
+      request_registration: "Requerir inscrição"
       edit_participants: "Editar participantes"
       view_participant: "Ver"
       remove_participant: "Remover"
       new_lesson: "Criar nova aula"
       save_lesson: "Salvar aula"
+    modal:
+      delete:
+        title: "Aviso!"
+        body: "Tem certeza que deseja remover esse curso?"
     form:
       name:
         label: "Nome"

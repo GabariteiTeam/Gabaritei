@@ -10,7 +10,8 @@
         $routeProvider
             .when('/home', {
                 templateUrl: 'templates/home/home.html',
-                controller: 'HomeController'
+                controller: 'HomeController',
+                controllerAs: 'Ctrl'
             })
             .otherwise({
                 redirectTo: '/home'

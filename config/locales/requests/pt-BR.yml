@@ -39,6 +39,7 @@ pt-BR:
       assess: "Avaliar"
       delete: "Remover"
       go_to_login: "Voltar para a página de acesso à conta"
+      go_to_courses: "Voltar para cursos"
     form:
       first_name: "Nome"
       last_name: "Sobrenome"

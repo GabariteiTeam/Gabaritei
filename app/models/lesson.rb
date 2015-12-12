@@ -38,6 +38,10 @@ class Lesson < ActiveRecord::Base
     has_many :lesson_contents
     has_many :lesson_questions, -> { order "updated_at ASC" }
 
+    def updated_at_string
+        updated_at.strftime("%d/%m/%Y %H:%M")
+    end
+
     def timeline
     	lcontents = lesson_contents
     	lquestions = lesson_questions
