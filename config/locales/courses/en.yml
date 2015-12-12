@@ -40,6 +40,10 @@ en:
         placeholder: "Course description"
       subject: "Subject"
       field: "Field"
+    modal:
+      delete:
+        title: "Warning!"
+        body: "Are you sure you want to delete this course?"
     search_form:
       search: "Search"
       placeholder: "Name or e-mail"

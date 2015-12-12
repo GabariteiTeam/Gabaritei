@@ -1,12 +1,21 @@
+<ol class="breadcrumb">
+    <li><a href="/#home" translate>breadcrumbs.home</a></li>
+    <li><a href="/#tests" translate>breadcrumbs.tests.index</a></li>
+    <li><a href="/#tests/{{Ctrl.course.id}}">{{ Ctrl.test_name }}</a></li>
+    <li class="active" translate>breadcrumbs.tests.view_response</li>
+</ol>
 
 <div class="page-header">
-  <h1 translate>tests.responses.heading</h1>
+  <h1>
+    <span class="glyphicon glyphicon-check"></span>
+    &nbsp;
+    <span translate>tests.responses.heading<span>
+  </h1>
   <p class="lead" translate>tests.responses.sub_header</p>
 </div>
 
 <div class="panel panel-primary">
-  <div class="panel-heading">
-  </div>
+  <div class="panel-heading"></div>
 
   <table class="table table-striped table-hover" >
     <thead>
@@ -23,8 +32,8 @@
             </td>
           <td ng-show="response.style == 'choice'">
             <span ng-repeat="choice in response.keys track by $index">
-                <i ng-if="choice" class="fa fa-check-circle-o"></i>
-                <i ng-if="!choice" class="fa fa-times-circle-o fa-4"></i>
+                <i ng-if="choice" class="fa fa-check-circle-o fa-2x"></i>
+                <i ng-if="!choice" class="fa fa-times-circle-o fa-2x"></i>
             </span> 
           </td>
           <td ng-show="response.style == 'written'">

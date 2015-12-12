@@ -18,21 +18,23 @@
 		&nbsp;
 		<span translate>tests.search_form.deselect_all</span>
 	</button>
-	<button type="button" class="btn btn-success" ng-hide="!Ctrl.questions.length" ng-click="Ctrl.addSelected()">
+	<button type="button" class="btn btn-primary" ng-hide="!Ctrl.questions.length" ng-click="Ctrl.addSelected()">
 		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 		&nbsp;
 		<span translate>tests.search_form.add_selected</span>
 	</button>
 </div>
-
-<div class="col-sm-12" style="overflow-x: hidden; overflow-y: scroll; max-height:450px" ng-hide="!Ctrl.questions.length">
+ 
+<!-- <div class="row"> -->
+<div style="overflow-x: hidden; overflow-y: scroll; max-height:450px" ng-hide="!Ctrl.questions.length">
 	<table id="questions-table" class="table-striped">
 		<tr data-ng-repeat="question in Ctrl.questions" class="question-cell" ng-class="{selected: question.selected}">
 			<td ng-click="Ctrl.selectQuestion(question)">
 				<span>{{ question.text | htmlToPlaintext  }}</span>
 				<br />
-				<span>{{ question.answer | htmlToPlaintext  }}</span>
+				<span><strong>R: </strong>{{ question.answer | htmlToPlaintext  }}</span>
 			</td>
 		<tr>
 	</table>
 </div>
+<!-- </div> -->

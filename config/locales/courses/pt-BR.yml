@@ -6,12 +6,13 @@ pt-BR:
       table:
         body:
           subject: "Matéria:"
+          field: "Área:"
     participants:
       heading: "Editar participantes"
     create:
       heading: "Novo curso"
     update:
-      heading: "Edit curso"
+      heading: "Editar curso"
     show:
       category: "Categoria:"
       responsible_teachers: "Professores responsáveis:"
@@ -37,6 +38,10 @@ pt-BR:
         placeholder: "Descrição do curso"
       subject: "Matéria"
       field: "Área"
+    modal:
+      delete:
+        title: "Aviso!"
+        body: "Tem certeza que deseja remover esse curso?"
     search_form:
       search: "Busca"
       placeholder: "Nome ou e-mail"

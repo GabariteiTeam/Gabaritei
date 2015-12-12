@@ -6,7 +6,7 @@
 
 <div class="page-header">
   <h1 translate>responses.index.heading</h1>
-  <p class="lead"><span translate>responses.index.sub_heading</span> {{Ctrl.question.question.text | htmlToPlaintext}}</p>
+  <div text-angular="text-angular" name="rich-question" ng-model="Ctrl.question.question.text" ta-disabled='true' ta-toolbar="[]"></div>
 </div>
 <a href="#responses/new/{{Ctrl.question_id}}" class="btn btn-primary crud-add-btn">
   <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -17,7 +17,6 @@
   <table class="table table-striped table-hover ">
     <thead>
       <tr>
-        <th translate>responses.index.table.header.question</th>
         <th translate>responses.index.table.header.owner</th>
         <th translate>responses.index.table.header.text</th>
         <th></th>
@@ -25,7 +24,6 @@
     </thead>
     <tbody>
       <tr data-ng-repeat="response in Ctrl.responses">
-        <td>{{ response.question_id }}</td>
         <td>{{ response.owner_name }}</td>
         <td>{{ response.text | htmlToPlaintext }}</td>
         <td>
