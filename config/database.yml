@@ -32,8 +32,17 @@ test:
 
 # Production database settings
 production:
-  <<: *default
-  database: gabaritei_production
+  # <<: *default
+  # database: gabaritei_production
+  adapter: postgresql
+  encoding: utf8
+  host: ec2-54-197-241-24.compute-1.amazonaws.com
+  username: ikylvhqyroibvo
+  password: QuaU9-zyMG3DGy28V5bksNgVl1
+  port: 5432
+  database: dcdkv2gpecshln
+  pool: 5
+  timeout: 5000
 
 # Selenium database settings
 selenium:
