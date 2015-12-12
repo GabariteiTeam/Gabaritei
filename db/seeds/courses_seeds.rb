@@ -1,4 +1,4 @@
-if Rails.env == 'development'
+#if Rails.env == 'development'
 
 # ROLES
 
@@ -100,4 +100,4 @@ course.users.concat(User.where(role_id: role_teacher.id)[5])
 course.users.concat(User.where(role_id: role_student.id)[0..19]) 
 course.save!
 
-end
+#end

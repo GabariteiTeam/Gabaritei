@@ -9,9 +9,9 @@
         .controller('CourseShowController', CourseShowController)
         .controller('NewLessonController', NewLessonController);
 
-    CoursesController.$inject = ['$scope', '$location', '$routeParams', '$route', 'Course', 'Subject', 'MessageService', 'RedirectService', 'ModalService'];
+    CoursesController.$inject = ['$routeParams', 'Course', 'Subject', 'MessageService', 'RedirectService', 'ModalService'];
 
-    function CoursesController($scope, $location, $routeParams, $route, Course, Subject, MessageService, RedirectService, ModalService) {
+    function CoursesController($routeParams, Course, Subject, MessageService, RedirectService, ModalService) {
         
         var vm = this;
 
@@ -91,15 +91,11 @@
             vm.subject = Subject.get({id: vm.course.subject_id});
         }
 
-        $scope.$on('devise:unauthorized', function(event, xhr, deferred) {
-            RedirectService.redirect("/users/login");
-        });
-
     };
 
-    CourseParticipantsController.$inject = ['$location', '$routeParams', '$route', 'Course', 'User', 'Role', 'MessageService', 'RedirectService', 'ModalService'];
+    CourseParticipantsController.$inject = ['$routeParams', 'Course', 'User', 'Role', 'MessageService', 'RedirectService', 'ModalService'];
 
-    function CourseParticipantsController($location, $routeParams, $route, Course, User, Role, MessageService, RedirectService, ModalService) {
+    function CourseParticipantsController($routeParams, Course, User, Role, MessageService, RedirectService, ModalService) {
         
         var vm = this;
 

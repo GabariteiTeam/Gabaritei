@@ -6,6 +6,8 @@
         .module(APP_NAME)
         .config(AuthenticationRoutes);
 
+    AuthenticationRoutes.$inject = ['$routeProvider'];
+
     function AuthenticationRoutes($routeProvider) {
         $routeProvider
             .when('/users/login', {

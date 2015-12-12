@@ -13,9 +13,9 @@
         .module(APP_NAME)
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$scope', 'Auth', 'RedirectService'];
+    HomeController.$inject = ['Auth', 'RedirectService'];
 
-    function HomeController($scope, Auth, RedirectService) {
+    function HomeController(Auth, RedirectService) {
 
         Auth.currentUser().then(function(user) {
             

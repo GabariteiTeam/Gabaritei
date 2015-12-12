@@ -1,4 +1,4 @@
-if Rails.env == 'development'
+#if Rails.env == 'development'
 
 	role_student = Role.all.second
 
@@ -244,4 +244,4 @@ if Rails.env == 'development'
 
 	
 
-end
+#end

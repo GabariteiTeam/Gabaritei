@@ -6,6 +6,8 @@
         .module(APP_NAME)
         .config(ContentRoutes);
 
+    ContentRoutes.$inject = ['$routeProvider'];
+
     function ContentRoutes($routeProvider) {
         $routeProvider
             .when('/contents/new', {

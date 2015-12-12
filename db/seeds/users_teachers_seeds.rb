@@ -1,4 +1,4 @@
-if Rails.env == 'development'
+#if Rails.env == 'development'
 
 	role_teacher = Role.all.third
 
@@ -74,4 +74,4 @@ if Rails.env == 'development'
 	user.setting.preferred_language = 0
 	user.save!
 
-end
+#end
