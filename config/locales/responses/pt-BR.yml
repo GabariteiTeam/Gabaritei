@@ -1,21 +1,21 @@
 pt-BR:
   responses:
     index:
-      heading: "Respostas de questões"
+      heading: "Respostas da questão"
       sub_heading: "As respostas para "
       table:
         header:
           question: "Questão"
           owner: "Criador"
-          text: "Texto"
           rating: "Rating"
+          text: "Resposta"
     create:
-      heading: "Nova questão"
+      heading: "Nova resposta"
     update:
-      heading: "Editar questão"
+      heading: "Editar resposta"
     actions:
-      add: "Adicionar nova questão"
-      save: "Salvar questão"
+      add: "Adicionar nova resposta"
+      save: "Salvar resposta"
       edit: "Editar"
       delete: "Remover"
     form:

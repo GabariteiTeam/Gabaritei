@@ -7,8 +7,8 @@ en:
         header:
           question: "Question"
           owner: "Owner"
-          text: "Text"
           rating: "Rating"
+          text: "Answer"
     actions:
       add: "Add new response"
       save: "Save response"
