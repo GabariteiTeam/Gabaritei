@@ -87,6 +87,7 @@ Rails.application.routes.draw do
 
 	resources :roles do
 		get "validate/destroy", to: "roles#validate_destroy", on: :member
+		get :roles_for_courses, on: :collection
 	end
 	resources :permissions, only: :index
 

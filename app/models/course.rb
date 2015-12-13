@@ -27,6 +27,8 @@
 
 class Course < ActiveRecord::Base
 
+    attr_accessor :current_user
+
 	# @!attribute name
 	# 	Name of the course.
 	# 	@return [String] the name of the course.
@@ -86,6 +88,10 @@ class Course < ActiveRecord::Base
 
     has_many :user_courses
 
+    def has_user(user = nil)
+        user ||= current_user
+        return users.include?(user)
+    end
 
     def subject
         if category != nil

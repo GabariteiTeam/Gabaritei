@@ -9,9 +9,9 @@
         .controller('CourseShowController', CourseShowController)
         .controller('NewLessonController', NewLessonController);
 
-    CoursesController.$inject = ['$scope', '$location', '$routeParams', '$route', 'Course', 'Subject', 'MessageService', 'RedirectService', 'ModalService'];
+    CoursesController.$inject = ['$scope', '$routeParams', 'Course', 'Subject', 'MessageService', 'RedirectService', 'ModalService', 'PermissionsService'];
 
-    function CoursesController($scope, $location, $routeParams, $route, Course, Subject, MessageService, RedirectService, ModalService) {
+    function CoursesController($scope, $routeParams, Course, Subject, MessageService, RedirectService, ModalService, PermissionsService) {
         
         var vm = this;
 
@@ -51,6 +51,9 @@
                     vm.courses = data;
                     Subject.query(function(data) {
                         vm.subjects = data;
+                    });
+                    PermissionsService.verifyPermissions(['permission.courses.globally_manipulate', 'permission.courses.manipulate', 'permission.courses.teach', 'permission.courses.take_part'], function(permissions) {
+                        vm.permissions = permissions;
                     });
                 });
             }            
@@ -123,13 +126,10 @@
         initialize();
 
         function initialize() {
-            vm.course = Course.get({
-                id: $routeParams.id
-            }, function() {
-                Role.query({take_part_in_courses: true}, function(data) {
-                    for (var i = 0; i < data.length; i++) data[i].users = [];
-                    vm.roles = data;
-                });
+            vm.course = Course.get({id: $routeParams.id});
+            Role.rolesForCourses(function(data) {
+                for (var i = 0; i < data.length; i++) data[i].users = [];
+                vm.roles = data;
             });   
         }
 

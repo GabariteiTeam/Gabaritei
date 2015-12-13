@@ -37,11 +37,9 @@
 </li>
 <% end %>
 
-<% if @permissions['permission.courses.manipulate'] || @permissions['permission.courses.take_part'] %>
 <li data-toggle="menu-tooltip" data-placement="right" title="{{ 'menu.courses' | translate }}">
 	<a href="#courses"><span translate>menu.courses</span><span class="sub_icon glyphicon glyphicon-education"></span></a>
 </li>
-<% end %>
 
 <% if @permissions['permission.contents.globally_manipulate'] || @permissions['permission.contents.manipulate'] %>
 <li data-toggle="menu-tooltip" data-placement="right" title="{{ 'menu.contents' | translate }}">
