@@ -23,7 +23,7 @@
         </div>
     </div>
 </div>
-<div class="form-group" ng-show="Ctrl.course_id">
+<div ng-show="Ctrl.permissions['permission.courses.take_part']" class="form-group" ng-show="Ctrl.course_id">
     <div class="col-sm-offset-2 col-sm-10">
         <label for="rating" translate>questions.form.rating.label</label>
         <star-rating ng-model="Ctrl.rating" max="5" on-rating-select="Ctrl.setRating(rating)"></star-rating>
@@ -37,7 +37,7 @@
             &nbsp;
             <span translate>responses.actions.save</span>
         </button>
-        <a ng-show="Ctrl.course_id" href="/#courses/{{ Ctrl.course_id }}/question/{{ Ctrl.question.id }}/recommend" class="btn btn-info">
+        <a ng-show="Ctrl.course_id && (Ctrl.permissions['permission.courses.take_part'] || Ctrl.permissions['permission.courses.teach'])" href="/#courses/{{ Ctrl.course_id }}/question/{{ Ctrl.question.id }}/recommend" class="btn btn-info">
             <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
             &nbsp;
             <span translate>questions.actions.recommend</span>

@@ -1,5 +1,7 @@
 class RolesController < ApplicationController
 
+	before_action :verify_permissions, except: [:index, :roles_for_courses]
+
 	def index
 		@roles = Role.all
 		render json: @roles
@@ -8,10 +10,6 @@ class RolesController < ApplicationController
   	def show
 		role = Role.includes(:permissions).find(params[:id])
 		render json: role, methods: [:permissions]
-  	end
-
-  	def new
-		@role = Role.new
   	end
 
   	def create
@@ -48,16 +46,6 @@ class RolesController < ApplicationController
 		end
   	end
 
-  	def validate_destroy
-		set_role
-		user_count = @role.users.count
-		if user_count > 0
-		  	render :json => { single: false, count: user_count}
-		else
-		  	render :json => { single: true }
-		end
-  	end
-
   	def roles_for_courses
   		roles = Role.course_roles
   		render json: roles
@@ -71,6 +59,13 @@ private
 
 	def role_params
 	  	params.require(:role).permit(:id, :name, :description)
+	end
+
+	def verify_permissions
+		@permissions = current_user.verify_permissions(['permission.roles.manipulate'])
+		if !@permissions['permission.roles.manipulate']
+			render json: {error: "Unauthorized access"}, status: 401
+		end
 	end
 
 end

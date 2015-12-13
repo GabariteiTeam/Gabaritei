@@ -36,13 +36,13 @@
               <span class="hidden-xs hidden-sm" translate>courses.actions.view</span>
             </a>
 
-            <a href="#courses/{{ course.id }}/new_lesson" class="btn btn-xs btn-warning">
+            <a ng-show="Ctrl.permissions['permission.courses.globally_manipulate'] || Ctrl.permissions['permission.courses.teach']" href="#courses/{{ course.id }}/new_lesson" class="btn btn-xs btn-warning">
               <span class="glyphicon glyphicon-folder-open"></span>
               <span class="hidden-xs hidden-sm">&nbsp;</span>
               <span class="hidden-xs hidden-sm" translate>courses.actions.new_lesson</span>
             </a>
 
-            <a href="#courses/update/{{ course.id }}" class="btn btn-xs btn-info">
+            <a ng-show="Ctrl.permissions['permission.courses.globally_manipulate'] || Ctrl.permissions['permission.courses.manipulate']" href="#courses/update/{{ course.id }}" class="btn btn-xs btn-info">
               <span class="glyphicon glyphicon-pencil"></span>
               <span class="hidden-xs hidden-sm">&nbsp;</span>
               <span class="hidden-xs hidden-sm" translate>courses.actions.edit</span>

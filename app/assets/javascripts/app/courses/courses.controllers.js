@@ -51,9 +51,9 @@
                     vm.courses = data;
                     Subject.query(function(data) {
                         vm.subjects = data;
-                    });
-                    PermissionsService.verifyPermissions(['permission.courses.globally_manipulate', 'permission.courses.manipulate', 'permission.courses.teach', 'permission.courses.take_part'], function(permissions) {
-                        vm.permissions = permissions;
+                        PermissionsService.verifyPermissions(['permission.courses.globally_manipulate', 'permission.courses.manipulate', 'permission.courses.teach', 'permission.courses.take_part'], function(permissions) {
+                            vm.permissions = permissions;
+                        });
                     });
                 });
             }            
@@ -175,9 +175,9 @@
 
     }
 
-    CourseShowController.$inject = ['$routeParams', 'Course'];
+    CourseShowController.$inject = ['$routeParams', 'Course', 'PermissionsService'];
 
-    function CourseShowController($routeParams, Course) {
+    function CourseShowController($routeParams, Course, PermissionsService) {
 
         var vm = this;
 
@@ -187,6 +187,9 @@
             Course.showEverything({id: $routeParams.id}, function(course) {
                 vm.course = course;
                 vm.course_category = course.category_type == "Field" ? course.field + " (" + course.subject + ")" : course.subject
+                PermissionsService.verifyPermissions(['permission.courses.globally_manipulate', 'permission.courses.manipulate', 'permission.courses.teach', 'permission.courses.take_part'], function(permissions) {
+                    vm.permissions = permissions;
+                });
             });
         }
     }
@@ -212,7 +215,7 @@
             Content.contentsForLesson(function(contents) {
                 vm.contents = contents;
             });
-            Question.questionsForLesson(function(questions) {
+            Question.questionsForLesson({course_id: $routeParams.id}, function(questions) {
                 vm.questions = questions;
             });
         }

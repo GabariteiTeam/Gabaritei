@@ -50,7 +50,7 @@ class RecommendationsController < ApplicationController
 
 	def verify_permissions
     	@permissions = current_user.verify_permissions(['permission.courses.teach', 'permission.courses.take_part'])
-    	if @permissions['permission.courses.teach'] || @permissions['permission.courses.take_part']
+    	if !@permissions['permission.courses.teach'] && !@permissions['permission.courses.take_part']
     		render json: {error: "Unauthorized access"}, status: 401
     	end
     end

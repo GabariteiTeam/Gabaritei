@@ -112,7 +112,12 @@ class Course < ActiveRecord::Base
     end
 
     def available_questions
-        Question.where("EXISTS (SELECT 1 FROM question_categories WHERE question_categories.question_id = questions.id AND question_categories.category_id = :category_id AND question_categories.category_type = ':category_type')", {category_id: category_id, category_type: category_type})
+        #Question.where("EXISTS (SELECT 1 FROM question_categories WHERE question_categories.question_id = questions.id AND question_categories.category_id = :category_id AND question_categories.category_type = :category_type)", {category_id: category_id, category_type: category_type})
+        if category.is_a?(Field)
+            return category.subject.questions
+        else
+            return category.questions
+        end
     end
 
     def teachers

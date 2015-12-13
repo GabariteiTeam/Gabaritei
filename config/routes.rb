@@ -145,12 +145,6 @@ Rails.application.routes.draw do
 
 	# END REQUESTS ROUTES
 
-	# RATINGS ROUTES
-
-	resources :ratings
-
-	# END RATINGS ROUTES
-
 	# TEMPLATES ROUTES
 
 	get "templates/login", to: "templates#login"
