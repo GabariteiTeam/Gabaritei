@@ -8,6 +8,7 @@ en:
           question: "Question"
           owner: "Owner"
           text: "Text"
+          rating: "Rating"
     actions:
       add: "Add new response"
       save: "Save response"

@@ -10,7 +10,6 @@ class CoursesController < ApplicationController
 		render json: c, methods: [:subject, :field, :avatar_url_thumb, :has_user]
 	end
 
-	# File upload
 	def create
 		if @permissions['permission.courses.globally_manipulate']
 			course = Course.new(course_params)

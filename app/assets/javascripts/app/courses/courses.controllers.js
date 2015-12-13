@@ -102,10 +102,6 @@
             jQuery('#avatar').unwrap();
         }
 
-        $scope.$on('devise:unauthorized', function(event, xhr, deferred) {
-            RedirectService.redirect("/users/login");
-        });
-
     };
 
     CourseParticipantsController.$inject = ['$location', '$routeParams', '$route', 'Course', 'User', 'Role', 'MessageService', 'RedirectService', 'ModalService'];

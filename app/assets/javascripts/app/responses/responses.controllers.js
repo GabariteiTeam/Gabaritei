@@ -7,14 +7,18 @@
 		.controller('CreateResponsesController', CreateResponsesController)
 		.controller('UpdateResponsesController', UpdateResponsesController);
 
-	ResponsesController.$inject = ['$routeParams', 'RedirectService', 'Response', 'Question', 'MessageService'];
+	ResponsesController.$inject = ['$routeParams', 'RedirectService', 'Response', 'Question', 'MessageService', 'PermissionsService'];
 
-	function ResponsesController($routeParams, RedirectService, Response, Question, MessageService) {
+	function ResponsesController($routeParams, RedirectService, Response, Question, MessageService, PermissionsService) {
 		var vm 			= this;
 		vm.question_id 	= $routeParams.question_id;
 		vm.question 		= Question.show({id: vm.question_id});
 		vm.responses 		= Response.get({id: vm.question_id});
 		vm.c_delete		= c_delete;
+
+		PermissionsService.verifyPermissions(['permission.courses.take_part'], function(permissions) {
+			vm.permissions = permissions;
+		});
 
 		function c_delete(id) {
 			var response 	= new Response();

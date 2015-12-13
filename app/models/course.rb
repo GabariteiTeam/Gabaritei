@@ -111,6 +111,10 @@ class Course < ActiveRecord::Base
         end
     end
 
+    def available_questions
+        Question.where("EXISTS (SELECT 1 FROM question_categories WHERE question_categories.question_id = questions.id AND question_categories.category_id = :category_id AND question_categories.category_type = ':category_type')", {category_id: category_id, category_type: category_type})
+    end
+
     def teachers
         # TODO: use permissions instead of roles
         return User.where("role_id = :role_id AND EXISTS (SELECT * FROM user_courses WHERE user_courses.user_id = users.id AND user_courses.course_id = :course_id)", {role_id: Role.third.id, course_id: id})

@@ -8,6 +8,7 @@ pt-BR:
           question: "Questão"
           owner: "Criador"
           text: "Texto"
+          rating: "Rating"
     create:
       heading: "Nova questão"
     update:

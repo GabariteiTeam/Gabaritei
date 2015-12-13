@@ -105,7 +105,7 @@ class User < ActiveRecord::Base
     # All {Question questions} created by the user.
     # @return [Array<Question>] a list of all questions created by the user.
     # @see Question#owner
-    has_many :questions
+    has_many :questions, foreign_key: :owner_id
 
     # All {Rating ratings} created by the user.
     # @return [Array<Rating>] a list of all ratings created by the user.
