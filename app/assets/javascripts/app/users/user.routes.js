@@ -6,6 +6,8 @@
         .module(APP_NAME)
         .config(UserRoutes);
 
+    UserRoutes.$inject = ['$routeProvider'];
+
     function UserRoutes($routeProvider) {
         $routeProvider
             .when('/users/new', {

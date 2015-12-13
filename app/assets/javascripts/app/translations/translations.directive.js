@@ -6,6 +6,8 @@
         .module(APP_NAME)
         .config(Translate);
 
+    Translate.$inject = ['$translateProvider'];
+
     function Translate($translateProvider) {
         $translateProvider.useStaticFilesLoader({
             prefix: 'translations/',

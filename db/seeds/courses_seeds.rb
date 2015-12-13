@@ -1,4 +1,4 @@
-if Rails.env == 'development'
+#if Rails.env == 'development'
 
 # ROLES
 
@@ -264,6 +264,7 @@ course.users.concat(User.where(role_id: role_teacher.id)[5])
 course.users.concat(User.where(role_id: role_student.id)[0..19]) 
 course.save!
 
+
 lesson = Lesson.new
 lesson.course = course
 lesson.title = "Aula 1: Relevo brasileiro"
@@ -276,4 +277,5 @@ lesson.title = "Aula 2: Rios brasileiros"
 lesson.description = "Os rios brasileiros e sua importância social."
 lesson.save!
 
-end
+#end
+

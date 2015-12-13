@@ -10,6 +10,8 @@
         .module(APP_NAME)
         .config(QuestionRoutes);
 
+    QuestionRoutes.$inject = ['$routeProvider'];
+
     function QuestionRoutes($routeProvider) {
         $routeProvider
             .when('/questions/new', {

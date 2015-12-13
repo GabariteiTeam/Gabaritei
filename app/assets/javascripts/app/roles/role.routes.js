@@ -6,6 +6,8 @@
         .module(APP_NAME)
         .config(RoleRoutes);
 
+    RoleRoutes.$inject = ['$routeProvider'];
+
     function RoleRoutes($routeProvider) {
         $routeProvider
             .when('/roles/new', {

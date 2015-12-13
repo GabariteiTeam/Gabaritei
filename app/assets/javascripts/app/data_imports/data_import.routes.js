@@ -6,6 +6,8 @@
         .module(APP_NAME)
         .config(DataImportRoutes);
 
+    DataImportRoutes.$inject = ['$routeProvider'];
+
     function DataImportRoutes($routeProvider) {
         $routeProvider
             .when('/data_imports', {

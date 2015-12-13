@@ -13,9 +13,9 @@
         .module(APP_NAME)
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$scope', 'HomeDataSource', 'Auth', 'RedirectService', 'PermissionsService'];
+    HomeController.$inject = ['HomeDataSource', 'Auth', 'RedirectService', 'PermissionsService'];
 
-    function HomeController($scope, HomeDataSource, Auth, RedirectService, PermissionsService) {
+    function HomeController(HomeDataSource, Auth, RedirectService, PermissionsService) {
 
         var vm = this;
 

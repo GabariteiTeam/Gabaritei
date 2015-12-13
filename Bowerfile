@@ -29,7 +29,7 @@ asset 'angular-translate-loader-static-files'
 # File upload with AngularJS
 asset 'ng-file-upload'
 # Nice input tag with autocomplete
-asset 'ng-tags-input'
+asset 'ng-tags-input', main_files: ["./ng-tags-input.bootstrap.min.css"]
 # Bootstrap toggle
 asset 'bootstrap-toggle'
 # Pagination
@@ -38,8 +38,7 @@ asset 'angular-paginate-anything'
 asset 'ngActivityIndicator'
 # Authentication
 asset 'angular-devise', '1.1.0'
-# Rich text editor
-asset 'textAngular'
+asset 'textAngular', main_files: ["./dist/textAngular-rangy.min.js"]
 # Dependencie from textAngular
 asset 'angular-sanitize'
 # Dependencie frm textAngular
@@ -49,4 +48,4 @@ asset 'angular-autoFields-bootstrap'
 # lodash library
 asset 'ng-lodash'
 # nice toogle switch
-asset 'angular-bootstrap-toggle-switch'
+asset 'angular-bootstrap-toggle-switch', main_files: ["./style/bootstrap3/angular-toggle-switch-bootstrap-3.scss"]

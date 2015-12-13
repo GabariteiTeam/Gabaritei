@@ -4,9 +4,9 @@
         .module(APP_NAME)
         .factory('Content', Content);
 
-    Content.$inject = ['$http', '$resource', 'Upload'];
+    Content.$inject = ['$resource', 'Upload'];
 
-    function Content($http, $resource, Upload) {
+    function Content($resource, Upload) {
         var ctnt = $resource('contents/:id.json', {id: '@id'}, {
             contentsForLesson: {
                 url: 'contents/contents_for_lesson',

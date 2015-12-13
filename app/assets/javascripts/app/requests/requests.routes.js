@@ -6,6 +6,8 @@
         .module(APP_NAME)
         .config(RequestsRoutes);
 
+    RequestsRoutes.$inject = ['$routeProvider'];
+
     function RequestsRoutes($routeProvider) {
         $routeProvider
             .when('/requests', {

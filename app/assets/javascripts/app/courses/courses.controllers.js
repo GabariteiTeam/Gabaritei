@@ -9,10 +9,10 @@
         .controller('CourseShowController', CourseShowController)
         .controller('NewLessonController', NewLessonController);
 
-    CoursesController.$inject = ['$scope', '$routeParams', 'Course', 'Subject', 'MessageService', 'RedirectService', 'ModalService', 'PermissionsService'];
+    CoursesController.$inject = ['$routeParams', 'Course', 'Subject', 'MessageService', 'RedirectService', 'ModalService', 'PermissionsService'];
 
-    function CoursesController($scope, $routeParams, Course, Subject, MessageService, RedirectService, ModalService, PermissionsService) {
-        
+    function CoursesController($routeParams, Course, Subject, MessageService, RedirectService, ModalService, PermissionsService) {
+     
         var vm = this;
 
         vm.createCourse = createCourse;
@@ -104,9 +104,9 @@
 
     };
 
-    CourseParticipantsController.$inject = ['$location', '$routeParams', '$route', 'Course', 'User', 'Role', 'MessageService', 'RedirectService', 'ModalService'];
+    CourseParticipantsController.$inject = ['$routeParams', 'Course', 'User', 'Role', 'MessageService', 'RedirectService', 'ModalService'];
 
-    function CourseParticipantsController($location, $routeParams, $route, Course, User, Role, MessageService, RedirectService, ModalService) {
+    function CourseParticipantsController($routeParams, Course, User, Role, MessageService, RedirectService, ModalService) {
         
         var vm = this;
 

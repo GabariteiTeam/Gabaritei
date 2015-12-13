@@ -1,4 +1,4 @@
-if Rails.env == 'development'
+#if Rails.env == 'development'
 
 	# SUBJECTS
 
@@ -145,4 +145,4 @@ if Rails.env == 'development'
 	field.save!
 
 
-end
+#end

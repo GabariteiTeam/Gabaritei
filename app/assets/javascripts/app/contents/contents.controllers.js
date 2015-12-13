@@ -6,9 +6,9 @@
         .module(APP_NAME)
         .controller('ContentsController', ContentsController);
 
- 	ContentsController.$inject = ['$location', '$routeParams', '$route', '$sce', 'Content', 'Subject', 'MessageService', 'RedirectService', 'ModalService', 'PermissionsService'];
+ 	ContentsController.$inject = ['$routeParams', '$sce', 'Content', 'Subject', 'MessageService', 'RedirectService', 'ModalService', 'PermissionsService'];
 
-    function ContentsController($location, $routeParams, $route, $sce, Content, Subject, MessageService, RedirectService, ModalService, PermissionsService) {
+    function ContentsController($routeParams, $sce, Content, Subject, MessageService, RedirectService, ModalService, PermissionsService) {
 
     	var vm = this;
 

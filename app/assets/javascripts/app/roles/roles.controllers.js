@@ -6,9 +6,9 @@
         .module(APP_NAME)
         .controller('RolesController', RolesController);
 
-    RolesController.$inject = ['$location', '$routeParams', '$route', '$filter', 'Role', 'Permission', 'MessageService', 'RedirectService', 'ModalService'];
+    RolesController.$inject = ['$routeParams', '$filter', 'Role', 'Permission', 'MessageService', 'RedirectService', 'ModalService'];
 
-    function RolesController($location, $routeParams, $route, $filter, Role, Permission, MessageService, RedirectService, ModalService) {
+    function RolesController($routeParams, $filter, Role, Permission, MessageService, RedirectService, ModalService) {
         
         var vm = this;
 
