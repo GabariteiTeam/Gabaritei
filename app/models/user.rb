@@ -86,7 +86,7 @@ class User < ActiveRecord::Base
     # All {Content contents} created by the user.
     # @return [Array<Content>] a list of all contents created by the user.
     # @see Content#owner
-    has_many :contents
+    has_many :contents, foreign_key: :owner_id
 
     # All {CourseNews news} created by the user.
     # @return [Array<CourseNews>] a list of all news created by the user.
