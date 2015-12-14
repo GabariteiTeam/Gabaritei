@@ -1,4 +1,4 @@
-if Rails.env == 'development'
+#if Rails.env == 'development'
 
 	request = RegistrationRequest.new
 	request.first_name = "Luiz Bryan"
@@ -45,4 +45,4 @@ if Rails.env == 'development'
 	request.text = "Gostaria de ser inscrito neste curso."
 	request.save!
 
-end
+#end

@@ -6,6 +6,8 @@
         .module(APP_NAME)
         .config(CourseRoutes);
 
+    CourseRoutes.$inject = ['$routeProvider'];
+
     function CourseRoutes($routeProvider) {
         $routeProvider
             .when('/courses/new', {

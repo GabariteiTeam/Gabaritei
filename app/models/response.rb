@@ -65,6 +65,10 @@ class Response < ActiveRecord::Base
 		owner.first_name + ' ' + owner.last_name
 	end
 
+	def rating
+		Rating.where(owner_id: owner_id, question_id: question_id)[0].value
+	end
+
 	has_many :response_choices
 	has_one :test_response
 	

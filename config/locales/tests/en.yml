@@ -13,7 +13,12 @@ en:
     update:
       heading: "Update exam"
     questions:
-      heading: "Edit questions"
+      heading: "Edit questions of"
+    show:
+      text: "Text"
+      answer: "Answer"
+      questions: "Questions"
+      number_questions: "Number of questions"
     actions:
       add: "Add new exam"
       edit: "Edit"
@@ -78,13 +83,13 @@ en:
       buttons:
         next: "Next"
         previous: "Previous"
-        summary: "View exam summary"
+        summary: "View summary"
         submit: "Submit"
       summary:
         question: "Q#"
         key: "Response"
     responses:
-      heading: "My Exam Response"
+      heading: "My exam response"
       sub_header: ""
     search_form:
       search: "Search"

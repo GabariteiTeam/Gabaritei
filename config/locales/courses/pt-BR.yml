@@ -6,12 +6,13 @@ pt-BR:
       table:
         body:
           subject: "Matéria:"
+          field: "Área:"
     participants:
       heading: "Editar participantes"
     create:
       heading: "Novo curso"
     update:
-      heading: "Edit curso"
+      heading: "Editar curso"
     show:
       category: "Categoria:"
       responsible_teachers: "Professores responsáveis:"
@@ -29,10 +30,6 @@ pt-BR:
       remove_participant: "Remover"
       new_lesson: "Criar nova aula"
       save_lesson: "Salvar aula"
-    modal:
-      delete:
-        title: "Aviso!"
-        body: "Tem certeza que deseja remover esse curso?"
     form:
       name:
         label: "Nome"
@@ -46,6 +43,10 @@ pt-BR:
       drop_avatar: "Solte o arquivo da imagem aqui"
       select_avatar: "Ou selecione o arquivo"
       clear: "Limpar"
+    modal:
+      delete:
+        title: "Aviso!"
+        body: "Tem certeza que deseja remover esse curso?"
     search_form:
       search: "Busca"
       placeholder: "Nome ou e-mail"

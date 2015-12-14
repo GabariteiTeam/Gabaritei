@@ -1,5 +1,7 @@
 class RecommendationsController < ApplicationController
 
+	before_action :verify_permissions
+		
 	def search_users
 		users = Recommendation.get_course_students(current_user.id, params[:course_id], params[:query])
 		user_list = []
@@ -45,5 +47,12 @@ class RecommendationsController < ApplicationController
 			render json: {error: "Error! Invalid course or resource."}, status: :unprocessable_entity
 		end
 	end
+
+	def verify_permissions
+    	@permissions = current_user.verify_permissions(['permission.courses.teach', 'permission.courses.take_part'])
+    	if !@permissions['permission.courses.teach'] && !@permissions['permission.courses.take_part']
+    		render json: {error: "Unauthorized access"}, status: 401
+    	end
+    end
 	
 end

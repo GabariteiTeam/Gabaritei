@@ -6,9 +6,9 @@
         .module(APP_NAME)
         .controller('MenuController', MenuController);
 
-    MenuController.$inject = ['$scope', '$translate', 'Auth', 'User', 'RedirectService'];
+    MenuController.$inject = ['$translate', 'Auth', 'User', 'RedirectService'];
 
-    function MenuController($scope, $translate, Auth, User, RedirectService) {
+    function MenuController($translate, Auth, User, RedirectService) {
 
         var vm = this;
 

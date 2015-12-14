@@ -27,6 +27,8 @@
 
 class Course < ActiveRecord::Base
 
+    attr_accessor :current_user
+
 	# @!attribute name
 	# 	Name of the course.
 	# 	@return [String] the name of the course.
@@ -86,6 +88,10 @@ class Course < ActiveRecord::Base
 
     has_many :user_courses
 
+    def has_user(user = nil)
+        user ||= current_user
+        return users.include?(user)
+    end
 
     def subject
         if category != nil
@@ -105,9 +111,23 @@ class Course < ActiveRecord::Base
         end
     end
 
+    def available_questions
+        #Question.where("EXISTS (SELECT 1 FROM question_categories WHERE question_categories.question_id = questions.id AND question_categories.category_id = :category_id AND question_categories.category_type = :category_type)", {category_id: category_id, category_type: category_type})
+        if category.is_a?(Field)
+            return category.subject.questions
+        else
+            return category.questions
+        end
+    end
+
     def teachers
         # TODO: use permissions instead of roles
         return User.where("role_id = :role_id AND EXISTS (SELECT * FROM user_courses WHERE user_courses.user_id = users.id AND user_courses.course_id = :course_id)", {role_id: Role.third.id, course_id: id})
+    end
+
+    def user_recommendations(user = nil)
+        user ||= current_user
+        Recommendation.where(course_id: id, user_destination_id: user.id).as_json(include: {resource: {methods: [:description]}} , methods: [:user_source])
     end
 
     def users_info

@@ -4,7 +4,9 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.7'
 
 # Use MySQL Or Postgre as the database for Active Record
-gem 'mysql2', '~> 0.3.18', group: :production
+#gem 'mysql2', '~> 0.3.18', group: :production
+gem 'pg', '0.18.4', group: :production
+gem 'rails_12factor', group: :production
 
 # Use SQLite for the development databas
 gem 'sqlite3', group: :development

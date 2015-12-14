@@ -7,9 +7,13 @@
         .config(Authentication)
         .run(UnauthorizedAccessEvent);
 
+    Authentication.$inject = ['AuthInterceptProvider'];
+
     function Authentication(AuthInterceptProvider) {
         AuthInterceptProvider.interceptAuth(true);
     }
+
+    UnauthorizedAccessEvent.$inject = ['$rootScope', 'Auth', 'RedirectService'];
 
     function UnauthorizedAccessEvent($rootScope, Auth, RedirectService) {
 

@@ -6,9 +6,9 @@
         .module(APP_NAME)
         .controller('RolesController', RolesController);
 
-    RolesController.$inject = ['$location', '$routeParams', '$route', '$filter', 'Role', 'Permission', 'MessageService', 'RedirectService', 'ModalService'];
+    RolesController.$inject = ['$routeParams', '$filter', 'Role', 'Permission', 'MessageService', 'RedirectService', 'ModalService'];
 
-    function RolesController($location, $routeParams, $route, $filter, Role, Permission, MessageService, RedirectService, ModalService) {
+    function RolesController($routeParams, $filter, Role, Permission, MessageService, RedirectService, ModalService) {
         
         var vm = this;
 
@@ -63,8 +63,10 @@
         
         function createRole() {
             vm.role.permissions = [];
-            for (var i = 0; i < vm.permissions.length; i++) {
-                if (vm.permissions[i].allowed) vm.role.permissions.push(vm.permissions[i].id);
+            for (var property in vm.permissions) {
+                for (var i = 0; i < vm.permissions[property].length; i++) {
+                    if (vm.permissions[property][i].allowed) vm.role.permissions.push(vm.permissions[property][i].id);
+                }
             }
             vm.role.$save(function() {
                 MessageService.sendMessage('role.created.success');
@@ -78,8 +80,10 @@
 
         function updateRole() {
             vm.role.permissions = [];
-            for (var i = 0; i < vm.permissions.length; i++) {
-                if (vm.permissions[i].allowed) vm.role.permissions.push(vm.permissions[i].id);
+            for (var property in vm.permissions) {
+                for (var i = 0; i < vm.permissions[property].length; i++) {
+                    if (vm.permissions[property][i].allowed) vm.role.permissions.push(vm.permissions[property][i].id);
+                }
             }
             if (vm.role.permissions.length == 0) vm.role.permissions = undefined;
             vm.role.$update(function() {

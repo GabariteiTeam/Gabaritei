@@ -121,7 +121,7 @@ class TestsController < ApplicationController
           partial_response[:style] = response.question.style
           summary.push(partial_response)
         end
-        render :json => {summary: summary}
+        render :json => {:summary => summary, :test_name => @test.name}
       end
 
 

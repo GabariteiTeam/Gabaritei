@@ -9,10 +9,10 @@
         .controller('CourseShowController', CourseShowController)
         .controller('NewLessonController', NewLessonController);
 
-    CoursesController.$inject = ['$scope', '$location', '$routeParams', '$route', 'Course', 'Subject', 'MessageService', 'RedirectService', 'ModalService'];
+    CoursesController.$inject = ['$routeParams', 'Course', 'Subject', 'MessageService', 'RedirectService', 'ModalService', 'PermissionsService'];
 
-    function CoursesController($scope, $location, $routeParams, $route, Course, Subject, MessageService, RedirectService, ModalService) {
-        
+    function CoursesController($routeParams, Course, Subject, MessageService, RedirectService, ModalService, PermissionsService) {
+     
         var vm = this;
 
         vm.createCourse = createCourse;
@@ -51,6 +51,9 @@
                     vm.courses = data;
                     Subject.query(function(data) {
                         vm.subjects = data;
+                        PermissionsService.verifyPermissions(['permission.courses.globally_manipulate', 'permission.courses.manipulate', 'permission.courses.teach', 'permission.courses.take_part'], function(permissions) {
+                            vm.permissions = permissions;
+                        });
                     });
                 });
             }            
@@ -99,15 +102,11 @@
             jQuery('#avatar').unwrap();
         }
 
-        $scope.$on('devise:unauthorized', function(event, xhr, deferred) {
-            RedirectService.redirect("/users/login");
-        });
-
     };
 
-    CourseParticipantsController.$inject = ['$location', '$routeParams', '$route', 'Course', 'User', 'Role', 'MessageService', 'RedirectService', 'ModalService'];
+    CourseParticipantsController.$inject = ['$routeParams', 'Course', 'User', 'Role', 'MessageService', 'RedirectService', 'ModalService'];
 
-    function CourseParticipantsController($location, $routeParams, $route, Course, User, Role, MessageService, RedirectService, ModalService) {
+    function CourseParticipantsController($routeParams, Course, User, Role, MessageService, RedirectService, ModalService) {
         
         var vm = this;
 
@@ -123,13 +122,10 @@
         initialize();
 
         function initialize() {
-            vm.course = Course.get({
-                id: $routeParams.id
-            }, function() {
-                Role.query({take_part_in_courses: true}, function(data) {
-                    for (var i = 0; i < data.length; i++) data[i].users = [];
-                    vm.roles = data;
-                });
+            vm.course = Course.get({id: $routeParams.id});
+            Role.rolesForCourses(function(data) {
+                for (var i = 0; i < data.length; i++) data[i].users = [];
+                vm.roles = data;
             });   
         }
 
@@ -179,9 +175,9 @@
 
     }
 
-    CourseShowController.$inject = ['$routeParams', 'Course'];
+    CourseShowController.$inject = ['$routeParams', 'Course', 'PermissionsService'];
 
-    function CourseShowController($routeParams, Course) {
+    function CourseShowController($routeParams, Course, PermissionsService) {
 
         var vm = this;
 
@@ -191,6 +187,9 @@
             Course.showEverything({id: $routeParams.id}, function(course) {
                 vm.course = course;
                 vm.course_category = course.category_type == "Field" ? course.field + " (" + course.subject + ")" : course.subject
+                PermissionsService.verifyPermissions(['permission.courses.globally_manipulate', 'permission.courses.manipulate', 'permission.courses.teach', 'permission.courses.take_part'], function(permissions) {
+                    vm.permissions = permissions;
+                });
             });
         }
     }
@@ -216,7 +215,7 @@
             Content.contentsForLesson(function(contents) {
                 vm.contents = contents;
             });
-            Question.questionsForLesson(function(questions) {
+            Question.questionsForLesson({course_id: $routeParams.id}, function(questions) {
                 vm.questions = questions;
             });
         }

@@ -16,7 +16,7 @@
     &nbsp;
     <span translate>contents.actions.download</span>
   </a>
-  <a ng-show="Ctrl.course_id" href="/#courses/{{ Ctrl.course_id }}/content/{{ Ctrl.content.id }}/recommend" class="btn btn-info">
+  <a ng-show="Ctrl.course_id && (Ctrl.permissions['permission.courses.teach'] || Ctrl.permissions['permission.courses.take_part'])" href="/#courses/{{ Ctrl.course_id }}/content/{{ Ctrl.content.id }}/recommend" class="btn btn-info">
     <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
     &nbsp;
     <span translate>contents.actions.recommend</span>

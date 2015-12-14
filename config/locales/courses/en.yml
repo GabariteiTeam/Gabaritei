@@ -32,10 +32,6 @@ en:
       remove_participant: "Remove"
       new_lesson: "Create new lesson"
       save_lesson: "Save lesson"
-    modal:
-      delete:
-        title: "Warning!"
-        body: "Are you sure you want to delete this course?"
     form:
       name:
         label: "Name"
@@ -49,6 +45,10 @@ en:
       drop_avatar: "Drop image file here"
       select_avatar: "Or select image file"
       clear: "Clear"
+    modal:
+      delete:
+        title: "Warning!"
+        body: "Are you sure you want to delete this course?"
     search_form:
       search: "Search"
       placeholder: "Name or e-mail"

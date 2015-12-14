@@ -109,4 +109,8 @@ class Content < ActiveRecord::Base
 		end
 	end
 
+	def can_be_accessed?(user_id)
+		return shareable || LessonContent.where("lesson_contents.content_id = :content_id AND EXISTS (SELECT 1 FROM user_courses, courses, lessons WHERE lesson_contents.lesson_id = lessons.id AND lessons.course_id = courses.id AND user_courses.course_id = courses.id AND user_courses.user_id = :user_id)", {content_id: id, user_id: user_id}).length > 0
+	end
+
 end
