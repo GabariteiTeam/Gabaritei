@@ -48,7 +48,24 @@
               <span class="hidden-xs hidden-sm" translate>courses.actions.edit</span>
             </a>
           </div> <!-- accordion-info -->
-
+          <table class="table table-striped table-bordered">
+            <tbody>
+              <tr ng-repeat="recommendation in course.user_recommendations">
+                <td>
+                  <strong>{{ recommendation.user_source.first_name + ' ' + recommendation.user_source.last_name }}</strong>
+                  <span translate>home.courses.recommended</span>
+                  <span ng-show="recommendation.resource_type == 'Question'" translate>home.courses.the_exercise</span>
+                  <span ng-show="recommendation.resource_type == 'Content'" translate>home.courses.the_content</span>
+                  <a ng-show="recommendation.resource_type == 'Question'" href="#courses/{{ course.id + '/question/' + recommendation.resource_id }}">
+                    {{ recommendation.resource.description }}
+                  </a>
+                  <a ng-show="recommendation.resource_type == 'Content'" href="#courses/{{ course.id + '/content/' + recommendation.resource_id }}">
+                    {{ recommendation.resource.description }}
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
           <div class="path-wrapper">
             <div class="path-s completed" ng-repeat="lesson in course.lessons">
               <a href="#courses/{{ course.id }}" class="ico-path">

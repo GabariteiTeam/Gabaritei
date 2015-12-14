@@ -125,6 +125,11 @@ class Course < ActiveRecord::Base
         return User.where("role_id = :role_id AND EXISTS (SELECT * FROM user_courses WHERE user_courses.user_id = users.id AND user_courses.course_id = :course_id)", {role_id: Role.third.id, course_id: id})
     end
 
+    def user_recommendations(user = nil)
+        user ||= current_user
+        Recommendation.where(course_id: id, user_destination_id: user.id).as_json(include: {resource: {methods: [:description]}} , methods: [:user_source])
+    end
+
     def users_info
         users.joins(:role).select("id", "first_name", "last_name", "email", "avatar_file_name", "roles.name AS role_name").each do |u|
             u.avatar_file_name = u.avatar_url_thumb
