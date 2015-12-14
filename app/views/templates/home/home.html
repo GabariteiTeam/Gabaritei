@@ -52,6 +52,8 @@
             <tbody>
               <tr ng-repeat="recommendation in course.user_recommendations">
                 <td>
+                  <span class="glyphicon glyphicon-share-alt"></span>
+                  &nbsp;
                   <strong>{{ recommendation.user_source.first_name + ' ' + recommendation.user_source.last_name }}</strong>
                   <span translate>home.courses.recommended</span>
                   <span ng-show="recommendation.resource_type == 'Question'" translate>home.courses.the_exercise</span>
