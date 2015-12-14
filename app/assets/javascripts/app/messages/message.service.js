@@ -249,6 +249,26 @@
                 'content': 'courses.alerts.lessons.add.error.content',
                 'type': mTypes['error']                
             },
+            'course.lessons.updated.success': {
+                'title': 'courses.alerts.lessons.update.success.title',
+                'content': 'courses.alerts.lessons.update.success.content',
+                'type': mTypes['success']                
+            },
+            'course.lessons.updated.error': {
+                'title': 'courses.alerts.lessons.update.error.title',
+                'content': 'courses.alerts.lessons.update.error.content',
+                'type': mTypes['error']                
+            },
+            'course.lessons.deleted.success': {
+                'title': 'courses.alerts.lessons.delete.success.title',
+                'content': 'courses.alerts.lessons.delete.success.content',
+                'type': mTypes['success']                
+            },
+            'course.lessons.deleted.error': {
+                'title': 'courses.alerts.lessons.delete.error.title',
+                'content': 'courses.alerts.lessons.delete.error.content',
+                'type': mTypes['error']                
+            },
             'field.created.success': {
                 'title': 'fields.alerts.create.success.title',
                 'content': 'fields.alerts.create.success.content',

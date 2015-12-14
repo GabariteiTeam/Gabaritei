@@ -18,10 +18,11 @@
             'Course',
             'MessageService',
             'RedirectService',
-            'ModalService'
+            'ModalService',
+            'PermissionsService'
         ];
 
-    function TestsController($location, $routeParams, $route, Test, Course, MessageService, RedirectService, ModalService) {
+    function TestsController($location, $routeParams, $route, Test, Course, MessageService, RedirectService, ModalService, PermissionsService) {
         
         var vm = this;
 
@@ -40,19 +41,21 @@
                 vm.test = Test.get({
                     id: $routeParams.id
                 }, function() { 
-                    Course.query(function(data) {
+                    Course.coursesForTest(function(data) {
                         vm.courses = data;
                         retrieveCourse();
                     });
                     console.log("edit");
                 });
-
             } else {
                 vm.test = new Test();
                 Test.query(function(data) {
                     vm.tests = data;
-                    Course.query(function(data) {
+                    Course.coursesForTest(function(data) {
                         vm.courses = data;
+                        PermissionsService.verifyPermissions(['permission.courses.globally_manipulate', 'permission.courses.teach', 'permission.courses.take_part'], function(permissions) {
+                            vm.permissions = permissions;
+                        });
                     });
                 });
                 console.log("view");

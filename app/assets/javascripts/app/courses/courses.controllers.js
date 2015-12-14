@@ -7,7 +7,7 @@
         .controller('CoursesController', CoursesController)
         .controller('CourseParticipantsController', CourseParticipantsController)
         .controller('CourseShowController', CourseShowController)
-        .controller('NewLessonController', NewLessonController);
+        .controller('LessonsController', LessonsController);
 
     CoursesController.$inject = ['$routeParams', 'Course', 'Subject', 'MessageService', 'RedirectService', 'ModalService', 'PermissionsService'];
 
@@ -175,11 +175,13 @@
 
     }
 
-    CourseShowController.$inject = ['$routeParams', 'Course', 'PermissionsService'];
+    CourseShowController.$inject = ['$routeParams', 'Course', 'MessageService', 'RedirectService', 'PermissionsService'];
 
-    function CourseShowController($routeParams, Course, PermissionsService) {
+    function CourseShowController($routeParams, Course, MessageService, RedirectService, PermissionsService) {
 
         var vm = this;
+
+        vm.deleteLesson = deleteLesson;
 
         activate();
 
@@ -192,35 +194,47 @@
                 });
             });
         }
+
+        function deleteLesson(lesson_id) {
+            Course.deleteLesson({id: vm.course.id, lesson_id: lesson_id}, function(success) {
+                MessageService.sendMessage('course.lessons.deleted.success');
+                RedirectService.redirect("/courses/" + vm.course.id);
+            }, function(error) {
+                MessageService.sendMessage('course.lessons.deleted.error');
+            });
+        }
     }
 
-    NewLessonController.$inject = ['$routeParams', 'Course', 'Content', 'Question', 'MessageService', 'RedirectService'];
+    LessonsController.$inject = ['$routeParams', 'Course', 'Content', 'Question', 'MessageService', 'RedirectService'];
 
-    function NewLessonController($routeParams, Course, Content, Question, MessageService, RedirectService) {
+    function LessonsController($routeParams, Course, Content, Question, MessageService, RedirectService) {
 
         var vm = this;
 
         vm.createLesson = createLesson;
+        vm.editLesson = editLesson;
 
         activate();
 
         function activate() {
-            vm.lesson = {
-                name: "",
-                description: "",
-                contents: [],
-                questions: []
-            };
-            vm.course = Course.get({id: $routeParams.id});
-            Content.contentsForLesson(function(contents) {
-                vm.contents = contents;
-            });
-            Question.questionsForLesson({course_id: $routeParams.id}, function(questions) {
-                vm.questions = questions;
+            vm.course = Course.get({id: $routeParams.id}, function() {
+               Content.contentsForLesson({course_id: $routeParams.id, lesson_id: $routeParams.lesson_id}, function(contents) {
+                    vm.contents = contents;
+                    Question.questionsForLesson({course_id: $routeParams.id, lesson_id: $routeParams.lesson_id}, function(questions) {
+                        vm.questions = questions;
+                        if ($routeParams.lesson_id !== undefined) {
+                            Course.getLesson({id: $routeParams.id, lesson_id: $routeParams.lesson_id}, function(lesson) {
+                                vm.lesson = lesson;
+                            });
+                        }
+                    });
+                }); 
             });
         }
 
-        function createLesson() {
+        function beforeSave() {
+            vm.lesson.contents = [];
+            vm.lesson.questions = [];
             for (var i = 0; i < vm.contents.length; i++) {
                 if (vm.contents[i].in_lesson == true) {
                     vm.lesson.contents.push(vm.contents[i].id);
@@ -231,6 +245,10 @@
                     vm.lesson.questions.push(vm.questions[i].id);
                 }
             }
+        }
+
+        function createLesson() {
+            beforeSave();
             Course.addLesson({id: vm.course.id, lesson: vm.lesson}, function(success) {
                 MessageService.sendMessage('course.lessons.added.success');
                 RedirectService.redirect("/courses/" + vm.course.id);
@@ -240,6 +258,19 @@
                 vm.lesson.questions = [];
             });
         }
+
+        function editLesson() {
+            beforeSave();
+            Course.editLesson({id: vm.course.id, lesson: vm.lesson}, function(success) {
+                MessageService.sendMessage('course.lessons.updated.success');
+                RedirectService.redirect("/courses/" + vm.course.id);
+            }, function(error) {
+                MessageService.sendMessage('course.lessons.updated.error');
+                vm.lesson.contents = [];
+                vm.lesson.questions = [];
+            });
+        }
+
     }
 
 })();

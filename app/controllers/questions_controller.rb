@@ -125,13 +125,13 @@ class QuestionsController < ApplicationController
 	end
 
 	def questions_for_lesson
-		if @permissions['permission.courses.teach']
+		if @permissions['permission.courses.globally_manipulate'] || @permissions['permission.courses.teach']
 			if params.has_key?(:course_id)
 				course = Course.find(params[:course_id])
 				questions = course.available_questions.as_json(methods: [:description])
 				if params.has_key?(:lesson_id)
 					questions.each do |question| 
-						question.merge!({in_lesson: LessonQuestion.exists?(lesson_id: params[:lesson_id], question_id: question[:id])})
+						question.merge!({in_lesson: LessonQuestion.exists?(lesson_id: params[:lesson_id], question_id: question['id'])})
 					end
 				end
 				render json: questions
@@ -192,6 +192,6 @@ class QuestionsController < ApplicationController
 		end
 
 		def verify_permissions
-			@permissions = current_user.verify_permissions(['permission.questions.globally_manipulate', 'permission.questions.manipulate', 'permission.courses.teach'])
+			@permissions = current_user.verify_permissions(['permission.questions.globally_manipulate', 'permission.questions.manipulate', 'permission.courses.globally_manipulate', 'permission.courses.teach'])
 		end
 end

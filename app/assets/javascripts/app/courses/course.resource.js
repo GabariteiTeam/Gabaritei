@@ -29,6 +29,23 @@
             addLesson: {
                 url: 'courses/:id/add_lesson',
                 method: 'POST'
+            },
+            editLesson: {
+                url: 'courses/:id/edit_lesson',
+                method: 'PUT'
+            },
+            getLesson: {
+                url: 'courses/:id/get_lesson/:lesson_id',
+                method: 'GET'
+            },
+            deleteLesson: {
+                url: 'courses/:id/delete_lesson',
+                method: 'DELETE'
+            },
+            coursesForTest: {
+                url: 'courses/courses_for_test',
+                method: 'GET',
+                isArray: true
             }
         });
 

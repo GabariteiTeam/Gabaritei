@@ -1,0 +1,23 @@
+pt-BR:
+  recommendations:
+    heading: "Recomendar"
+    form:
+      course: "Cursp"
+      content: "Conteúdo"
+      content_description: "Descrição"
+      content_owner: "Responsável"
+      question: "Questão"
+      category: "Categoria"
+      to_whom:
+        label: "Para quem?"
+        placeholder: "Adicione usuários"
+    actions:
+      recommend: "Recomendar"
+    alerts:
+      create:
+        success:
+          title: "Recomendado!"
+          content: "Recomendação realizada com sucesso!"
+        error:
+          title: "Erro!"
+          content: "Recomendação não pôde ser feita!"

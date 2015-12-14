@@ -52,7 +52,12 @@
             })
             .when('/courses/:id/new_lesson', {
                 templateUrl: 'templates/courses/new_lesson.html',
-                controller: 'NewLessonController',
+                controller: 'LessonsController',
+                controllerAs: 'Ctrl'
+            })
+            .when('/courses/:id/edit_lesson/:lesson_id', {
+                templateUrl: 'templates/courses/edit_lesson.html',
+                controller: 'LessonsController',
                 controllerAs: 'Ctrl'
             });
     }

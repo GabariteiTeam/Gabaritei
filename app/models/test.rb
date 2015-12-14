@@ -71,4 +71,8 @@ class Test < ActiveRecord::Base
         end
 	end
 
+	def self.user_tests(user_id)
+		Test.where("EXISTS (SELECT 1 FROM user_courses WHERE user_courses.course_id = tests.course_id AND user_courses.user_id = :user_id)", {user_id: user_id})
+	end
+
 end

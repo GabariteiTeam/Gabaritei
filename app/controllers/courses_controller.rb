@@ -102,27 +102,27 @@ class CoursesController < ApplicationController
 	def show_everything
 		course = Course.find(params[:id])
 		if @permissions['permission.courses.globally_manipulate'] || course.has_user(current_user) && (@permissions['permission.courses.manipulate'] || @permissions['permission.courses.teach'] || @permissions['permission.courses.take_part'])
-			render json: course, include: {lessons: {methods: [:timeline]}}, methods: [:subject, :field, :course_news, :tests, :teachers, :avatar_url_medium, :tests]
+			render json: course, include: {lessons: {methods: [:timeline]}}, methods: [:subject, :field, :course_news, :teachers, :avatar_url_medium]
 		else
 			render json: {error: "Unauthorized access"}, status: 401
 		end
 	end
 
 	def add_lesson
-		course = Course.find(params[:id])
-		if @permissions['permission.courses.globally_manipulate'] || course.has_user(current_user) && (@permissions['permission.courses.manipulate'] || @permissions['permission.courses.teach'])
+		if @permissions['permission.courses.globally_manipulate'] || @permissions['permission.courses.teach']
+			course = Course.find(params[:id])
 			lesson = Lesson.new
 			lesson.course = course
-			lesson.title = params[:lesson][:name]
-			lesson.description = params[:lesson][:description]
-			if params[:lesson][:contents] != nil
-				params[:lesson][:contents].each do |content_id|
+			lesson.title = lesson_params[:title]
+			lesson.description = lesson_params[:description]
+			if lesson_params[:contents] != nil
+				lesson_params[:contents].each do |content_id|
 					content = Content.find(content_id)
 					lesson.contents.push(content)
 				end
 			end
-			if params[:lesson][:questions] != nil
-				params[:lesson][:questions].each do |question_id|
+			if lesson_params[:questions] != nil
+				lesson_params[:questions].each do |question_id|
 					question = Question.find(question_id)
 					lesson.questions.push(question)
 				end
@@ -137,6 +137,73 @@ class CoursesController < ApplicationController
 		end
 	end
 
+	def edit_lesson
+		if @permissions['permission.courses.globally_manipulate'] || @permissions['permission.courses.teach']
+			lesson = Lesson.find(lesson_params[:id])
+			lesson.title = lesson_params[:title]
+			lesson.description = lesson_params[:description]
+			contents = []
+			questions = []
+			if lesson_params[:contents] != nil
+				lesson_params[:contents].each do |content_id|
+					content = Content.find(content_id)
+					contents.push(content)
+				end
+			end
+			if lesson_params[:questions] != nil
+				lesson_params[:questions].each do |question_id|
+					question = Question.find(question_id)
+					questions.push(question)
+				end
+			end
+			lesson.contents = contents
+			lesson.questions = questions
+			if lesson.save!
+				render json: {success: true}
+			else
+				render json: lesson.errors, status: :unprocessable_entity
+			end
+		else
+			render json: {error: "Unauthorized access"}, status: 401
+		end
+	end
+
+	def get_lesson
+		course = Course.find(params[:id])
+		if @permissions['permission.courses.globally_manipulate'] || @permissions['permission.courses.teach']
+			lesson = Lesson.find(params[:lesson_id])
+			render json: lesson
+		else
+			render json: {error: "Unauthorized access"}, status: 401
+		end
+	end
+
+	def delete_lesson
+		course = Course.find(params[:id])
+		if @permissions['permission.courses.globally_manipulate'] || @permissions['permission.courses.teach']
+			lesson = Lesson.find(params[:lesson_id])
+			if lesson.destroy!
+				render json: {success: true}
+			else
+				render json: lesson.errors, status: :unprocessable_entity
+			end
+		else
+			render json: {error: "Unauthorized access"}, status: 401
+		end
+	end
+
+	def courses_for_test
+		if @permissions['permission.courses.globally_manipulate']
+			courses = Course.all
+			render json: courses
+		elsif @permissions['permission.courses.teach']
+			courses = current_user.courses
+			render json: courses
+		else
+			render json: {error: "Unauthorized access"}, status: 401
+		end
+	end
+
 	private 
 
 	    def course_params
@@ -145,6 +212,10 @@ class CoursesController < ApplicationController
 
 	    def search_user_params
 	    	params.permit(:id, :role_id, :search_string)
+	    end
+
+	    def lesson_params
+	    	params.require(:lesson).permit(:id, :course_id, :title, :description, :contents => [], :questions => [])
 	    end
 
 	    def verify_permissions

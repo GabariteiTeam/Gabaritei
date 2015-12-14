@@ -310,3 +310,23 @@ hr {
     margin: 0;
     border-color: rgba(255,255,255,0.2);
 }
+
+.panel.course-panel >  {
+
+    .panel-heading {
+        text-align: right;
+        h3.panel-title {
+            float: left;
+            line-height: 25px;
+        }
+    }
+    
+    .panel-body {
+        border: 1px solid #DDD;
+    }
+    
+}
+
+.show-question div {
+    min-height: 0 !important;
+}

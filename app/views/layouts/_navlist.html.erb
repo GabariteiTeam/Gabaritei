@@ -6,6 +6,7 @@
         'permission.subjects_fields.manipulate',
         'permission.courses.globally_manipulate',
         'permission.courses.teach',
+        'permission.courses.take_part',
         'permission.contents.globally_manipulate',
         'permission.contents.manipulate',
         'permission.import_data',
@@ -61,7 +62,7 @@
 	<a href="#courses"><span translate>menu.courses</span><span class="sub_icon glyphicon glyphicon-education"></span></a>
 </li>
 
-<% if @permissions['permission.courses.globally_manipulate'] || @permissions['permission.courses.teach'] %>
+<% if @permissions['permission.courses.globally_manipulate'] || @permissions['permission.courses.teach'] || @permissions['permission.courses.take_part'] %>
 <li data-toggle="menu-tooltip" data-placement="right" title="{{ 'menu.tests' | translate }}">
   <a href="#tests"><span translate>menu.tests</span><span class="sub_icon glyphicon glyphicon-certificate"></span></a>
 </li>
