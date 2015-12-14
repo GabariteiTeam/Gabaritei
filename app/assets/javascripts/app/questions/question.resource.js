@@ -35,6 +35,11 @@
                 params: {
                     id: ''
                 }
+            },
+            questionsForLesson: {
+                url: 'questions/questions_for_lesson',
+                method: 'GET',
+                isArray: true 
             }
         });
     }

@@ -1,6 +1,6 @@
-if Rails.env == 'development'
+#if Rails.env == 'development'
 
-	role_teacher = Role.third
+	role_teacher = Role.all.third
 
 	user = User.new
 	user.first_name = 'Eloá Flávia'
@@ -10,6 +10,8 @@ if Rails.env == 'development'
 	user.password = '12345678'
 	user.password_confirmation = '12345678'
 	user.role = role_teacher
+	user.setting = Setting.new
+	user.setting.preferred_language = 0
 	user.save!
 
 	user = User.new
@@ -20,6 +22,8 @@ if Rails.env == 'development'
 	user.password = '12345678'
 	user.password_confirmation = '12345678'
 	user.role = role_teacher
+	user.setting = Setting.new
+	user.setting.preferred_language = 0
 	user.save!
 
 	user = User.new
@@ -30,6 +34,8 @@ if Rails.env == 'development'
 	user.password = '12345678'
 	user.password_confirmation = '12345678'
 	user.role = role_teacher
+	user.setting = Setting.new
+	user.setting.preferred_language = 0
 	user.save!
 
 	user = User.new
@@ -40,6 +46,8 @@ if Rails.env == 'development'
 	user.password = '12345678'
 	user.password_confirmation = '12345678'
 	user.role = role_teacher
+	user.setting = Setting.new
+	user.setting.preferred_language = 0
 	user.save!
 
 	user = User.new
@@ -50,6 +58,8 @@ if Rails.env == 'development'
 	user.password = '12345678'
 	user.password_confirmation = '12345678'
 	user.role = role_teacher
+	user.setting = Setting.new
+	user.setting.preferred_language = 0
 	user.save!
 
 	user = User.new
@@ -60,6 +70,8 @@ if Rails.env == 'development'
 	user.password = '12345678'
 	user.password_confirmation = '12345678'
 	user.role = role_teacher
+	user.setting = Setting.new
+	user.setting.preferred_language = 0
 	user.save!
 
-end
+#end

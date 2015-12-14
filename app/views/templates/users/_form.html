@@ -55,7 +55,8 @@
     <button type="submit" class="btn btn-primary">
       <span class="glyphicon glyphicon-floppy-disk"></span>
       &nbsp;
-      <span translate>users.actions.save</span>
+      <span ng-hide="Ctrl.user_self" translate>users.actions.save</span>
+      <span ng-show="Ctrl.user_self" translate>users.profile_update.save</span>
     </button>
   </div>
 </div>

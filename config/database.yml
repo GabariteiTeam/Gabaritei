@@ -5,10 +5,11 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
+  host: localhost
   username: root
   password:
   socket: /tmp/mysql.sock
-  # socket: /var/run/mysqld/mysqld.sock
+  # #socket: /var/run/mysqld/mysqld.sock
   timeout: 5000
 
 # Development database settings
@@ -34,6 +35,7 @@ test:
 production:
   <<: *default
   database: gabaritei_production
+
 
 # Selenium database settings
 selenium:

@@ -78,13 +78,15 @@ class User < ActiveRecord::Base
     belongs_to :role
 
     # @!endgroup
+
+    has_one :setting
     
     # @!group Has many
     
     # All {Content contents} created by the user.
     # @return [Array<Content>] a list of all contents created by the user.
     # @see Content#owner
-    has_many :contents
+    has_many :contents, foreign_key: :owner_id
 
     # All {CourseNews news} created by the user.
     # @return [Array<CourseNews>] a list of all news created by the user.
@@ -103,7 +105,7 @@ class User < ActiveRecord::Base
     # All {Question questions} created by the user.
     # @return [Array<Question>] a list of all questions created by the user.
     # @see Question#owner
-    has_many :questions
+    has_many :questions, foreign_key: :owner_id
 
     # All {Rating ratings} created by the user.
     # @return [Array<Rating>] a list of all ratings created by the user.
@@ -210,6 +212,12 @@ class User < ActiveRecord::Base
             end
         end
         return true
+    end
+
+    def reset_password
+        generated_password = Devise.friendly_token.first(8)
+        self.password = generated_password
+        return self.save! ? generated_password : nil
     end
 
     private

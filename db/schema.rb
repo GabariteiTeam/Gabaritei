@@ -40,16 +40,6 @@ ActiveRecord::Schema.define(version: 20151031121535) do
   add_index "contents", ["category_id", "category_type"], name: "index_contents_on_category_id_and_category_type"
   add_index "contents", ["owner_id"], name: "index_contents_on_owner_id"
 
-  create_table "course_contents", force: true do |t|
-    t.integer  "course_id"
-    t.integer  "contents_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "course_contents", ["contents_id"], name: "index_course_contents_on_contents_id"
-  add_index "course_contents", ["course_id"], name: "index_course_contents_on_course_id"
-
   create_table "course_news", force: true do |t|
     t.integer  "owner_id"
     t.integer  "course_id"
@@ -62,16 +52,6 @@ ActiveRecord::Schema.define(version: 20151031121535) do
 
   add_index "course_news", ["course_id"], name: "index_course_news_on_course_id"
   add_index "course_news", ["owner_id"], name: "index_course_news_on_owner_id"
-
-  create_table "course_questions", force: true do |t|
-    t.integer  "question_id"
-    t.integer  "course_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "course_questions", ["course_id"], name: "index_course_questions_on_course_id"
-  add_index "course_questions", ["question_id"], name: "index_course_questions_on_question_id"
 
   create_table "course_registration_requests", force: true do |t|
     t.integer  "requirer_id"
@@ -90,10 +70,14 @@ ActiveRecord::Schema.define(version: 20151031121535) do
   create_table "courses", force: true do |t|
     t.integer  "category_id"
     t.string   "category_type"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.string   "name"
     t.text     "description"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "courses", ["category_id", "category_type"], name: "index_courses_on_category_id_and_category_type"
@@ -140,13 +124,23 @@ ActiveRecord::Schema.define(version: 20151031121535) do
 
   create_table "lesson_contents", force: true do |t|
     t.integer  "lesson_id"
-    t.integer  "contents_id"
+    t.integer  "content_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "lesson_contents", ["content_id"], name: "index_lesson_contents_on_content_id"
+  add_index "lesson_contents", ["lesson_id"], name: "index_lesson_contents_on_lesson_id"
+
+  create_table "lesson_questions", force: true do |t|
+    t.integer  "question_id"
+    t.integer  "lesson_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
-  add_index "lesson_contents", ["contents_id"], name: "index_lesson_contents_on_contents_id"
-  add_index "lesson_contents", ["lesson_id"], name: "index_lesson_contents_on_lesson_id"
+  add_index "lesson_questions", ["lesson_id"], name: "index_lesson_questions_on_lesson_id"
+  add_index "lesson_questions", ["question_id"], name: "index_lesson_questions_on_question_id"
 
   create_table "lessons", force: true do |t|
     t.integer  "course_id"
@@ -210,11 +204,12 @@ ActiveRecord::Schema.define(version: 20151031121535) do
     t.string   "source"
     t.datetime "date"
     t.string   "style"
+    t.string   "tags"
   end
 
   add_index "questions", ["owner_id"], name: "index_questions_on_owner_id"
 
-  create_table "ratings", id: false, force: true do |t|
+  create_table "ratings", force: true do |t|
     t.integer  "owner_id"
     t.integer  "question_id"
     t.datetime "created_at",  null: false
@@ -228,12 +223,14 @@ ActiveRecord::Schema.define(version: 20151031121535) do
   create_table "recommendations", force: true do |t|
     t.integer  "user_source_id"
     t.integer  "user_destination_id"
+    t.integer  "course_id"
     t.integer  "resource_id"
     t.string   "resource_type"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
   end
 
+  add_index "recommendations", ["course_id"], name: "index_recommendations_on_course_id"
   add_index "recommendations", ["resource_id", "resource_type"], name: "index_recommendations_on_resource_id_and_resource_type"
   add_index "recommendations", ["user_destination_id"], name: "index_recommendations_on_user_destination_id"
   add_index "recommendations", ["user_source_id"], name: "index_recommendations_on_user_source_id"
@@ -287,6 +284,15 @@ ActiveRecord::Schema.define(version: 20151031121535) do
     t.string   "name"
     t.text     "description"
   end
+
+  create_table "settings", force: true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "preferred_language"
+  end
+
+  add_index "settings", ["user_id"], name: "index_settings_on_user_id"
 
   create_table "subjects", force: true do |t|
     t.datetime "created_at",  null: false

@@ -5,29 +5,21 @@
     angular
         .module(APP_NAME)
         .controller('CoursesController', CoursesController)
-        .controller('CourseParticipantsController', CourseParticipantsController);
+        .controller('CourseParticipantsController', CourseParticipantsController)
+        .controller('CourseShowController', CourseShowController)
+        .controller('LessonsController', LessonsController);
 
-    CoursesController
-        .$inject = [
-            '$scope',
-            '$location',
-            '$routeParams',
-            '$route',
-            'Course',
-            'Subject',
-            'MessageService',
-            'RedirectService',
-            'ModalService'
-        ];
+    CoursesController.$inject = ['$routeParams', 'Course', 'Subject', 'MessageService', 'RedirectService', 'ModalService', 'PermissionsService'];
 
-    function CoursesController($scope, $location, $routeParams, $route, Course, Subject, MessageService, RedirectService, ModalService) {
-        
+    function CoursesController($routeParams, Course, Subject, MessageService, RedirectService, ModalService, PermissionsService) {
+     
         var vm = this;
 
         vm.createCourse = createCourse;
         vm.updateCourse = updateCourse;
         vm.c_delete = c_delete;
         vm.retrieveSubject = retrieveSubject;
+        vm.clearAvatar = clearAvatar;
         vm.delete_modal_id  = "confirmDeleteCourse";
 
         vm.courses = [];
@@ -41,6 +33,7 @@
                 vm.course = Course.get({
                     id: $routeParams.id
                 }, function() {
+                    if (!vm.course.has_avatar) vm.course.avatar = null;
                     Subject.query(function(data) {
                         vm.subjects = data;
                         if (vm.course.category_type == "Subject") {
@@ -58,6 +51,9 @@
                     vm.courses = data;
                     Subject.query(function(data) {
                         vm.subjects = data;
+                        PermissionsService.verifyPermissions(['permission.courses.globally_manipulate', 'permission.courses.manipulate', 'permission.courses.teach', 'permission.courses.take_part'], function(permissions) {
+                            vm.permissions = permissions;
+                        });
                     });
                 });
             }            
@@ -100,26 +96,17 @@
             vm.subject = Subject.get({id: vm.course.subject_id});
         }
 
-        $scope.$on('devise:unauthorized', function(event, xhr, deferred) {
-            RedirectService.redirect("/users/login");
-        });
+        function clearAvatar() {
+            vm.course.avatar = null;
+            jQuery('#avatar').wrap('<form>').closest('form').get(0).reset();
+            jQuery('#avatar').unwrap();
+        }
 
     };
 
-    CourseParticipantsController
-        .$inject = [
-            '$location',
-            '$routeParams',
-            '$route',
-            'Course',
-            'User',
-            'Role',
-            'MessageService',
-            'RedirectService',
-            'ModalService'
-        ];
+    CourseParticipantsController.$inject = ['$routeParams', 'Course', 'User', 'Role', 'MessageService', 'RedirectService', 'ModalService'];
 
-    function CourseParticipantsController($location, $routeParams, $route, Course, User, Role, MessageService, RedirectService, ModalService) {
+    function CourseParticipantsController($routeParams, Course, User, Role, MessageService, RedirectService, ModalService) {
         
         var vm = this;
 
@@ -135,13 +122,10 @@
         initialize();
 
         function initialize() {
-            vm.course = Course.get({
-                id: $routeParams.id
-            }, function() {
-                Role.query({take_part_in_courses: true}, function(data) {
-                    for (var i = 0; i < data.length; i++) data[i].users = [];
-                    vm.roles = data;
-                });
+            vm.course = Course.get({id: $routeParams.id});
+            Role.rolesForCourses(function(data) {
+                for (var i = 0; i < data.length; i++) data[i].users = [];
+                vm.roles = data;
             });   
         }
 
@@ -186,6 +170,104 @@
                 vm.course = Course.get({id: $routeParams.id});
             }, function(data) {
                 MessageService.sendMessage('course.participants.removed.error');
+            });
+        }
+
+    }
+
+    CourseShowController.$inject = ['$routeParams', 'Course', 'MessageService', 'RedirectService', 'PermissionsService'];
+
+    function CourseShowController($routeParams, Course, MessageService, RedirectService, PermissionsService) {
+
+        var vm = this;
+
+        vm.deleteLesson = deleteLesson;
+
+        activate();
+
+        function activate() {
+            Course.showEverything({id: $routeParams.id}, function(course) {
+                vm.course = course;
+                vm.course_category = course.category_type == "Field" ? course.field + " (" + course.subject + ")" : course.subject
+                PermissionsService.verifyPermissions(['permission.courses.globally_manipulate', 'permission.courses.manipulate', 'permission.courses.teach', 'permission.courses.take_part'], function(permissions) {
+                    vm.permissions = permissions;
+                });
+            });
+        }
+
+        function deleteLesson(lesson_id) {
+            Course.deleteLesson({id: vm.course.id, lesson_id: lesson_id}, function(success) {
+                MessageService.sendMessage('course.lessons.deleted.success');
+                RedirectService.redirect("/courses/" + vm.course.id);
+            }, function(error) {
+                MessageService.sendMessage('course.lessons.deleted.error');
+            });
+        }
+    }
+
+    LessonsController.$inject = ['$routeParams', 'Course', 'Content', 'Question', 'MessageService', 'RedirectService'];
+
+    function LessonsController($routeParams, Course, Content, Question, MessageService, RedirectService) {
+
+        var vm = this;
+
+        vm.createLesson = createLesson;
+        vm.editLesson = editLesson;
+
+        activate();
+
+        function activate() {
+            vm.course = Course.get({id: $routeParams.id}, function() {
+               Content.contentsForLesson({course_id: $routeParams.id, lesson_id: $routeParams.lesson_id}, function(contents) {
+                    vm.contents = contents;
+                    Question.questionsForLesson({course_id: $routeParams.id, lesson_id: $routeParams.lesson_id}, function(questions) {
+                        vm.questions = questions;
+                        if ($routeParams.lesson_id !== undefined) {
+                            Course.getLesson({id: $routeParams.id, lesson_id: $routeParams.lesson_id}, function(lesson) {
+                                vm.lesson = lesson;
+                            });
+                        }
+                    });
+                }); 
+            });
+        }
+
+        function beforeSave() {
+            vm.lesson.contents = [];
+            vm.lesson.questions = [];
+            for (var i = 0; i < vm.contents.length; i++) {
+                if (vm.contents[i].in_lesson == true) {
+                    vm.lesson.contents.push(vm.contents[i].id);
+                }
+            }
+            for (var i = 0; i < vm.questions.length; i++) {
+                if (vm.questions[i].in_lesson == true) {
+                    vm.lesson.questions.push(vm.questions[i].id);
+                }
+            }
+        }
+
+        function createLesson() {
+            beforeSave();
+            Course.addLesson({id: vm.course.id, lesson: vm.lesson}, function(success) {
+                MessageService.sendMessage('course.lessons.added.success');
+                RedirectService.redirect("/courses/" + vm.course.id);
+            }, function(error) {
+                MessageService.sendMessage('course.lessons.added.error');
+                vm.lesson.contents = [];
+                vm.lesson.questions = [];
+            });
+        }
+
+        function editLesson() {
+            beforeSave();
+            Course.editLesson({id: vm.course.id, lesson: vm.lesson}, function(success) {
+                MessageService.sendMessage('course.lessons.updated.success');
+                RedirectService.redirect("/courses/" + vm.course.id);
+            }, function(error) {
+                MessageService.sendMessage('course.lessons.updated.error');
+                vm.lesson.contents = [];
+                vm.lesson.questions = [];
             });
         }
 

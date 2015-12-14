@@ -8,9 +8,9 @@
         .controller('ManagementRequestsController', ManagementRequestsController)
         .controller('ConfirmationRequestsController', ConfirmationRequestsController);
 
-    RequestsController.$inject = ['$location', '$routeParams', '$route', 'RegistrationRequest', 'CourseRegistrationRequest', 'MessageService', 'RedirectService', 'ModalService'];
+    RequestsController.$inject = ['$routeParams', 'RegistrationRequest', 'CourseRegistrationRequest', 'MessageService', 'RedirectService', 'ModalService'];
 
-    function RequestsController($location, $routeParams, $route, RegistrationRequest, CourseRegistrationRequest, MessageService, RedirectService, ModalService) {
+    function RequestsController($routeParams, RegistrationRequest, CourseRegistrationRequest, MessageService, RedirectService, ModalService) {
 
         var vm = this;
         vm.deleteRegistrationRequest = deleteRegistrationRequest;
@@ -43,9 +43,9 @@
 
     }
 
-    ManagementRequestsController.$inject = ['$location', '$routeParams', '$route', 'request', 'RegistrationRequest', 'CourseRegistrationRequest', 'Course', 'MessageService', 'RedirectService', 'ModalService'];
+    ManagementRequestsController.$inject = ['$routeParams', 'request', 'RegistrationRequest', 'CourseRegistrationRequest', 'Course', 'MessageService', 'RedirectService', 'ModalService'];
 
-    function ManagementRequestsController($location, $routeParams, $route, request, RegistrationRequest, CourseRegistrationRequest, Course, MessageService, RedirectService, ModalService) {
+    function ManagementRequestsController($routeParams, request, RegistrationRequest, CourseRegistrationRequest, Course, MessageService, RedirectService, ModalService) {
 
         var vm = this;
         vm.sendRequest = sendRequest;

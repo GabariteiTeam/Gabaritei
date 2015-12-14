@@ -6,6 +6,8 @@
         .module(APP_NAME)
         .config(SubjectRoutes);
 
+    SubjectRoutes.$inject = ['$routeProvider'];
+
     function SubjectRoutes($routeProvider) {
         $routeProvider
             .when('/subjects/new', {

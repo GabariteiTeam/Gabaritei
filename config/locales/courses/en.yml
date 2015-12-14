@@ -6,20 +6,34 @@ en:
       table:
         body:
           subject: "Subject:"
+          field: "Field:"
     participants:
-      heading: "Edit participants"
+      heading: "Edit participants of "
     create:
       heading: "New Course"
     update:
       heading: "Edit Course"
+    show:
+      category: "Category:"
+      responsible_teachers: "Responsible teachers:"
+      updated_at: "Updated at "
+      exercise: "Exercise "
+    new_lesson:
+      heading: "New lesson for "
+    edit_lesson:
+      heading: "Edit lesson of "
     actions:
       add: "Add new course"
       save: "Save course"
       edit: "Edit"
       delete: "Delete"
+      view: "View"
+      request_registration: "Request registration"
       edit_participants: "Edit participants"
       view_participant: "View"
       remove_participant: "Remove"
+      new_lesson: "Create new lesson"
+      save_lesson: "Save lesson"
     form:
       name:
         label: "Name"
@@ -29,6 +43,17 @@ en:
         placeholder: "Course description"
       subject: "Subject"
       field: "Field"
+      avatar: "Avatar"
+      drop_avatar: "Drop image file here"
+      select_avatar: "Or select image file"
+      clear: "Clear"
+    modal:
+      delete:
+        title: "Warning!"
+        body: "Are you sure you want to delete this course?"
+      delete_lesson:
+        title: "Warning!"
+        body: "Are you sure you want to delete this lesson?"      
     search_form:
       search: "Search"
       placeholder: "Name or e-mail"
@@ -36,6 +61,17 @@ en:
       select_all: "Select all"
       deselect_all: "Deselect all"
       add_selected: "Add selected"
+    lesson_form:
+      name:
+        label: "Name"
+        placeholder: "Lesson name"
+      description:
+        label: "Description"
+        placeholder: "Lesson description"
+      contents: "Contents"
+      questions: "Questions"
+      in_lesson_yes: "Yes"
+      in_lesson_no: "No"
     alerts:
       create:
         success:
@@ -73,3 +109,25 @@ en:
           error:
             title: "Failed!"
             content: "Participant was NOT removed!"
+      lessons:
+        add:
+          success:
+            title: "Added!"
+            content: "Lesson was added with success!"
+          error:
+            title: "Failed!"
+            content: "Lesson was NOT added!"
+        delete:
+          success:
+            title: "Deleted!"
+            content: "Lesson was deleted with success!"
+          error:
+            title: "Failed!"
+            content: "Lesson was NOT deleted"
+        update:
+          success:
+            title: "Updated!"
+            content: "Lesson was updated with success!"
+          error:
+            title: "Failed!"
+            content: "Lesson was NOT updated!"

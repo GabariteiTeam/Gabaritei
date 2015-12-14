@@ -1,3 +1,10 @@
+<ol class="breadcrumb">
+  <li><a href="/#home" translate>breadcrumbs.home</a></li>
+  <li ng-hide="Ctrl.user_self"><a href="/#users" translate>breadcrumbs.users.index</a></li>
+  <li ng-show="Ctrl.user_self" class="active" translate>breadcrumbs.users.profile</li>
+  <li class="active" ng-hide="Ctrl.user_self" translate>breadcrumbs.users.show</li>
+</ol>
+
 <div class="page-header">
 	<img ng-src="{{ Ctrl.user.avatar_url_medium }}" />
 	<h1>
@@ -6,21 +13,25 @@
 </div>
 
 <dl class="dl-horizontal">
-	<dt>Role</dt>
+	<dt translate>users.form.role</dt>
 	<dd>{{ Ctrl.user.role.name }}</dd>
-	<dt>First name</dt>
-	<dd>{{ Ctrl.user.first_name }}</dd>
-	<dt>Last name</dt>
-	<dd>{{ Ctrl.user.last_name }}</dd>
-	<dt>E-mail</dt>
+	<dt translate>users.form.email.label</dt>
 	<dd>{{ Ctrl.user.email }}</dd>
-	<dt>Birthdate</dt>
+	<dt translate>users.form.birthdate</dt>
 	<dd>{{ Ctrl.user.birthdate | date: "dd/MM/yyyy" }}</dd>
-	<dt>About</dt>
+	<dt translate>users.form.about.label</dt>
 	<dd>{{ Ctrl.user.about }}</dd>
 </dl>
 
-<div class="well">
-	<a class="btn btn-primary" href="#users/update/{{Ctrl.user.id}}">Edit</a>
-	<button class="btn btn-danger" ng-click="Ctrl.deleteUser(user.id)">Delete</button>
+<div class="well" ng-show="Ctrl.user_self">
+	<a class="btn btn-info" href="#users/update/{{Ctrl.user.id}}">
+		<span class="glyphicon glyphicon-pencil"></span>
+        &nbsp;
+        <span translate>users.actions.edit</span>
+	</a>
+	<a class="btn btn-default" href="#users/change_password/{{Ctrl.user.id}}">
+		<span class="glyphicon glyphicon-option-horizontal"></span>
+        &nbsp;
+        <span translate>users.actions.change_password</span>
+	</a>
 </div>

@@ -1,0 +1,122 @@
+pt-BR:
+  courses:
+    index:
+      heading: "Cursos"
+      sub_heading: "Crie um novo curso para a sua Sala Virtual!"
+      table:
+        body:
+          subject: "Matéria:"
+          field: "Área:"
+    participants:
+      heading: "Editar participantes"
+    create:
+      heading: "Novo curso"
+    update:
+      heading: "Editar curso"
+    show:
+      category: "Categoria:"
+      responsible_teachers: "Professores responsáveis:"
+      updated_at: "Atualizado em "
+      exercise: "Exercício "
+    new_lesson:
+      heading: "Nova aula de "
+    edit_lesson:
+      heading: "Editar aula de "
+    actions:
+      add: "Adicionar novo curso"
+      save: "Salvar curso"
+      edit: "Editar"
+      delete: "Remover"
+      view: "Ver"
+      request_registration: "Requerir inscrição"
+      edit_participants: "Editar participantes"
+      view_participant: "Ver"
+      remove_participant: "Remover"
+      new_lesson: "Criar nova aula"
+      save_lesson: "Salvar aula"
+    form:
+      name:
+        label: "Nome"
+        placeholder: "Nome do curso"
+      description:
+        label: "Descrição"
+        placeholder: "Descrição do curso"
+      subject: "Matéria"
+      field: "Área"
+      avatar: "Avatar"
+      drop_avatar: "Solte o arquivo da imagem aqui"
+      select_avatar: "Ou selecione o arquivo"
+      clear: "Limpar"
+    modal:
+      delete:
+        title: "Aviso!"
+        body: "Tem certeza que deseja remover esse curso?"
+      delete_lesson:
+        title: "Aviso!"
+        body: "Tem certeza que deseja remover essa aula?" 
+    search_form:
+      search: "Busca"
+      placeholder: "Nome ou e-mail"
+      clear: "Limpar busca"
+      select_all: "Selecionar todos"
+      deselect_all: "Deselecionar todos"
+      add_selected: "Adicionar selecionados"
+    alerts:
+      create:
+        success:
+          title: "Criado!"
+          content: "Curso foi criado com sucesso!"
+        error:
+          title: "Erro!"
+          content: "Curso NÃO foi criado!"
+      delete:
+        success:
+          title: "Removido!"
+          content: "Curso foi removido com sucesso!"
+        error:
+          title: "Erro!"
+          content: "Curso NÃO foi removido"
+      update:
+        success:
+          title: "Atualizado!"
+          content: "Curso foi atualizado com sucesso!"
+        error:
+          title: "Erro!"
+          content: "Curso NÃO foi atualizado!"
+      participants:
+        add:
+          success:
+            title: "Adicionado!"
+            content: "Participantes foram adicionados com sucesso!"
+          error:
+            title: "Erro!"
+            content: "Participantes NÃO foram adicionados!"
+        remove:
+          success:
+            title: "Removido!"
+            content: "Participante foi removido com sucesso!"
+          error:
+            title: "Erro!"
+            content: "Participante NÃO foi removido!"
+      lessons:
+        add:
+          success:
+            title: "Adicionado!"
+            content: "Aula foi adicionada com sucesso!"
+          error:
+            title: "Erro!"
+            content: "Aula NÃO foi adicionada!"
+        delete:
+          success:
+            title: "Removido!"
+            content: "Aula foi removida com sucesso!"
+          error:
+            title: "Erro!"
+            content: "Aula NÃO foi removida"
+        update:
+          success:
+            title: "Atualizado!"
+            content: "Aula foi atualizada com sucesso!"
+          error:
+            title: "Erro!"
+            content: "Aula NÃO foi atualizada!"

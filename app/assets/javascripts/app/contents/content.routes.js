@@ -6,6 +6,8 @@
         .module(APP_NAME)
         .config(ContentRoutes);
 
+    ContentRoutes.$inject = ['$routeProvider'];
+
     function ContentRoutes($routeProvider) {
         $routeProvider
             .when('/contents/new', {
@@ -28,6 +30,11 @@
                 controller: 'ContentsController',
                 controllerAs: 'Ctrl'
             })
+            .when('/:resource/recommend/:id', {
+                templateUrl: 'templates/recommendations/recommend.html',
+                controller: 'RecommendationsController',
+                controllerAs: 'Ctrl'
+            });
     }
 
 })();

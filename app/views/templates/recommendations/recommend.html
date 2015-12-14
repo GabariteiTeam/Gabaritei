@@ -1,0 +1,86 @@
+<ol class="breadcrumb">
+  <li><a href="/#home" translate>breadcrumbs.home</a></li>
+  <li><a href="/#courses/{{ Ctrl.course.id }}" translate>breadcrumbs.courses.show</a></li>
+  <li ng-show="Ctrl.content"><a href="/#courses/{{ Ctrl.course.id }}/content/{{ Ctrl.content.id }}" translate>breadcrumbs.courses.content</a></li>
+  <li ng-show="Ctrl.question"><a href="/#courses/{{ Ctrl.course.id }}/question/{{ Ctrl.question.id }}" translate>breadcrumbs.courses.question</a></li>
+  <li class="active" translate>breadcrumbs.recommendations.new</li>
+</ol>
+
+<div class="page-header">
+    <h1>
+      <span class="glyphicon glyphicon-share-alt"></span>
+      &nbsp;
+      <span class="page-title" translate>recommendations.heading</span>
+    </h1>
+</div>
+
+<form class="form-horizontal" role="form" ng-submit="Ctrl.createRecommendation()">
+	<div class="form-group">
+	    <label class="col-sm-2 control-label" translate>recommendations.form.course</label>
+	    <div class="col-sm-10">
+	        <input type="text" class="form-control" disabled ng-model="Ctrl.course_name" />
+	    </div>
+	</div>
+	<div class="form-group" ng-show="Ctrl.content">
+	    <label class="col-sm-2 control-label" translate>recommendations.form.content</label>
+	    <div class="col-sm-10">
+	        <input type="text" class="form-control" disabled ng-model="Ctrl.content_title" />
+	    </div>
+	</div>
+	<div class="form-group" ng-show="Ctrl.content">
+	    <label class="col-sm-2 control-label" translate>recommendations.form.content_description</label>
+	    <div class="col-sm-10">
+	        <textarea class="form-control" disabled ng-model="Ctrl.content_description"></textarea> 
+	    </div>
+	</div>
+	<div class="form-group" ng-show="Ctrl.question">
+	    <label for="title" class="col-sm-2 control-label" translate>recommendations.form.question</label>
+	    <div class="col-sm-10">
+	    	<div text-angular="text-angular" name="rich-question" ng-model="Ctrl.question_text" ta-disabled='true' ta-toolbar="[]"></div>
+	    </div>
+	</div>
+	<div class="form-group">
+	    <label class="col-sm-2 control-label" translate>recommendations.form.category</label>
+	    <div class="col-sm-10">
+	        <input type="text" class="form-control" disabled ng-model="Ctrl.category" />
+	    </div>
+	</div>
+	<div class="form-group">
+	    <label class="col-sm-2 control-label" translate>recommendations.form.to_whom.label</label>
+	    <div class="col-sm-10">
+	        <tags-input ng-model="Ctrl.to_whom" class="ti-input-lg" placeholder="{{ 'recommendations.form.to_whom.placeholder' | translate }}" key-property="id" add-from-autocomplete-only="true" display-property="name" template="user_tag_template">
+	            <auto-complete source="Ctrl.loadUsers($query)" template="user_cell_template" display-property="name"></auto-complete>
+	        </tags-input>
+	    </div>
+	</div>
+	<div class="form-group">
+	    <div class="col-sm-offset-2 col-sm-10">
+	        <button type="submit" class="btn btn-primary">
+	            <span class="glyphicon glyphicon-share-alt"></span>
+	            &nbsp;
+	            <span translate>recommendations.actions.recommend</span>
+	        </button>
+	    </div>
+	</div>
+</form>
+
+<script type="text/ng-template" id="user_tag_template">
+  	<div class="user_tag_left">
+    	<img ng-src="{{ data.avatar_url }}" />
+  	</div>
+  	<div class="user_tag_right">
+    	<span>{{ data.name }}</span>
+    	<a class="remove-button" ng-click="$removeTag()">&#10006;</a>
+  	</div>
+</script>
+
+<script type="text/ng-template" id="user_cell_template">
+  	<div class="search_user_template_left_panel">
+    	<img ng-src="{{ data.avatar_url }}" />
+  	</div>
+  	<div class="search_user_template_right_panel">
+    	<span ng-bind-html="$highlight($getDisplayText())"></span>
+    	<br />
+    	<span ng-bind-html="$highlight(data.email)"></span>
+  	</div>
+</script>

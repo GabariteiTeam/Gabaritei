@@ -12,9 +12,9 @@
         .module(APP_NAME)
         .factory('DataImport', DataImport);
 
-    DataImport.$inject = ['$http', '$resource', 'Upload'];
+    DataImport.$inject = ['$resource', 'Upload'];
 
-    function DataImport($http, $resource, Upload) {
+    function DataImport($resource, Upload) {
         var di = $resource('data_imports/:id.json', {id: '@id'}, {
                 import: {
                     method: 'PUT',

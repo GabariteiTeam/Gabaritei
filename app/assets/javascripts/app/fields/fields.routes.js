@@ -6,6 +6,8 @@
         .module(APP_NAME)
         .config(FieldsRoutes);
 
+    FieldsRoutes.$inject = ['$routeProvider'];
+
     function FieldsRoutes($routeProvider) {
         $routeProvider
             .when('/fields/:id', {

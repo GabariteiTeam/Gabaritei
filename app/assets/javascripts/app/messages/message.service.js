@@ -134,6 +134,31 @@
                 'content': 'users.alerts.update.error.content',
                 'type': mTypes['error']
             },
+            'user.changed_password.success' : {
+                'title': 'users.alerts.change_password.success.title',
+                'content': 'users.alerts.change_password.success.content',
+                'type': mTypes['success']
+            },
+            'user.changed_password.error' : {
+                'title': 'users.alerts.change_password.error.title',
+                'content': 'users.alerts.change_password.error.content',
+                'type': mTypes['error']
+            },
+            'user.settings_saved.success' : {
+                'title': 'users.alerts.settings_save.success.title',
+                'content': 'users.alerts.settings_save.success.content',
+                'type': mTypes['success']
+            },
+            'user.settings_saved.error' : {
+                'title': 'users.alerts.settings_save.error.title',
+                'content': 'users.alerts.settings_save.error.content',
+                'type': mTypes['error']
+            },
+            'user.forgot_password.error' : {
+                'title': 'users.alerts.forgot_password.error.title',
+                'content': 'users.alerts.forgot_password.error.content',
+                'type': mTypes['error']
+            },
             'data_import.uploaded.success': {
                 'title': 'data_import.alerts.upload.success.title',
                 'content': 'data_import.alerts.upload.success.content',
@@ -214,6 +239,36 @@
                 'content': 'courses.alerts.participants.remove.error.content',
                 'type': mTypes['error']
             },
+            'course.lessons.added.success': {
+                'title': 'courses.alerts.lessons.add.success.title',
+                'content': 'courses.alerts.lessons.add.success.content',
+                'type': mTypes['success']                
+            },
+            'course.lessons.added.error': {
+                'title': 'courses.alerts.lessons.add.error.title',
+                'content': 'courses.alerts.lessons.add.error.content',
+                'type': mTypes['error']                
+            },
+            'course.lessons.updated.success': {
+                'title': 'courses.alerts.lessons.update.success.title',
+                'content': 'courses.alerts.lessons.update.success.content',
+                'type': mTypes['success']                
+            },
+            'course.lessons.updated.error': {
+                'title': 'courses.alerts.lessons.update.error.title',
+                'content': 'courses.alerts.lessons.update.error.content',
+                'type': mTypes['error']                
+            },
+            'course.lessons.deleted.success': {
+                'title': 'courses.alerts.lessons.delete.success.title',
+                'content': 'courses.alerts.lessons.delete.success.content',
+                'type': mTypes['success']                
+            },
+            'course.lessons.deleted.error': {
+                'title': 'courses.alerts.lessons.delete.error.title',
+                'content': 'courses.alerts.lessons.delete.error.content',
+                'type': mTypes['error']                
+            },
             'field.created.success': {
                 'title': 'fields.alerts.create.success.title',
                 'content': 'fields.alerts.create.success.content',
@@ -245,43 +300,43 @@
                 'type': mTypes['error']
             },
             'test.created.success': {
-                'title': 'crud.tests.alerts.create.success.title',
-                'content': 'crud.tests.alerts.create.success.content',
+                'title': 'tests.alerts.create.success.title',
+                'content': 'tests.alerts.create.success.content',
                 'type': mTypes['success']
             },
             'test.created.error': {
-                'title': 'crud.tests.alerts.create.error.title',
-                'content': 'crud.tests.alerts.create.error.content',
+                'title': 'tests.alerts.create.error.title',
+                'content': 'tests.alerts.create.error.content',
                 'type': mTypes['error']
             },
             'test.updated.success': {
-                'title': 'crud.tests.alerts.update.success.title',
-                'content': 'crud.tests.alerts.update.success.content',
+                'title': 'tests.alerts.update.success.title',
+                'content': 'tests.alerts.update.success.content',
                 'type': mTypes['success']
             },
             'test.updated.error': {
-                'title': 'crud.tests.alerts.update.error.title',
-                'content': 'crud.tests.alerts.update.error.content',
+                'title': 'tests.alerts.update.error.title',
+                'content': 'tests.alerts.update.error.content',
                 'type': mTypes['error']
             },
             'test.deleted.success': {
-                'title': 'crud.tests.alerts.delete.success.title',
-                'content': 'crud.tests.alerts.delete.success.content',
+                'title': 'tests.alerts.delete.success.title',
+                'content': 'tests.alerts.delete.success.content',
                 'type': mTypes['success']
             },
             'test.deleted.error': {
-                'title': 'crud.tests.alerts.delete.error.title',
-                'content': 'crud.tests.alerts.delete.error.content',
+                'title': 'tests.alerts.delete.error.title',
+                'content': 'tests.alerts.delete.error.content',
                 'type': mTypes['error']
             },
             'test.questions.added.success': {
-                'title': 'crud.tests.alerts.questions.added.success.title',
-                'content': 'crud.tests.alerts.questions.added.success.content',
+                'title': 'tests.alerts.questions.added.success.title',
+                'content': 'tests.alerts.questions.added.success.content',
                 'type': mTypes['success']
             },
             'test.questions.added.error': {
-                'title': 'crud.tests.alerts.questions.added.error.title',
-                'content': 'crud.tests.alerts.questions.added.error.content',
+                'title': 'tests.alerts.questions.added.error.title',
+                'content': 'tests.alerts.questions.added.error.content',
                 'type': mTypes['error']
             },
             'test.questions.added.error.duplicate': {
@@ -398,7 +453,17 @@
                 'title': 'responses.alerts.update.error.title',
                 'content': 'responses.alerts.update.error.content',
                 'type': mTypes['error']
-            }                             
+            },
+            'recommendation.created.success': {
+                'title': 'recommendations.alerts.create.success.title',
+                'content': 'recommendations.alerts.create.success.content',
+                'type': mTypes['success']
+            },
+            'recommendation.created.error': {
+                'title': 'recommendations.alerts.create.error.title',
+                'content': 'recommendations.alerts.create.error.content',
+                'type': mTypes['error']
+            }
         };
         var observers = [];
         var message;

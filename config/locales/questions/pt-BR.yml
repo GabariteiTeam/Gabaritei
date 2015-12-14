@@ -1,0 +1,83 @@
+pt-BR:
+  questions:
+    index:
+      heading: "Questões"
+      sub_heading: "Crie uma nova questão para os seus alunos!"
+      table:
+        headers:
+          owner: "Responsável"
+          source: "Fonte"
+          text: "Texto"
+          date: "Data"
+          answer: "Resposta"
+          hot: "Quente"
+    create:
+      heading: "Nova questão"
+    update:
+      heading: "Editar questão"
+    actions:
+      add: "Adicionar nova questão"
+      edit: "Editar"
+      save: "Salvar questão"
+      view_responses: "Ver respostas"
+      delete: "Remover"
+      recommend: "Recomendar este exercício"
+    modal:
+      delete:
+        title: "Aviso!"
+        body: "Tem certeza que deseja remover essa resposta?"
+    form:
+      style:
+        label: "Estilo"
+        written: "Dissertativa"
+        multiple_choice: "Múltipla escolha"
+      subject:
+        label: "Matéria"
+        placeholder: "Digite a matéria"
+      hot:
+        label: "Quente"
+        option_yes: "Sim"
+        option_no: "Não"
+      text:
+        label: "Texto"
+        placeholder: "Escreva a questão aqui"
+      answer:
+        label: "Resposta"
+        placeholder: "Escreva a resposta da questão aqui"
+      source:
+        label: "Fonte"
+        placeholder: "Fonte da questão"
+      alternatives:
+        placeholder: "Texto da alternativa"
+        label: "Alternativas"
+        dropdown: "Alternativa"
+      rating: 
+        label: "Dificuldade?"
+        level_0: "Sem avaliação"
+        level_1: "Muito fácil!"
+        level_2: "Fácil"
+        level_3: "Normal"
+        level_4: "Difícil"
+        level_5: "Muito difícil!"
+    alerts:
+      create:
+        success:
+          title: "Criada!"
+          content: "Questão foi criada com sucesso!"
+        error:
+          title: "Erro!"
+          content: "Questão NÃO foi criada!"
+      delete:
+        success:
+          title: "Removida!"
+          content: "Questão foi removida com sucesso!"
+        error:
+          title: "Erro!"
+          content: "Questão NÃO foi removida!"
+      update:
+        success:
+          title: "Atualizada!"
+          content: "Questão foi atualizada com sucesso!"
+        error:
+          title: "Erro!"
+          content: "Questão NÃO foi atualizada!"

@@ -1,5 +1,14 @@
+<ol class="breadcrumb">
+  <li><a href="/#home" translate>breadcrumbs.home</a></li>
+  <li ng-hide="Ctrl.user_self"><a href="/#users" translate>breadcrumbs.users.index</a></li>
+  <li ng-show="Ctrl.user_self"><a href="/#users/{{ Ctrl.user.id }}" translate>breadcrumbs.users.profile</a></li>
+  <li class="active" ng-hide="Ctrl.user_self" translate>breadcrumbs.users.update</li>
+  <li class="active" ng-show="Ctrl.user_self" translate>breadcrumbs.users.profile_update</li>
+</ol>
+
 <div class="page-header">
-	<h1 translate>users.update.heading</h1>
+	<h1 ng-hide="Ctrl.user_self" translate>users.update.heading</h1>
+	<h1 ng-show="Ctrl.user_self" translate>users.profile_update.heading</h1>
 </div>
 
 <form class="form-horizontal" role="form" ng-submit="Ctrl.updateUser()">

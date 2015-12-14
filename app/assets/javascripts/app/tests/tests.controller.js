@@ -18,10 +18,11 @@
             'Course',
             'MessageService',
             'RedirectService',
-            'ModalService'
+            'ModalService',
+            'PermissionsService'
         ];
 
-    function TestsController($location, $routeParams, $route, Test, Course, MessageService, RedirectService, ModalService) {
+    function TestsController($location, $routeParams, $route, Test, Course, MessageService, RedirectService, ModalService, PermissionsService) {
         
         var vm = this;
 
@@ -40,19 +41,21 @@
                 vm.test = Test.get({
                     id: $routeParams.id
                 }, function() { 
-                    Course.query(function(data) {
+                    Course.coursesForTest(function(data) {
                         vm.courses = data;
                         retrieveCourse();
                     });
                     console.log("edit");
                 });
-
             } else {
                 vm.test = new Test();
                 Test.query(function(data) {
                     vm.tests = data;
-                    Course.query(function(data) {
+                    Course.coursesForTest(function(data) {
                         vm.courses = data;
+                        PermissionsService.verifyPermissions(['permission.courses.globally_manipulate', 'permission.courses.teach', 'permission.courses.take_part'], function(permissions) {
+                            vm.permissions = permissions;
+                        });
                     });
                 });
                 console.log("view");
@@ -216,13 +219,9 @@
             $timeout(tick, vm.tickInterval); 
         }
         function formatTime() {
-            if(vm.counter < 60) {
-                vm.clock = vm.counter + " seconds";
-            }
-            if(vm.counter > 60) {
-                var time = Math.floor(vm.counter / 60);
-                vm.clock = time + " minute(s)";
-            }
+            var min = Math.floor(vm.counter / 60);
+            var sec = Math.floor(vm.counter % 60);
+            vm.clock = ((min < 10) ? "0" : "") + min + ":" + ((sec < 10) ? "0" : "") + sec;
         }
         //end of directive ;)
 
@@ -333,6 +332,7 @@
         var vm = this;
         Test.getSummary({id: $routeParams.id}, function(data){
             vm.summary  = data.summary;
+            vm.test_name = data.test_name;
         });
     }
 })();

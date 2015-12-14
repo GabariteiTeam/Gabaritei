@@ -7,7 +7,8 @@ en:
         header:
           question: "Question"
           owner: "Owner"
-          text: "Text"
+          rating: "Rating"
+          text: "Answer"
     actions:
       add: "Add new response"
       save: "Save response"
@@ -28,7 +29,7 @@ en:
         option_no: "No"
     modal:
       delete:
-        title: "Confirmation required"
+        title: "Warning!"
         body: "Are you sure you want to delete this answer?"
     alerts:
       create:

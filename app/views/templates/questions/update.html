@@ -1,7 +1,13 @@
+<ol class="breadcrumb">
+  <li><a href="/#home" translate>breadcrumbs.home</a></li>
+  <li><a href="/#questions" translate>breadcrumbs.questions.index</a></li>
+  <li class="active" translate>breadcrumbs.questions.update</li>
+</ol>
+
 <div class="page-header">
 	<h1 translate>questions.update.heading</h1>
 </div>
 
 <form class="form-horizontal" role="form" ng-submit="Ctrl.updateQuestion()">
-  <div ng-include="'templates/questions/_form.html'"></div>
+  	<div ng-include="'templates/questions/_form.html'"></div>
 </form>

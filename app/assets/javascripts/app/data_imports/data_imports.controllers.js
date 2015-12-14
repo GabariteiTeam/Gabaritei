@@ -15,15 +15,7 @@
         .module(APP_NAME)
         .controller('DataImportsController', DataImportsController);
 
-    DataImportsController
-        .$inject = [
-            '$scope',
-            '$timeout',
-            '$activityIndicator',
-            'MessageService',
-            'DataImport',
-            'Role'
-        ];
+    DataImportsController.$inject = ['$scope', '$timeout', '$activityIndicator', 'MessageService', 'DataImport', 'Role'];
 
     function DataImportsController($scope, $timeout, $activityIndicator, MessageService, DataImport, Role) {
 

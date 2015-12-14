@@ -9,7 +9,24 @@
     User.$inject = ['$resource', 'Upload'];
 
     function User($resource, Upload) {
-        var u = $resource('users/:id.json', {id: '@id'});
+        var u = $resource('users/:id.json', {id: '@id'}, {
+            changePassword: {
+                url: 'users/:id/change_password',
+                method: 'POST'
+            },
+            reset_password: {
+                url: 'users/reset_password',
+                method: 'POST'
+            },
+            settings: {
+                url: 'users/:id/settings',
+                method: 'GET'
+            },
+            saveSettings: {
+                url: 'users/:id/settings',
+                method: 'POST'
+            }
+        });
 
         u.prototype.$save = function(success, error) {
             upload(this, 'users/', 'POST', success, error);

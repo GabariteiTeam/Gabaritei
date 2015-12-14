@@ -75,11 +75,6 @@ class Content < ActiveRecord::Base
 	# @see Recommendation#resource
 	has_many :recommendations, as: :resource
 
-	# List of all {Course courses} that have access to the content.
-	# @return [Array<Course>] all courses that have access to the content.
-	# @see Course#contents
-	has_many :courses, through: :course_contents
-
 	# List of all {Lesson lessons} that have access to the content.
 	# @return [Array<Lesson>] all lessons that have access to the content.
 	# @see Lesson#contents
@@ -112,6 +107,25 @@ class Content < ActiveRecord::Base
 		else
 			return true
 		end
+	end
+
+	def can_be_accessed?(user_id)
+		return shareable || LessonContent.where("lesson_contents.content_id = :content_id AND EXISTS (SELECT 1 FROM user_courses, courses, lessons WHERE lesson_contents.lesson_id = lessons.id AND lessons.course_id = courses.id AND user_courses.course_id = courses.id AND user_courses.user_id = :user_id)", {content_id: id, user_id: user_id}).length > 0
+	end
+
+	def self.contents_for_lesson(course_id, lesson_id, user_id = -1)
+		course = Course.find(course_id)
+		if user_id > 0
+			contents = Content.where(owner_id: user_id, category_id: course.category_id, category_type: course.category_type).as_json
+		else
+			contents = Content.where(category_id: course.category_id, category_type: course.category_type).as_json
+		end
+		if lesson_id
+			contents.each do |content|
+				content.merge!({in_lesson: LessonContent.where(lesson_id: lesson_id, content_id: content["id"]).length > 0})
+			end
+		end
+		return contents
 	end
 
 end

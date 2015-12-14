@@ -6,6 +6,16 @@
 		.directive("gabShowModalButton", gabShowModalButton);
 
 	function gabShowModalButton() {
+
+		modalController.$inject = ['$scope', 'ModalService'];
+
+		function modalController($scope, ModalService) {
+			$scope.storeAndGo = storeAndGo;
+			function storeAndGo() {
+				ModalService.setArgs($scope.args);
+			}
+		}
+
 		return {
 			scope: {
 				modalid: "@",
@@ -14,12 +24,7 @@
 				text: "@",
 				icon: "@"
 			},
-			controller:function($scope, ModalService) {
-				$scope.storeAndGo = storeAndGo;
-				function storeAndGo() {
-					ModalService.setArgs($scope.args);
-				}
-			},
+			controller: modalController,
 			replace: true,
 			transclude: false,
 			template: '<button type="button" ng-click="storeAndGo()"'    +
@@ -32,6 +37,18 @@
 	}
 	
 	function gabConfirmModal() {
+
+		modalController.$inject = ['$scope', 'ModalService'];
+
+		function modalController($scope, ModalService) {
+			$scope.click_handler = function() {
+				jQuery("#" + $scope.modalid).modal('hide');
+				jQuery('body').removeClass('modal-open');
+				jQuery('.modal-backdrop').remove();
+				$scope.callback({id: ModalService.getArgs()});
+			};
+		}
+
 		return {
 			scope: {
 				modalid: '@',
@@ -40,14 +57,7 @@
 				callback: '&',
 				args: '='
 			},
-			controller:function($scope, ModalService){
-				$scope.click_handler = function() {
-					jQuery("#" + $scope.modalid).modal('hide');
-					jQuery('body').removeClass('modal-open');
-					jQuery('.modal-backdrop').remove();
-					$scope.callback({id: ModalService.getArgs()});
-				};
-			},
+			controller: modalController,
 			templateUrl: 'templates/modal/confirm-modal.html'
 		};
 	}

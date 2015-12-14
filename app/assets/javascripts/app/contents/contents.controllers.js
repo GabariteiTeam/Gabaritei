@@ -6,20 +6,9 @@
         .module(APP_NAME)
         .controller('ContentsController', ContentsController);
 
- 	ContentsController
-        .$inject = [
-            '$location',
-            '$routeParams',
-            '$route',
-            '$sce',
-            'Content',
-            'Subject',
-            'MessageService',
-            'RedirectService',
-            'ModalService'
-        ];
+ 	ContentsController.$inject = ['$routeParams', '$sce', 'Content', 'Subject', 'MessageService', 'RedirectService', 'ModalService', 'PermissionsService'];
 
-    function ContentsController($location, $routeParams, $route, $sce, Content, Subject, MessageService, RedirectService, ModalService) {
+    function ContentsController($routeParams, $sce, Content, Subject, MessageService, RedirectService, ModalService, PermissionsService) {
 
     	var vm = this;
 
@@ -32,6 +21,7 @@
         activate();
 
         function activate() {
+            vm.course_id = $routeParams.course_id;
             if ($routeParams.id === undefined) {
                 vm.content = new Content();
                 vm.content.medium = {
@@ -60,6 +50,9 @@
                     } else vm.content.medium.source = vm.content.attachment_url;
                     vm.content.medium.is_attachment = vm.content.medium.is_attachment.toString();
                 });
+                PermissionsService.verifyPermissions(['permission.courses.teach', 'permission.courses.take_part'], function(permissions) {
+                    vm.permissions = permissions;
+                })
             }
             
         }

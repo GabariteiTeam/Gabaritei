@@ -7,6 +7,7 @@ en:
     roles: "Roles"
     users: "Users"
     courses: "Courses"
+    tests: "Exams"
     contents: "Contents"
     requests: "Requests"
     profile: "Profile"
@@ -16,3 +17,4 @@ en:
     request_access: "Request access"
     forgot_password: "Forgot password"
     logout: "Logout"
+    hello: "Hello, "

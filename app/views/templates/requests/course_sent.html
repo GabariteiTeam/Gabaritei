@@ -1,11 +1,18 @@
-<div class="col-sm-offset-2 page-header">
+<ol class="breadcrumb">
+  <li><a href="/#home" translate>breadcrumbs.home</a></li>
+  <li><a href="/#courses" translate>breadcrumbs.courses.index</a></li>
+  <li class="active" translate>breadcrumbs.requests.request_course_registration</li>
+</ol>
+
+<div class="page-header">
 	<h1>
       	<span class="glyphicon glyphicon-ok"></span>
+      	&nbsp;
       	<span class="page-title" translate>requests.confirmation.course.heading</span>
 	</h1>
 </div>
 
-<div class="col-sm-offset-2 col-sm-10">
+<div>
 	<p class="confirmation-text">
 		<span translate>requests.confirmation.course.pgrph1</span>
 		<strong>{{ Ctrl.request.first_name }}</strong>!
@@ -14,5 +21,11 @@
 		<span translate>requests.confirmation.course.pgrph2</span>
 		<strong>{{ Ctrl.request.email }}</strong>.
 	</p>
+	<br />
+	<a href="#courses" class="btn btn-primary">
+		<span translate>requests.actions.go_to_courses</span>
+	</a>
 </div>
+
+
 

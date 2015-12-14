@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="navbar-header">
 			<a href="#home" class="navbar-brand">
-				<img alt="Gabaritei" src="assets/logo_mini.png" />
+				<img alt="Gabaritei" src="<%= asset_path('logo_mini.png') %>" />
 			</a>
 			<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
 				<span class="icon-bar"></span>
@@ -10,30 +10,21 @@
 				<span class="icon-bar"></span>
 			</button>
 		</div>
-		<div class="navbar-collapse collapse" id="navbar-main">
-			<ul class="nav navbar-nav" ng-controller="MenuController as Ctrl">
+		<div class="navbar-collapse collapse" id="navbar-main" ng-controller="MenuController as Ctrl">
+			<ul class="nav navbar-nav">
 				<%= render 'layouts/navlist' %>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li>
-					<a href=#users>Olá, user_name!</a>
+				<li class="hidden-xs hidden-sm" ng-show="Ctrl.user">
+					<p class="navbar-text" style="color: white">{{ ('menu.hello' | translate) + Ctrl.user.first_name + "!" }}</p>
 				</li>
-				<li class="dropdown" ng-controller="TranslationsController as Ctrl">
-		          	<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-		          		<span translate>menu.language</span>
-		     			<span class="caret"></span>
-		          	</a>
-			        <ul class="dropdown-menu">
-			            <li ng-repeat="(key, language) in Ctrl.languages">
-			            	<a ng-click="Ctrl.changeLanguage(key)">
-			            		<span ng-hide="Ctrl.currentLanguage() != key" class="glyphicon glyphicon-ok" style="padding-right: 6px"></span>
-			            		{{ language }}
-			            	</a>
-			            </li>
-			        </ul>
-		        </li>
+				<li>
+					<a href="#" ng-click="Ctrl.logout()">
+						<span class="sub_icon glyphicon glyphicon-off"></span>
+						<span translate>menu.logout</span>
+					</a>
+				</li>
 			</ul>
-
 		</div>
 	</div>
 </div>

@@ -6,15 +6,24 @@
         .module(APP_NAME)
         .controller('MenuController', MenuController);
 
-    MenuController.$inject = ['$scope', 'Auth', 'RedirectService'];
+    MenuController.$inject = ['$translate', 'Auth', 'User', 'RedirectService'];
 
-    function MenuController($scope, Auth, RedirectService) {
+    function MenuController($translate, Auth, User, RedirectService) {
 
         var vm = this;
 
         vm.logout = logout;
         vm.changeMenuDisplay = changeMenuDisplay;
         vm.collapseMenu = false;
+
+        Auth.currentUser().then(function(current_user) {
+            vm.user = current_user;
+            User.get({id: current_user.id}, function(user) {
+                user.$settings(function(setting) {
+                    $translate.use(setting.preferred_language_key);
+                });
+            });
+        });
      
         function logout() {
             var config = {

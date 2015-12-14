@@ -1,392 +1,63 @@
 en:
-  permission:
-   take_part_in_courses: 'Take part in courses'
-  menu:
-   questions: 'Questions'
-   subjects: 'Subjects'
-   data_import: 'Data import'
-   language: 'Language'
-   roles: 'Roles'
-   users: 'Users'
-   courses: 'Courses'
-   tests: 'Tests'
-  home:
-   heading: 'Easy, fast and simple!'
-  actions:
-    buttons:
-      save: "Save"
-  crud:
-   name: 'Name'
-   description: 'Description'
-   options: 'Options'
-   create: 'Create'
-   add: 'Add'
-   update: 'Update'
-   modify: 'Modify'
-   delete: 'Delete'
-   remove: 'Remove'
-   show: 'Show'
-   view: 'View'
-   save: 'Save'
-   edit: 'Edit'
-   search: 'Search'
-   import: 'Import'
-   options: 'Options'
-   subjects:
-    alerts:
-      create:
-        success:
-          title: 'Created!'
-          content: 'Subject was created with success!'
-        error:
-          title: 'Failed!'
-          content: 'Subject was NOT created!'
-      delete:
-        success:
-          title: 'Deleted!'
-          content: 'Subject was deleted with success!'
-        error:
-          title: 'Failed!'
-          content: 'Subject was NOT deleted'
-      update:
-        success:
-          title: 'Updated!'
-          content: 'Subject was updated with success'
-        error:
-          title: 'Failed!'
-          content: 'Subject was NOT updated!'
-    modal:
-      delete:
-        title: 'Warning!'
-        body: 'Are you sure you want to delete this subject?'
-    index:
-      heading: 'Subjects'
-      sub_heading: 'Create a new subject to your Virtual Class!'
-      fields: 'Fields'
-      view_fields: 'View Fields'
-    create: 
-      heading: 'New Subject'
-    update:
-      heading: 'Update Subject'
-    form:
-      subject_name:
-        title: 'Subject name:'
-        placeholder: 'Subject name here'
-      subject_description: 
-        title: 'Subject description:'
-        placeholder: 'Subject description here'
-   fields:
-    alerts:
-      create:
-        success:
-          title: 'Created!'
-          content: 'Field was created with success!'
-        error:
-          title: 'Failed!'
-          content: 'Field was NOT created!'
-      delete:
-        success:
-          title: 'Deleted!'
-          content: 'Field was deleted with success!'
-        error:
-          title: 'Failed!'
-          content: 'Field was NOT deleted'
-      update:
-        success:
-          title: 'Updated!'
-          content: 'Field was updated with success'
-        error:
-          title: 'Failed!'
-          content: 'Field was NOT updated!'
-    modal:
-      delete:
-        title: 'Warning!'
-        body: 'Are you sure you want to delete this field?'
-    index:
-      sub_header: 'Organize your subject in fields'
-    create: 
-      heading: 'New Field'
-    update:
-      heading: 'Update Field'
-    form:
-      field_name:
-        title: 'Field name:'
-        placeholder: 'Field name here'
-      field_description: 
-        title: 'Field description:'
-        placeholder: 'Field description here'
-   questions:
-    alerts:
-      create:
-        success:
-          title: 'Created!'
-          content: 'Question was created with success'
-        error:
-          title: 'Failed!'
-          content: 'Question was NOT created!'
-      delete:
-        success:
-          title: 'Deleted!'
-          content: 'Question was deleted with success'
-        error:
-          title: 'Failed'
-          content: 'Question was not deleted!'
-      update:
-        success:
-          title: "Updated!"
-          content: "Question was updated with success"
-        error:
-          title: "Failed!"
-          content: "Question was NOT updated"
-    index:
-      header: 'Questions'
-      sub_header: 'Create a new question for your students'
-      add: 'Add new question'
-    create:
-      title: 'New Question'
-    update:
-      title: 'Edit Question'
-    modal:
-      delete:
-        title: 'Warning!'
-        body: 'Are you sure you want to delete this question?'
-    form:
-      professor:
-        label: 'Professor'
-      style:
-        label: 'Style'
-        written: 'Written'
-        multiple_choice: 'Multiple choice'
-      subject:
-        label: 'Subject'
-        placeholder: 'Type a Subject'
-      hot:
-        label: 'Hot'
-      text:
-        label: 'Text'
-        placeholder: 'Enter your question here'
-      answer:
-        label: 'Answer'
-        placeholder: 'Enter the answer of your question here'
-      source:
-        label: 'Source'
-        placeholder: 'Enter the source of your question here'
-    table:
-      headers:
-        id: 'ID'
-        professor: 'Professor'
-        source: 'Source'
-        text: 'Text'
-        date: 'Date'
-        options: 'Options'
-   roles:
-    alerts:
-     create:
-      success:
-       title: 'Created!'
-       content: 'Role was created with success!'
-      error:
-       title: 'Failed!'
-       content: 'Role was NOT created!'
-     delete:
-      success:
-       title: 'Deleted!'
-       content: 'Role was deleted with success!'
-      error:
-       title: 'Failed!'
-       content: 'Role was NOT deleted'
-     update:
-      success:
-        title: 'Updated!'
-        content: 'Role was updated with success!'
-      error:
-        title: 'Failed!'
-        content: 'Role was NOT updated!'
-    index:
-     heading: 'Roles'
-     sub_header: 'Create a new role to your Virtual Class!'
-    modal:
-     delete:
-      title: 'Warning!'
-      body: 'Are you sure you want to delete this role?'
-   users:
-    alerts:
-     create:
-      success:
-       title: 'Created!'
-       content: 'User was created with success!'
-      error:
-       title: 'Failed!'
-       content: 'User was NOT created!'
-     delete:
-      success:
-       title: 'Deleted!'
-       content: 'User was deleted with success!'
-      error:
-       title: 'Failed!'
-       content: 'User was NOT deleted'
-     update:
-      success:
-        title: 'Updated!'
-        content: 'User was updated with success!'
-      error:
-        title: 'Failed!'
-        content: 'User was NOT updated!'
-    index:
-     heading: 'Users'
-     sub_header: 'Create a new user to your Virtual Class!'
-    modal:
-     delete:
-      title: 'Warning!'
-      body: 'Are you sure you want to delete this user?'
-   data_import:
-    alerts:
-     upload:
-      success:
-       title: 'Uploaded!'
-       content: 'File was uploaded with success!'
-      error:
-       title: 'Failed!'
-       content: 'File was NOT uploaded!'
-     delete:
-      success:
-       title: 'Deleted!'
-       content: 'File was deleted with success!'
-      error:
-       title: 'Failed!'
-       content: 'File was NOT deleted'
-     update:
-      success:
-        title: 'Updated!'
-        content: 'File was updated with success!'
-      error:
-        title: 'Failed!'
-        content: 'File was NOT updated!'
-   courses:
-    search:
-     label: 'Search user'
-     clear: 'Clear search'
-     select_all: 'Select all'
-     deselect_all: 'Deselect all'
-     add_selected: 'Add selected'
-    alerts:
-     create:
-      success:
-       title: 'Created!'
-       content: 'Course was created with success!'
-      error:
-       title: 'Failed!'
-       content: 'Course was NOT created!'
-     delete:
-      success:
-       title: 'Deleted!'
-       content: 'Course was deleted with success!'
-      error:
-       title: 'Failed!'
-       content: 'Course was NOT deleted'
-     update:
-      success:
-       title: 'Updated!'
-       content: 'Course was updated with success!'
-      error:
-       title: 'Failed!'
-       content: 'Course was NOT updated!'
-     participants:
-      add:
-       success:
-        title: 'Added!'
-        content: 'Participants were added with success!'
-       error:
-        title: 'Failed!'
-        content: 'Participants were NOT added!'
-      remove:
-       success:
-        title: 'Removed!'
-        content: 'Participant was removed with success!'
-       error:
-        title: 'Failed!'
-        content: 'Participant was NOT removed!'
-    index:
-     heading: 'Courses'
-     sub_header: 'Create a new course to your Virtual Class!'
-     edit_participants: 'Edit participants'
-   tests:
-    alerts:
-     create:
-      success:
-       title: 'Created!'
-       content: 'Test was created with success!'
-      error:
-       title: 'Failed!'
-       content: 'Test was NOT created!'
-     update:
-      success:
-       title: 'Updated!'
-       content: 'Test was updated with success'
-      error:
-       title: 'Failed!'
-       content: 'Test was NOT updated!'
-     delete:
-      success:
-       title: 'Deleted!'
-       content: 'Test was deleted with success!'
-      error:
-       title: 'Failed!'
-       content: 'Test was NOT deleted'
-     questions:
-      added:
-       success:
-        title: 'Added!'
-        content: 'Questions were added with success!'
-       error:
-        title: 'Failed!'
-        content: 'Questions were NOT added'
-      removed:
-       success:
-        title: 'Removed!'
-        content: 'Question was removed with success!'
-       error:
-        title: 'Failed!'
-        content: 'Question was NOT removed'
-    search_questions:
-     title: 'Questions from the Test'
-     label: 'Search through questions'
-    modal:
-     delete:
-      title: 'Warning!'
-      body: 'Are you sure you want to delete this test?'
-    index:
-     heading: 'Tests'
-     sub_header: 'Create a new test to your Virtual Class!'
-     add: 'Add new test'
-     edit_questions: 'Edit Questions'
-     course: 'Course'
-    create: 
-     heading: 'New Test'
-    update:
-     heading: 'Update Test'
-    form:
-     test_name:
-      title: 'Test name:'
-      placeholder: 'Test name here'
-     test_description: 
-      title: 'Test description:'
-      placeholder: 'Test description here'
-     test_course:
-      title: 'Course'
-  models:
-   content: 'Content'
-   course: 'Course'
-   course_news: 'News'
-   course_registration_request: 'Course Registration Request'
-   field: 'Field'
-   permission: 'Permission'
-   question: 'Question'
-   rating: 'Rating'
-   recommendation: 'Recommendation'
-   registration_request: 'Registration Request'
-   response: 'Response'
-   role: 'Role'
-   subject: 'Subject'
-   test: 'Test'
-   user: 'User'
+  breadcrumbs:
+    home: "Home"
+    contents:
+      index: "Contents"
+      new: "New content"
+      show: "View content"
+      update: "Update content"
+    courses:
+      index: "Courses"
+      new: "New course"
+      show: "View course"
+      update: "Update course"
+      edit_participants: "Edit course participants"
+      content: "View content"
+      question: "View exercise"
+      new_lesson: "New lesson"
+      edit_lesson: "Edit lesson"
+    data_import: "Data import"
+    questions:
+      index: "Questions"
+      new: "New question"
+      update: "Update question"
+    recommendations:
+      new: "Make a recommendation"
+    requests:
+      index: "Requests"
+      assess_registration_request: "Assess registration request"
+      assess_course_registration_request: "Assess course registration request"
+      request_course_registration: "Request registration"
+    responses:
+      index: "Responses"
+      new: "New response"
+      update: "Update response"
+    roles:
+      index: "Roles"
+      new: "New role"
+      update: "Update role"
+    subjects:
+      index: "Subjects"
+      new: "New subject"
+      update: "Update subject"
+      fields:
+        index: "View fields"
+        new: "New field"
+        update: "Update field"
+    users: 
+      index: "Users"
+      change_password: "Change password"
+      new: "New user"
+      update: "Update user"
+      show: "Show user"
+      profile: "Profile"
+      profile_update: "Update profile"
+      settings: "Settings"
+    tests:
+      index: "Exams"
+      new: "New exam"
+      show: "View exam"
+      update: "Update exam"
+      edit_questions: "Edit questions"
+      view_response: "View response"
+      start_exam: "Start exam!"

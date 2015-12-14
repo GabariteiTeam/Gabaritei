@@ -11,12 +11,20 @@ en:
       heading: "New User"
     update:
       heading: "Edit User"
+    profile_update:
+      heading: "Update profile"
+      save: "Save profile"
+    settings:
+      heading: "Settings"
+      preferred_language: "Preferred language"
+      save: "Save settings"
     actions:
       add: "Register new user"
       save: "Save user"
       view: "View"
       edit: "Edit"
       delete: "Delete"
+      change_password: "Change password"
     form:
       role: "Role"
       first_name: 
@@ -29,6 +37,10 @@ en:
         label: "E-mail"
         placeholder: "E-mail (example@example.com)"
       birthdate: "Birthdate"
+      password:
+        current: "Current password"
+        new: "New password"
+        confirm: "Confirm password"
       about: 
         label: "About…"
         placeholder: "Academic and/or professional works, skills, hobbies…"
@@ -62,3 +74,21 @@ en:
         error:
           title: "Failed!"
           content: "User was NOT updated!"
+      change_password:
+        success:
+          title: "Password changed!"
+          content: "Password was successfully changed!"
+        error:
+          title: "Failed!"
+          content: "Password could not be changed!"
+      forgot_password:
+        error:
+          title: "Failed!"
+          content: "An error occurred! Please try again later."       
+      settings_save:
+        success:
+          title: "Saved!"
+          content: "Settings were saved with success!"
+        error:
+          title: "Failed!"
+          content: "Settings could not be saved!"

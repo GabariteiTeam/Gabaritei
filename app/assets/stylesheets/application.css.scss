@@ -21,18 +21,19 @@
  @import "bootswatch/flatly/_bootswatch";
  @import "ng-tags-input/ng-tags-input.min";
  @import "ng-tags-input/ng-tags-input.bootstrap.min";
- @import "angular-motion/dist/angular-motion.min";
+ @import "angular-motion/dist/angular-motion";
  @import "bootstrap-toggle/css/bootstrap-toggle.min";
- @import "ngActivityIndicator/css/ngActivityIndicator.min";
- @import "components-font-awesome/scss/font-awesome";
+ @import "ngActivityIndicator/css/ngActivityIndicator";
+ @import "components-font-awesome/css/font-awesome";
  @import "textAngular/dist/textAngular";
  @import "custom-angular-text";
+ @import "star-rating";
  @import "drag-drop-file";
  @import "login";
  @import "styles";
  @import "crud-table";
  @import "tags-input";
- @import "angular-bootstrap-toggle-switch/style/bootstrap3/angular-toggle-switch-bootstrap-3";
+ @import "angular-bootstrap-toggle-switch/style/bootstrap3/angular-toggle-switch-bootstrap-3.scss";
 
  @font-face {
  	font-family: 'FontAwesome';

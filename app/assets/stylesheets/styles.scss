@@ -11,7 +11,7 @@
     }
 
     #page-content-wrapper {
-        padding-bottom: 20px;
+        padding: 20px 0;
     }
 }
 
@@ -47,7 +47,7 @@
             margin-left: -200px;
             padding-bottom: 60px;
             background: #000;
-            overflow-x: hidden;
+            //overflow-x: hidden;
 
             /* Sidebar Styles */
             .sidebar-nav {
@@ -112,16 +112,9 @@ div.page-header {
 
 
 /*** CAMINHO ***/
-
 .path-s {
 
-    &:first-child {
-        margin-top: 5px;
-    }
-
     &:last-child {
-        margin-bottom: 5px;
-
         a.ico-path .bar {
             height: 0px;
         }
@@ -170,6 +163,10 @@ div.page-header {
                 float: right;
             }
 
+            &.title {
+                padding-left: 0;
+            }
+
             &:last-child {
                 line-height: 20px;
                 max-height: 80px; /* n x line-height = number of lines in the description */
@@ -205,12 +202,19 @@ div.page-header {
     }
 }
 
+.accordion-info {
+    background-color: #f3f3f3;
+    margin-top: -15px;
+    padding: 15px;
+    border-bottom: 1px #EFEFEF solid;
+}
+
 #questions-table {
     width: 100%;
     margin-top: 10px;
 
     tr.question-cell {
-        border-bottom: 1px solid #EEE;
+        border: 1px solid #EEE;
 
         td {
             padding: 5px 10px;
@@ -226,26 +230,12 @@ div.page-header {
         }
 
         &.selected {
-            background: rgba(153,153,153,0.2);
+            background: #DEF; /*rgba(153,153,153,0.2); */
+            border: 2px solid #024;
             font-weight: bold;
-            /*border-width: 2px;*/
         }
     }
 }
-
-.right {
-    float: right;
-}
-
-.left {
-    float: left;
-}
-
-/*.checkbox {
-    label {
-
-    }
-}*/
 
 .crud-add-btn {
     margin-bottom: 20px;
@@ -304,4 +294,39 @@ a.permission-info-btn {
 
 span.permission-title {
     padding: 0 3px;
+}
+
+.form-auto-fields {
+    div.text {
+        margin-top: 5px;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+}
+
+hr {
+    margin: 0;
+    border-color: rgba(255,255,255,0.2);
+}
+
+.panel.course-panel >  {
+
+    .panel-heading {
+        text-align: right;
+        h3.panel-title {
+            float: left;
+            line-height: 25px;
+        }
+    }
+    
+    .panel-body {
+        border: 1px solid #DDD;
+    }
+    
+}
+
+.show-question div {
+    min-height: 0 !important;
 }

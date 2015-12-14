@@ -1,0 +1,53 @@
+pt-BR:
+  subjects: 
+    index:
+      heading: "Matérias"
+      sub_heading: "Crie uma nova matéria para a sua Sala Virtual!"
+      table:
+        header:
+          name: "Nome"
+          description: "Descrição"
+          fields: "Áreas"
+    create:
+      heading: "Nova matéria"
+    update:
+      heading: "Editar matéria"
+    actions:
+      add: "Adicionar nova matéria"
+      save: "Salvar matéria"
+      edit: "Editar"
+      delete: "Remover" 
+      view_fields: "Ver áreas"
+    form:
+      name:
+        label: "Nome"
+        placeholder: "Nome da matéria"
+      description: 
+        label: "Descrição"
+        placeholder: "Descrição da matéria"
+    modal:
+      delete:
+        title: "Aviso!"
+        body: "Tem certeza que deseja remover essa matéria?"
+    alerts:
+      create:
+        success:
+          title: "Criada!"
+          content: "Matéria foi criada com sucesso!"
+        error:
+          title: "Erro!"
+          content: "Matéria NÃO foi criada!"
+      delete:
+        success:
+          title: "Removida!"
+          content: "Matéria foi removida com sucesso!"
+        error:
+          title: "Erro!"
+          content: "Matéria NÃO foi removida!"
+      update:
+        success:
+          title: "Atualizada!"
+          content: "Matéria foi atualizada com sucesso!"
+        error:
+          title: "Erro!"
+          content: "Matéria NÃO foi atualizada!"

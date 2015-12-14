@@ -3,7 +3,16 @@ en:
     email: "E-mail"
     password: "Password"
     login: "Sign in"
-    forgot_password: "Forgot password?"
+    forgot_password: 
+      heading: "I forgot my password!"
+      sub_heading: "That's ok, we can send you a new one!"
+      enter_email: "Your e-mail"
+      request_new_password: "Request new password"
+      invalid_email: "We couldn't find this e-mail, please verify!"
+    password_sent:
+      heading: "New password sent!"
+      sub_heading: "You will shortly receive an e-mail with your new password. Please, request a new one with you don't receive it."
+      go_to_login: "Go back to login page"
     request_access: "Request access"
     email_missing: "Provide your e-mail"
     password_missing: "Provide your password"
@@ -17,12 +26,18 @@ en:
         title: "Manipulate contents"
         help: "User can create new contents, and edit or delete the contents belonging to them."
     courses:
-      manipulate: 
+      globally_manipulate: 
+        title: "Manipulate courses (globally)"
+        help: "User can create, edit and delete any courses. User can also edit the participants of any courses."
+      manipulate:
         title: "Manipulate courses"
-        help: "User can create, edit and delete courses. User can also edit the participants of the courses."
+        help: "Users can edit participants and information of the courses they take part in."
+      teach:
+        title: "Teach in courses"
+        help: "User can manipulate lessons and news and evaluate exams in the courses they take part in."
       take_part:
         title: "Take part in courses"
-        help: "User can take part in courses, having access to all of their contents."
+        help: "User can take part in courses, being able to see all of their contents, questions and exams."
     users:
       manipulate:
         title: "Manipulate users"

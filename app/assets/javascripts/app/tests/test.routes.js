@@ -6,6 +6,8 @@
         .module(APP_NAME)
         .config(TestRoutes);
 
+    TestRoutes.$inject = ['$routeProvider'];
+
     function TestRoutes($routeProvider) {
         $routeProvider
             .when('/tests/new', {
