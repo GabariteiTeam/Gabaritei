@@ -18,6 +18,10 @@ pt-BR:
       responsible_teachers: "Professores responsáveis:"
       updated_at: "Atualizado em "
       exercise: "Exercício "
+    new_lesson:
+      heading: "Nova aula de "
+    edit_lesson:
+      heading: "Editar aula de "
     actions:
       add: "Adicionar novo curso"
       save: "Salvar curso"
@@ -47,6 +51,9 @@ pt-BR:
       delete:
         title: "Aviso!"
         body: "Tem certeza que deseja remover esse curso?"
+      delete_lesson:
+        title: "Aviso!"
+        body: "Tem certeza que deseja remover essa aula?" 
     search_form:
       search: "Busca"
       placeholder: "Nome ou e-mail"
@@ -90,4 +97,26 @@ pt-BR:
             content: "Participante foi removido com sucesso!"
           error:
             title: "Erro!"
-            content: "Participante foi NÃO removido!"
+            content: "Participante NÃO foi removido!"
+      lessons:
+        add:
+          success:
+            title: "Adicionado!"
+            content: "Aula foi adicionada com sucesso!"
+          error:
+            title: "Erro!"
+            content: "Aula NÃO foi adicionada!"
+        delete:
+          success:
+            title: "Removido!"
+            content: "Aula foi removida com sucesso!"
+          error:
+            title: "Erro!"
+            content: "Aula NÃO foi removida"
+        update:
+          success:
+            title: "Atualizado!"
+            content: "Aula foi atualizada com sucesso!"
+          error:
+            title: "Erro!"
+            content: "Aula NÃO foi atualizada!"

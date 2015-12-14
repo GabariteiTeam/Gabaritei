@@ -101,6 +101,10 @@ Rails.application.routes.draw do
 		put "remove_participant/:user_id", to: "courses#remove_participant", on: :member
 		get :show_everything, to: "courses#show_everything", on: :member
 		post :add_lesson, on: :member
+		put :edit_lesson, on: :member
+		get "get_lesson/:lesson_id", to: "courses#get_lesson", on: :member
+		delete :delete_lesson, on: :member
+		get :courses_for_test, on: :collection
 	end
 	
 	# COURSES ROUTES

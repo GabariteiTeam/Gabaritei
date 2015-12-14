@@ -3,14 +3,14 @@
 <ol class="breadcrumb">
   <li><a href="#">Home</a></li>
   <li><a href="#courses/{{ Ctrl.course.id }}">{{ Ctrl.course.name }}</a></li>
-  <li class="active" translate>breadcrumbs.courses.new_lesson</li>
+  <li class="active" translate>breadcrumbs.courses.edit_lesson</li>
 </ol>
 
 <div class="page-header">
-  <h1>{{ ('courses.new_lesson.heading' | translate) + Ctrl.course.name }}</h1>
+  <h1>{{ ('courses.edit_lesson.heading' | translate) + Ctrl.course.name }}</h1>
 </div>
 
-<form class="form-horizontal" role="form" ng-submit="Ctrl.createLesson()">
+<form class="form-horizontal" role="form" ng-submit="Ctrl.editLesson()">
   <div ng-include="'templates/courses/_lesson_form.html'"></div>
 </form>
 

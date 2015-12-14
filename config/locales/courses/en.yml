@@ -20,6 +20,8 @@ en:
       exercise: "Exercise "
     new_lesson:
       heading: "New lesson for "
+    edit_lesson:
+      heading: "Edit lesson of "
     actions:
       add: "Add new course"
       save: "Save course"
@@ -49,6 +51,9 @@ en:
       delete:
         title: "Warning!"
         body: "Are you sure you want to delete this course?"
+      delete_lesson:
+        title: "Warning!"
+        body: "Are you sure you want to delete this lesson?"      
     search_form:
       search: "Search"
       placeholder: "Name or e-mail"
@@ -112,3 +117,17 @@ en:
           error:
             title: "Failed!"
             content: "Lesson was NOT added!"
+        delete:
+          success:
+            title: "Deleted!"
+            content: "Lesson was deleted with success!"
+          error:
+            title: "Failed!"
+            content: "Lesson was NOT deleted"
+        update:
+          success:
+            title: "Updated!"
+            content: "Lesson was updated with success!"
+          error:
+            title: "Failed!"
+            content: "Lesson was NOT updated!"

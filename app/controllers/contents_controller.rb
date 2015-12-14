@@ -74,12 +74,8 @@ class ContentsController < ApplicationController
 
 	def contents_for_lesson
 		if @permissions['permission.contents.globally_manipulate'] || @permissions['permission.contents.manipulate']
-			contents = @permissions['permission.contents.globally_manipulate'] ? Content.all.as_json : current_user.contents.as_json
-			if params.has_key?(:lesson_id)
-				contents.each do |content|
-					content.merge!({in_lesson: LessonContent.exists?(lesson_id: params[:lesson_id], content_id: content[:id])})
-				end
-			end
+			user_id = @permissions['permission.contents.globally_manipulate'] ? -1 : current_user.id
+			contents =  Content.contents_for_lesson(params[:course_id], params[:lesson_id], user_id)
 			render json: contents
 		else
 			render json: {error: "Unauthorized access"}, status: 401

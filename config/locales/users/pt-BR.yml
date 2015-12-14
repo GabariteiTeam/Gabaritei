@@ -37,6 +37,10 @@ pt-BR:
         label: "E-mail"
         placeholder: "E-mail (examplo@examplo.com)"
       birthdate: "Data de nascimento"
+      password:
+        current: "Senha atual"
+        new: "Nova senha"
+        confirm: "Confirme a nova senha"
       about: 
         label: "Sobre você"
         placeholder: "Trabalhos acadêmicos e/ou profissionais, habilidades, hobbies…"

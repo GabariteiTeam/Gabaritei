@@ -14,6 +14,8 @@ pt-BR:
       edit_participants: "Editar participantes"
       content: "Ver conteúdo"
       question: "Ver exercício"
+      new_lesson: "Nova aula"
+      edit_lesson: "Editar aula"
     data_import: "Importar dados"
     questions:
       index: "Questões"
