@@ -103,3 +103,7 @@ div.form-group.login-field.has-warning {
 p.confirmation-text {
 	font-size: 18px;
 }
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
