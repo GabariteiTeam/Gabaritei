@@ -106,6 +106,9 @@ p.confirmation-text {
 	font-size: 18px;
 }
 
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+
 #login-actions {
 	text-align: center;
 
