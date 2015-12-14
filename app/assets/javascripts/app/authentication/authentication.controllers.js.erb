@@ -33,6 +33,8 @@
             interceptAuth: false
         };
 
+        vm.logoPath = "<%= asset_path('logo.png') %>"
+
         activate();
 
         function activate() {
@@ -85,9 +87,9 @@
     }
 
 
-    ForgotPasswordController.$inject = ['$scope', '$location', '$routeParams', '$route', '$filter', 'User', 'RedirectService', 'MessageService'];
+    ForgotPasswordController.$inject = ['$filter', 'User', 'RedirectService', 'MessageService'];
 
-    function ForgotPasswordController($scope, $location, $routeParams, $route, $filter, User, RedirectService, MessageService) {
+    function ForgotPasswordController($filter, User, RedirectService, MessageService) {
 
         var vm = this;
 

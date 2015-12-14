@@ -4,8 +4,8 @@
         'permission.questions.globally_manipulate',
         'permission.questions.manipulate',
         'permission.subjects_fields.manipulate',
-        'permission.courses.manipulate',
-        'permission.courses.take_part',
+        'permission.courses.globally_manipulate',
+        'permission.courses.teach',
         'permission.contents.globally_manipulate',
         'permission.contents.manipulate',
         'permission.import_data',
@@ -25,10 +25,18 @@
 </li>
 <% end %>
 
-<% if @permissions['permission.questions.globally_manipulate'] || @permissions['permission.questions.manipulate'] %>
-<li data-toggle="menu-tooltip" data-placement="right" title="{{ 'menu.questions' | translate }}">
-    <a href="#questions"><span translate>menu.questions</span><span class="sub_icon glyphicon glyphicon-question-sign"></span></a>
+<% if @permissions['permission.requests.registration.manage'] || @permissions['permission.requests.course.manage'] %>
+<li data-toggle="menu-tooltip" data-placement="right" title="{{ 'menu.requests' | translate }}">
+    <a href="#requests"><span translate>menu.requests</span><span class="sub_icon glyphicon glyphicon-exclamation-sign"></span></a>
 </li>
+<% end %>
+
+<% if @permissions['permission.import_data'] %>
+<li data-toggle="menu-tooltip" data-placement="right" title="{{ 'menu.data_import' | translate }}">
+    <a href="#data_imports"><span translate>menu.data_import</span><span class="sub_icon glyphicon glyphicon-cloud-upload"></span></a>
+</li>
+
+<hr />
 <% end %>
 
 <% if @permissions['permission.subjects_fields.manipulate'] %>
@@ -37,9 +45,9 @@
 </li>
 <% end %>
 
-<% if @permissions['permission.courses.manipulate'] || @permissions['permission.courses.take_part'] %>
-<li data-toggle="menu-tooltip" data-placement="right" title="{{ 'menu.courses' | translate }}">
-	<a href="#courses"><span translate>menu.courses</span><span class="sub_icon glyphicon glyphicon-education"></span></a>
+<% if @permissions['permission.questions.globally_manipulate'] || @permissions['permission.questions.manipulate'] %>
+<li data-toggle="menu-tooltip" data-placement="right" title="{{ 'menu.questions' | translate }}">
+    <a href="#questions"><span translate>menu.questions</span><span class="sub_icon glyphicon glyphicon-question-sign"></span></a>
 </li>
 <% end %>
 
@@ -49,21 +57,17 @@
 </li>
 <% end %>
 
-<% if @permissions['permission.import_data'] %>
-<li data-toggle="menu-tooltip" data-placement="right" title="{{ 'menu.data_import' | translate }}">
-    <a href="#data_imports"><span translate>menu.data_import</span><span class="sub_icon glyphicon glyphicon-cloud-upload"></span></a>
+<li data-toggle="menu-tooltip" data-placement="right" title="{{ 'menu.courses' | translate }}">
+	<a href="#courses"><span translate>menu.courses</span><span class="sub_icon glyphicon glyphicon-education"></span></a>
 </li>
-<% end %>
 
-<% if @permissions['permission.requests.registration.manage'] || @permissions['permission.requests.course.manage'] %>
-<li data-toggle="menu-tooltip" data-placement="right" title="{{ 'menu.requests' | translate }}">
-    <a href="#requests"><span translate>menu.requests</span><span class="sub_icon glyphicon glyphicon-exclamation-sign"></span></a>
-</li>
-<% end %>
-
+<% if @permissions['permission.courses.globally_manipulate'] || @permissions['permission.courses.teach'] %>
 <li data-toggle="menu-tooltip" data-placement="right" title="{{ 'menu.tests' | translate }}">
   <a href="#tests"><span translate>menu.tests</span><span class="sub_icon glyphicon glyphicon-certificate"></span></a>
 </li>
+<% end %>
+
+<hr />
 
 <li data-toggle="menu-tooltip" data-placement="right" title="{{ 'menu.profile' | translate }}">
   <a href="#users/<%= current_user.id %>"><span translate>menu.profile</span><span class="sub_icon glyphicon glyphicon-user"></span></a>

@@ -6,11 +6,14 @@
         .module(APP_NAME)
         .config(HomeRoutes);
 
+    HomeRoutes.$inject = ['$routeProvider'];
+
     function HomeRoutes($routeProvider) {
         $routeProvider
             .when('/home', {
                 templateUrl: 'templates/home/home.html',
-                controller: 'HomeController'
+                controller: 'HomeController',
+                controllerAs: 'Ctrl'
             })
             .otherwise({
                 redirectTo: '/home'

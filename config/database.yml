@@ -36,6 +36,7 @@ production:
   <<: *default
   database: gabaritei_production
 
+
 # Selenium database settings
 selenium:
   adapter: sqlite3

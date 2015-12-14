@@ -216,13 +216,9 @@
             $timeout(tick, vm.tickInterval); 
         }
         function formatTime() {
-            if(vm.counter < 60) {
-                vm.clock = vm.counter + " seconds";
-            }
-            if(vm.counter > 60) {
-                var time = Math.floor(vm.counter / 60);
-                vm.clock = time + " minute(s)";
-            }
+            var min = Math.floor(vm.counter / 60);
+            var sec = Math.floor(vm.counter % 60);
+            vm.clock = ((min < 10) ? "0" : "") + min + ":" + ((sec < 10) ? "0" : "") + sec;
         }
         //end of directive ;)
 
@@ -333,6 +329,7 @@
         var vm = this;
         Test.getSummary({id: $routeParams.id}, function(data){
             vm.summary  = data.summary;
+            vm.test_name = data.test_name;
         });
     }
 })();

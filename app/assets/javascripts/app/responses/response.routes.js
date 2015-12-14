@@ -5,6 +5,8 @@
 		.module(APP_NAME)
 		.config(ResponseRoutes);
 
+	ResponseRoutes.$inject = ['$routeProvider'];
+
 	function ResponseRoutes($routeProvider) {
 		$routeProvider
 			.when('/responses/:question_id', {

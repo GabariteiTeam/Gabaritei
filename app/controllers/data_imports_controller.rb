@@ -1,12 +1,12 @@
 class DataImportsController < ApplicationController
   
-	# GET /data_import.json
+	before_action :verify_permissions
+
     def index
 		@data_imports = DataImport.includes(:role).all
 		render json: @data_imports, :methods => [:data_url, :status_text, :role, :update_date_text]
 	end
 
-	# File upload
 	def create
 		@data_import = DataImport.new(data_import_params)
 		if @data_import.save
@@ -25,7 +25,6 @@ class DataImportsController < ApplicationController
 	    end 
 	end
 
-	# Data import
 	def import
 		Delayed::Job.enqueue(DataImportJob.new(params[:id]))
 		render json: {success: true}
@@ -40,6 +39,13 @@ class DataImportsController < ApplicationController
 
 	    def data_import_params
 	    	params.permit(:id, :data, :model, :role_id)
-	    end 
+	    end
+
+	    def verify_permissions
+	    	@permissions = current_user.verify_permissions(['permission.import_data'])
+	    	if !@permissions['permission.import_data']
+	    		render json: {error: "Unauthorized access"}, status: 401
+	    	end
+	    end
 
 end

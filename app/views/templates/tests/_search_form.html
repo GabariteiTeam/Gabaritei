@@ -1,28 +1,40 @@
-
 <div class="form-group search-form">
-	<label for="name" class="control-label">
+	<input type="text" ng-model="Ctrl.searchString" class="form-control" id="name" placeholder="{{ 'tests.search_form.placeholder' | translate }}" />
+	<button type="submit" class="btn btn-primary">
 		<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-		&nbsp;<span translate>crud.tests.search_questions.label</span>
-	</label>
-	<input type="text" ng-model="Ctrl.searchString" class="form-control" id="name" placeholder="By subject or description" />
-	<input type="submit" class="btn btn-primary" value="{{'crud.search' | translate}}" />
-	<button type="button" class="btn btn-danger" ng-hide="!Ctrl.questions.length" ng-click="Ctrl.clearSearch()" translate>crud.courses.search.clear</button>
-	<button type="button" class="btn btn-default" ng-hide="!Ctrl.questions.length" ng-click="Ctrl.selectAllQuestions(true)" translate>crud.courses.search.select_all</button>
-	<button type="button" class="btn btn-default" ng-hide="!Ctrl.questions.length" ng-click="Ctrl.selectAllQuestions(false)" translate>crud.courses.search.deselect_all</button>
-	<button type="button" class="btn btn-success" ng-hide="!Ctrl.questions.length" ng-click="Ctrl.addSelected()">
+	</button>
+	<button type="button" class="btn btn-danger" ng-hide="!Ctrl.questions.length" ng-click="Ctrl.clearSearch()">
+		<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+		&nbsp;
+		<span translate>tests.search_form.clear</span>
+	</button>
+	<button type="button" class="btn btn-default" ng-hide="!Ctrl.questions.length" ng-click="Ctrl.selectAllQuestions(true)">
+		<span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+		&nbsp;
+		<span translate>tests.search_form.select_all</span>
+	</button>
+	<button type="button" class="btn btn-default" ng-hide="!Ctrl.questions.length" ng-click="Ctrl.selectAllQuestions(false)">
+		<span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+		&nbsp;
+		<span translate>tests.search_form.deselect_all</span>
+	</button>
+	<button type="button" class="btn btn-primary" ng-hide="!Ctrl.questions.length" ng-click="Ctrl.addSelected()">
 		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-		<span translate>crud.courses.search.add_selected</span>
+		&nbsp;
+		<span translate>tests.search_form.add_selected</span>
 	</button>
 </div>
-
-<div class="col-sm-12" style="overflow-x: hidden; overflow-y: scroll; max-height:450px" ng-hide="!Ctrl.questions.length">
+ 
+<!-- <div class="row"> -->
+<div style="overflow-x: hidden; overflow-y: scroll; max-height:450px" ng-hide="!Ctrl.questions.length">
 	<table id="questions-table" class="table-striped">
 		<tr data-ng-repeat="question in Ctrl.questions" class="question-cell" ng-class="{selected: question.selected}">
 			<td ng-click="Ctrl.selectQuestion(question)">
 				<span>{{ question.text | htmlToPlaintext  }}</span>
 				<br />
-				<span>{{ question.answer | htmlToPlaintext  }}</span>
+				<span><strong>R: </strong>{{ question.answer | htmlToPlaintext  }}</span>
 			</td>
 		<tr>
 	</table>
 </div>
+<!-- </div> -->

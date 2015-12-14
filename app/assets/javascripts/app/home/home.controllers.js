@@ -13,15 +13,24 @@
         .module(APP_NAME)
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$scope', 'Auth', 'RedirectService'];
+    HomeController.$inject = ['HomeDataSource', 'Auth', 'RedirectService', 'PermissionsService'];
 
-    function HomeController($scope, Auth, RedirectService) {
+    function HomeController(HomeDataSource, Auth, RedirectService, PermissionsService) {
 
-        Auth.currentUser().then(function(user) {
-            
-        }, function(error) {
-            RedirectService.redirect("/users/login");
-        });
+        var vm = this;
+
+        activate();
+
+        function activate() {
+            HomeDataSource.getHomeInfo().then(function(data) {
+                vm.courses = data.courses;
+                PermissionsService.verifyPermissions(['permission.courses.globally_manipulate', 'permission.courses.manipulate', 'permission.courses.teach'], function(permissions) {
+                    vm.permissions = permissions;
+                });
+            }, function(error) {
+
+            });
+        }
        
     }
     

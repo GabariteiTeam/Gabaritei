@@ -47,7 +47,7 @@ class Recommendation < ActiveRecord::Base
 	# @!endgroup
 
 	def self.get_course_students(source_user_id, course_id, query)
-    	return User.where("(first_name LIKE :query OR last_name LIKE :query OR email LIKE :query) AND EXISTS (SELECT * FROM user_courses WHERE user_courses.user_id = users.id AND user_courses.course_id = :course_id AND users.id != :source_user_id)", {query: "%#{query}%", source_user_id: source_user_id, course_id: course_id.to_i})
+    	User.where("(id != :source_user_id AND (first_name LIKE :query OR last_name LIKE :query OR email LIKE :query)) AND EXISTS (SELECT 1 FROM role_permissions, permissions WHERE role_permissions.role_id = users.role_id AND role_permissions.permission_id = permissions.id AND permissions.name = :permission_name) AND EXISTS (SELECT 1 FROM user_courses WHERE user_courses.user_id = users.id AND user_courses.course_id = :course_id)", {query: "%#{query}%", source_user_id: source_user_id, course_id: course_id.to_i, permission_name: 'permission.courses.take_part'})
     end
 
 end

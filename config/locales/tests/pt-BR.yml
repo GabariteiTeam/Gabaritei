@@ -1,0 +1,100 @@
+pt-BR:
+  tests: 
+    index:
+      heading: "Exames"
+      sub_heading: "Crie um novo exame para a sua Sala Virtual"
+      table:
+        header:
+          name: "Nome"
+          description: "Descrição"
+          course: "Curso"
+    create: 
+      heading: "Novo exame"
+    update:
+      heading: "Editar exame"
+    questions:
+      heading: "Editar questões de"
+    show:
+      text: "Texto"
+      answer: "Resposta"
+      questions: "Questões"
+      number_questions: "Número de questões"
+    actions:
+      add: "Adicionar novo exame"
+      edit: "Editar"
+      delete: "Remover"
+      remove: "Remover"
+      view: "Ver"
+      save: "Salvar exame" 
+      view_response: "Ver resposta"
+      edit_questions: "Editar questões"
+      start_exam: "Realizar exame!"
+    form:
+      name:
+        label: "Nome"
+        placeholder: "Nome do exame"
+      description: 
+        label: "Descrição"
+        placeholder: "Descrição do exame"
+      course: 
+        label: "Curso"
+        placeholder: "Curso do exame"
+    modal:
+      delete:
+        title: "Aviso!"
+        body: "Tem certeza que deseja remover esse exame?"
+    alerts:
+      create:
+        success:
+          title: "Criado!"
+          content: "Exame foi criado com sucesso!"
+        error:
+          title: "Erro!"
+          content: "Exame NÃO foi criado!"
+      delete:
+        success:
+          title: "Removido!"
+          content: "Exame foi removido com sucesso!"
+        error:
+          title: "Erro!"
+          content: "Exame NÃO foi removido!"
+      update:
+        success:
+          title: "Atualizado!"
+          content: "Exame foi atualizado com sucesso!"
+        error:
+          title: "Erro!"
+          content: "Exame NÃO foi atualizado!"
+      questions:
+        added:
+          error:
+            duplicate:
+              title: "Erro!"
+              content: "Questão já foi adicionada!"
+      submitted:
+        success:
+          title: "Enviado!"
+          content: "Exame foi enviado com sucesso!"
+        error:
+          title: "Erro!"
+          content: "Exame NÃO foi enviado!"
+    test:
+      current: "Questão atual: "
+      buttons:
+        next: "Próxima"
+        previous: "Anterior"
+        summary: "Ver resumo"
+        submit: "Enviar"
+      summary:
+        question: "Q#"
+        key: "Resposta"
+    responses:
+      heading: "Minha resposta do exame"
+      sub_header: ""
+    search_form:
+      search: "Buscar"
+      placeholder: "Por matéria ou descrição"
+      clear: "Limpar busca"
+      select_all: "Selecionar todas"
+      deselect_all: "Deselecionar todas"
+      add_selected: "Adicionar selecionadas"

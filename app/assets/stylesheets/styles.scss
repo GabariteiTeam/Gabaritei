@@ -11,7 +11,7 @@
     }
 
     #page-content-wrapper {
-        padding-bottom: 20px;
+        padding: 20px 0;
     }
 }
 
@@ -214,7 +214,7 @@ div.page-header {
     margin-top: 10px;
 
     tr.question-cell {
-        border-bottom: 1px solid #EEE;
+        border: 1px solid #EEE;
 
         td {
             padding: 5px 10px;
@@ -230,26 +230,12 @@ div.page-header {
         }
 
         &.selected {
-            background: rgba(153,153,153,0.2);
+            background: #DEF; /*rgba(153,153,153,0.2); */
+            border: 2px solid #024;
             font-weight: bold;
-            /*border-width: 2px;*/
         }
     }
 }
-
-.right {
-    float: right;
-}
-
-.left {
-    float: left;
-}
-
-/*.checkbox {
-    label {
-
-    }
-}*/
 
 .crud-add-btn {
     margin-bottom: 20px;
@@ -318,4 +304,9 @@ span.permission-title {
             margin-top: 0;
         }
     }
+}
+
+hr {
+    margin: 0;
+    border-color: rgba(255,255,255,0.2);
 }

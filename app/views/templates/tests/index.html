@@ -1,6 +1,12 @@
+<ol class="breadcrumb">
+  <li><a href="/#home" translate>breadcrumbs.home</a></li>
+  <li class="active" translate>breadcrumbs.tests.index</li>
+</ol>
+
 <div class="page-header">
   <h1>
     <span class="glyphicon glyphicon-certificate"></span>
+    &nbsp;
     <span class="page-title" translate>tests.index.heading</span>
   </h1>
   <p class="lead" translate>tests.index.sub_heading</p>
@@ -41,16 +47,15 @@
               <span class="hidden-xs hidden-sm" translate>tests.actions.view</span>
             </a>
             <a href="#tests/{{test.id}}/response" class="btn btn-xs btn-default">
-              <span class="glyphicon glyphicon-eye-open"></span>
+              <span class="glyphicon glyphicon-check"></span>
               <span class="hidden-xs hidden-sm">&nbsp;</span>
-              <span class="hidden-xs hidden-sm" translate>tests.actions.view_responses</span>
+              <span class="hidden-xs hidden-sm" translate>tests.actions.view_response</span>
             </a>
             <a href="#tests/questions/{{test.id}}" class="btn btn-xs btn-info">
               <span class="glyphicon glyphicon-question-sign"></span>
               <span class="hidden-xs hidden-sm">&nbsp;</span>
               <span class="hidden-xs hidden-sm" translate>tests.actions.edit_questions</span>
             </a>
-            
             <a href="#tests/update/{{test.id}}" class="btn btn-xs btn-info">
               <span class="glyphicon glyphicon-pencil"></span>
               <span class="hidden-xs hidden-sm">&nbsp;</span>

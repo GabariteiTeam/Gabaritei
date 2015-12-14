@@ -25,6 +25,7 @@ pt-BR:
       index: "Requerimentos"
       assess_registration_request: "Avaliar requerimento de acesso"
       assess_course_registration_request: "Avaliar requerimento de inscrição em curso"
+      request_course_registration: "Requerir inscrição"
     responses:
       index: "Respostas"
       new: "Nova resposta"
@@ -50,3 +51,11 @@ pt-BR:
       profile: "Perfil"
       profile_update: "Atualizar perfil"
       settings: "Configurações"
+    tests:
+      index: "Exames"
+      new: "Novo exame"
+      show: "Ver exame"
+      update: "Editar exame"
+      edit_questions: "Editar questões"
+      view_response: "Ver resposta"
+      start_exam: "Realizar exame!"

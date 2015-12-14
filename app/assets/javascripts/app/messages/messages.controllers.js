@@ -6,13 +6,7 @@
         .module(APP_NAME)
         .controller('MessagesController', MessagesController);
 
-    MessagesController
-        .$inject = [
-                    '$interval',
-                    '$alert',
-                    'Message',
-                    'MessageService'
-                   ];
+    MessagesController.$inject = ['$interval', '$alert', 'Message', 'MessageService'];
 
     function MessagesController($interval, $alert, Message, MessageService) {
         var vm              = this;

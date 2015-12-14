@@ -12,13 +12,21 @@ en:
       heading: "New exam"
     update:
       heading: "Update exam"
+    questions:
+      heading: "Edit questions of"
+    show:
+      text: "Text"
+      answer: "Answer"
+      questions: "Questions"
+      number_questions: "Number of questions"
     actions:
       add: "Add new exam"
       edit: "Edit"
       delete: "Delete"
+      remove: "Remove"
       view: "View"
       save: "Save exam" 
-      view_responses: "View responses"
+      view_response: "View response"
       edit_questions: "Edit questions"
       start_exam: "Start exam!"
     form:
@@ -75,11 +83,18 @@ en:
       buttons:
         next: "Next"
         previous: "Previous"
-        summary: "View exam summary"
+        summary: "View summary"
         submit: "Submit"
       summary:
         question: "Q#"
         key: "Response"
     responses:
-      heading: "My Exam Response"
+      heading: "My exam response"
       sub_header: ""
+    search_form:
+      search: "Search"
+      placeholder: "By subject or description"
+      clear: "Clear search"
+      select_all: "Select all"
+      deselect_all: "Deselect all"
+      add_selected: "Add selected"

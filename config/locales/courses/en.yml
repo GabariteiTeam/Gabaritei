@@ -26,6 +26,7 @@ en:
       edit: "Edit"
       delete: "Delete"
       view: "View"
+      request_registration: "Request registration"
       edit_participants: "Edit participants"
       view_participant: "View"
       remove_participant: "Remove"
@@ -40,6 +41,14 @@ en:
         placeholder: "Course description"
       subject: "Subject"
       field: "Field"
+      avatar: "Avatar"
+      drop_avatar: "Drop image file here"
+      select_avatar: "Or select image file"
+      clear: "Clear"
+    modal:
+      delete:
+        title: "Warning!"
+        body: "Are you sure you want to delete this course?"
     search_form:
       search: "Search"
       placeholder: "Name or e-mail"

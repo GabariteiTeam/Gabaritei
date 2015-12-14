@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
 	get 	"/questions", 		to: "questions#index"
 	get 	"/questions/:id/show", 	to: "questions#show"
-	put 	"/questions", 		to: "questions#customUpdate"
+	put 	"/questions", 		to: "questions#update"
 	post 	"/questions/", 		to: "questions#create"
 	delete 	"/questions/:id", 	to: "questions#destroy"
 	get 	"/questions/questions_for_lesson",  to: "questions#questions_for_lesson"
@@ -87,6 +87,7 @@ Rails.application.routes.draw do
 
 	resources :roles do
 		get "validate/destroy", to: "roles#validate_destroy", on: :member
+		get :roles_for_courses, on: :collection
 	end
 	resources :permissions, only: :index
 
@@ -143,12 +144,6 @@ Rails.application.routes.draw do
 	end
 
 	# END REQUESTS ROUTES
-
-	# RATINGS ROUTES
-
-	resources :ratings
-
-	# END RATINGS ROUTES
 
 	# TEMPLATES ROUTES
 

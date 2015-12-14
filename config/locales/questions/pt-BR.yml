@@ -5,7 +5,7 @@ pt-BR:
       sub_heading: "Crie uma nova questão para os seus alunos!"
       table:
         headers:
-          owner: "Owner"
+          owner: "Responsável"
           source: "Fonte"
           text: "Texto"
           date: "Data"

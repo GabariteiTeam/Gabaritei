@@ -38,4 +38,8 @@ class Role < ActiveRecord::Base
 
 	has_many :role_permissions
 
+	def self.course_roles
+		Role.where("EXISTS (SELECT 1 FROM role_permissions, permissions WHERE role_permissions.role_id = roles.id AND role_permissions.permission_id = permissions.id AND permissions.name IN (:permissions))", {permissions: ['permission.courses.take_part', 'permission.courses.teach', 'permission.courses.manipulate']})
+	end
+
 end

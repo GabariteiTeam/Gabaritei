@@ -2,6 +2,7 @@
 
 <ol class="breadcrumb">
   <li><a href="#">Home</a></li>
+  <li><a href="#courses" translate>breadcrumbs.courses.index</a></li>
   <li class="active">{{ Ctrl.course.name }}</li>
 </ol>
 
@@ -12,9 +13,9 @@
 
 <div class="well">
   <div class="col-md-3">
-    <img style="width:100%; max-width: 200px; margin-botton: 10px;" src="assets/missing_course_avatar.png" />
+    <img style="width:100%; max-width: 200px; margin-botton: 10px;" ng-src="{{ Ctrl.course.avatar_url_medium }}" />
   </div>
-  <br />
+  <br class="hidden-md hidden-lg" />
   <div class="col-md-9">
     <dl class="course-header">
       <dt translate>courses.show.category</dt>
@@ -25,22 +26,22 @@
         {{ teacher.first_name + " " + teacher.last_name }}
       </dd>
     </dl>
-    <a href="#courses/{{ Ctrl.course.id }}/new_lesson" class="btn btn-warning">
+    <a ng-show="Ctrl.permissions['permission.courses.globally_manipulate'] || Ctrl.permissions['permission.courses.teach']" href="#courses/{{ Ctrl.course.id }}/new_lesson" class="btn btn-warning">
       <span class="glyphicon glyphicon-folder-open"></span>
       <span class="hidden-xs hidden-sm">&nbsp;</span>
       <span class="hidden-xs hidden-sm" translate>courses.actions.new_lesson</span>
     </a>
-    <a href="#courses/participants/{{Ctrl.course.id}}" class="btn btn-default">
+    <a ng-show="Ctrl.permissions['permission.courses.globally_manipulate'] || Ctrl.permissions['permission.courses.manipulate']" href="#courses/participants/{{Ctrl.course.id}}" class="btn btn-default">
       <span class="glyphicon glyphicon-user"></span>
       <span class="hidden-xs hidden-sm">&nbsp;</span>
       <span class="hidden-xs hidden-sm" translate>courses.actions.edit_participants</span>
     </a>
-    <a href="#courses/update/{{Ctrl.course.id}}" class="btn btn-info">
+    <a ng-show="Ctrl.permissions['permission.courses.globally_manipulate'] || Ctrl.permissions['permission.courses.manipulate']" href="#courses/update/{{Ctrl.course.id}}" class="btn btn-info">
       <span class="glyphicon glyphicon-pencil"></span>
       <span class="hidden-xs hidden-sm">&nbsp;</span>
       <span class="hidden-xs hidden-sm" translate>courses.actions.edit</span>
     </a>
-    <gab-show-modal-button text="courses.actions.delete" args="Ctrl.course.id" modalid="confirmDeleteCourse" class="btn btn-danger" icon="glyphicon glyphicon-trash"></gab-show-modal-button>
+    <gab-show-modal-button ng-show="Ctrl.permissions['permission.courses.globally_manipulate']" text="courses.actions.delete" args="Ctrl.course.id" modalid="confirmDeleteCourse" class="btn btn-danger" icon="glyphicon glyphicon-trash"></gab-show-modal-button>
   </div>
   <div class="clearfix"></div>
 </div>

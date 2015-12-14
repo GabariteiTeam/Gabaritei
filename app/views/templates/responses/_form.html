@@ -1,15 +1,17 @@
 <div class="form-group">
     <label for="title" class="col-sm-2 control-label" translate>responses.form.question.label</label>
     <div class="col-sm-10">
-    <div text-angular="text-angular" name="rich-question" ng-model="Ctrl.question.text" ta-disabled='true' ta-toolbar="[]"></div>
+        <div text-angular="text-angular" name="rich-question" ng-model="Ctrl.question.text" ta-disabled='true' ta-toolbar="[]"></div>
     </div>
+    <div class="clearfix"></div>
 </div>
 <div ng-show="Ctrl.question.style == 'written'">
     <div class="form-group">
         <label for="title" class="col-sm-2 control-label" translate>responses.form.response.label</label>
         <div class="col-sm-10">
-            <div text-angular="text-angular" name="rich-response" ng-model="Ctrl.response.text" ta-disabled='disabled'></div>
+            <div text-angular="text-angular" name="rich-response" ng-model="Ctrl.response.text" ta-toolbar="[['h1','h2','h3','pre','quote'],['bold','italics','underline','ul','ol'],['undo','redo','clear'],['justifyLeft','justifyCenter','justifyRight','justifyFull','indent','outdent'],['insertImage','insertLink','insertVideo']]" ta-disabled='disabled'></div>
         </div>
+        <div class="clearfix"></div>
     </div>
 </div>
 <div ng-show="Ctrl.question.style == 'choice'">
@@ -19,11 +21,15 @@
             <span>{{choice.text}}</span>
         </div>
         <div class="col-sm-2">
-            <input toggle-switch type="checkbox" size="small" on-label="{{ 'responses.form.alternative.option_yes' | translate }}" off-label="{{ 'responses.form.alternative.option_no' | translate }}" ng-model="Ctrl.keys[$index]"/>
+            <div class="pull-right">
+                <input toggle-switch type="checkbox" size="small" on="{{ 'responses.form.alternative.option_yes' | translate }}"
+                off="{{ 'responses.form.alternative.option_no' | translate }}" ng-model="Ctrl.keys[$index]"/>
+            </div>
         </div>
+        <div class="clearfix"></div>
     </div>
 </div>
-<div class="form-group" ng-show="Ctrl.course_id">
+<div ng-show="Ctrl.permissions['permission.courses.take_part']" class="form-group" ng-show="Ctrl.course_id">
     <div class="col-sm-offset-2 col-sm-10">
         <label for="rating" translate>questions.form.rating.label</label>
         <star-rating ng-model="Ctrl.rating" max="5" on-rating-select="Ctrl.setRating(rating)"></star-rating>
@@ -37,7 +43,7 @@
             &nbsp;
             <span translate>responses.actions.save</span>
         </button>
-        <a ng-show="Ctrl.course_id" href="/#courses/{{ Ctrl.course_id }}/question/{{ Ctrl.question.id }}/recommend" class="btn btn-info">
+        <a ng-show="Ctrl.course_id && (Ctrl.permissions['permission.courses.take_part'] || Ctrl.permissions['permission.courses.teach'])" href="/#courses/{{ Ctrl.course_id }}/question/{{ Ctrl.question.id }}/recommend" class="btn btn-info">
             <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
             &nbsp;
             <span translate>questions.actions.recommend</span>

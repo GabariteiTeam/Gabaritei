@@ -25,6 +25,7 @@ en:
       index: "Requests"
       assess_registration_request: "Assess registration request"
       assess_course_registration_request: "Assess course registration request"
+      request_course_registration: "Request registration"
     responses:
       index: "Responses"
       new: "New response"
@@ -50,3 +51,11 @@ en:
       profile: "Profile"
       profile_update: "Update profile"
       settings: "Settings"
+    tests:
+      index: "Exams"
+      new: "New exam"
+      show: "View exam"
+      update: "Update exam"
+      edit_questions: "Edit questions"
+      view_response: "View response"
+      start_exam: "Start exam!"

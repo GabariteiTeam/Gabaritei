@@ -1,40 +1,33 @@
+<ol class="breadcrumb">
+  	<li><a href="/#home" translate>breadcrumbs.home</a></li>
+  	<li><a href="/#tests" translate>breadcrumbs.tests.index</a></li>
+  	<li><a href="/#tests/{{Ctrl.course.id}}">{{ Ctrl.test.name }}</a></li>
+  	<li class="active" translate>breadcrumbs.tests.edit_questions</li>
+</ol>
+
 <div class="page-header">
-	<h1 translate>tests.index.edit_questions</h1>
+	<h1>
+		<span translate>tests.questions.heading</span>
+		<span>{{ Ctrl.test.name }}</span>
+	</h1>
 </div>
 
 <div class="panel panel-primary">
-	<div class="panel-heading">
-		<h2 class="panel-title">{{ Ctrl.test.name }}</h2>
-	</div>
-	<div class="panel-body">
-		<p>{{ Ctrl.test.description }}</p>
-		<p>Number of questions: {{ Ctrl.test.questions.length }}</p>
-	</div>
-</div>
-
-<div class="panel panel-default">
-
-	<div class="panel-body">
-		<form class="form-inline" test="form" ng-submit="Ctrl.searchQuestions()">
+	<div class="panel-heading" translate>tests.show.questions</div>
+	<div class="panel-body" id="search-form-container">
+		<form class="form-inline" role="form" ng-submit="Ctrl.searchQuestions()">
 			<div ng-include="'templates/tests/_search_form.html'"></div>
 		</form>
 	</div>
+
 	<table class="table table-striped">
-		<thead>
-			<tr>
-				<td>ID</td>
-				<td>Text</td>
-				<td>Answer</td>
-				<td>Options</td>
-			</tr>
-		</thead>
 		<tbody>
 			<tr data-ng-repeat="question in Ctrl.test.questions">
-				<td>{{ question.id }}</td>
-				<td>{{ question.text | htmlToPlaintext }}</td>
-				<td>{{ question.answer | htmlToPlaintext  }}</td>
 				<td>
-
+					<p>{{ question.text | htmlToPlaintext }}</p>
+					<p><strong>R: </strong>{{ question.answer | htmlToPlaintext  }}</p>
+				</td>
+				<td>
 					<a href="#/questions/update/{{question.id}}" class="btn btn-sm btn-info" translate>tests.actions.view</a>
 					<button ng-click="Ctrl.removeQuestion(question.id)" class="btn btn-sm btn-danger" translate>tests.actions.remove</button>
 				</td>

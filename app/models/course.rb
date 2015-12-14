@@ -8,13 +8,17 @@
 #
 # Table name: courses
 #
-#  id            :integer          not null, primary key
-#  category_id   :integer
-#  category_type :string(255)
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
-#  name          :string(255)
-#  description   :text
+#  id                  :integer          not null, primary key
+#  category_id         :integer
+#  category_type       :string(255)
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  name                :string(255)
+#  description         :text
+#  avatar_file_name    :string(255)
+#  avatar_content_type :string(255)
+#  avatar_file_size    :integer
+#  avatar_updated_at   :datetime
 #
 # Indexes
 #
@@ -22,6 +26,8 @@
 #
 
 class Course < ActiveRecord::Base
+
+    attr_accessor :current_user
 
 	# @!attribute name
 	# 	Name of the course.
@@ -73,12 +79,19 @@ class Course < ActiveRecord::Base
     # @see User#courses
     has_many :users, through: :user_courses
 
-    has_many :lessons
+    has_many :lessons, -> { order 'updated_at DESC' }
 
     # @!endgroup
 
+    has_attached_file :avatar, styles: { medium: "200x200>", thumb: "75x75>" }, default_url: "/images/missing_course_avatar/:style.png"
+    validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+
     has_many :user_courses
 
+    def has_user(user = nil)
+        user ||= current_user
+        return users.include?(user)
+    end
 
     def subject
         if category != nil
@@ -92,15 +105,47 @@ class Course < ActiveRecord::Base
         end
     end
 
+    def category_description
+        if category != nil
+            category.is_a?(Field) ? category.name + " (" + category.subject.name + ")" : category.name
+        end
+    end
+
+    def available_questions
+        #Question.where("EXISTS (SELECT 1 FROM question_categories WHERE question_categories.question_id = questions.id AND question_categories.category_id = :category_id AND question_categories.category_type = :category_type)", {category_id: category_id, category_type: category_type})
+        if category.is_a?(Field)
+            return category.subject.questions
+        else
+            return category.questions
+        end
+    end
+
     def teachers
         # TODO: use permissions instead of roles
         return User.where("role_id = :role_id AND EXISTS (SELECT * FROM user_courses WHERE user_courses.user_id = users.id AND user_courses.course_id = :course_id)", {role_id: Role.third.id, course_id: id})
+    end
+
+    def user_recommendations(user = nil)
+        user ||= current_user
+        Recommendation.where(course_id: id, user_destination_id: user.id).as_json(include: {resource: {methods: [:description]}} , methods: [:user_source])
     end
 
     def users_info
         users.joins(:role).select("id", "first_name", "last_name", "email", "avatar_file_name", "roles.name AS role_name").each do |u|
             u.avatar_file_name = u.avatar_url_thumb
         end
+    end
+
+    def has_avatar
+        avatar_file_name ? true : false
+    end
+
+    def avatar_url_thumb
+        avatar.url(:thumb)
+    end
+
+    def avatar_url_medium
+        avatar.url(:medium)
     end
 
     def verify_resource(resource)

@@ -12,7 +12,7 @@
   <p class="lead" translate>courses.index.sub_heading</p>
 </div>
 
-<a href="#courses/new" class="btn btn-primary crud-add-btn">
+<a ng-show="Ctrl.permissions['permission.courses.globally_manipulate']" href="#courses/new" class="btn btn-primary crud-add-btn">
   <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
   <span translate>courses.actions.add</span>
 </a>
@@ -24,7 +24,7 @@
     <tbody>
         <tr data-ng-repeat="course in Ctrl.courses">
           <td class="avatar-cell">
-            <img  src="assets/missing_course_avatar.png" />
+            <img ng-src="{{ course.avatar_url_thumb }}" />
           </td>
           <td class="course-cell" style="display: block">
             <h4 class="course-cell-title">{{ course.name }}</h4>
@@ -36,22 +36,27 @@
             <span ng-show="course.field">{{ course.field }}</span>
           </td>
           <td class="options-cell options-column-3">
-            <a href="#courses/{{course.id}}" class="btn btn-xs btn-info">
+            <a ng-show="Ctrl.permissions['permission.courses.globally_manipulate'] || course.has_user" href="#courses/{{course.id}}" class="btn btn-xs btn-default">
               <span class="glyphicon glyphicon-eye-open"></span>
               <span class="hidden-xs hidden-sm">&nbsp;</span>
               <span class="hidden-xs hidden-sm" translate>courses.actions.view</span>
             </a>
-            <a href="#courses/participants/{{course.id}}" class="btn btn-xs btn-default">
+            <a ng-show="Ctrl.permissions['permission.courses.globally_manipulate'] || (Ctrl.permissions['permission.courses.manipulate'] && course.has_user)" href="#courses/participants/{{course.id}}" class="btn btn-xs btn-info">
               <span class="glyphicon glyphicon-user"></span>
               <span class="hidden-xs hidden-sm">&nbsp;</span>
               <span class="hidden-xs hidden-sm" translate>courses.actions.edit_participants</span>
             </a>
-            <a href="#courses/update/{{course.id}}" class="btn btn-xs btn-info">
+            <a ng-show="Ctrl.permissions['permission.courses.take_part'] && !course.has_user" href="#requests/course/new/{{course.id}}" class="btn btn-xs btn-default">
+              <span class="glyphicon glyphicon-exclamation-sign"></span>
+              <span class="hidden-xs hidden-sm">&nbsp;</span>
+              <span class="hidden-xs hidden-sm" translate>courses.actions.request_registration</span>
+            </a>
+            <a ng-show="Ctrl.permissions['permission.courses.globally_manipulate'] || (Ctrl.permissions['permission.courses.manipulate'] && course.has_user)" href="#courses/update/{{course.id}}" class="btn btn-xs btn-info">
               <span class="glyphicon glyphicon-pencil"></span>
               <span class="hidden-xs hidden-sm">&nbsp;</span>
               <span class="hidden-xs hidden-sm" translate>courses.actions.edit</span>
             </a>
-            <gab-show-modal-button text="courses.actions.delete" args="course.id" modalid="confirmDeleteCourse" class="btn btn-xs btn-danger" icon="glyphicon glyphicon-trash"></gab-show-modal-button>
+            <gab-show-modal-button ng-show="Ctrl.permissions['permission.courses.globally_manipulate']" text="courses.actions.delete" args="course.id" modalid="confirmDeleteCourse" class="btn btn-xs btn-danger" icon="glyphicon glyphicon-trash"></gab-show-modal-button>
           </td>
         </tr>
     </tbody>

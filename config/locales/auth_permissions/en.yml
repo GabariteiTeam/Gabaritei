@@ -26,12 +26,18 @@ en:
         title: "Manipulate contents"
         help: "User can create new contents, and edit or delete the contents belonging to them."
     courses:
-      manipulate: 
+      globally_manipulate: 
+        title: "Manipulate courses (globally)"
+        help: "User can create, edit and delete any courses. User can also edit the participants of any courses."
+      manipulate:
         title: "Manipulate courses"
-        help: "User can create, edit and delete courses. User can also edit the participants of the courses."
+        help: "Users can edit participants and information of the courses they take part in."
+      teach:
+        title: "Teach in courses"
+        help: "User can manipulate lessons and news and evaluate exams in the courses they take part in."
       take_part:
         title: "Take part in courses"
-        help: "User can take part in courses, having access to all of their contents."
+        help: "User can take part in courses, being able to see all of their contents, questions and exams."
     users:
       manipulate:
         title: "Manipulate users"
