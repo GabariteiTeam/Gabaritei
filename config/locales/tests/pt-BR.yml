@@ -18,6 +18,7 @@ pt-BR:
       text: "Texto"
       answer: "Resposta"
       questions: "Questões"
+      added_questions: "Questões adicionadas"
       number_questions: "Número de questões"
     actions:
       add: "Adicionar novo exame"
