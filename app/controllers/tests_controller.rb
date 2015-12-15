@@ -53,7 +53,7 @@ class TestsController < ApplicationController
 			@filtered_questions = Array.new
 			questions.each do |question|
 				if !question.nil?
-					if question.text.include?(search_string)
+					if question.text.downcase.include?(search_string.downcase)
 							@filtered_questions.push question
 					end
 				end
