@@ -33,9 +33,9 @@
 		}
 	}
 
-	CreateResponsesController.$inject = ['$routeParams', '$filter', 'RedirectService', 'MessageService', 'Response', 'Question', 'lodash', 'PermissionsService'];
+	CreateResponsesController.$inject = ['$routeParams', '$filter', 'RedirectService', 'MessageService', 'Response', 'Question', 'Course', 'lodash', 'PermissionsService'];
 
-	function CreateResponsesController($routeParams, $filter, RedirectService, MessageService, Response, Question, lodash, PermissionsService) {
+	function CreateResponsesController($routeParams, $filter, RedirectService, MessageService, Response, Question, Course, lodash, PermissionsService) {
 		var vm		   		= this;
 		vm.question_id 		= $routeParams.question_id;
 		vm.course_id        = $routeParams.course_id;
@@ -50,6 +50,8 @@
 		vm.setRating 			= setRating;
 		vm.response.text		= "";
 
+		retrieveCourse();
+
 		PermissionsService.verifyPermissions(['permission.courses.teach', 'permission.courses.take_part'], function(permissions) {
 			vm.permissions = permissions;
 		});
@@ -60,16 +62,23 @@
 		function createResponse() {
 			vm.response.$save({"choices[]": vm.keys, question_id: vm.question_id, rating: vm.rating}, function(success){
 				MessageService.sendMessage('response.created.success');
-               	RedirectService.redirect("/responses/" + vm.question_id);
+               	if ($routeParams.course_id) {
+               		RedirectService.redirect("/courses/" + $routeParams.course_id);
+               	} else {
+               		RedirectService.redirect("/responses/" + vm.question_id);
+               	}
 			}, function(error){
 				MessageService.sendMessage('role.response.error');
-               	RedirectService.redirect("/responses/" + vm.question_id);
 			});
 		}
 
 		function setRating(rating) {
 			vm.rating_description = $filter('translate')('questions.form.rating.level_' + rating);
 		}
+
+		function retrieveCourse() {
+            if ($routeParams.course_id) vm.course = Course.get({id: $routeParams.course_id});
+        }
 	}
 
 	UpdateResponsesController.$inject = ['$routeParams', 'RedirectService', 'MessageService', 'Response', 'Question', 'lodash'];

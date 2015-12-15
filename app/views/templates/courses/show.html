@@ -75,7 +75,8 @@
             <div class="ico" ng-class="{'round': item.type == 'content'}"></div>
             <span ng-show="item.type == 'content'" class="glyphicon glyphicon-duplicate"></span>
             <span ng-show="item.type == 'content'" class="title">{{ item.title }}</span>
-            <span ng-show="item.type == 'question'" class="glyphicon glyphicon-question-sign"></span>
+            <span ng-show="item.type == 'question' && !item.done" class="glyphicon glyphicon-question-sign"></span>
+            <span ng-show="item.done" class="glyphicon glyphicon-ok"></span>
             <span ng-show="item.type == 'question'" class="title">{{ ('courses.show.exercise' | translate) + item.title }}</span>
             <span class="added-date">{{ ('courses.show.updated_at' | translate) + item.updated_at_string }}</span>
             <span>{{ item.description }}</span>

@@ -1,8 +1,9 @@
 <ol class="breadcrumb">
   <li><a href="/#home" translate>breadcrumbs.home</a></li>
-  <li ng-show="Ctrl.course_id"><a href="/#courses/{{ Ctrl.course_id }}" translate>breadcrumbs.courses.show</a></li>
-  <li ng-hide="Ctrl.course_id"><a href="/#questions" translate>breadcrumbs.questions.index</a></li>
-  <li ng-hide="Ctrl.course_id"><a href="/#responses/{{ Ctrl.question_id }}" translate>breadcrumbs.responses.index</a></li>
+  <li ng-show="Ctrl.course"><a href="/#courses" translate>breadcrumbs.courses.index</a></li>
+  <li ng-show="Ctrl.course"><a href="/#courses/{{ Ctrl.course_id }}" translate>{{ Ctrl.course.name }}</a></li>
+  <li ng-hide="Ctrl.course"><a href="/#questions" translate>breadcrumbs.questions.index</a></li>
+  <li ng-hide="Ctrl.course"><a href="/#responses/{{ Ctrl.question_id }}" translate>breadcrumbs.responses.index</a></li>
   <li class="active" translate>breadcrumbs.responses.new</li>
 </ol>
 

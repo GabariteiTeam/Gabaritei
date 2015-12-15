@@ -56,9 +56,9 @@
 
     };
 
-    EditUserController.$inject = ['$routeParams', 'Auth', 'User', 'Role', 'MessageService', 'RedirectService'];
+    EditUserController.$inject = ['$routeParams', 'Auth', 'User', 'Role', 'MessageService', 'RedirectService', 'PermissionsService'];
 
-    function EditUserController($routeParams, Auth, User, Role, MessageService, RedirectService) {
+    function EditUserController($routeParams, Auth, User, Role, MessageService, RedirectService, PermissionsService) {
 
         var vm = this;
 
@@ -78,6 +78,9 @@
                         vm.user_self = (user.id == current_user.id);
                     }, function(error) {
                         vm.user_self = false;
+                    });
+                    PermissionsService.verifyPermissions(['permission.users.manipulate'], function(permissions) {
+                        vm.permissions = permissions;
                     });
                 });
             } else {

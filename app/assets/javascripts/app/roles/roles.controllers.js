@@ -36,6 +36,7 @@
                 vm.role = Role.get({
                     id: $routeParams.id
                 }, function() {
+
                     Permission.query(function(data) {
                         for (var i = 0; i < data.length; i++) {
                             var p = data[i];
@@ -120,6 +121,8 @@
                 btn.popover('show');
             }
         }
+
+
 
     };
 

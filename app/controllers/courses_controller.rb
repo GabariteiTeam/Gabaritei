@@ -102,6 +102,7 @@ class CoursesController < ApplicationController
 	def show_everything
 		course = Course.find(params[:id])
 		if @permissions['permission.courses.globally_manipulate'] || course.has_user(current_user) && (@permissions['permission.courses.manipulate'] || @permissions['permission.courses.teach'] || @permissions['permission.courses.take_part'])
+			Lesson.current_user = current_user
 			render json: course, include: {lessons: {methods: [:timeline]}}, methods: [:subject, :field, :course_news, :teachers, :avatar_url_medium]
 		else
 			render json: {error: "Unauthorized access"}, status: 401

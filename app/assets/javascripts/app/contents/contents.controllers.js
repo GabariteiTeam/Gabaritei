@@ -6,9 +6,9 @@
         .module(APP_NAME)
         .controller('ContentsController', ContentsController);
 
- 	ContentsController.$inject = ['$routeParams', '$sce', 'Content', 'Subject', 'MessageService', 'RedirectService', 'ModalService', 'PermissionsService'];
+ 	ContentsController.$inject = ['$routeParams', '$sce', 'Content', 'Subject', 'Course', 'MessageService', 'RedirectService', 'ModalService', 'PermissionsService'];
 
-    function ContentsController($routeParams, $sce, Content, Subject, MessageService, RedirectService, ModalService, PermissionsService) {
+    function ContentsController($routeParams, $sce, Content, Subject, Course, MessageService, RedirectService, ModalService, PermissionsService) {
 
     	var vm = this;
 
@@ -44,6 +44,7 @@
                             vm.content.field_id = vm.content.category.id;
                         }
                         retrieveSubject();
+                        retrieveCourse();
                     });
                     if (!vm.content.medium.is_attachment) {
                         vm.content.medium.source = $sce.trustAsResourceUrl(vm.content.medium.reference);
@@ -93,6 +94,10 @@
 
         function retrieveSubject() {
             vm.subject = Subject.get({id: vm.content.subject_id});
+        }
+
+        function retrieveCourse() {
+            if ($routeParams.course_id) vm.course = Course.get({id: $routeParams.course_id});
         }
 
     }

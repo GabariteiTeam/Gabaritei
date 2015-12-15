@@ -6,9 +6,9 @@ class QuestionsController < ApplicationController
 	
 	def index
 		if @permissions['permission.questions.globally_manipulate']
-			render json: Question.all, methods: [:owner_name]
+			render json: Question.all, methods: [:owner_name, :description]
 		elsif @permissions['permission.questions.manipulate']
-			render json: current_user.questions, methods: [:owner_name]
+			render json: current_user.questions, methods: [:owner_name, :description]
 		else
 			render json: {error: "Unauthorized access"}, status: 401
 		end
