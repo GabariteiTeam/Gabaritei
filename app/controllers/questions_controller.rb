@@ -18,22 +18,18 @@ class QuestionsController < ApplicationController
 	# GET /questions/1.json
 	def show
 		@question = Question.find(params[:id])
-		if @permissions['permission.questions.globally_manipulate'] || @permissions['permission.questions.manipulate'] && @question.owner == current_user || @question.can_be_accessed?(current_user.id)
-			subjects = []
-			@question.subjects.each do |subject|
-				j_subject = {:id => subject.id, :name => subject.name}
-				subjects.append(j_subject)
-			end
-			j_question_choices = []
-			if @question.style == Question::STYLE_CHOICE
-				@question.question_choices.each do |choice|
-					j_question_choices.push(choice)
-				end
-			end
-			render :json => {:question => @question, :subjects => subjects, :choices => j_question_choices, :category_list => @question.category_list}
-		else
-			render json: {error: "Unauthorized access"}, status: 401
+		subjects = []
+		@question.subjects.each do |subject|
+			j_subject = {:id => subject.id, :name => subject.name}
+			subjects.append(j_subject)
 		end
+		j_question_choices = []
+		if @question.style == Question::STYLE_CHOICE
+			@question.question_choices.each do |choice|
+				j_question_choices.push(choice)
+			end
+		end
+		render :json => {:question => @question, :subjects => subjects, :choices => j_question_choices, :category_list => @question.category_list}
 	end
 
 	# POST /questions
