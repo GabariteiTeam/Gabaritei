@@ -1,9 +1,13 @@
 class CoursesController < ApplicationController
 
-	before_action :verify_permissions, except: [:index]
+	before_action :verify_permissions
   
     def index    	
-		c = Course.all
+    	if @permissions['permission.courses.globally_manipulate'] || @permissions['permission.courses.take_part']
+			c = Course.all
+		else
+			c = current_user.courses
+		end
 		c.each do |course|
 			course.current_user = current_user
 		end
@@ -200,6 +204,8 @@ class CoursesController < ApplicationController
 		elsif @permissions['permission.courses.teach']
 			courses = current_user.courses
 			render json: courses
+		elsif @permissions['permission.courses.take_part']
+			render json: []
 		else
 			render json: {error: "Unauthorized access"}, status: 401
 		end
