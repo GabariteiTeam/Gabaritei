@@ -67,10 +67,22 @@ pt-BR:
           content: "Exame NÃO foi atualizado!"
       questions:
         added:
+          success:
+            title: "Adicionadas!"
+            content: "Questões foram adicionadas com sucesso!"
           error:
+            title: "Erro!"
+            content: "Questões NÃO foram adicionadas!"
             duplicate:
               title: "Erro!"
               content: "Questão já foi adicionada!"
+        removed:
+          success:
+            title: "Removidas!"
+            content: "Questões foram removidas com sucesso!"
+          error:
+            title: "Erro!"
+            content: "Questões NÃO foram removidas!"
       submitted:
         success:
           title: "Enviado!"

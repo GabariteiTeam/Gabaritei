@@ -74,3 +74,21 @@ pt-BR:
         error:
           title: "Erro!"
           content: "Usuário NÃO foi atualizado!"
+      change_password:
+        success:
+          title: "Senha alterada!"
+          content: "Senha alterada com sucesso!"
+        error:
+          title: "Erro!"
+          content: "Senha não pode ser alterada!"
+      forgot_password:
+        error:
+          title: "Erro!"
+          content: "Um erro ocorreu! Por favor, tente de novo mais tarde."
+      settings_save:
+        success:
+          title: "Sucesso!"
+          content: "Configurações foram alteradas com sucesso!"
+        error:
+          title: "Erro!"
+          content: "Configurações não puderam ser alteradas!"

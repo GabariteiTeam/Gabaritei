@@ -56,27 +56,39 @@ en:
           title: "Deleted!"
           content: "Exam was deleted with success!"
         error:
-          title: "Failed!"
+          title: "Error!"
           content: "Exam was NOT deleted"
       update:
         success:
           title: "Updated!"
           content: "Exam was updated with success"
         error:
-          title: "Failed!"
+          title: "Error!"
           content: "Exam was NOT updated!"
       questions:
         added:
+          success:
+            title: "Added!"
+            content: "Questions were added with success!"
           error:
+            title: "Error!"
+            content: "Questions were NOT added!"
             duplicate:
               title: "Error!"
               content: "Question already added!"
+        removed:
+          success:
+            title: "Removed!"
+            content: "Questions were removed with success!"
+          error:
+            title: "Error!"
+            content: "Questions were NOT removed!"
       submitted:
         success:
           title: "Submitted!"
-          content: "Exam was submitted with success"
+          content: "Exam was submitted with success!"
         error:
-          title: "Failed!"
+          title: "Error!"
           content: "Exam was NOT submitted!"
     test:
       current: "Current question: "

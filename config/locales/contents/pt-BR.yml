@@ -15,10 +15,14 @@ pt-BR:
       edit: "Editar"
       delete: "Remover"
       save: "Salvar conteúdo"
+      recommend: "Recomendar esse conteúdo"
+      download: "Baixar esse conteúdo"
     create:
       heading: "Novo conteúdo"
     update:
       heading: "Editar conteúdo"
+    show:
+      link: "Link para o conteúdo: "
     form:
       name: 
         label: "Nome"
