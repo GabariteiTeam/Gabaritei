@@ -61,6 +61,17 @@ pt-BR:
       select_all: "Selecionar todos"
       deselect_all: "Deselecionar todos"
       add_selected: "Adicionar selecionados"
+    lesson_form:
+      name:
+        label: "Nome"
+        placeholder: "Nome da aula"
+      description:
+        label: "Descrição"
+        placeholder: "Descrição da aula"
+      contents: "Conteúdos"
+      questions: "Questões"
+      in_lesson_yes: "Sim"
+      in_lesson_no: "Não"
     alerts:
       create:
         success:

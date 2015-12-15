@@ -1,7 +1,8 @@
 <ol class="breadcrumb">
   	<li><a href="/#home" translate>breadcrumbs.home</a></li>
   	<li ng-hide="Ctrl.course_id"><a href="/#contents" translate>breadcrumbs.contents.index</a></li>
-  	<li ng-show="Ctrl.course_id"><a href="/#courses/{{ Ctrl.course_id }}" translate>breadcrumbs.courses.show</a></li>
+  	<li ng-show="Ctrl.course"><a href="/#courses" translate>breadcrumbs.courses.index</a></li>
+    <li ng-show="Ctrl.course"><a href="/#courses/{{ Ctrl.course_id }}" translate>{{ Ctrl.course.name }}</a></li>
   	<li class="active" translate>breadcrumbs.contents.show</li>
 </ol>
 

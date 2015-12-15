@@ -19,6 +19,8 @@
 
 class Lesson < ActiveRecord::Base
 
+    cattr_accessor :current_user
+
 	# @!attribute title
 	# 	Title of the lesson.
 	# 	@return [String] the name of the lesson.
@@ -53,7 +55,8 @@ class Lesson < ActiveRecord::Base
     			title: (i + 1).to_s,
     			description: lquestion.question.description,
     			updated_at: lquestion.updated_at,
-    			updated_at_string: lquestion.updated_at.strftime("%d/%m/%Y %H:%M")
+    			updated_at_string: lquestion.updated_at.strftime("%d/%m/%Y %H:%M"),
+                done: lquestion.question.done(current_user)
     		})
     	end
     	lcontents.each do |lcontent|

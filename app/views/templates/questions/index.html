@@ -34,7 +34,7 @@
         <tr data-ng-repeat="question in Ctrl.questions">
           <td>{{ question.owner_name }}</td>
           <td>{{ question.source }}</td>
-          <td>{{ question.text | htmlToPlaintext }}</td>
+          <td>{{ question.description }}</td>
           <td><span ng-class="{'glyphicon glyphicon-fire': question.hot}"></span></td>
           <td>{{ question.answer |  htmlToPlaintext }}</td>
           <td class="options-cell options-column-3">

@@ -146,6 +146,10 @@ class Question < ActiveRecord::Base
 		return LessonQuestion.where("lesson_questions.question_id = :question_id AND EXISTS (SELECT 1 FROM user_courses, courses, lessons WHERE lesson_questions.lesson_id = lessons.id AND lessons.course_id = courses.id AND user_courses.course_id = courses.id AND user_courses.user_id = :user_id)", {question_id: id, user_id: user_id}).length > 0
 	end
 
+	def done(user)
+		return Response.where(owner_id: user.id, question_id: id).length > 0
+	end
+
 	has_many :lesson_questions
 	has_many :question_categories
 	has_many :test_questions

@@ -355,13 +355,13 @@
                 'type': mTypes['error']
             },
             'test.questions.removed.success': {
-                'title': 'crud.tests.alerts.questions.removed.success.title',
-                'content': 'crud.tests.alerts.questions.removed.success.content',
+                'title': 'tests.alerts.questions.removed.success.title',
+                'content': 'tests.alerts.questions.removed.success.content',
                 'type': mTypes['success']
             },
             'test.questions.removed.error': {
-                'title': 'crud.tests.alerts.questions.removed.error.title',
-                'content': 'crud.tests.alerts.questions.removed.error.content',
+                'title': 'tests.alerts.questions.removed.error.title',
+                'content': 'tests.alerts.questions.removed.error.content',
                 'type': mTypes['error']
             },         
             'content.created.success': {
