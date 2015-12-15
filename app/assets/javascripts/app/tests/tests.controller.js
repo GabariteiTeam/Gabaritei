@@ -127,57 +127,79 @@
         vm.selectAllQuestions = selectAllQuestions;
         vm.addSelected = addSelected;
 
+        vm.selectedQuestions = [];
         vm.questions = [];
         vm.test = Test.get({id: $routeParams.id});
-
+        vm.refresh = false;
         initialize();
 
         function initialize() {
-            vm.test = Test.get({ id: $routeParams.id });   
+            vm.test = Test.get({ id: $routeParams.id }, function(data){
+                if(vm.refresh) {
+                    searchQuestions();
+                    vm.refresh = false;
+                }
+            });
         }
 
         function searchQuestions() {
-            vm.questions = Test.searchQuestions({id: vm.test.id, search_string: vm.searchString}); 
+            Test.searchQuestions({id: vm.test.id, search_string: vm.searchString}, function(data) {
+                vm.questions = [];
+                for(var i = 0; i < data.length; i++) {
+                    var question = data[i];
+                    if(!isDuplicate(question) && data[i] !== undefined) {
+                        vm.questions.push(question);
+                    }
+                }
+            }); 
+            
         }
 
         function clearSearch() {
             vm.searchString = "";
             vm.questions = [];
+            vm.selectedQuestions = [];
+        }
+
+        function isDuplicate(question_add) {
+            for(var i in vm.test.questions) {
+                var question = vm.test.questions[i];
+                if(question_add.id == question.id) {
+                    return true;
+                }
+            }
+            return false;
         }
 
         function selectQuestion(question) {
             question.selected = !question.selected;
+            if(question.selected) {
+                vm.selectedQuestions.push(question); 
+            } else {
+                var newSelectedQuestions = [];
+                for(var i in vm.selectedQuestions) {
+                    var searchQuestion = vm.selectedQuestions[i];
+                    if(searchQuestion.id != question.id) {
+                        newSelectedQuestions.push (searchQuestion);
+                    }
+                }
+                vm.selectedQuestions = newSelectedQuestions;
+            }
         }
 
         function selectAllQuestions(selection) {
             for (var i = 0; i < vm.questions.length; i++) {
-                vm.questions[i].selected = selection;
+                    vm.questions[i].selected = selection;
+                    vm.selectedQuestions.push(vm.questions[i]);
             }
         }
 
         function addSelected() {
-            var questionsFiltered = [];
-            // check to see if questions are allready added
-            if(vm.test.questions.length > 0) {
-                for(var i = 0; i < vm.questions.length; i++) {
-                    for(var j = 0; j < vm.test.questions.length; j++) {
-                        if(vm.test.questions[j].id == vm.questions[i].id) {
-                            MessageService.sendMessage('test.questions.added.error.duplicate');
-                        }
-                        else {
-                            questionsFiltered.push(vm.questions[i]);
-                        }
-                        vm.questions[i].selected = false;
-                    }
-                }
-            } else {
-                questionsFiltered = vm.questions;
-            }
-            
             // only do the request if questions are not added!
-            if(questionsFiltered.length > 0) {
-                Test.addQuestions({id: vm.test.id}, {questions: vm.questions}, function(data) {
+            if(vm.selectedQuestions.length > 0) {
+                Test.addQuestions({id: vm.test.id}, {questions: vm.selectedQuestions}, function(data) {
                     MessageService.sendMessage('test.questions.added.success');
+                    vm.refresh = true;
                     initialize();
                 }, function(data) {
                     MessageService.sendMessage('test.questions.added.error');
@@ -188,7 +210,10 @@
         function removeQuestion(question_id) {
             vm.test.$removeQuestion({question_id: question_id}, function(data) {
                 MessageService.sendMessage('test.questions.removed.success');
-                vm.test = Test.get({id: $routeParams.id});
+                vm.refresh = true;
+                vm.test = Test.get({id: $routeParams.id}, function(data) {
+                    searchQuestions();
+                });
             }, function(data) {
                 MessageService.sendMessage('test.questions.removed.error');
             });
